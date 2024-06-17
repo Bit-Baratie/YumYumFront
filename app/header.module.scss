@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1280px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    display: flex;
+    
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      width: 200px;
+      height: 60px;
+
+      span {
+        margin-left: 10px;
+      }
+
+      &:hover {
+        background-color: #FFC657;
+        cursor: pointer;
+        color: white;
+      }
+    }
+  }
+}
+
+.icon {
+  &:hover{
+    color: white;
+  }
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D9D9D9;
+  width: 700px;
+  height: 60px;
+  border-radius: 30px;
+  input {
+    background-color: #D9D9D9;
+    border: none;
+    width: 600px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 20px;
+    &:focus{
+      outline: none;
+    }
+  }
+}
