@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: url('../../../public/asset/image/watermark.png');
+  background-size: cover;
+  background-color: #ffc657;
+}
