@@ -1,6 +1,11 @@
+import "./storeList.scss";
+import TestMap from "./(api)/testMap";
+import SearchStoreList from "./(component)/SearchStoreList";
 const Store = () => {
   return (
-    <div>맛집리스트페이지</div>
+    <>
+      <SearchStoreList />
+    </>
   );
 }
 
