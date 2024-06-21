@@ -51,7 +51,7 @@ const Header = () => {
         <Logo/>
         <ul>
           <Link href={'/store'}><li onMouseEnter={() => enter(0)} onMouseLeave={() => out(0)}><Store width='25' height='25' fill={iconColor[0]?'white':'black'}/><span>맛집리스트</span></li></Link>
-          <Link href={{pathname: `/member/${1}`}}><li onMouseEnter={() => enter(1)} onMouseLeave={() => out(1)}><Bookmark width='25' height='25' fill={iconColor[1]?'white':'black'}/><span>즐겨찾기</span></li></Link>
+          <Link href={{pathname: `/member/${1}/star`}}><li onMouseEnter={() => enter(1)} onMouseLeave={() => out(1)}><Bookmark width='25' height='25' fill={iconColor[1]?'white':'black'}/><span>즐겨찾기</span></li></Link>
           <Link href={'/'}><li onMouseEnter={() => enter(2)} onMouseLeave={() => out(2)}><Review width='25' height='25' fill={iconColor[2]?'white':'black'}/><span>리뷰</span></li></Link>
           <Link href={'/member/login'}><li onMouseEnter={() => enter(3)} onMouseLeave={() => out(3)}><Login width='25' height='25' fill={iconColor[3]?'white':'black'}/><span>로그인</span></li></Link>
           {/* <Link href={'/member'}><li onMouseEnter={() => enter(4)} onMouseLeave={() => out(4)}><AddUser width='25' height='25' fill={iconColor[4]?'white':'black'}/><span>회원가입</span></li></Link> */}
