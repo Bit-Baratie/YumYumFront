@@ -27,19 +27,6 @@ const testMap = () => {
             map: map
         });
 
-        //     navigator.geolocation.getCurrentPosition((position) => {
-        //         const currentLocation = new naver.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        //         new naver.maps.Marker({
-        //             position: currentLocation,
-        //             map: map,
-        //             title: "Your Location",
-        //         });
-
-        //         // 지도 첫 접속 시 사용자의 현 위치로 중심이 오도록 추가했습니다!
-        //         map.setCenter(currentLocation);
-        //     })
-        // }
-
         myLocation(map);
     }, [lat, lng]);
 

@@ -69,11 +69,15 @@
 .gradeLikeViews{
     display: flex;
     align-items: center;
+    div{
+        margin-right: 10px;
+        color: #A4A4A4;
+    }
 }
-.gradeLikeViews > div{
-    margin-right: 10px;
-    color: #A4A4A4;
-}
+// .gradeLikeViews > div{
+//     margin-right: 10px;
+//     color: #A4A4A4;
+// }
 .hashTagList{
  display: flex;
 }
