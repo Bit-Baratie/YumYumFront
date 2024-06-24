@@ -1,0 +1,36 @@
+/* *{
+    align-items: left;
+} */
+
+.profile{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.profile-img {
+    border: 1px solid rgb(193, 193, 193);
+    border-radius: 50%;
+}
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* margin: 20px; */
+    padding: 10px 20px;
+    line-height: 28px;
+}
+
+.profile-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.profile-date{
+    
+}
+
+.profile-star{
+    color: gray;
+
+}
