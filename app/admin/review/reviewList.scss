@@ -1,0 +1,20 @@
+table,
+th,
+td {
+  width: 1000px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td{
+  padding: 10px;
+}
+
+.nickname{
+  width: 500px;
+}
+
+.reviewContent{
+  width: 400px;
+}
