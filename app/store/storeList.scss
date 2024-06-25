@@ -22,6 +22,7 @@
 //     background-color: blanchedalmond;
 //     margin: 0px;
 // }
+
 #storeList{
     margin-top: 40px;
     padding-left: 30px;
@@ -53,6 +54,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#searchStoreNumber{
+    span{
+        font-weight: bold;
+        font-size: 18px;
+    }
 }
 .storeInfo{
     display: flex;
@@ -113,5 +120,39 @@
     border: 1px solid black;
     background-color: #FCFCFC;
     border-radius: 5px;
+}
+#noDataMessage{
+        background-color: #FFFFFF;
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 560px;
+        height: 200px;
+        align-items: center;
+        margin-top: 30px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px 5px grey;
+}
+#noDataImage{
+    width: 160px;
+    height: 160px;
+    border: 1px solid #E2E2E2;
+    background-color: #E2E2E2;
+    border-radius: 20px;
+    margin-left: 30px;
+}
+#noDataInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 150px;
+    margin-right: 20px;
+
+    .noDataInfo{
+        width: 250px;
+        background-color: #e2e2e2;
+        height: 30px;
+        border-radius: 10px;
+    }
 }
 
