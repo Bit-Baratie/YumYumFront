@@ -1,6 +1,6 @@
 import TestMap from "../(api)/NaverMap"
 import myLocation from "./MyLocation"
-import StoreList from "./StoreList"
+import StoreList from "./StoreList";
 
 const SearchStoreList = () => {
     return (

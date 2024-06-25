@@ -16,8 +16,9 @@ const testMap = () => {
             center: location,
             zoomControl: true,   // 줌 설정
             zoom: 15,
+            minZoom: 6,
             zoomControlOptions: {
-                style: naver.maps.ZoomControlStyle.SMALL,
+                style: naver.maps.ZoomControlStyle.LARGE,
                 position: naver.maps.Position.TOP_RIGHT,
             },
         });
