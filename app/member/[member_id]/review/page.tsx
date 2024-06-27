@@ -1,6 +1,8 @@
+import { ReviewItem } from "@/app/(component)/reviewItem";
+
 const ReviewPage = () => {
   return (
-    <div>내가 쓴 리뷰</div>
+    <ReviewItem/>
   );
 }
 
