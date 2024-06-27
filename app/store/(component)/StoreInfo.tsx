@@ -1,52 +1,53 @@
 'use client';
 import { useState } from 'react';
 import Bookmarks from '../../../public/asset/image/bookmark.svg';
+import useStore from "@/app/store/(hooks)/useStore";
 
-interface Store {
-    storeName: string;
-    storeImage: string;
-    grade: number;
-    like: number;
-    views: number;
-    storeAddress: string;
-    hashTagList: string[];
+interface store {
+    id: number,
+    name: string,
+    address: string,
+    favoriteNumber: number,
+    reviewNumber: number,
+    imageUrl: string,
+    categoryList: string[],
+    views: number,
+    hashTagList: string[],
+    grade: number,
 }
 
-const StoreInfo: React.FC<Store> = ({
-    storeName,
-    storeImage,
-    grade,
-    like,
-    views,
-    storeAddress,
-    hashTagList
-}) => {
+interface StoreInfoProps {
+    store: store
+}
+const StoreInfo = ({ store }: StoreInfoProps) => {
     const [iconColor, setIconColor] = useState<boolean>(false);
 
     const enter = () => {
         setIconColor(prevIconColor => !prevIconColor);
     }
-
     return (
         <div id="searchStoreList">
+            <div className='storeId'>{store.id}</div>
             <div className="storeImage">
-                <img src={storeImage} width={200} height={155} alt="가게이미지1" />
+                <img src="../../../public/asset/image/storeImage1.png" width={200} height={155} alt="가게이미지1" />
             </div>
             <div className="storeInfo">
                 <div className="storeName">
-                    <div>{storeName}주먹이 맛있는 집</div>
+                    <div>{store.name}</div>
                 </div>
                 <div className="gradeLikeViews">
-                    <div id="grade">★4.0(99+){grade}</div>
-                    <div id="like">♥️20{like}</div>
-                    <div id="views">👀18323{views}</div>
+                    <div id="grade">★{store.grade}({store.reviewNumber})</div>
+                    <div id="like">♥️{store.favoriteNumber}</div>
+                    <div id="views">👀{store.views}</div>
                 </div>
                 <div className="storeAddress">
-                    <div>{storeAddress}서울시 강남구 100 - 0 3층</div>
+                    <div>{store.address}</div>
                 </div>
-                {hashTagList.map(tag => (
-                    <div key={tag} className='hashTag'>#{tag}</div>
-                ))}
+                <div className='hashTagList'>
+                    {store.hashTagList.map((tag: string) => (
+                        <div key={tag} className='hashTag'>#{tag}</div>
+                    ))}
+                </div>
                 <div className="favorite">
                     <Bookmarks width='25' height='25' fill={iconColor ? '#FFC657' : '#E2E2E2'} onClick={enter} />
                 </div>

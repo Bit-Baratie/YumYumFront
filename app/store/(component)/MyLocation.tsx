@@ -14,3 +14,8 @@ const myLocation = (map: naver.maps.Map) => {
     })
 }
 export default myLocation;
+
+// 좌표 구하는 함수[]
+// 마커 찍어주는 함수[]
+// 내 좌표 구해주는 함수
+// 내 위치로 이동해주는 함수

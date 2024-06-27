@@ -1,0 +1,103 @@
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.storeDetail{
+    width: 800px;
+    height: 1000px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+.storeImageDetail{
+    padding: 0px;
+    margin: 0px;
+    width: 800px;
+    height: 430px;
+    display: flex;
+    justify-content: center;
+    .MainImage{
+        width: 400px;
+        height: 430px;
+        background-color:aquamarine;
+        border-top-left-radius: 20px;
+    }
+
+    .subImage{
+        width: 200px;
+        height: 215px;
+        background-color:blueviolet;
+    }
+}
+
+.subImageList{
+    width: 400px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    #sub2{
+        border-top-right-radius: 20px;
+    }
+}
+
+.storeInfoDetail{
+    line-height: 2;
+    width: 500px;
+    margin-top: 40px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    div{
+        align-items: center;
+        height: 70px;
+        justify-content: space-between;
+        display: flex;
+    }
+}
+.storeNameDetail{
+    display: flex;
+            div{
+                align-items:end;
+            }
+            span{
+                font-size: 40px;
+            }
+}
+.storeHashTag{
+    // background-color: chartreuse;
+    display: flex;
+    width: 800px;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    div{
+        width: 120px;
+        height: 35px;
+        border: 3px solid #FFC657;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+#navBtn{
+    width: 800px;
+    height: 75px;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    // border: 1px solid black;
+    box-shadow: 0 0 0 1px #D0D0D0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

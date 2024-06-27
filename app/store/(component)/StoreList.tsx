@@ -1,37 +1,48 @@
 'use client';
-import axios from "axios";
 import { getStoreInfo } from "../(api)/StoreApi";
 import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
+import useStore from "@/app/store/(hooks)/useStore"
 
-interface Store {
+interface store {
   id: number;
   name: string;
   address: string;
   favoriteNumber: number;
   reviewNumber: number;
   imageUrl: string;
-  categoryList: string[];
   views: number;
   hashTagList: string[];
-  isFavorite: boolean;
   grade: number;
+  categoryList: string[];
 }
 
-const StoreList: React.FC = () => {
-  const [storeList, setStoreList] = useState<Store[]>([]);
+interface location {
+  latitude: number,
+  longitude: number,
+}
+
+const StoreList = () => {
+
+
+  const [storeList, setStoreList] = useState<Array<store>>([]);
+
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchStoreInfo = async () => {
+      let latitude = 37.359531;
+      let longitude = 127.1052133;
+
+      const location = { longitude, latitude };
       try {
-        const response = await axios.get<Store[]>('http://localhost:3000/stores');
-        setStoreList(response.data);
+        const StoreInfoResult = await getStoreInfo(location);
+        setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
       } catch (error) {
-        console.error('Error fetching store list:', error);
+        console.error("Error fetching store info:", error);
       }
     };
 
-    fetchData();
+    fetchStoreInfo();
   }, []);
 
   if (storeList.length === 0) {
@@ -62,13 +73,7 @@ const StoreList: React.FC = () => {
         {storeList.map(store => (
           <StoreInfo
             key={store.id}
-            storeName={store.name}
-            storeImage={store.imageUrl}
-            grade={store.grade}
-            like={store.favoriteNumber}
-            views={store.views}
-            storeAddress={store.address}
-            hashTagList={store.hashTagList}
+            store={store}
           />
         ))}
       </div>

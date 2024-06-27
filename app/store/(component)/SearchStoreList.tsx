@@ -1,4 +1,4 @@
-import TestMap from "../(api)/NaverMap"
+import TestMap from "@/app/store/(component)/NaverMap";
 import myLocation from "./MyLocation"
 import StoreList from "./StoreList";
 
