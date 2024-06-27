@@ -1,9 +1,28 @@
+import Image from 'next/image';
 import reviewStyle from './reviewItem.module.scss'
 
 export const ReviewItem = () => {
   return (
-    <div>
+    <div className={reviewStyle.reviewItem}>
+      <div className={reviewStyle.storeInfo}>
+        <span className={reviewStyle.storeName}>엽기떡볶이</span>
+        <span className={reviewStyle.addr}>서울 강남구 강남대로 20</span>
+      </div>
 
+      <div className={reviewStyle.profile}>
+        <div>프로필</div>
+        <div className={reviewStyle.meta}>
+          <span className={reviewStyle.smallBlack}>푸바오야가지마</span><br></br>
+          <span className={reviewStyle.smallGray}>별 리뷰개수 평균별점</span>  
+        </div>
+        <div>❤️</div>
+      </div>
+      <div>
+        내용
+      </div>
+      <div>
+        <Image className={reviewStyle.profileImage} src={'/./'} width={150} height={150} alt='리뷰이미지'/>
+      </div>
     </div>
   );
 }
