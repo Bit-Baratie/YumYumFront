@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect } from "react";
-import '@/app/store/(api)/map.scss';
-import myLocation from "../(component)/MyLocation";
+import '@/app/store/(component)/map.scss';
+import myLocation from "./MyLocation";
 import Location from '../../../public/asset/image/location.svg'
 
 const testMap = () => {

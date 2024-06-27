@@ -1,6 +1,5 @@
 'use client';
 import {useState} from'react';
-import StoreInfo from "../(component)/StoreInfo";
 
 
 const useStore = () =>{
