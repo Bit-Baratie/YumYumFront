@@ -1,14 +1,15 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface UserInfoType {
-  memberId: number,
-  profileUrl: string,
-  nickname: string
+  memberId: number;
+  profileUrl: string;
+  nickname: string;
+  jwt: any;
 }
 
 interface UserInfoState {
-  userInfo: UserInfoType
+  userInfo: UserInfoType;
 }
 
 interface UserInfoActions {
@@ -16,10 +17,10 @@ interface UserInfoActions {
   deleteUserInfo: () => void
 }
 
-const defaultState: UserInfoType = {memberId: 0, profileUrl: '', nickname: '' }
+const defaultState: UserInfoType = {memberId: 0, profileUrl: '', nickname: '', jwt: null }
 
-const useUserInfo = create<UserInfoState & UserInfoActions>()(
-  persist(
+const userStore = create(
+  persist<UserInfoState & UserInfoActions>(
     (set) => ({
       userInfo: defaultState,
       setUserInfo: (userInfo: UserInfoType) => { set({ userInfo }) },
@@ -27,8 +28,9 @@ const useUserInfo = create<UserInfoState & UserInfoActions>()(
     }),
     {
       name: 'user-info-storage',
+      storage: createJSONStorage(() => sessionStorage),
     }
   )
 );
 
-export default useUserInfo;
+export default userStore;

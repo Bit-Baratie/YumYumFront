@@ -2,14 +2,13 @@
 import { useState } from "react"
 import { postLoginInfo } from "../(api)/loginApi";
 import { useRouter } from "next/navigation";
-import { cookies } from "next/headers";
-import useUserInfo from "@/app/(hooks)/useUserInfo";
+import userStore from "@/app/(hooks)/userStore";
 
 const useLogin = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
-  const {userInfo, setUserInfo, deleteUserInfo} = useUserInfo();
+  const {userInfo, setUserInfo, deleteUserInfo} = userStore();
 
   const emailHanler = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -28,8 +27,6 @@ const useLogin = () => {
 
     const res = await postLoginInfo(info);
     if (res.status === 1) {
-      // 멤버아이디와 토큰 저장 부분
-      cookies().set('auth', res.token); // 브라우저 쿠키에 토큰저장
       setUserInfo(res.data);
       router.push('/');
     } else {
@@ -38,14 +35,15 @@ const useLogin = () => {
   }
 
   const logout = () => {
-    cookies().delete('auth');
+    deleteUserInfo();
     router.push('/');
   }
 
   return {
     email, password,
     emailHanler, passwordHanler,
-    login, logout
+    login, logout,
+    userInfo
   }
 }
 
