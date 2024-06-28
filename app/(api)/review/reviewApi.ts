@@ -44,3 +44,25 @@ export const postReview = async (postReviewData: PostReview) => {
 
   return result;
 }
+
+interface patchReviewType {
+  content: string;
+  grade: number;
+  memberId: number;
+}
+
+export const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {
+  const result = await axios.patch(`http://localhost:3000/review/${reviewId}`, patchReviewData)
+  .then((res) => {
+    
+  }).catch((err) => {
+    console.log(err.message);
+  });
+}
+
+export const deleteReview = async (reviewId: number) => {
+  await axios.delete(`http://localhost:3000/${reviewId}`)
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
