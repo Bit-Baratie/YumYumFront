@@ -2,6 +2,7 @@ import TestMap from "@/app/store/(component)/NaverMap";
 import myLocation from "./MyLocation"
 import StoreList from "./StoreList";
 
+
 const SearchStoreList = () => {
     return (
         <div className="container">
