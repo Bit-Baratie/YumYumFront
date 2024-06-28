@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "../header";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "YumYum 맛집 리스트",
@@ -17,7 +16,6 @@ export default function RootLayout({
     <>
       <Header />
       <div>
-        <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5" />
         {children}
       </div>
     </>
