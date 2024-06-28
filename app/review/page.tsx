@@ -5,14 +5,12 @@ import Comment from "./comment";
 import React,{ useState } from "react";
 import LikeButton from "./LikeButton";
 import Dropdown from "./Dropdown";
-
-
-// ReactDOM.render (<LikeButton />, document.getElementById('root'))
-
-
+// import useUserInfo from "@/app/(hooks)/useUserInfo";
+import { postReviewInfo } from "./(api)/reviewApi";
+// import useReview from "../(hooks)/review/useReview";
 
 const Review = () => {
-    const [openMenu, setOpenMenu] = useState(false);
+    // const {reviewOne} = useReview();
 
     return (
         <> < Headers /> 
@@ -20,11 +18,7 @@ const Review = () => {
             <div className="top">
                 <button className="back"></button>
                 리뷰
-
-                {
-                    openMenu && <Dropdown/>
-                }
-                <Dropdown/>
+                {/* <Dropdown/> */}
 
                 <button className="edit"></button>
 
