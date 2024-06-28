@@ -1,8 +1,6 @@
 'use client'
 import '@/app/store/(component)/map.scss';
 import Location from '../../../public/asset/image/location.svg'
-import LocationMarker from "../(component)/LocationMarker"
-import setCenterMy from "./setCenterMy";
 import myLocation from "./MyLocation";
 import Script from "next/script";
 
