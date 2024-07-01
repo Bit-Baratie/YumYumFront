@@ -16,7 +16,7 @@ import userStore from './(hooks)/userStore';
 import useSearch from './(hooks)/common/useSearch';
 
 const Header = () => {
-  const {keyword, keywordHandler} = useSearch();
+  const {data, keyword, inputHandler, keywordSearch, pressEnter} = useSearch();
   // const path = useRouter();
   const {userInfo} = userStore();
   const [iconColor, setIconColor] = useState<Array<boolean>>([
@@ -51,7 +51,7 @@ const Header = () => {
           {userInfo.memberId !== 0 && <li onMouseEnter={() => enter(5)} onMouseLeave={() => out(5)}><Logout width='25' height='25'/><span>로그아웃</span></li>}
         </ul>
       </header>
-      <div className={header.input}><input type='text' placeholder='지역, 음식 또는 식당명 입력' value={keyword} onChange={(e) => keywordHandler(e)}/><Search/></div>
+      <div className={header.input}><input type='text' placeholder='지역, 음식 또는 식당명 입력' value={keyword} onChange={(e) => inputHandler(e)}/><Search onClick={keywordSearch} onKeyDown={(e: KeyboardEvent) => pressEnter(e)}/></div>
     </div>
   );
 }
