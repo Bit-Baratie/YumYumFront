@@ -17,45 +17,42 @@ const Sidebar = () => {
   // const likeRegex = /member+[/]+\d+[/]+like/;
   // const starRegex = /member+[/]+\d+[/]+star/;
 
-  const [iconColor, setIconColor] = useState<Array<boolean>>([
-    false,
-    false,
-    false,
-    false,
-    false
-  ]);
-
-  const initColor = () => {
-    const init = iconColor.map(() => false);
-    setIconColor(init);
-  }
+  const [active, setActive] = useState<number>(0);
 
   const clickHandler = (i:number) => {
-    initColor();
-    iconColor[i] = true;
-    setIconColor([...iconColor]);
+    setActive(i);
   }
 
   return (
     <ul className={sidebarStyle.sidebar}>
       <Link href={`/member/${1}`}>
-      <li onClick={() => clickHandler(0)}><span></span><User width='25' height='25' fill={iconColor[0]?'#ffb321':'black'}/> 나의 정보</li>
+      <li onClick={() => clickHandler(0)} className={active===0?sidebarStyle.activeColor:sidebarStyle.nonActiveColor}>
+        <span className={active===0?sidebarStyle.active:sidebarStyle.nonActive}></span>
+        <User width='25' height='25' fill={active===0?'#ffb321':'black'}/>나의 정보</li>
       </Link>
 
       <Link href={`/member/${1}/review`}>
-      <li onClick={() => clickHandler(1)}><span></span><Review width='25' height='25' fill={iconColor[1]?'#ffb321':'black'}/> 내가 쓴 리뷰</li>
+      <li onClick={() => clickHandler(1)} className={active===1?sidebarStyle.activeColor:sidebarStyle.nonActiveColor}>
+        <span className={active===1?sidebarStyle.active:sidebarStyle.nonActive}></span>
+        <Review width='25' height='25' fill={active===1?'#ffb321':'black'}/> 내가 쓴 리뷰</li>
       </Link>
 
       <Link href={`/member/${1}/reply`}>
-      <li onClick={() => clickHandler(2)}><span></span><Reply width='25' height='25' fill={iconColor[2]?'#ffb321':'black'}/> 내가 쓴 댓글</li>
+      <li onClick={() => clickHandler(2)} className={active===2?sidebarStyle.activeColor:sidebarStyle.nonActiveColor}>
+        <span className={active===2?sidebarStyle.active:sidebarStyle.nonActive}></span>
+        <Reply width='25' height='25' fill={active===2?'#ffb321':'black'}/> 내가 쓴 댓글</li>
       </Link>
 
       <Link href={`/member/${1}/like`}>
-      <li onClick={() => clickHandler(3)}><span></span><Like width='25' height='25' fill={iconColor[3]?'#ffb321':'black'}/> 좋아요 한 리뷰</li>
+      <li onClick={() => clickHandler(3)} className={active===3?sidebarStyle.activeColor:sidebarStyle.nonActiveColor}>
+        <span className={active===3?sidebarStyle.active:sidebarStyle.nonActive}></span>
+        <Like width='25' height='25' fill={active===3?'#ffb321':'black'}/> 좋아요 한 리뷰</li>
       </Link>
       
       <Link href={`/member/${1}/star`}>
-      <li onClick={() => clickHandler(4)}><span></span><Bookmark width='25' height='25' fill={iconColor[4]?'#ffb321':'black'}/> 즐겨찾기한 맛집</li>
+      <li onClick={() => clickHandler(4)} className={active===4?sidebarStyle.activeColor:sidebarStyle.nonActiveColor}>
+        <span className={active===4?sidebarStyle.active:sidebarStyle.nonActive}></span>
+        <Bookmark width='25' height='25' fill={active===4?'#ffb321':'black'}/> 즐겨찾기한 맛집</li>
       </Link>
     </ul>
   );
