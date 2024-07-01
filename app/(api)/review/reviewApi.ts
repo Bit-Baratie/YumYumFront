@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 export const getReviewAll = async () => {
-  const result = await axios.get("https://localhost:3000/review")
+  const result = await axios.get(`${process.env.SERVER_IP}/review`)
   .then ((res) => {
     return res.data;
   }).catch((err) => {
@@ -13,8 +13,8 @@ export const getReviewAll = async () => {
   return result;
 }
 
-export const getReviewOne = async (reviewId:number, storeId:number) => {
-  const result = await axios.get(`https://localhost:3000/${storeId}/review/${reviewId}`)
+export const getReviewOne = async (reviewId:number) => {
+  const result = await axios.get(`${process.env.SERVER_IP}/review/${reviewId}`)
   .then((res) => {
     return res.data;
   }).catch((err) => {
@@ -34,7 +34,7 @@ interface PostReview {
 }
 
 export const postReview = async (postReviewData: PostReview) => {
-  const result = await axios.post('https://localhost:3000/review', postReviewData)
+  const result = await axios.post(`${process.env.SERVER_IP}/review`, postReviewData)
   .then((res) => {
     return res.data;
   }).catch((err) => {
@@ -52,7 +52,7 @@ interface patchReviewType {
 }
 
 export const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {
-  const result = await axios.patch(`http://localhost:3000/review/${reviewId}`, patchReviewData)
+  const result = await axios.patch(`${process.env.SERVER_IP}/review/${reviewId}`, patchReviewData)
   .then((res) => {
     
   }).catch((err) => {
@@ -61,7 +61,7 @@ export const patchReview = async (reviewId: number , patchReviewData: patchRevie
 }
 
 export const deleteReview = async (reviewId: number) => {
-  await axios.delete(`http://localhost:3000/${reviewId}`)
+  await axios.delete(`${process.env.SERVER_IP}/review/${reviewId}`)
   .catch((err) => {
     console.log(err.message);
   });

@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const search = async (keyword: string|null) => {
   console.log(keyword);
-  const result = await axios.get(`http://localhost:3000/store?keyword=${keyword}`)
+  const result = await axios.get(`${process.env.SERVER_IP}/store?keyword=${keyword}`)
   .then((res) => {
     return res.data;
   }).catch((err) => {
@@ -13,7 +13,7 @@ export const search = async (keyword: string|null) => {
 }
 
 export const top10Search = async (local: string) => {
-  const result = await axios.get(`http://localhost:3000/top10?local=${local}`)
+  const result = await axios.get(`${process.env.SERVER_IP}/top10?local=${local}`)
   .then((res) => {
     return res.data;
   }).catch((err) => {
@@ -24,7 +24,7 @@ export const top10Search = async (local: string) => {
 }
 
 export const monthSearch = async (local: string) => {
-  const result = await axios.get(`http://localhost:3000/month?local=${local}`)
+  const result = await axios.get(`${process.env.SERVER_IP}/month?local=${local}`)
   .then((res) => {
     return res.data;
   }).catch((err) => {
@@ -35,7 +35,7 @@ export const monthSearch = async (local: string) => {
 }
 
 export const starSearch = async (local: string) => {
-  const result = await axios.get(`http://localhost:3000/star?local=${local}`)
+  const result = await axios.get(`${process.env.SERVER_IP}/star?local=${local}`)
   .then((res) => {
     return res.data;
   }).catch((err) => {
@@ -46,7 +46,7 @@ export const starSearch = async (local: string) => {
 }
 
 export const viewsSearch = async (local: string) => {
-  const result = await axios.get(`http://localhost:3000/views?local=${local}`)
+  const result = await axios.get(`${process.env.SERVER_IP}/views?local=${local}`)
   .then((res) => {
     return res.data;
   }).catch((err) => {
