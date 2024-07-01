@@ -6,7 +6,7 @@ interface info {
 }
 
 export const postLoginInfo = async (loginInfo: info) => {
-  const result = await axios.post('http://localhost:3000', loginInfo)
+  const result = await axios.post('http://192.168.0.20:3000', loginInfo)
   .then((res) => {
     return res.data;
   }).catch((err) => {

@@ -3,9 +3,10 @@ import loginStyle from '@/app/member/login/loginForm.module.scss';
 import Logo from '@/public/asset/image/logo.svg';
 import Link from 'next/link';
 import useLogin from './(hooks)/useLogin';
-import Naver from '@/public/asset/image/naver.svg';
 import Google from '@/public/asset/image/Google.svg';
 import Kakao from '@/public/asset/image/Kakao.svg';
+import Naver from '@/public/asset/image/naver.svg';
+import { NaverLogin } from '@/app/(component)/auth/social';
 
 const Login = () => {
   const {email, password, emailHanler, passwordHanler, login} = useLogin();
@@ -21,8 +22,13 @@ const Login = () => {
         <Link href={'/member/signup'}><div className={loginStyle.link}>Sign up!</div></Link>
         <button onClick={(e) => login(e)}>LOGIN</button>
       </form>
+
       <span className={loginStyle.span}><hr className={loginStyle.hr}/>&nbsp; S N S &nbsp; L O G I N &nbsp;<hr className={loginStyle.hr}/></span>
-      <span className={loginStyle.social}><Kakao/><Naver/><Google/></span>
+      <span className={loginStyle.social}>
+        <Kakao/>
+        <NaverLogin/>
+        <Google/>
+      </span>
     </div>
   );
 }

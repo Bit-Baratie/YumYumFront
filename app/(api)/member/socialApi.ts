@@ -1,8 +1,9 @@
 import axios from "axios"
 
-export const naverApi = async (code: string) => {
-  const userInfo = await axios.post('naver로그인', code)
+export const naverApi = async (code: string|null) => {
+  const userInfo = await axios.get(`http://192.168.0.20:3000/login/oauth2/code/naver?code=${code}`)
   .then((res) => {
+    console.log(res);
     return res.data;
   })
   .catch((err) => {
