@@ -1,6 +1,12 @@
+import './not-found.scss';
+// import './layout.scss';
+
 const Custom404 = () => {
   return (
-    <div>404 not found</div>
+    <div className="container">
+      <div className='error'>404</div>
+        <div className='error-message'>Page Not Found</div>
+    </div>
   );
 }
 

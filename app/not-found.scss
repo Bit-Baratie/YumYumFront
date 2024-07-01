@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  // background: url('../../../public/asset/image/watermark.png');
+  background: url('../public/asset/image/watermark.png');
+  background-size: cover;
+  background-color: #ffc657;
+  vertical-align:baseline;
+}
+.error{
+  font-size: 200px;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: 5px rgba(243,179,62,0.4);
+  text-shadow: rgba(243,179,62,0.4) 0 0 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.error-message{
+  font-size: 60px;
+  color: white;
+}
+
