@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Bookmarks from '../../../public/asset/image/bookmark.svg';
 import useStore from "@/app/store/(hooks)/useStore";
+import Google from "@/public/asset/image/Google.svg"
 
 interface store {
     id: number,
@@ -14,22 +15,24 @@ interface store {
     views: number,
     hashTagList: string[],
     grade: number,
+    isFavorite: boolean,
 }
 
 interface StoreInfoProps {
     store: store
 }
 const StoreInfo = ({ store }: StoreInfoProps) => {
-    const [iconColor, setIconColor] = useState<boolean>(false);
+    const [iconColor, setIconColor] = useState<String>("#E2E2E2");
+    const { favoriteHandler, favorite } = useStore();
 
-    const enter = () => {
-        setIconColor(prevIconColor => !prevIconColor);
-    }
+
+
     return (
         <div id="searchStoreList">
             <div className='storeId'>{store.id}</div>
             <div className="storeImage">
-                <img src="../../../public/asset/image/storeImage1.png" width={200} height={155} alt="가게이미지1" />
+                {/* <img src= width={200} height={155} alt="가게이미지1" /> */}
+                <Google />
             </div>
             <div className="storeInfo">
                 <div className="storeName">
@@ -49,7 +52,7 @@ const StoreInfo = ({ store }: StoreInfoProps) => {
                     ))}
                 </div>
                 <div className="favorite">
-                    <Bookmarks width='25' height='25' fill={iconColor ? '#FFC657' : '#E2E2E2'} onClick={enter} />
+                    <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '25px', height: '25px' }} onClick={() => { favoriteHandler(store.isFavorite) }} />
                 </div>
             </div>
         </div>

@@ -5,6 +5,10 @@
     display: flex;
     justify-content: center;
 }
+.StoreListMap{
+    overflow-y: scroll;
+    height: 700px;
+}
 .content{
     margin-top:100px;
     display: flex;
@@ -16,13 +20,6 @@
     box-shadow: 5px -1px 30px 1px grey;
     position: relative;
 }
-// #map{
-//     width: 600px;
-//     height: 100%;
-//     background-color: blanchedalmond;
-//     margin: 0px;
-// }
-
 #storeList{
     margin-top: 40px;
     padding-left: 30px;
@@ -41,6 +38,7 @@
     margin-top: 30px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px grey;
+    overflow-y: scroll;
 }
 .storeImage{
     background-color: coral;

@@ -14,13 +14,31 @@ interface store{
     hashTagList:string[],
     isFavorite:boolean,
     grade:number,
+    hours : string,
+    call : string
+    menuList:string[],
 }
+interface LikeInfo{
+    isFavorite : boolean
+}
+interface pageNumber{
+    totalPages:number,
+    currentPages:number
+}
+
 //나의 위도 경도
 interface location{
     latitude:number,
     longitude:number,
 }
 
+export interface SearchResponse {
+    totalPages: number;
+    currentPage: number;
+    //한 번에 표시할 결과의 수
+    limit: number;
+    data: store[];
+  }
 
 export const getStoreInfo = async (location : location) => {
 // const result : Array<store> = await axios.get(`http://localhost:3000/store?long=${location.longitude}&&lat=${location.latitude}`)
@@ -32,7 +50,7 @@ export const getStoreInfo = async (location : location) => {
 // });
 
 //store 정보
-return[{
+return  [{
     id: 1,
     name: "카넬로손파이",
     address:"강남대로 200-1",
@@ -42,8 +60,10 @@ return[{
     categoryList:["123","456","789"],
     views:12837,
     hashTagList:["123","456","789"],
-    isFavorite:true,
+    isFavorite:false,
     grade:4.5,
+    totalPage : 10,
+    currentPage:1
 },
 {
     id: 2,
@@ -57,6 +77,282 @@ return[{
     hashTagList:["123","456","789"],
     isFavorite:true,
     grade:4.5,
+    totalPage : 10,
+    currentPage:1
+},{
+id: 3,
+name: "카넬로손파이",
+address:"강남대로 200-1",
+favoriteNumber: 123,
+reviewNumber: 123,
+imageUrl:"/",
+categoryList:["123","456","789"],
+views:12837,
+hashTagList:["123","456","789"],
+isFavorite:false,
+grade:4.5,
+totalPage : 10,
+currentPage:1
+},
+{
+id: 4,
+name: "카넬로손파이",
+address:"강남대로 200-1",
+favoriteNumber: 123,
+reviewNumber: 123,
+imageUrl:"/",
+categoryList:["123","456","789"],
+views:12837,
+hashTagList:["123","456","789"],
+isFavorite:true,
+grade:4.5,
+totalPage : 10,
+currentPage:1
+},{
+id: 5,
+name: "카넬로손파이",
+address:"강남대로 200-1",
+favoriteNumber: 123,
+reviewNumber: 123,
+imageUrl:"/",
+categoryList:["123","456","789"],
+views:12837,
+hashTagList:["123","456","789"],
+isFavorite:false,
+grade:4.5,
+totalPage : 10,
+currentPage:1
+},
+{
+id: 6,
+name: "카넬로손파이",
+address:"강남대로 200-1",
+favoriteNumber: 123,
+reviewNumber: 123,
+imageUrl:"/",
+categoryList:["123","456","789"],
+views:12837,
+hashTagList:["123","456","789"],
+isFavorite:true,
+grade:4.5,
+totalPage : 10,
+currentPage:1
+},{
+id: 7,
+name: "카넬로손파이",
+address:"강남대로 200-1",
+favoriteNumber: 123,
+reviewNumber: 123,
+imageUrl:"/",
+categoryList:["123","456","789"],
+views:12837,
+hashTagList:["123","456","789"],
+isFavorite:false,
+grade:4.5,
+totalPage : 10,
+currentPage:1
+},
+{
+id: 8,
+name: "카넬로손파이",
+address:"강남대로 200-1",
+favoriteNumber: 123,
+reviewNumber: 123,
+imageUrl:"/",
+categoryList:["123","456","789"],
+views:12837,
+hashTagList:["123","456","789"],
+isFavorite:true,
+grade:4.5,
+totalPage : 10,
+currentPage:1
 }
 ]
 }
+
+export const postStoreLike = async (isFavorite : LikeInfo) => {
+    // const result = await axios.post(`http://localhost:3000/star/${storeId}`,isFavorite)
+    // .then((res) =>{
+    //     return res.data;
+    // }).catch((err) =>{
+    //     console.log(err);
+    //     alert("다시 시도해주세요.");
+    // })
+
+    return {
+        isFavorite : false
+    }
+}
+
+export const searchStoreInfo = async (Page : number,keyword : string | null) => {
+    // const result = await axios.get(`http://localhost:3000/store?keyword=${keyword}`)
+    // .then((res) =>{
+    //    return res.data
+    // }).catch((err) =>{
+    //    console.log(err);
+    //    alert("다시 시도해주세요.");
+    // })
+
+    return [
+            {
+                id: 1,
+                name: "카넬로손파이",
+                address:"강남대로 200-1",
+                favoriteNumber: 123,
+                reviewNumber: 123,
+                imageUrl:"/",
+                categoryList:["123","456","789"],
+                views:12837,
+                hashTagList:["123","456","789"],
+                isFavorite:false,
+                grade:4.5,
+                totalPage : 10,
+                currentPage:1
+            },
+            {
+                id: 2,
+                name: "카넬로손파이",
+                address:"강남대로 200-1",
+                favoriteNumber: 123,
+                reviewNumber: 123,
+                imageUrl:"/",
+                categoryList:["123","456","789"],
+                views:12837,
+                hashTagList:["123","456","789"],
+                isFavorite:true,
+                grade:4.5,
+                totalPage : 10,
+                currentPage:1
+        },{
+            id: 3,
+            name: "카넬로손파이",
+            address:"강남대로 200-1",
+            favoriteNumber: 123,
+            reviewNumber: 123,
+            imageUrl:"/",
+            categoryList:["123","456","789"],
+            views:12837,
+            hashTagList:["123","456","789"],
+            isFavorite:false,
+            grade:4.5,
+            totalPage : 10,
+            currentPage:1
+        },
+        {
+            id: 4,
+            name: "카넬로손파이",
+            address:"강남대로 200-1",
+            favoriteNumber: 123,
+            reviewNumber: 123,
+            imageUrl:"/",
+            categoryList:["123","456","789"],
+            views:12837,
+            hashTagList:["123","456","789"],
+            isFavorite:true,
+            grade:4.5,
+            totalPage : 10,
+            currentPage:1
+    },{
+        id: 5,
+        name: "카넬로손파이",
+        address:"강남대로 200-1",
+        favoriteNumber: 123,
+        reviewNumber: 123,
+        imageUrl:"/",
+        categoryList:["123","456","789"],
+        views:12837,
+        hashTagList:["123","456","789"],
+        isFavorite:false,
+        grade:4.5,
+        totalPage : 10,
+        currentPage:1
+    },
+    {
+        id: 6,
+        name: "카넬로손파이",
+        address:"강남대로 200-1",
+        favoriteNumber: 123,
+        reviewNumber: 123,
+        imageUrl:"/",
+        categoryList:["123","456","789"],
+        views:12837,
+        hashTagList:["123","456","789"],
+        isFavorite:true,
+        grade:4.5,
+        totalPage : 10,
+        currentPage:1
+},{
+    id: 7,
+    name: "카넬로손파이",
+    address:"강남대로 200-1",
+    favoriteNumber: 123,
+    reviewNumber: 123,
+    imageUrl:"/",
+    categoryList:["123","456","789"],
+    views:12837,
+    hashTagList:["123","456","789"],
+    isFavorite:false,
+    grade:4.5,
+    totalPage : 10,
+    currentPage:1
+},
+{
+    id: 8,
+    name: "카넬로손파이",
+    address:"강남대로 200-1",
+    favoriteNumber: 123,
+    reviewNumber: 123,
+    imageUrl:"/",
+    categoryList:["123","456","789"],
+    views:12837,
+    hashTagList:["123","456","789"],
+    isFavorite:true,
+    grade:4.5,
+    totalPage : 10,
+    currentPage:1
+}
+    ]
+}
+
+
+export const StoreDetailInfo = async () => {
+
+    // const storeId = 1;
+    // const result = await axios.get(`http://localhost:3000/store/${storeId}`)
+    // .then((res)=>{
+    //     return res.data
+    // }).catch((err)=>{
+    //     alert("다시 한 번 시도하세요.")
+    //     console.log(err);
+    // })
+        return {
+            id: 1,
+            hours: "11:00 ~ 21:00",
+            name: "카넬로손파이",
+            address:"강남대로 200-1",
+            favoriteNumber: 123,
+            reviewNumber: 123,
+            call : "010-6268-4145",
+            imageUrl:"/",
+            views:12837,
+            hashTagList:["강남맛집","여기대박","데이트"],
+            isFavorite:true,
+            grade:4.5,
+            totalPage : 10,
+            currentPage:1,
+            menuList:[{
+                name:"엄마손파이",
+                price : "3000원"
+            },
+            {
+                name:"아빠손파이",
+                price : "5000원"
+            },
+            {
+                name:"카넬로의 오른손",
+                price : "30000원"
+            }
+        ]
+        };
+    }
+    

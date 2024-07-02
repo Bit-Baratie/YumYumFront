@@ -49,10 +49,13 @@
     padding: 0;
     font-size: 25px;
     width: 600px;
+    justify-content: space-between;
+    li{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    }
 }
-.reviewItem{
-    width: 800px;
-}
+
+
+
 

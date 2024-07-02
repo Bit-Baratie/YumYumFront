@@ -3,6 +3,7 @@ import { getStoreInfo } from "../(api)/StoreApi";
 import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
 import useStore from "@/app/store/(hooks)/useStore"
+import Store from "../page";
 
 interface store {
   id: number;
@@ -15,6 +16,7 @@ interface store {
   hashTagList: string[];
   grade: number;
   categoryList: string[];
+  isFavorite: boolean;
 }
 
 interface location {
@@ -35,7 +37,7 @@ const StoreList = () => {
 
       const location = { longitude, latitude };
       try {
-        const StoreInfoResult = await getStoreInfo(location);
+        const StoreInfoResult = await getStoreInfo(location)
         setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
       } catch (error) {
         console.error("Error fetching store info:", error);
