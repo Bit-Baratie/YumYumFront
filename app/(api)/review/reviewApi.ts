@@ -1,30 +1,11 @@
-import axios from "axios"
+import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
+import { AxiosInstance } from "axios";
 
-
-export const getReviewAll = async () => {
-  const result = await axios.get(`${process.env.SERVER_IP}/review`)
-  .then ((res) => {
-    return res.data;
-  }).catch((err) => {
-    console.log(err.message);
-    alert('잠시후 다시 시도해 주세요');
-  });
-
-  return result;
+interface patchReviewType {
+  content: string;
+  grade: number;
+  memberId: number;
 }
-
-export const getReviewOne = async (reviewId:number) => {
-  const result = await axios.get(`${process.env.SERVER_IP}/review/${reviewId}`)
-  .then((res) => {
-    return res.data;
-  }).catch((err) => {
-    console.log(err.message);
-    alert('잠시후 다시 시도해 주세요');
-  });
-
-  return result;
-}
-
 
 interface PostReview {
   storeId: number;
@@ -33,36 +14,42 @@ interface PostReview {
   memberId: number;
 }
 
-export const postReview = async (postReviewData: PostReview) => {
-  const result = await axios.post(`${process.env.SERVER_IP}/review`, postReviewData)
-  .then((res) => {
-    return res.data;
-  }).catch((err) => {
-    console.log(err.message);
-    alert('잠시후 다시 시도해 주세요');
-  });
+const ReviewApi = () => {
+  const axiosWithAuth: AxiosInstance = useAxiosWithAuth();
 
-  return result;
+  const getReviewAll = async () => {
+    const result = await axiosWithAuth.get(`${process.env.NEXT_PUBLIC_SERVER_IP}/review`)
+  
+    return result;
+  }
+  
+  const getReviewOne = async (reviewId:number) => {
+    const result = await axiosWithAuth.get(`/review/${reviewId}`)
+  
+    return result;
+  }
+  
+  const postReview = async (postReviewData: PostReview) => {
+    const result = await axiosWithAuth.post(`${process.env.NEXT_PUBLIC_SERVER_IP}/review`, postReviewData)
+  
+    return result;
+  }
+  
+  const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {
+    const result = await axiosWithAuth.patch(`${process.env.NEXT_PUBLIC_SERVER_IP}/review/${reviewId}`, patchReviewData)
+  }
+  
+  const deleteReview = async (reviewId: number) => {
+    await axiosWithAuth.delete(`${process.env.NEXT_PUBLIC_SERVER_IP}/review/${reviewId}`)
+  }
+
+  return {
+    getReviewAll,
+    getReviewOne,
+    postReview,
+    patchReview,
+    deleteReview
+  }
 }
 
-interface patchReviewType {
-  content: string;
-  grade: number;
-  memberId: number;
-}
-
-export const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {
-  const result = await axios.patch(`${process.env.SERVER_IP}/review/${reviewId}`, patchReviewData)
-  .then((res) => {
-    
-  }).catch((err) => {
-    console.log(err.message);
-  });
-}
-
-export const deleteReview = async (reviewId: number) => {
-  await axios.delete(`${process.env.SERVER_IP}/review/${reviewId}`)
-  .catch((err) => {
-    console.log(err.message);
-  });
-}
+export default ReviewApi;
