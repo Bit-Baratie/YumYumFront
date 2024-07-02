@@ -10,20 +10,16 @@ const useStore = () =>{
     const [views,setViews] = useState<string>('');
     const [storeAddress,setStoreAddress] = useState<string>('');
     const [hashTagList,setHashTagList] = useState<string[]>([]);
-    const [favorite,setFavorite] = useState<boolean>(false);
-    const [favoriteColor,setFavoriteColor] = useState<string>('#E2E2E2')
+    const [favorite,setFavorite] = useState<boolean>();
+
 
 
     
 
-    // const favoriteHandler = (isFavorite : boolean) =>{
-    //     setFavorite(isFavorite);
-    //     if(favorite === true){
-    //         setFavoriteColor('#FFC657');
-    //     }else{
-    //         setFavoriteColor('#E2E2E2');
-    //     }
-    // }
+    const favoriteHandler = (isFavorite : boolean,) =>{
+        setFavorite(isFavorite => !isFavorite);
+        console.log(isFavorite);
+    }
     return{
         storeImage,
         storeName,
@@ -33,7 +29,6 @@ const useStore = () =>{
         storeAddress,
         hashTagList,
         favorite,
-        favoriteColor,
         setStoreImage,
         setStoreName,
         setGrade,
@@ -42,8 +37,7 @@ const useStore = () =>{
         setStoreAddress,
         setHashTagList,
         setFavorite,
-        setFavoriteColor,
-        // favoriteHandler
+        favoriteHandler
     }
 }
 export default useStore;
