@@ -1,4 +1,4 @@
-import { ReviewItem } from "@/app/(component)/reviewItem";
+import ReviewItem from "@/app/(component)/reviewItem";
 
 const ReviewPage = () => {
   return (

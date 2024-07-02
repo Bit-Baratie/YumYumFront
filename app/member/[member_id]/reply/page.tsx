@@ -1,6 +1,11 @@
+import {Reply} from '@/app/(component)/member/reply';
+
 const ReplyPage = () => {
   return (
-    <div>내가 쓴 댓글</div>
+    <div>
+      <Reply/>
+      <Reply/>
+    </div>
   );
 }
 

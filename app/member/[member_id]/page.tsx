@@ -5,13 +5,18 @@ import Reply from '@/public/asset/image/user.svg'
 import Like from '@/public/asset/image/user.svg'
 import Bookmark from '@/public/asset/image/bookmark.svg'
 import MemberPageStyle from './memberPage.module.scss';
-import { ReviewContainer } from '@/app/(component)/reviewItem'
+import ReviewContainer from '@/app/(component)/member/review'
 import Image from 'next/image';
 import useMember from '@/app/(hooks)/member/useMember'
-import {ReplyWrapper} from '@/app/(component)/member/dashboardReply'
+import {ReplyWrapper} from '@/app/(component)/member/reply'
+import Wrapper from '@/app/(component)/member/wrapper'
+import useReview from '@/app/(hooks)/review/useReview'
+import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const Mypage = () => {
   // const {profile, myReply, myReview, likeReview, likeStore} = useMember();
+  const pathname = usePathname();
 
   return (
     <>
@@ -26,26 +31,22 @@ const Mypage = () => {
             </div>
           </div>
         </div>
-        
-        <div className={MemberPageStyle.dashboard}>
-            <span className={MemberPageStyle.title}>내가 쓴 리뷰</span>
-            {<ReviewContainer/>}
-        </div>
 
-        <div className={MemberPageStyle.dashboard}>
-          <span className={MemberPageStyle.title}>좋아요 한 리뷰</span>
+        <Wrapper title={'내가 쓴 리뷰'} link={`${pathname}/review`}>
           <ReviewContainer/>
-        </div>
+        </Wrapper>
 
-        <div className={MemberPageStyle.dashboard}>
-          <span className={MemberPageStyle.title}>내가 쓴 댓글</span>
+        <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`}>
+          <ReviewContainer/>
+        </Wrapper>
+
+        <Wrapper title={'내가 쓴 댓글'} link={`${pathname}/reply`}>
           <ReplyWrapper/>
-        </div>
+        </Wrapper>
 
-        <div className={MemberPageStyle.dashboard}>
-          <span className={MemberPageStyle.title}>즐겨찾기한 맛집</span>
-
-        </div>
+        <Wrapper title={'즐겨찾기한 맛집'} link={`${pathname}/star`}>
+          <ReplyWrapper/>
+        </Wrapper>
       </div>
     </>
   );

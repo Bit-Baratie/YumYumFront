@@ -4,11 +4,11 @@ import Profile from '../review/profile';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LikeButton from './likeButton';
+// import LikeButton from './likeButton';
 
 // ReactDOM.render(<LikeButton />, document.getElementById('root'));
 
-export const ReviewItem = () => {
+const ReviewItem = () => {
 
     // const [like, setlike] = useState(false); // 추가
     
@@ -26,7 +26,7 @@ export const ReviewItem = () => {
                     {/* <span className={reviewStyle.smallBlack}>푸바오야가지마</span><br></br> */}
                     {/* <span className={reviewStyle.smallGray}>별 리뷰개수 평균별점</span>   */}
                 </div> 
-                <LikeButton/>
+                {/* <LikeButton/> */}
             </div>
             <div className={reviewStyle.reviewContent}>
                 Armageddon Shoot Imma get 'em Shoot Watch Uh Imma bite back Uh 짙은 어둠이 막아설 땐 Uh 한
@@ -70,39 +70,10 @@ export const ReviewItem = () => {
     );
 }
 
+export default ReviewItem;
+
 // 마이페이지_나의정보 리뷰미리보기
 
-export const ReviewContainer = () => {
-    const cnt = [1, 1, 1, 1];
-    return (
-        <div className={reviewStyle.dashboard}>
-            {
-                cnt.map(() => {
-                    return (<DashboardReview/>)
-                })
-            }
-        </div>
-    );
-}
-
-const DashboardReview = () => {
-    return (
-        <div>
-            <div className={reviewStyle.dashboardItem}>
-                <div className={reviewStyle.name}>동대문닫기떡볶이</div>
-                <div className={reviewStyle.info}>
-                    <span>🤍 21</span>&nbsp;&nbsp;<span>💬 20</span>
-                </div>
-                <div className={reviewStyle.content}>
-                    <span>내용</span>
-                </div>
-            </div>
-        </div>
-    );
-
-
-    
-}
 
 
 // 하트버튼 
