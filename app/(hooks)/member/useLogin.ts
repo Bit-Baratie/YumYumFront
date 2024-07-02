@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import { postLoginInfo } from "../(api)/loginApi";
+import { postLoginInfo } from "../../(api)/member/loginApi";
 import { useRouter } from "next/navigation";
 import userStore from "@/app/(hooks)/userStore";
 
@@ -25,7 +25,7 @@ const useLogin = () => {
       password: password,
     }
 
-    const res = await postLoginInfo(info);
+    const res:any = await postLoginInfo(info);
     if (res.atk) {
       setUserInfo(res);
       router.push('/');
