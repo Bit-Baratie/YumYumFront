@@ -1,8 +1,12 @@
 import Image from 'next/image';
 import reviewStyle from './reviewItem.module.scss'
 import Profile from '../review/profile';
-import HeartButton from './HeartButton';
 import { useEffect, useState } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import LikeButton from './likeButton';
+
+// ReactDOM.render(<LikeButton />, document.getElementById('root'));
 
 export const ReviewItem = () => {
 
@@ -21,8 +25,8 @@ export const ReviewItem = () => {
                 <div className={reviewStyle.meta}>
                     {/* <span className={reviewStyle.smallBlack}>푸바오야가지마</span><br></br> */}
                     {/* <span className={reviewStyle.smallGray}>별 리뷰개수 평균별점</span>   */}
-                </div>
-                <HeartButton/>
+                </div> 
+                <LikeButton/>
             </div>
             <div className={reviewStyle.reviewContent}>
                 Armageddon Shoot Imma get 'em Shoot Watch Uh Imma bite back Uh 짙은 어둠이 막아설 땐 Uh 한
