@@ -21,13 +21,13 @@ const useLogin = () => {
   const login = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const info = {
-      email,
-      password
+      email: email,
+      password: password,
     }
 
     const res = await postLoginInfo(info);
-    if (res.status === 1) {
-      setUserInfo(res.data);
+    if (res.atk) {
+      setUserInfo(res);
       router.push('/');
     } else {
       alert(res.message);

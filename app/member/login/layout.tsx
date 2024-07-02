@@ -1,4 +1,4 @@
-import '@/app/member/login/layout.scss';
+import style from '@/app/member/login/layout.module.scss';
 
 export default function RootLayout({
     children,
@@ -6,7 +6,7 @@ export default function RootLayout({
     children: React.ReactNode;
   }>) {
     return (
-      <div className='container'>
+      <div className={style.container}>
         {children}
       </div>    
     );
