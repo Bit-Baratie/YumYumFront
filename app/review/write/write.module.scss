@@ -1,0 +1,137 @@
+.write {
+  position: relative;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 2px 10px rgb(195, 195, 195);
+  padding: 30px;
+  margin-top: 20px;
+  width: 800px;
+  text-align: center;
+}
+
+.textform {
+  margin-top: 30px;
+  width: 700px;
+  height: 300px;
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.storeName {
+  margin-top: 20px;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+}
+
+.star {
+  margin: 10px 0px 25px 0px;
+}
+
+.imgList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.imgList li {
+  position: relative; 
+}
+
+.closeBtn {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 30px; 
+  height: 30px; 
+  background-color: transparent;
+  border: 5px solid rgb(255, 255, 255); 
+  border-radius: 50%;
+  padding: 0; 
+  cursor: pointer;
+  box-sizing: content-box;
+}
+
+
+.closeBtn img {
+  width: 110%;
+  height: 110%; 
+}
+
+.reviewImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  margin: 5px;
+  object-fit: cover;
+}
+
+.btnUpload {
+  padding-right: 10px;
+  font-size: 23px;
+  width: 700px;
+  height: 50px;
+  color: #1681ff;
+  cursor: pointer;
+  border: 1px solid #1681ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.btnUpload:hover {
+  background: #1681ff;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(173, 173, 173);
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(173, 173, 173);
+}
+
+.back {
+  border: none;
+  background-color: white;
+  font-size: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100px;
+  height: auto;
+}
+
+.submit {
+  background-color: #ffc657;
+  color: white;
+  border: none;
+  width: 700px;
+  height: 80px;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
+.submit:hover {
+  border: 3px solid #ffc657;
+  background: #ffffff;
+  color: #ffc657;
+  transition: background-color 0.3s ease;
+}
