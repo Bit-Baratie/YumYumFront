@@ -2,10 +2,11 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface UserInfoType {
-  memberId: number;
+  id: number;
   profileUrl: string;
   nickname: string;
-  jwt: any;
+  atk: any;
+  rtk: any;
 }
 
 interface UserInfoState {
@@ -17,7 +18,7 @@ interface UserInfoActions {
   deleteUserInfo: () => void
 }
 
-const defaultState: UserInfoType = {memberId: 0, profileUrl: '', nickname: '', jwt: null }
+const defaultState: UserInfoType = {id: 0, profileUrl: '', nickname: '', atk: null, rtk: null }
 
 const userStore = create(
   persist<UserInfoState & UserInfoActions>(
