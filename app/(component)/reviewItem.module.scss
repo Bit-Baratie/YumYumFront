@@ -1,88 +1,185 @@
+// @font-face {
+//     font-family: 'apple';
+//     // src: url('../srcs/fonts/NeonPlanetDisplay.ttf') format('truetype');
+//     src: url('../../public/asset/font/AppleSDGothicNeoM.ttf');
+// }
+
+// body{
+//     font-family: 'apple';
+// }
+
 .dashboard {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .dashboardItem {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 180px;
-  height: 145px;
-  border-radius: 10px;
-  background-color: #ffc657;
-  filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 180px;
+    height: 145px;
+    border-radius: 10px;
+    background-color: #ffc657;
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
 }
 
 .name {
-  color: white;
-  margin-top: 20px;
-  margin-left: 20px;
+    color: white;
 }
 
 .info {
-  color: white;
-  margin: 10px 20px;
+    color: white;
 }
 
 .content {
-  width: 100%;
-  height: 50%;
-  border-radius: 0 0 10px 10px;
-  background-color: #fafafa;
+    width: 100%;
+    height: 50%;
+    border-radius: 0 0 10px 10px;
+    background-color: #fafafa;
 
-  span {
-    margin: 20px;
-  }
+    span {
+        margin: 20px;
+    }
 }
 
 .reviewItem {
-  width: 700px;
-  margin-left: 30px;
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-  div {padding: 20px;}
-  
+    width: 800px;
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+
+    div {
+        // padding: 20px;
+    }
+
 }
 
 .storeInfo {
-  display: flex;
-  flex-direction: column;
-  background-color: #ffc657;
-  border-radius: 20px 20px 0 0;
-  color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffc657;
+    border-radius: 20px 20px 0 0;
+    color: white;
 
-  .storeName {
-    font-size: 30px;
-  }
+    .storeName {
+        font-size: 30px;
+        padding: 10px 0 8px 20px;
+    }
 
-  .addr {
-    font-size: 20px;
-  }
+    .addr {
+        font-size: 20px;
+        padding-left: 20px;
+    }
 }
 
 .profile {
-  display: flex;
+    padding: 20px;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .meta {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .profileImage {
-  border: 1px solid black;
-  border-radius: 100px;
-  width: 150px;
-  height: 150px;
+    border: 1px solid black;
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .smallGray {
-  font-size: 20px;
-  color: #989898;
+    font-size: 20px;
+    color: #989898;
 }
 
 .smallBlack {
-  font-size: 20px;
-  color: black;
+    font-size: 20px;
+    color: black;
 }
+
+.reviewContent {
+    padding: 0px 30px 30px 30px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 25px;
+    line-height: 210%;
+}
+
+.bottom {
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+}
+
+.reviewImg {
+    padding: 10px 0px 30px 50px;
+    display: flex;
+}
+
+.reivewImage {
+    margin: 5px;
+    border: 1px solid rgb(157, 157, 157);
+    border-radius: 5px;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.reivewImageLast {
+    margin: 5px;
+    border: 1px solid rgb(157, 157, 157);
+    border-radius: 5px;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    filter: brightness(40%);
+}
+
+.contL {
+    position: relative;
+}
+.contL > img {
+    position: absolute;
+}
+.contL > p {
+    color: rgb(255, 255, 255);
+    font-size: 70px;
+    transform: translate(60%, 55%);
+    z-index: 1;
+}
+
+
+.emptyBtn {
+    cursor: pointer;
+    transition: transform 300ms ease;
+    font-size: 63px;
+    position: absolute;
+    top: -30px;
+    left: 50px;
+}
+
+.redBtn {
+    color: red;
+    font-size: 63px;
+    position: absolute;
+    top: -30px;
+    left: 50px;
+}
+
+.emptyBtn:hover {
+    transform: scale(1.1);
+}
+
+.iconsList {
+    position: relative;
+    }

@@ -3,6 +3,8 @@
 } */
 
 .profile{
+    width: 700p;
+    height: 150px;
     display: flex;
     padding: 20px;
     align-items: center;
@@ -12,17 +14,18 @@
     border-radius: 50%;
 }
 .profile-info {
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     /* margin: 20px; */
     padding: 10px 20px;
-    line-height: 28px;
+    line-height: 34px;
 }
 
 .profile-name{
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 600;
 }
 
