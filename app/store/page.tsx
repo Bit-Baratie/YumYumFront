@@ -1,4 +1,3 @@
-import "./storeList.scss";
 import SearchStoreList from "./(component)/SearchStoreList";
 const Store = () => {
   return (
