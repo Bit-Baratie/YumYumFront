@@ -1,5 +1,4 @@
 import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
-import { AxiosInstance } from "axios";
 
 interface patchReviewType {
   content: string;
@@ -15,22 +14,22 @@ interface PostReview {
 }
 
 const ReviewApi = () => {
-  const axiosWithAuth: AxiosInstance = useAxiosWithAuth();
+  const {axiosWithAuth, axiosNonAuth} = useAxiosWithAuth();
 
   const getReviewAll = async () => {
-    const result = await axiosWithAuth.get(`${process.env.NEXT_PUBLIC_SERVER_IP}/review`)
+    const result = await axiosNonAuth.get(`/review`);
   
     return result;
   }
   
   const getReviewOne = async (reviewId:number) => {
-    const result = await axiosWithAuth.get(`/review/${reviewId}`)
+    const result = await axiosNonAuth.get(`/review/${reviewId}`)
   
     return result;
   }
   
   const postReview = async (postReviewData: PostReview) => {
-    const result = await axiosWithAuth.post(`${process.env.NEXT_PUBLIC_SERVER_IP}/review`, postReviewData)
+    const result = await axiosWithAuth.post(`/review`, postReviewData)
   
     return result;
   }
