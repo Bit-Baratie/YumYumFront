@@ -25,15 +25,23 @@ const DashboardReply = ({item}: any) => {
   );
 }
 
-export const Reply = () => {
+interface ReplyType {
+  imageUrl: string,
+  nickName: string,
+  createdAt: string,
+  content: string,
+}
+
+export const Reply = ({ reply }: { reply: ReplyType }) => {
+  
   return (
     <div className={replyStyle.replyContainer}>
-      <Image src={'/'} width={100} height={100} alt=''/>
+      <Image src={reply.imageUrl} width={100} height={100} alt=''/>
       <div className={replyStyle.replyRight}>
-        <span>닉네임</span>
-        <span>작성일</span>
-        <span>댓글내용</span>
+        <span>{reply.nickName}</span>
+        <span>{reply.createdAt}</span>
+        <span>{reply.content}</span>
       </div>
     </div>
-  );
+  )
 }
