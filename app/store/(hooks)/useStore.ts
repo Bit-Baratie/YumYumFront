@@ -16,10 +16,11 @@ const useStore = () =>{
 
     
 
-    const favoriteHandler = (isFavorite : boolean,) =>{
-        setFavorite(!isFavorite);
-        console.log(isFavorite);
-    }
+    const favoriteHandler = (isFavorite : boolean) => {
+      console.log("현재 상태:", favorite); // 현재 상태 출력
+      setFavorite(currentFavorite => !currentFavorite); // 상태 토글
+    };
+    
     return{
         storeImage,
         storeName,
