@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropbox {
+  width: 280px;
+  height: 50px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.btnSet {
+  button {
+    justify-content: center;
+    width: 175px;
+    height: 50px;
+    margin: 0 10px;
+    border-radius: 30px;
+    border: none;
+    // background-color: #FFC657;
+    cursor: pointer;
+  }
+}
+
+.itemContainer {
+  display: flex;
+  height: 320px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
