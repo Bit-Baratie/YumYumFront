@@ -4,6 +4,7 @@ import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
 import useStore from "@/app/store/(hooks)/useStore"
 import Store from "../page";
+import Link from "next/link";
 
 interface store {
   id: number;
@@ -73,10 +74,12 @@ const StoreList = () => {
       </div>
       <div className="StoreListMap">
         {storeList.map(store => (
-          <StoreInfo
-            key={store.id}
-            store={store}
-          />
+          <Link href={`/store/${store.id}`} >
+            <StoreInfo
+              key={store.id}
+              store={store}
+            />
+          </Link>
         ))}
       </div>
     </div>

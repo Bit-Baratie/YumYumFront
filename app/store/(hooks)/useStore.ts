@@ -10,14 +10,14 @@ const useStore = () =>{
     const [views,setViews] = useState<string>('');
     const [storeAddress,setStoreAddress] = useState<string>('');
     const [hashTagList,setHashTagList] = useState<string[]>([]);
-    const [favorite,setFavorite] = useState<boolean>();
+    const [favorite,setFavorite] = useState<boolean>(false);
 
 
 
     
 
     const favoriteHandler = (isFavorite : boolean,) =>{
-        setFavorite(isFavorite => !isFavorite);
+        setFavorite(!isFavorite);
         console.log(isFavorite);
     }
     return{

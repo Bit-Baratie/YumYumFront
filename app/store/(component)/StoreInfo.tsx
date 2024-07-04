@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Bookmarks from '../../../public/asset/image/bookmark.svg';
 import useStore from "@/app/store/(hooks)/useStore";
 import "./storeList.scss";
@@ -26,6 +26,9 @@ const StoreInfo = ({ store }: StoreInfoProps) => {
   const [iconColor, setIconColor] = useState<String>("#E2E2E2");
   const { favoriteHandler, favorite } = useStore();
 
+  useEffect(() => {
+    favoriteHandler(store.isFavorite);
+  }, [])
 
 
   return (
@@ -46,7 +49,7 @@ const StoreInfo = ({ store }: StoreInfoProps) => {
         </div>
         <div className='categoryList'>
           {store.categoryList.map((tag: string) => (
-            <div key={tag} className='categoryList'>#{tag}</div>
+            <div key={tag} className='categoryList'>{tag}&nbsp;</div>
           ))}
         </div>
         <div className="storeAddress">
