@@ -4,15 +4,19 @@ import PageStyle from './page.module.scss';
 import useMember from "@/app/(hooks)/member/useMember";
 
 const StarPage = () => {
-  const {likeStore} = useMember();
+  const {likeStoreList} = useMember();
 
   return (
-    <div className={PageStyle.layout}>
-      {likeStore !== undefined?
-      <StoreInfo store={likeStore}/>:
-      <div>즐겨찾기한 맛집이 없습니다</div>
-      }
-    </div>
+    <>
+    {likeStoreList?
+      <div className={PageStyle.layout}>
+        {likeStoreList.map((item) => {
+          return(<StoreInfo store={item}/>)
+        })}
+      </div>:
+      <div>즐겨찾기한 맛집이 없습니다</div> 
+    }
+    </>
   );
 }
 

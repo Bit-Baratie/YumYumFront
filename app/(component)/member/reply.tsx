@@ -1,7 +1,14 @@
 import replyStyle from '@/app/(component)/member/reply.module.scss';
 import Image from 'next/image';
 
-export const ReplyWrapper = (list: any) => {
+interface myReplyType {
+  imageUrl: string,
+  nickName: string,
+  createdAt: string,
+  content: string,
+}
+
+export const ReplyWrapper = ({myReplyList}: {myReplyList: myReplyType[]}) => {
   return (
     <>
       {/* {list.map((item: any, index: any) => {
@@ -11,37 +18,35 @@ export const ReplyWrapper = (list: any) => {
       <DashboardReply item={list[1]}/>
       <DashboardReply item={list[2]}/>
       <DashboardReply item={list[3]}/> */}
-      <DashboardReply/>
-      <DashboardReply/>
-      <DashboardReply/>
-      <DashboardReply/>
+
+      {myReplyList.map((item) => {
+        return(<DashboardReply key={item.createdAt} item={item}/>)
+      })}
     </>
   );
 }
 
-const DashboardReply = ({item}: any) => {
+const DashboardReply = ({item}: {item: myReplyType}) => {
   return (
-    <div className={replyStyle.dashboardItem}>{item}댓글아이템</div>
+    <div className={replyStyle.dashboardItem}>{item.content}</div>
   );
 }
 
-interface ReplyType {
-  imageUrl: string,
-  nickName: string,
-  createdAt: string,
-  content: string,
-}
-
-export const Reply = ({ reply }: { reply: ReplyType }) => {
+export const Reply = ({ myReplyList }: { myReplyList: myReplyType[] }) => {
   
   return (
     <div className={replyStyle.replyContainer}>
-      <Image src={reply.imageUrl} width={100} height={100} alt=''/>
-      <div className={replyStyle.replyRight}>
-        <span>{reply.nickName}</span>
-        <span>{reply.createdAt}</span>
-        <span>{reply.content}</span>
-      </div>
+      {myReplyList.map((item) => {
+        return(
+          <>
+            <Image src={item.imageUrl} width={100} height={100} alt='' key={item.createdAt}/>
+            <div className={replyStyle.replyRight}>
+              <span>{item.nickName}</span>
+              <span>{item.createdAt}</span>
+              <span>{item.content}</span>
+            </div>
+          </>)
+      })}
     </div>
   )
 }

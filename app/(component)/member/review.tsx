@@ -1,33 +1,43 @@
 import reviewStyle from "@/app/(component)/member/review.module.scss";
+import Link from "next/link";
 
-const ReviewContainer = () => {
-  const cnt = [1, 1, 1, 1];
+interface MyReviewType {
+    id: number;
+    name: string;
+    address: string;
+    nickName: string;
+    grade: number;
+    imageUrl: string;
+    content: string;
+}
+
+const ReviewContainer = ({myReviewList} : {myReviewList:MyReviewType[]}) => {
   return (
       <div className={reviewStyle.dashboard}>
           {
-              cnt.map(() => {
-                  return (<DashboardReview/>)
+              myReviewList.map((item) => {
+                  return (<DashboardReview key={item.id} item={item}/>)
               })
           }
       </div>
   );
 }
 
-const DashboardReview = () => {
+const DashboardReview = ({item}: {item:MyReviewType}) => {
   return (
-      <div>
+      <Link href={`/review/${item.id}`}>
           <div className={reviewStyle.dashboardItem}>
             <div className={reviewStyle.head}>
-                <div>동대문닫기떡볶이</div>
+                <div>{item.name}</div>
                 <div>
-                    <span>🤍 21</span>&nbsp;&nbsp;<span>💬 20</span>
+                    <span>⭐️ {item.grade}</span>&nbsp;&nbsp;<span>💬 20</span>
                 </div>
               </div>
               <div className={reviewStyle.content}>
-                  <span>내용</span>
+                  <span>{item.content}</span>
               </div>
           </div>
-      </div>
+      </Link>
   ); 
 }
 

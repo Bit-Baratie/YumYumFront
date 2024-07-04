@@ -3,12 +3,12 @@ import {Reply} from '@/app/(component)/member/reply';
 import useMember from '@/app/(hooks)/member/useMember';
 
 const ReplyPage = () => {
-  const {myReply} = useMember();
-  
+  const {myReplyList} = useMember();
+
   return (
-    (myReply !== undefined ? 
+    (myReplyList !== undefined ? 
     <div>
-      <Reply reply={myReply}/>
+      <Reply myReplyList={myReplyList}/>
     </div> :<div>댓글이 없습니다.</div>)
     
   );
