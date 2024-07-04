@@ -11,14 +11,12 @@ import header from './header.module.scss';
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import userStore from './(hooks)/userStore';
 import useSearch from './(hooks)/common/useSearch';
 import useLogin from "@/app/(hooks)/member/useLogin"
 
 const Header = () => {
   const { data, keyword, inputHandler, keywordSearch, pressEnter } = useSearch();
-  // const path = useRouter();
   const { userInfo } = userStore();
   const { logout } = useLogin();
   const [iconColor, setIconColor] = useState<Array<boolean>>([
@@ -43,11 +41,11 @@ const Header = () => {
   return (
     <div className={header.container}>
       <header className={header.header}>
-        <Logo />
+        <Link href={'/'}><Logo /></Link>
         <ul>
           <Link href={'/store'}><li onMouseEnter={() => enter(0)} onMouseLeave={() => out(0)}><Store width='25' height='25' fill={iconColor[0] ? 'white' : 'black'} /><span>맛집리스트</span></li></Link>
           <Link href={{ pathname: `/member/${userInfo.id}/star` }}><li onMouseEnter={() => enter(1)} onMouseLeave={() => out(1)}><Bookmark width='25' height='25' fill={iconColor[1] ? 'white' : 'black'} /><span>즐겨찾기</span></li></Link>
-          <Link href={'/'}><li onMouseEnter={() => enter(2)} onMouseLeave={() => out(2)}><Review width='25' height='25' fill={iconColor[2] ? 'white' : 'black'} /><span>리뷰</span></li></Link>
+          <Link href={'/review'}><li onMouseEnter={() => enter(2)} onMouseLeave={() => out(2)}><Review width='25' height='25' fill={iconColor[2] ? 'white' : 'black'} /><span>리뷰</span></li></Link>
           {userInfo.id === 0 && <Link href={'/member/login'}><li onMouseEnter={() => enter(3)} onMouseLeave={() => out(3)}><Login width='25' height='25' fill={iconColor[3] ? 'white' : 'black'} /><span>로그인</span></li></Link>}
           {userInfo.id !== 0 && <Link href={{ pathname: `/member/${userInfo.id}` }}><li onMouseEnter={() => enter(4)} onMouseLeave={() => out(4)}><Mypage width='25' height='25' fill={iconColor[4] ? 'white' : 'black'} /><span>마이페이지</span></li></Link>}
           {userInfo.id !== 0 && <li onClick={logout} onMouseEnter={() => enter(5)} onMouseLeave={() => out(5)}><Logout width='25' height='25' /><span>로그아웃</span></li>}
