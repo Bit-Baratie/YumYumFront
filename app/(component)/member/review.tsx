@@ -15,7 +15,7 @@ const ReviewContainer = ({myReviewList} : {myReviewList:MyReviewType[]}) => {
   return (
       <div className={reviewStyle.dashboard}>
           {
-              myReviewList.map((item) => {
+              myReviewList?.map((item) => {
                   return (<DashboardReview key={item.id} item={item}/>)
               })
           }
@@ -28,7 +28,7 @@ const DashboardReview = ({item}: {item:MyReviewType}) => {
       <Link href={`/review/${item.id}`}>
           <div className={reviewStyle.dashboardItem}>
             <div className={reviewStyle.head}>
-                <div>{item.name}</div>
+                <div>{item.nickName}</div>
                 <div>
                     <span>⭐️ {item.grade}</span>&nbsp;&nbsp;<span>💬 20</span>
                 </div>

@@ -14,7 +14,7 @@ interface StoreType {
 const Item = ({item}: {item:StoreType}) => {
   return (
     <div className={ItemStyle.container}>
-      <Image src={item.imageUrl} width={180} height={180} alt="가게이미지"/>
+      <Image src={'/'} width={180} height={180} alt="가게이미지"/>
       <div className={ItemStyle.name}>{item.name}</div>
       <div><span>⭐️{item.avgGrade}</span><span>❤️{item.favoriteCount}</span></div>
     </div>

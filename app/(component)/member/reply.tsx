@@ -1,7 +1,10 @@
 import replyStyle from '@/app/(component)/member/reply.module.scss';
+import userStore from '@/app/(hooks)/userStore';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 interface myReplyType {
+  id: number;
   imageUrl: string,
   nickName: string,
   createdAt: string,
@@ -11,17 +14,10 @@ interface myReplyType {
 export const ReplyWrapper = ({myReplyList}: {myReplyList: myReplyType[]}) => {
   return (
     <>
-      {/* {list.map((item: any, index: any) => {
-        <DashboardReply key={index} item={item}/>
-      })} */}
-      {/* <DashboardReply item={list[0]}/>
-      <DashboardReply item={list[1]}/>
-      <DashboardReply item={list[2]}/>
-      <DashboardReply item={list[3]}/> */}
-
-      {myReplyList.map((item) => {
-        return(<DashboardReply key={item.createdAt} item={item}/>)
-      })}
+      <DashboardReply item={myReplyList[0]}/>
+      <DashboardReply item={myReplyList[1]}/>
+      <DashboardReply item={myReplyList[2]}/>
+      <DashboardReply item={myReplyList[3]}/>
     </>
   );
 }
@@ -33,20 +29,23 @@ const DashboardReply = ({item}: {item: myReplyType}) => {
 }
 
 export const Reply = ({ myReplyList }: { myReplyList: myReplyType[] }) => {
-  
+  const {userInfo} = userStore();
+
   return (
-    <div className={replyStyle.replyContainer}>
-      {myReplyList.map((item) => {
+    <>
+      {myReplyList?.map((item) => {
         return(
-          <>
-            <Image src={item.imageUrl} width={100} height={100} alt='' key={item.createdAt}/>
+          <div className={replyStyle.replyContainer} key={item.id}>
+            <Image src={userInfo.profileUrl} width={100} height={100} alt=''/>
             <div className={replyStyle.replyRight}>
               <span>{item.nickName}</span>
               <span>{item.createdAt}</span>
               <span>{item.content}</span>
             </div>
-          </>)
+          </div>
+          )
       })}
-    </div>
+    </>
   )
 }
+

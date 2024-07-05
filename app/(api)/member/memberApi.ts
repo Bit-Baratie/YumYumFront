@@ -18,13 +18,7 @@ const MemberApi = () => {
   }
   
   const getMyReview = async (memberId: number) => {
-    // const result = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_IP}/member/${memberId}/review`)
-    // .then((res) => {
-    //   return res.data
-    // }).catch((err) => {
-    //   console.log(err.message);
-    // })
-  
+    // const result = await axiosWithAuth.get(`/member/myreivew/pageNumber=${0}`);
     // return result;
   
     const test = [{
@@ -41,33 +35,21 @@ const MemberApi = () => {
   }
   
   const getMyReply = async (memberId: number) => {
-    // const result = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_IP}/member/${memberId}/reply`)
-    // .then((res) => {
-    //   return res.data
-    // }).catch((err) => {
-    //   console.log(err.message);
-    // })
+    const result = await axiosWithAuth.get(`/reply/myreply?pageNumber=${0}`);
+    return result;
   
-    // return result;
+    // const test = [{
+    //   imageUrl: '/',
+    //   nickName: 'ads',
+    //   createdAt: '2014-12-2',
+    //   content: '존맛탱'
+    // }]
   
-    const test = [{
-      imageUrl: '/',
-      nickName: 'ads',
-      createdAt: '2014-12-2',
-      content: '존맛탱'
-    }]
-  
-    return test;
+    // return test;
   }
   
   const getLikeStore = async (memberId: number) => {
-    // const result = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_IP}/member/${memberId}/store/star`)
-    // .then((res) => {
-    //   return res.data
-    // }).catch((err) => {
-    //   console.log(err.message);
-    // })
-  
+    // const result = await axiosWithAuth.get(`/member/likeReview`);
     // return result;
   
     const store = [{
@@ -88,26 +70,20 @@ const MemberApi = () => {
   }
   
   const getLikeReview = async (memberId: number) => {
-    // const result = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_IP}/member/${memberId}/store/star`)
-    // .then((res) => {
-    //   return res.data
-    // }).catch((err) => {
-    //   console.log(err.message);
-    // })
-  
-    // return result;
+    const result = await axiosWithAuth.get(`/review/likeReview?pageNumber=${0}`);
+    return result;
 
-    const test = [{
-      id: 1,
-      name:'asd',
-      address:'asd',
-      nickName:'asd',
-      grade:1,
-      content:'존맛탱구리',
-      imageUrl:'/'
-    }]
+    // const test = [{
+    //   id: 1,
+    //   name:'asd',
+    //   address:'asd',
+    //   nickName:'asd',
+    //   grade:1,
+    //   content:'존맛탱구리',
+    //   imageUrl:'/'
+    // }]
   
-    return test;
+    // return test;
   }
 
   return {
