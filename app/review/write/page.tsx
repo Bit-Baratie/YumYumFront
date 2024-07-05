@@ -1,14 +1,17 @@
 "use client";
 
 import React, { useState, ChangeEvent } from "react";
-import WriteStyle from "@/app/review/write/write.module.scss";
+import WriteStyle from "./write.module.scss";
 import Header from "@/app/header";
 import Image from "next/image";
 import Star from "./Star";
 import { CameraFilled, LeftOutlined } from "@ant-design/icons";
-import close from "@/public/asset/image/close.png";
+// import Close from '../../../public/asset/image/close.png';
+import close from "../../../public/asset/image/close.png";
+import useReview from "@/app/(hooks)/review/useReview";
 
 const ReviewWrite: React.FC = () => {
+  const { contentHandler, createReview, handleStarClick, rating } = useReview();
   const [images, setImages] = useState<string[]>([]);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -47,17 +50,18 @@ const ReviewWrite: React.FC = () => {
         </button>
         <div className={WriteStyle.storeName}>엄마 손 파이</div>
         <div className={WriteStyle.star}>
-          <Star />
+          <Star rating={rating} handleStarClick={handleStarClick} />
         </div>
         <div className={WriteStyle.hr}>
           <span className={WriteStyle.line}></span>
         </div>
-        {/* <div> */}
-        <textarea
-          placeholder="리뷰를 작성해주세요"
-          className={WriteStyle.textform}
-        ></textarea>
-        {/* </div> */}
+        <div>
+          <textarea
+            placeholder="리뷰를 작성해주세요"
+            className={WriteStyle.textform}
+            onChange={(e) => contentHandler(e)}
+          ></textarea>
+        </div>
         <div>
           <label htmlFor="fileInput">
             <div className={WriteStyle.btnUpload}>
@@ -92,7 +96,9 @@ const ReviewWrite: React.FC = () => {
               </li>
             ))}
           </ul>
-          <button className={WriteStyle.submit}>작성완료</button>
+          <button className={WriteStyle.submit} onClick={() => createReview(1)}>
+            작성완료
+          </button>
         </div>
       </div>
     </>
