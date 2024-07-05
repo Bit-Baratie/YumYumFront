@@ -13,6 +13,19 @@ interface PostReview {
   memberId: number;
 }
 
+//d??
+interface GetReviewOne{
+  imageUrl: string;
+  nickname: string;
+  totalReviewCount: number;
+  avgGrade: number;
+  storeName: string;
+  address: string;
+  content: string;
+  images: string[];
+}
+
+
 const ReviewApi = () => {
   const {axiosWithAuth, axiosNonAuth} = useAxiosWithAuth();
 
@@ -21,13 +34,13 @@ const ReviewApi = () => {
   
     return result;
   }
-  
-  const getReviewOne = async (reviewId:number) => {
-    const result = await axiosNonAuth.get(`/review/${reviewId}`)
-  
+
+  const getReviewDetail = async (reviewId: number) => {
+    const result = await axiosNonAuth.get(`/review/${reviewId}`);
+
     return result;
   }
-  
+
   const postReview = async (postReviewData: PostReview) => {
     const result = await axiosWithAuth.post(`/review`, postReviewData)
   
