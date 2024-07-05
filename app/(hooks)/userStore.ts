@@ -20,7 +20,7 @@ interface UserInfoActions {
 
 const defaultState: UserInfoType = {id: 0, profileUrl: '', nickname: '', atk: null, rtk: null }
 
-const userStore = create(
+const Store = create(
   persist<UserInfoState & UserInfoActions>(
     (set) => ({
       userInfo: defaultState,
@@ -34,4 +34,4 @@ const userStore = create(
   )
 );
 
-export default userStore;
+export default Store;
