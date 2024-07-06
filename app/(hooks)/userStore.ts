@@ -5,6 +5,7 @@ interface UserInfoType {
   id: number;
   profileUrl: string;
   nickname: string;
+  phoneNumber: string;
   atk: any;
   rtk: any;
 }
@@ -18,7 +19,7 @@ interface UserInfoActions {
   deleteUserInfo: () => void
 }
 
-const defaultState: UserInfoType = {id: 0, profileUrl: '', nickname: '', atk: null, rtk: null }
+const defaultState: UserInfoType = {id: 0, profileUrl: '', nickname: '', phoneNumber: '',atk: null, rtk: null }
 
 const Store = create(
   persist<UserInfoState & UserInfoActions>(
