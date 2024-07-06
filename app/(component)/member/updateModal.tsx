@@ -1,7 +1,5 @@
-import useMember from '@/app/(hooks)/member/useMember';
-import ModalStyle from './modal.module.scss';
+import ModalStyle from './updateModal.module.scss';
 import { ChangeEvent } from 'react';
-import { useParams } from 'next/navigation';
 
 interface Props {
   imageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -12,10 +10,11 @@ interface Props {
   updateMember: () => void;
   nickName: string;
   phone: string;
+  modal: boolean;
   setModal: (i:boolean) => void;
 }
 
-const Modal = (
+const UpdateModal = (
   {imageHandler,
   nickNameHandler,
   passwordHanler,
@@ -24,6 +23,7 @@ const Modal = (
   updateMember,
   nickName,
   phone,
+  modal,
   setModal}: Props
 ) => {
 
@@ -73,4 +73,4 @@ const Modal = (
   );
 }
 
-export default Modal;
+export default UpdateModal;

@@ -5,13 +5,9 @@ import Image from 'next/image';
 import useMember from '@/app/(hooks)/member/useMember'
 import {ReplyWrapper} from '@/app/(component)/member/reply'
 import Wrapper from '@/app/(component)/member/wrapper'
-import useReview from '@/app/(hooks)/review/useReview'
 import { usePathname } from 'next/navigation'
 import StoreContainer from '@/app/(component)/member/store';
-import Modal from '@/app/(component)/member/modal';
-import { GetServerSideProps } from 'next';
-import useSearch from '@/app/(hooks)/common/useSearch';
-import { useState } from 'react';
+import UpdateModal from '@/app/(component)/member/updateModal';
 
 const Mypage = () => {
   const {profile, 
@@ -26,9 +22,12 @@ const Mypage = () => {
     phoneHandler,
     updateMember,
     nickName,
-    phone} = useMember();
+    phone,
+    updateModal,
+    deleteModal,
+    setUpdateModal,
+    setDeleteModal} = useMember();
   const pathname = usePathname();
-  const [modal, setModal] = useState(false);
 
   return (
     <>
@@ -39,12 +38,14 @@ const Mypage = () => {
           <div className={MemberPageStyle.profile}>
             <Image src={'/'} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage}/>
             <div className={MemberPageStyle.profileInfo}>
-              <span>{profile.nickName} <span onClick={() => setModal(!modal)}>연필</span></span>
+              <span>{profile.nickName} <span onClick={() => setUpdateModal(!updateModal)}>연필</span></span>
               <span>{profile.email}</span>
               <span>{profile.phoneNumber}</span>
             </div>
           </div>
-          <button>회원탈퇴</button>
+          <div className={MemberPageStyle.btnContainer}>
+            <button className={MemberPageStyle.btn} onClick={() => setDeleteModal(!deleteModal)}>회원탈퇴</button>
+          </div>
           </>
           }
           
@@ -66,7 +67,7 @@ const Mypage = () => {
           {likeStoreList?<StoreContainer likeStoreList={likeStoreList}/>:'댓글이 없습니다'}
         </Wrapper>
         
-        {modal? <Modal
+        {updateModal? <UpdateModal
           imageHandler = {imageHandler}
           nickNameHandler = {nickNameHandler}
           passwordHanler = {passwordHanler}
@@ -75,7 +76,9 @@ const Mypage = () => {
           updateMember = {updateMember}
           nickName = {nickName}
           phone = {phone}
-          setModal = {setModal}
+          modal = {updateModal}
+          setModal = {setUpdateModal}
+
         /> : ''}
       </div>
     </>
