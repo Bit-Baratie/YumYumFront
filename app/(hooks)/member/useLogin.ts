@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import { postLoginInfo } from "../../(api)/member/loginApi";
+import  postLoginInfo  from "../../(api)/member/loginApi";
 import { useRouter } from "next/navigation";
 import userStore from "@/app/(hooks)/userStore";
 
