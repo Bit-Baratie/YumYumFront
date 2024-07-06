@@ -1,12 +1,15 @@
-import axios from "axios"
+import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth"
 
 interface info {
   email: string,
   password: string
 }
 
-export const postLoginInfo = async (loginInfo: info) => {
-  const result = await axios.post(`/member/login`, loginInfo)
+const postLoginInfo = async (loginInfo: info) => {
+  const {axiosNonAuth} = useAxiosWithAuth();
+  const result = await axiosNonAuth.post(`/member/login`, loginInfo)
 
   return result;
 }
+
+export default postLoginInfo;
