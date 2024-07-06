@@ -1,44 +1,50 @@
 'use client';
-import {useState} from'react';
+import { useState } from 'react';
+import Store from "@/app/(hooks)/userStore";
+import { useQuery } from "@tanstack/react-query";
+import StoreApi from "@/app/store/(api)/StoreApi";
 
 
-const useStore = () =>{
-    const [storeImage,setStoreImage] = useState<string>('');
-    const [storeName,setStoreName] = useState<string>('');
-    const [grade,setGrade] = useState<string>('');
-    const [like,setLike] = useState<string>('');
-    const [views,setViews] = useState<string>('');
-    const [storeAddress,setStoreAddress] = useState<string>('');
-    const [hashTagList,setHashTagList] = useState<string[]>([]);
-    const [favorite,setFavorite] = useState<boolean>(false);
+const useStore = () => {
+  const { userInfo } = Store();
+  const [storeImage, setStoreImage] = useState<string>('');
+  const [storeId, setStoreId] = useState<string>('');
+  const [storeName, setStoreName] = useState<string>('');
+  const [grade, setGrade] = useState<string>('');
+  const [like, setLike] = useState<string>('');
+  const [views, setViews] = useState<string>('');
+  const [storeAddress, setStoreAddress] = useState<string>('');
+  const [hashTagList, setHashTagList] = useState<string[]>([]);
+  const [favorite, setFavorite] = useState<boolean>(false);
 
 
+  const favoriteHandler = (isFavorite: boolean) => {
+    console.log("이전 상태 : ", favorite); // 현재 상태 출력
+    setFavorite(currentFavorite => !currentFavorite); // 상태 토글
+  };
 
-    
 
-    const favoriteHandler = (isFavorite : boolean) => {
-      console.log("현재 상태:", favorite); // 현재 상태 출력
-      setFavorite(currentFavorite => !currentFavorite); // 상태 토글
-    };
-    
-    return{
-        storeImage,
-        storeName,
-        grade,
-        like,
-        views,
-        storeAddress,
-        hashTagList,
-        favorite,
-        setStoreImage,
-        setStoreName,
-        setGrade,
-        setLike,
-        setViews,
-        setStoreAddress,
-        setHashTagList,
-        setFavorite,
-        favoriteHandler
-    }
+  return {
+    userInfo,
+    storeId,
+    storeImage,
+    storeName,
+    grade,
+    like,
+    views,
+    storeAddress,
+    hashTagList,
+    favorite,
+    setStoreId,
+    setStoreImage,
+    setStoreName,
+    setGrade,
+    setLike,
+    setViews,
+    setStoreAddress,
+    setHashTagList,
+    setFavorite,
+    favoriteHandler
+  }
 }
 export default useStore;

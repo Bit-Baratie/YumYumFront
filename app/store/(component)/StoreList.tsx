@@ -1,32 +1,34 @@
 'use client';
-import { getStoreInfo } from "../(api)/StoreApi";
+import useStoreApi from "../(api)/StoreApi";
 import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
 import useStore from "@/app/store/(hooks)/useStore"
 import Store from "../page";
 
 interface store {
-  id: number;
+  storeId: number;
   name: string;
   address: string;
-  favoriteNumber: number;
-  reviewNumber: number;
+  favoriteCount: number;
+  reviewCount: number;
   imageUrl: string;
   views: number;
-  hashTagList: string[];
-  grade: number;
-  categoryList: string[];
+  hashtagList: string[];
+  categoryList: string[],
+  avgGrade: number;
   isFavorite: boolean;
 }
-
 interface location {
   latitude: number,
   longitude: number,
 }
-
+// interface hastagListType {
+//   id: number,
+//   content: string
+// }
 const StoreList = () => {
 
-
+  const { getStoreInfo } = useStoreApi();
   const [storeList, setStoreList] = useState<Array<store>>([]);
 
 
@@ -74,7 +76,7 @@ const StoreList = () => {
       <div className="StoreListMap">
         {storeList.map(store => (
           <StoreInfo
-            key={store.id}
+            key={store.storeId}
             store={store}
           />
         ))}

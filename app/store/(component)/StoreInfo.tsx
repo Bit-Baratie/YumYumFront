@@ -5,38 +5,49 @@ import useStore from "@/app/store/(hooks)/useStore";
 import "./storeList.scss";
 import Google from "@/public/asset/image/Google.svg"
 import Link from "next/link";
+import useStoreApi from "@/app/store/(api)/StoreApi"
+import StoreDetail from '../[store_id]/component/StoreDetail';
 
 
 interface store {
-  id: number,
+  storeId: number,
   name: string,
   address: string,
-  favoriteNumber: number,
-  reviewNumber: number,
+  favoriteCount: number,
+  reviewCount: number,
   imageUrl: string,
   categoryList: string[],
   views: number,
-  hashTagList: string[],
-  grade: number,
+  hashtagList: string[],
+  avgGrade: number,
   isFavorite: boolean,
 }
 
 interface StoreInfoProps {
   store: store
 }
+interface data {
+  isFavorite: boolean,
+  storeId: number
+}
+
+const { postStar } = useStoreApi();
+
 const StoreInfo = ({ store }: StoreInfoProps) => {
-  const [iconColor, setIconColor] = useState<String>("#E2E2E2");
-  const { favoriteHandler, favorite } = useStore();
+  const { favoriteHandler, favorite, setFavorite } = useStore();
+
+  const data: data = { isFavorite: favorite, storeId: store.storeId }
 
   useEffect(() => {
     favoriteHandler(store.isFavorite);
+    setFavorite(store.isFavorite);
   }, [])
 
 
   return (
     <div id="searchStoreList">
-      <div className='storeId'>{store.id}</div>
-      <Link href={`/store/${store.id}`} >
+      <div className='storeId'>{store.storeId}</div>
+      <Link href={`/store/${store.storeId}`} >
         <div className="storeImage">
           <Google />
         </div>
@@ -45,8 +56,8 @@ const StoreInfo = ({ store }: StoreInfoProps) => {
             {store.name}
           </div>
           <div className="gradeLikeViews">
-            <div id="grade">★{store.grade}({store.reviewNumber})</div>
-            <div id="like">♥️{store.favoriteNumber}</div>
+            <div id="grade">★{store.avgGrade}({store.reviewCount})</div>
+            <div id="like">♥️{store.favoriteCount}</div>
             <div id="views">👀{store.views}</div>
           </div>
           <div className='categoryList'>
@@ -58,14 +69,14 @@ const StoreInfo = ({ store }: StoreInfoProps) => {
             <div>{store.address}</div>
           </div>
           <div className='hashTagList'>
-            {store.hashTagList.map((tag: string) => (
+            {store.hashtagList.map((tag: string) => (
               <div key={tag} className='hashTag'>#{tag}</div>
             ))}
           </div>
         </div>
       </Link>
       <div className="favorite">
-        <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '25px', height: '25px' }} onClick={() => { favoriteHandler(store.isFavorite) }} />
+        <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '25px', height: '25px' }} onClick={() => { postStar(data); favoriteHandler(store.isFavorite); }} />
       </div>
     </div >
   )
