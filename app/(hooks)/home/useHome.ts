@@ -1,6 +1,7 @@
+'use client'
 import HomeApi from "@/app/(api)/home/homeApi";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useHome = () => {
   const {getTop10, getMonth, getStar, getViews} = HomeApi();
@@ -12,23 +13,26 @@ const useHome = () => {
   const [data, setData] = useState(top10);
   const [select, setSelect] = useState('top10');
 
+  useEffect(() => {
+    if (select === 'top10') setData(top10);
+    else if (select === 'month') setData(month);
+    else if (select === 'star') setData(star);
+    else if (select === 'views') setData(views);
+  }, [top10, month, star, views, select]);
+
   const fetchTop10 = () => {
-    setData(top10);
     setSelect('top10');
   }
 
   const fetchMonth = () => {
-    setData(month);
     setSelect('month');
   }
 
   const fetchStar = () => {
-    setData(star);
     setSelect('star');
   }
 
   const fetchViews = () => {
-    setData(views);
     setSelect('views');
   }
 
