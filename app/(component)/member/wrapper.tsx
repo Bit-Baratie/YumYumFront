@@ -1,6 +1,5 @@
 import WrapperStyle from '@/app/(component)/member/wrapper.module.scss';
 import Link from 'next/link';
-import { ReactNode } from 'react';
 
 const Wrapper = ({title, children, link, totalCnt}: any) => {
   return (
