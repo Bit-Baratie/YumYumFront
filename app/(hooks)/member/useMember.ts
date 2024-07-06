@@ -3,9 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
 import MemberApi from "@/app/(api)/member/memberApi";
 import { ChangeEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const useMember = () => {
-  const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember } = MemberApi();
+  const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
   const {userInfo} = userStore();
   const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile(userInfo.memberId)});
   const {data: myReviewList} = useQuery({queryKey: ['myReview', userInfo.memberId], queryFn: () => getMyReview(userInfo.memberId)});
@@ -17,6 +18,9 @@ const useMember = () => {
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [phone, setPhone] = useState('');
+  const [updateModal, setUpdateModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setImageUrl('/');
@@ -69,6 +73,11 @@ const useMember = () => {
     patchMember({data});
   }
 
+  const removeMember = () => {
+    deleteMember();
+    router.push('/');
+  }
+
   return {
     profile,
     myReplyList, 
@@ -77,12 +86,17 @@ const useMember = () => {
     likeStoreList,
     nickName,
     phone,
+    updateModal,
+    deleteModal,
     imageHandler,
     nickNameHandler,
     passwordHanler,
     passwordCheckHanler,
     phoneHandler,
-    updateMember
+    updateMember,
+    removeMember,
+    setUpdateModal,
+    setDeleteModal
   }
 }
 
