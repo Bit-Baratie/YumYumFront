@@ -9,6 +9,13 @@ interface profilType {
   phoneNumber: string
 }
 
+interface PatchType {
+  imageUrl: string;
+  nickName: string;
+  password: string|null;
+  phoneNumber: string;
+}
+
 const MemberApi = () => {
   const {axiosWithAuth} = useAxiosWithAuth();
 
@@ -86,12 +93,19 @@ const MemberApi = () => {
     // return test;
   }
 
+  const patchMember = async ({data}: {data: PatchType}) => {
+    // const result = await axiosWithAuth.patch(`/member`, data);
+    // return result;
+    console.log(data)
+  }
+
   return {
     getLikeReview,
     getLikeStore,
     getMyReply,
     getProfile,
-    getMyReview
+    getMyReview,
+    patchMember
   }
 }
 
