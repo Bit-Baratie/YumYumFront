@@ -2,9 +2,9 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface UserInfoType {
-  id: number;
+  memberId: number;
   profileUrl: string;
-  nickname: string;
+  nickName: string;
   phoneNumber: string;
   atk: any;
   rtk: any;
@@ -19,9 +19,9 @@ interface UserInfoActions {
   deleteUserInfo: () => void
 }
 
-const defaultState: UserInfoType = {id: 0, profileUrl: '', nickname: '', phoneNumber: '',atk: null, rtk: null }
+const defaultState: UserInfoType = {memberId: 0, profileUrl: '', nickName: '', phoneNumber: '', atk: null, rtk: null }
 
-const Store = create(
+const UserStore = create(
   persist<UserInfoState & UserInfoActions>(
     (set) => ({
       userInfo: defaultState,
@@ -35,4 +35,4 @@ const Store = create(
   )
 );
 
-export default Store;
+export default UserStore;
