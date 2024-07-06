@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 710px;
+  height: 470px;
+  background-color: white;
+  border-radius: 20px;
+
+}
+
+.esc {
+  background-color: #FF6363;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.title {
+  font-size: 25px;
+  width: 130px;
+  height: 40px;
+}
+
+.img {
+  border: 1px solid black;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.nickname {
+  font-size: 20px;
+  width: 150px;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+
+.inputSet{
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.inputBox{
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #b5b5b5;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.1);
+}
+
+.input {
+  width: 150px;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+
+.submit {
+  width: 80px;
+  height: 40px;
+  background-color: #ffd179;
+  color: white;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
+  border: 3px solid rgba(255,255,255,0.5);
+  border-radius: 30px;
+}
