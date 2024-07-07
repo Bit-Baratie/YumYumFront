@@ -64,7 +64,7 @@ const Mypage = () => {
         </Wrapper>
 
         <Wrapper title={'즐겨찾기한 맛집'} link={`${pathname}/star`}>
-          {likeStoreList?<StoreContainer likeStoreList={likeStoreList}/>:'댓글이 없습니다'}
+          {likeStoreList?<StoreContainer likeStoreList={likeStoreList}/>:'즐겨찾기한 맛집이 없습니다'}
         </Wrapper>
         
         {updateModal? <UpdateModal
