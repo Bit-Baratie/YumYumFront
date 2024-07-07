@@ -8,11 +8,11 @@ import { useRouter } from "next/navigation";
 const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
   const {userInfo} = userStore();
-  const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile(userInfo.memberId)});
-  const {data: myReviewList} = useQuery({queryKey: ['myReview', userInfo.memberId], queryFn: () => getMyReview(userInfo.memberId)});
-  const {data: myReplyList} = useQuery({queryKey: ['myReply', userInfo.memberId], queryFn: () => getMyReply(userInfo.memberId)});
-  const {data: likeReview} = useQuery({queryKey: ['likeReview', userInfo.memberId], queryFn: () => getLikeReview(userInfo.memberId)});
-  const {data: likeStoreList} = useQuery({queryKey: ['likeStore', userInfo.memberId], queryFn: () => getLikeStore(userInfo.memberId)});
+  const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile()});
+  const {data: myReviewList} = useQuery({queryKey: ['myReview', userInfo.memberId], queryFn: () => getMyReview(0)});
+  const {data: myReplyList} = useQuery({queryKey: ['myReply', userInfo.memberId], queryFn: () => getMyReply(0)});
+  const {data: likeReview} = useQuery({queryKey: ['likeReview', userInfo.memberId], queryFn: () => getLikeReview(0)});
+  const {data: likeStoreList} = useQuery({queryKey: ['likeStore', userInfo.memberId], queryFn: () => getLikeStore(0)});
   const [imageUrl, setImageUrl] = useState('/');
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
