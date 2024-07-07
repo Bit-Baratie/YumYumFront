@@ -3,6 +3,11 @@ import Link from "next/link";
 import Item from "./item";
 import SlideStyle from './slide.module.scss';
 import useHome from "@/app/(hooks)/home/useHome";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from 'swiper/modules';
+import SwiperCore from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 interface StoreType {
   id: number,
@@ -14,6 +19,63 @@ interface StoreType {
   avgGrade: number
 }
 
+const test = [
+  {
+    id: 1,
+    name: 'asd',
+    address: 'asd',
+    favoriteCount: 1,
+    reviewCount: 1,
+    imageUrl: 'asd',
+    avgGrade: 1
+  },
+  {
+    id: 2,
+    name: 'asd',
+    address: 'asd',
+    favoriteCount: 1,
+    reviewCount: 1,
+    imageUrl: 'asd',
+    avgGrade: 1
+  },
+  {
+    id: 3,
+    name: 'asd',
+    address: 'asd',
+    favoriteCount: 1,
+    reviewCount: 1,
+    imageUrl: 'asd',
+    avgGrade: 1
+  },
+  {
+    id: 4,
+    name: 'asd',
+    address: 'asd',
+    favoriteCount: 1,
+    reviewCount: 1,
+    imageUrl: 'asd',
+    avgGrade: 1
+  },
+  {
+    id: 5,
+    name: 'asd',
+    address: 'asd',
+    favoriteCount: 1,
+    reviewCount: 1,
+    imageUrl: 'asd',
+    avgGrade: 1
+  },
+  {
+    id: 6,
+    name: 'asd',
+    address: 'asd',
+    favoriteCount: 1,
+    reviewCount: 1,
+    imageUrl: 'asd',
+    avgGrade: 1
+  }
+]
+
 const Slide = () => {
   const {
     setLocal,
@@ -23,6 +85,7 @@ const Slide = () => {
     fetchStar,
     fetchViews,
     data} = useHome();
+    SwiperCore.use([Navigation]);
 
   return (
     <div className={SlideStyle.container}>
@@ -54,17 +117,39 @@ const Slide = () => {
       </div>
 
       <div className={SlideStyle.itemContainer}>
-        <span>&lt;&lt;</span>
         {/* data */}
-        {data?
+        {/* {data?
           <>
             {data.map((item:StoreType) => {
               return(<Item key={item.id} item={item}/>)
             })}
           </>:
           <div>데이터 없음</div>
-        }
-        <span>&gt;&gt;</span>
+        } */}
+        {/* {test?
+          <>
+            {test.map((item:StoreType) => {
+              return(<Item key={item.id} item={item}/>)
+            })}
+          </>:
+          <div>데이터 없음</div>
+        } */}
+
+        <Swiper
+          spaceBetween={10}
+          navigation={true}
+          slidesPerView={5}
+        >
+          {data?
+          <>
+          {data.map((item:StoreType) => {
+            return(<SwiperSlide key={item.id}>
+              <Link href={`/store/${item.id}`}>
+              <Item item={item}/>
+              </Link>
+            </SwiperSlide>)
+          })}</>:<div>데이터 없음</div>}
+        </Swiper>
       </div>
     </div>
   );
