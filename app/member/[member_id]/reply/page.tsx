@@ -17,9 +17,8 @@ const ReplyPage = () => {
   return (
     <>
       {myReplyList !== undefined ? 
-      <div>
         <Reply myReplyList={myReplyList.content}/>
-      </div> :<div>댓글이 없습니다.</div>}
+        :<div>작성한 댓글이 없습니다</div>}
     </>
   );
 }
