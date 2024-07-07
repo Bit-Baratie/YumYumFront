@@ -9,7 +9,7 @@ const useSignup = () => {
   const [password, setPassword] = useState<string>('');
   const [passwordCheck, setPasswordCheck] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
-  const [image, setImage] = useState<string>('');
+  const [image, setImage] = useState<string>('/asset/image/defaultImage.png');
   const fileInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
 

@@ -21,7 +21,7 @@ const Signup = () => {
         <div>
           <img src={image} alt="프로필 이미지" />
           <label htmlFor="input-file" >Profile Image</label>
-          <input type="file" id='input-file' placeholder='Profile Image' ref={fileInput} onChange={imageHanler} />
+          <input type="file" id='input-file' placeholder='Profile Image' ref={fileInput} onChange={(e) => imageHanler(e)} />
         </div>
         <button onClick={(e) => signup(e)}>SIGN UP</button>
       </form>
