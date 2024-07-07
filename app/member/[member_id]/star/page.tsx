@@ -3,6 +3,20 @@ import StoreInfo from "@/app/store/(component)/StoreInfo";
 import PageStyle from './page.module.scss';
 import useMember from "@/app/(hooks)/member/useMember";
 
+interface StoreType {
+  storeId: number,
+  name: string,
+  address: string,
+  favoriteCount: number,
+  reviewCount: number,
+  imageUrl: string,
+  categoryList: string[],
+  views: number,
+  hashtagList: string[],
+  avgGrade: number,
+  isFavorite: boolean
+}
+
 const StarPage = () => {
   const {likeStoreList} = useMember();
 
@@ -10,7 +24,7 @@ const StarPage = () => {
     <>
     {likeStoreList?
       <div className={PageStyle.layout}>
-        {likeStoreList.map((item) => {
+        {likeStoreList.map((item: StoreType) => {
           return(<StoreInfo store={item}/>)
         })}
       </div>:
