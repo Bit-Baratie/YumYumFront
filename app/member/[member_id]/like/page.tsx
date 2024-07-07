@@ -3,12 +3,12 @@ import ReviewItem from "@/app/(component)/reviewItem";
 import useMember from "@/app/(hooks)/member/useMember";
 
 const LikePage = () => {
-  const {myReviewList} = useMember();
+  const {likeReviewList} = useMember();
 
   return (
-    (myReviewList !== undefined?
+    (likeReviewList !== undefined?
       <ReviewItem/>:
-      <div>작성한 리뷰가 없습니다</div>
+      <div>좋아요 한 리뷰가 없습니다</div>
     )
   );
 }

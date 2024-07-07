@@ -13,7 +13,7 @@ const Mypage = () => {
   const {profile, 
     myReviewList, 
     myReplyList, 
-    likeReview,
+    likeReviewList,
     likeStoreList,
     imageHandler,
     nickNameHandler,
@@ -55,8 +55,8 @@ const Mypage = () => {
           {myReviewList?<ReviewContainer myReviewList={myReviewList}/>:'리뷰가 없습니다'}
         </Wrapper>
 
-        <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`} totalCnt={likeReview?.numberOfElements}>
-          {likeReview?<ReviewContainer myReviewList={likeReview.content}/>:'리뷰가 없습니다'}
+        <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`} totalCnt={likeReviewList?.numberOfElements}>
+          {likeReviewList?<ReviewContainer myReviewList={likeReviewList.content}/>:'리뷰가 없습니다'}
         </Wrapper>
 
         <Wrapper title={'내가 쓴 댓글'} link={`${pathname}/reply`} totalCnt={myReplyList?.numberOfElements}>
