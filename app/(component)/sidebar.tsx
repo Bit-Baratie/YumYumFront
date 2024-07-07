@@ -1,8 +1,8 @@
 'use client'
 import User from '@/public/asset/image/user.svg'
 import Review from '@/public/asset/image/review.svg'
-import Reply from '@/public/asset/image/user.svg'
-import Like from '@/public/asset/image/user.svg'
+import Reply from '@/public/asset/image/replyIcon.svg'
+import Like from '@/public/asset/image/heartIcon.svg'
 import Bookmark from '@/public/asset/image/bookmark.svg'
 import sidebarStyle from './sidebar.module.scss';
 import { useParams, usePathname } from 'next/navigation'
