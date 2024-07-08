@@ -10,6 +10,7 @@ import { CameraFilled, LeftOutlined } from "@ant-design/icons";
 import close from "../../../public/asset/image/close.png";
 import useReview from "@/app/(hooks)/review/useReview";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const ReviewWrite: React.FC = () => {
   const { contentHandler, createReview, handleStarClick, rating } = useReview();
@@ -17,6 +18,7 @@ const ReviewWrite: React.FC = () => {
   const searchParams = useSearchParams();
   const [storeInfo, setStoreInfo] = useState();
   // const storeInfo = JSON.parse(router.query.storeInfo);
+  const router = useRouter();
 
   useEffect(() => {
     console.log(searchParams.get("storeId"));
@@ -50,6 +52,14 @@ const ReviewWrite: React.FC = () => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
+  // const handleSubmit = async () => {
+  //   const storeId = Number(searchParams.get("storeId"));
+  //   const response = await createStore(storeId);
+  //   if (response.status === 201) {
+  //     router.push("/review");
+  //   }
+  // };
+
   return (
     <>
       <Header />
@@ -58,7 +68,7 @@ const ReviewWrite: React.FC = () => {
           <LeftOutlined />
         </button>
         <div className={WriteStyle.storeName}>
-          {searchParams.get("storeName")}엄마 손 파이
+          {searchParams.get("storeName")}
         </div>
         <div className={WriteStyle.star}>
           <Star rating={rating} handleStarClick={handleStarClick} />
