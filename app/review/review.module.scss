@@ -1,4 +1,4 @@
-.ddd{
+.ddd {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -6,7 +6,6 @@
     padding: 10px 20px;
     line-height: 28px;
 
-    
 }
 
 .edit {
@@ -21,7 +20,7 @@
     top: auto;
     right: 30px;
 }
-.flqb{
+.flqb {
     position: absolute;
     top: auto;
     right: 45%;
@@ -29,7 +28,8 @@
 
 .back {
     background-color: white;
-    background-image: url("../../public/asset/image/back.png");    background-size: cover;
+    background-image: url("../../public/asset/image/back.png");
+    background-size: cover;
     border: none;
     width: 30px;
     height: 30px;
@@ -58,7 +58,7 @@
     text-align: center;
 }
 
-.review-content {
+.reviewContent {
     padding: 0 30px 30px;
     line-height: 30px;
     text-align: start;
@@ -73,7 +73,7 @@
 //     // display: flex;
 //     // justify-content: center;
 // }
-.review-image-img {
+.reviewImageImg {
     // display: flex; 
     float: left;
     width: 120px;
@@ -83,19 +83,18 @@
     margin: 35px;
 }
 
-
-.profile{
+.profile {
     width: 700p;
     height: 110px;
     display: flex;
     padding: 20px;
     align-items: center;
 }
-.profile-img {
+.profileImg {
     border: 1px solid rgb(193, 193, 193);
     border-radius: 50%;
 }
-.profile-info {
+.profileInfo {
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -106,16 +105,15 @@
     line-height: 34px;
 }
 
-.profile-name{
+.profileName {
     font-size: 28px;
     font-weight: 600;
 }
 
-.profile-date{
-    
-}
+.profileDate {
+    }
 
-.profile-star{
+.profileStar {
     color: gray;
 
 }
@@ -124,7 +122,7 @@
     color: rgb(255, 255, 255);
     padding: 30px;
     text-align: start;
-    width: calc(100% - 60px); 
+    width: calc(100% - 60px);
     background-color: #FFC657;
     font-size: 25px;
     line-height: 35px;
@@ -132,13 +130,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-  }
-  
-  .sn {
+}
+
+.sn {
     font-size: 35px;
-  }
-  
-  .add {
+}
+
+.add {
     font-size: 20px;
-  }
-  
+}
+
+.HeartPosition {
+    position: absolute;
+    top: 250px;
+    right: 100px;
+}

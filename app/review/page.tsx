@@ -2,7 +2,7 @@
 
 import Headers from "../header";
 import Profile from "./profile";
-import "./review.scss";
+import "@/app/review/review.module.scss";
 import Comment from "./(component)/comment/comment";
 import React, { useState } from "react";
 // import { postReviewInfo } from "./(api)/reviewApi";
