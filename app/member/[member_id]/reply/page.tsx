@@ -15,11 +15,11 @@ const ReplyPage = () => {
   const {myReplyList} = useMember();
 
   return (
-    <>
+    <div>
       {myReplyList !== undefined ? 
         <Reply myReplyList={myReplyList.content}/>
         :<div>작성한 댓글이 없습니다</div>}
-    </>
+    </div>
   );
 }
 

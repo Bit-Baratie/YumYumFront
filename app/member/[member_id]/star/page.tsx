@@ -18,13 +18,13 @@ interface StoreType {
 }
 
 const StarPage = () => {
-  const {likeStoreList} = useMember();
+  const {likeStoreList}:{likeStoreList: StoreType[]} = useMember();
 
   return (
     <>
-    {likeStoreList?
+    {likeStoreList && likeStoreList.length > 0?
       <div className={PageStyle.layout}>
-        {likeStoreList.map((item: StoreType) => {
+        {likeStoreList?.map((item: StoreType) => {
           return(<StoreInfo store={item}/>)
         })}
       </div>:
