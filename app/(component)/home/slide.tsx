@@ -10,7 +10,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 interface StoreType {
-  id: number,
+  storeId: number,
   name: string,
   address: string,
   favoriteCount: number,
@@ -21,7 +21,7 @@ interface StoreType {
 
 const test = [
   {
-    id: 1,
+    storeId: 1,
     name: 'asd',
     address: 'asd',
     favoriteCount: 1,
@@ -30,7 +30,7 @@ const test = [
     avgGrade: 1
   },
   {
-    id: 2,
+    storeId: 2,
     name: 'asd',
     address: 'asd',
     favoriteCount: 1,
@@ -39,7 +39,7 @@ const test = [
     avgGrade: 1
   },
   {
-    id: 3,
+    storeId: 3,
     name: 'asd',
     address: 'asd',
     favoriteCount: 1,
@@ -48,7 +48,7 @@ const test = [
     avgGrade: 1
   },
   {
-    id: 4,
+    storeId: 4,
     name: 'asd',
     address: 'asd',
     favoriteCount: 1,
@@ -57,7 +57,7 @@ const test = [
     avgGrade: 1
   },
   {
-    id: 5,
+    storeId: 5,
     name: 'asd',
     address: 'asd',
     favoriteCount: 1,
@@ -66,7 +66,7 @@ const test = [
     avgGrade: 1
   },
   {
-    id: 6,
+    storeId: 6,
     name: 'asd',
     address: 'asd',
     favoriteCount: 1,
@@ -143,8 +143,8 @@ const Slide = () => {
           {data?
           <>
           {data.map((item:StoreType) => {
-            return(<SwiperSlide key={item.id}>
-              <Link href={`/store/${item.id}`}>
+            return(<SwiperSlide key={item.storeId}>
+              <Link href={`/store/${item.storeId}`}>
               <Item item={item}/>
               </Link>
             </SwiperSlide>)

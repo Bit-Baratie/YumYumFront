@@ -2,7 +2,7 @@ import Image from "next/image";
 import ItemStyle from './item.module.scss'
 
 interface StoreType {
-  id: number,
+  storeId: number,
   name: string,
   address: string,
   favoriteCount: number,
