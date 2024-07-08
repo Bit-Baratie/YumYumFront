@@ -63,6 +63,12 @@ const getReviewOne = async (reviewId: number) => {
     await axiosWithAuth.post(`/notice`, reportData );
   };
 
+  const getReviewBySroteId = async (storeId: number) => {
+    const result = await axiosNonAuth.get(`/review/store/${storeId}`);
+
+    return result;
+  }
+
   return {
     getReviewAll,
     getReviewOne,
@@ -70,7 +76,8 @@ const getReviewOne = async (reviewId: number) => {
     patchReview,
     deleteReview,
     like,
-    reportReview
+    reportReview,
+    getReviewBySroteId
   }
 }
 
