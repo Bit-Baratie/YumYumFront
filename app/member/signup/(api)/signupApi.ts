@@ -1,22 +1,17 @@
+import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
 import axios from "axios"
 
 interface info {
   email: string,
-  nickname: string,
+  nickName: string,
   password: string,
-  phone: string,
-  image: string
+  phoneNumber: string,
+  imageUrl: string
 }
 
 export const postSignupInfo = async (signupInfo: info) => {
-  console.log(signupInfo);
-  const result = await axios.post('http://localhost:3000', signupInfo)
-  .then((res) => {
-    return res.data;
-  }).catch((err) => {
-    console.log(err.message);
-    alert('잠시후 다시 시도해 주세요');
-  });
+  const {axiosNonAuth} = useAxiosWithAuth();
+  const result = await axiosNonAuth.post('/member', signupInfo);
 
   return result;
 }

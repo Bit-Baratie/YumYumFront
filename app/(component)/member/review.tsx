@@ -15,9 +15,12 @@ const ReviewContainer = ({myReviewList} : {myReviewList:MyReviewType[]}) => {
   return (
       <div className={reviewStyle.dashboard}>
           {
-              myReviewList?.map((item) => {
-                  return (<DashboardReview key={item.id} item={item}/>)
-              })
+             <>
+                  <DashboardReview key={myReviewList[0].id} item={myReviewList[0]}/>
+                  <DashboardReview key={myReviewList[1].id} item={myReviewList[1]}/>
+                  <DashboardReview key={myReviewList[2].id} item={myReviewList[2]}/>
+                  <DashboardReview key={myReviewList[3].id} item={myReviewList[3]}/>
+            </>
           }
       </div>
   );

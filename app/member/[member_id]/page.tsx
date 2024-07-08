@@ -28,7 +28,7 @@ const Mypage = () => {
     setUpdateModal,
     setDeleteModal} = useMember();
   const pathname = usePathname();
-
+  console.log(profile)
   return (
     <>
       <div className={MemberPageStyle.dashboardWrapper}>

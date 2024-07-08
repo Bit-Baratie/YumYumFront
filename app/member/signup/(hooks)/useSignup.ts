@@ -55,7 +55,11 @@ const useSignup = () => {
     e.preventDefault();
 
     const info = {
-      email, password, nickname, phone, image
+      email: email,
+      password: password,
+      nickName: nickname,
+      phoneNumber: phone, 
+      imageUrl: image
     };
 
     if (password !== passwordCheck) {
@@ -64,12 +68,7 @@ const useSignup = () => {
     }
 
     const res = await postSignupInfo(info);
-    if (res.status === 1) {
-      alert(res.message);
-      router.push('/home');
-    } else {
-      alert(res.message);
-    }    
+      router.push('/member/login');
   }
 
   return {
