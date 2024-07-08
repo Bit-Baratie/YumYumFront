@@ -25,7 +25,7 @@ interface GetReviewOne {
 }
 
 const Review = () => {
-  const { fetchReviewOne, reviewOne } = useReview();
+  const { fetchReviewOne, reviewOne, removeReview} = useReview();
   const params = useParams();
   const router = useRouter();
   const [view, setView] = useState<boolean | undefined>(undefined);
@@ -50,7 +50,7 @@ const Review = () => {
                 setView(!view);
               }}
             />
-            {view && <Dropdown memberId={reviewOne?.memberId} reviewData={reviewOne}/>}
+            {view && <Dropdown memberId={reviewOne?.memberId} reviewData={reviewOne} removeReview={removeReview}/>}
           </div>
         </div>
         <div className={DetailStyle.storeInfo}>

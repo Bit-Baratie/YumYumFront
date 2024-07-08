@@ -70,19 +70,20 @@ const useReview = () => {
     }
   }
 
-  const modifyReview = async (reviewId: number) => {
+  const modifyReview = (reviewId: number) => {
     const reviewData = {
       content: content,
       grade: rating,
       memberId: userInfo.memberId
     };
 
-    const result = await patchReview(reviewId, reviewData);
+    patchReview(reviewId, reviewData);
     router.push('/review');
   }
 
   const removeReview = (reviewId: number) => {
     deleteReview(reviewId);
+    router.push('/review')
   }
 
   const handleTextareaChange = (

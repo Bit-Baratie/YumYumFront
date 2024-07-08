@@ -8,7 +8,7 @@ import ReportModal from "@/app/(component)/reportModal";
 import { useRouter } from "next/router";
 
 interface GetReviewOne {
-  id: number;
+  reviewId: number;
   imageUrl: string;
   nickname: string;
   createdAt: string;
@@ -21,7 +21,7 @@ interface GetReviewOne {
   images: string[];
 }
 
-const Dropdown = ({ memberId, reviewData }: { memberId: number, reviewData: GetReviewOne }) => {
+const Dropdown = ({ memberId, reviewData, removeReview }: { memberId: number, reviewData: GetReviewOne, removeReview:(reviewId:number) => void }) => {
   const { userInfo } = userStore();
   const [modal, setModal] = useState(false);
 
@@ -42,10 +42,8 @@ const Dropdown = ({ memberId, reviewData }: { memberId: number, reviewData: GetR
           {/* {userInfo.memberId === memberId ? <li className="tnwjd">수정</li> : ""} */}
           {4 === memberId ? <li className="tnwjd">수정</li> : ""}
         </Link>
-        <Link href={"./"}>
           {/* {userInfo.memberId === memberId ? <li className="tkrwp">삭제</li> : ""} */}
-          {4 === memberId ? <li className="tkrwp">삭제</li> : ""}
-        </Link>
+          {4 === memberId ? <li className="tkrwp" onClick={() => removeReview(reviewData.reviewId)}>삭제</li> : ""}
       </ul>
       {modal && <ReportModal onClose={closeModal} />}
     </div>
