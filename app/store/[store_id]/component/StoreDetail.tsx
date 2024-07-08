@@ -7,6 +7,7 @@ import "@/app/store/[store_id]/storeDetailPage.scss"
 import useStore from "@/app/store/(hooks)/useStore";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 
 interface store {
@@ -120,7 +121,7 @@ const StoreDetail = () => {
           })}
         </div>
         <div id="navBtn">
-          <div>리뷰</div>
+          <Link href={`/review/write?storeId=${storeList.storeId}&storeName=${storeList.name}`}>리뷰</Link>
           <div>길찾기</div>
           <div>신고버튼</div>
         </div>
