@@ -4,7 +4,7 @@ import ReviewApi from "@/app/(api)/review/reviewApi";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
-import { useParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 interface ReviewData {
   nickname: string;
@@ -16,45 +16,43 @@ interface ReviewData {
   writeTime: Date;
 }
 
-interface ReivewList{
+interface ReviewList {
   id: number;
   content: string;
   grade: number;
 }
 
-interface reportData{
+interface ReportData {
   reviewId: number;
   reportText: string;
 }
 
-const useReview = () =>{
-
-  
-  const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview , reportReview } = ReviewApi();
+const useReview = () => {
+  const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview, reportReview } = ReviewApi();
   const [reviewOne, setReviewOne] = useState<any>(); 
-  const {data, error, isLoading} = useQuery<any>({queryKey: ['reviewList'], queryFn: getReviewAll});  // 1개의 리뷰 리스트 밖에 못들어오기 때문에 array
+  const { data, error, isLoading } = useQuery<any>({ queryKey: ['reviewList'], queryFn: getReviewAll });
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
-  // const [] = useState<string>(''); 리뷰 상세 가져오기
-  const {userInfo} = userStore();
+  const { userInfo } = userStore();
   const [reportText, setReportText] = useState("");
+  // const router = useRouter();
   
-  const contentHandler = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
+  const contentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
     console.log(content);
   }
 
   const handleStarClick = (starIndex: number) => {
     setRating(starIndex + 1); 
-};
+  };
 
-  const fetchReviewOne = async (reviewId:number) => {
+  const fetchReviewOne = async (reviewId: number) => {
     const result = await getReviewOne(reviewId);
     console.log(result);
     setReviewOne(result);
   }
 
-  const createReview = (storeId:number) => {
+  const createReview = async (storeId: number) => {
     const reviewData = {
       storeId: storeId,
       content: content,
@@ -64,7 +62,12 @@ const useReview = () =>{
     };
     console.log(reviewData);
 
-    postReview(reviewData);
+  //   const response = await postReview(reviewData);
+  //   if (response.status === 201) {
+  //     router.push("/reviews");
+  //   } else {
+  //     console.error("Failed to create review");
+  //   }
   }
 
   const modifyReview = (reviewId: number) => {
@@ -87,7 +90,7 @@ const useReview = () =>{
     setReportText(event.target.value);
   };
 
-  const createReport = (reviewId : number) => {
+  const createReport = (reviewId: number) => {
     const reportData = {
       reviewId: reviewId,
       reportText: reportText
@@ -98,7 +101,7 @@ const useReview = () =>{
   return {
     reviewOne, content, rating, reportText,
     contentHandler, handleStarClick,
-    fetchReviewOne, createReview, modifyReview, removeReview, data, handleTextareaChange,createReport
+    fetchReviewOne, createReview, modifyReview, removeReview, data, handleTextareaChange, createReport
   }
 }
 
