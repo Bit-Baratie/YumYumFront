@@ -10,21 +10,43 @@ import { CameraFilled, LeftOutlined } from "@ant-design/icons";
 import close from "../../../public/asset/image/close.png";
 import useReview from "@/app/(hooks)/review/useReview";
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { Router } from "next/router";
+
+interface GetReviewOne {
+  id: number;
+  imageUrl: string;
+  nickname: string;
+  createdAt: string;
+  totalReviewCount: number;
+  grade: number;
+  avgGrade: number;
+  storeName: string;
+  address: string;
+  content: string;
+  images: string[];
+}
 
 const ReviewWrite = () => {
-  const { contentHandler, createReview, handleStarClick, rating } = useReview();
+  const { contentHandler, createReview, handleStarClick, rating, modifyReview } = useReview();
   const [images, setImages] = useState<string[]>([]);
   const searchParams = useSearchParams();
-  const [storeInfo, setStoreInfo] = useState();
-  // const storeInfo = JSON.parse(router.query.storeInfo);
-  const router = useRouter();
+  let defaultData = {
+    storeName: searchParams.get('storeName'),
+    storeId: searchParams.get('storeId'),
+    content: '',
+    reviewId: 0,
+    grade: 0
+  };
+  const [storeInfo, setStoreInfo] = useState(defaultData);
+
 
   useEffect(() => {
-    console.log(searchParams.get("storeId"));
-    // setStoreInfo(searchParams);
-  }, [storeInfo]);
+    const query = searchParams.get('data');
+    if (query) {
+      const patchData = JSON.parse(query);
+      setStoreInfo(patchData);
+      handleStarClick(patchData.grade-1);
+    }
+  }, []);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -69,10 +91,10 @@ const ReviewWrite = () => {
           <LeftOutlined />
         </button>
         <div className={WriteStyle.storeName}>
-          {searchParams.get("storeName")}
+          {storeInfo.storeName}
         </div>
         <div className={WriteStyle.star}>
-          <Star rating={rating} handleStarClick={handleStarClick} />
+          <Star rating={rating} handleStarClick={!searchParams.get('data')?handleStarClick:()=>{}} />
         </div>
         <div className={WriteStyle.hr}>
           <span className={WriteStyle.line}></span>
@@ -82,6 +104,7 @@ const ReviewWrite = () => {
             placeholder="리뷰를 작성해주세요"
             className={WriteStyle.textform}
             onChange={(e) => contentHandler(e)}
+            defaultValue={storeInfo.content}
           ></textarea>
         </div>
         <div>
@@ -118,12 +141,21 @@ const ReviewWrite = () => {
               </li>
             ))}
           </ul>
+          {!searchParams.get('data')?
           <button
             className={WriteStyle.submit}
             onClick={() => createReview(Number(searchParams.get("storeId")))}
           >
             작성완료
           </button>
+          :
+          <button
+            className={WriteStyle.submit}
+            onClick={() => modifyReview(storeInfo.reviewId)}
+          >
+            수정완료
+          </button>
+          }
         </div>
       </div>
     </>

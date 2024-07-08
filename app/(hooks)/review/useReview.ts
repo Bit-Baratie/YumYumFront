@@ -70,14 +70,15 @@ const useReview = () => {
     }
   }
 
-  const modifyReview = (reviewId: number) => {
+  const modifyReview = async (reviewId: number) => {
     const reviewData = {
       content: content,
       grade: rating,
       memberId: userInfo.memberId
     };
 
-    patchReview(reviewId, reviewData);
+    const result = await patchReview(reviewId, reviewData);
+    router.push('/review');
   }
 
   const removeReview = (reviewId: number) => {

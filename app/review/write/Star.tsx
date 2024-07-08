@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import StarStyle from "./starStyle.module.scss";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 import useReview from "@/app/(hooks)/review/useReview";
+import { useSearchParams } from "next/navigation";
 
 const Star = ({ rating, handleStarClick }: any) => {
+  const searchParams = useSearchParams();
   // const { handleStarClick, rating } = useReview();
   // const [rating, setRating] = useState<number>(0);
 
@@ -22,7 +24,7 @@ const Star = ({ rating, handleStarClick }: any) => {
             onClick={() => handleStarClick(index)}
           >
             {isFilled ? (
-              <StarFilled className={StarStyle.StarFilled} />
+              <StarFilled className={StarStyle.StarFilled}/>
             ) : (
               <StarOutlined className={StarStyle.StarOutlined} />
             )}

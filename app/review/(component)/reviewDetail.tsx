@@ -50,7 +50,7 @@ const Review = () => {
                 setView(!view);
               }}
             />
-            {view && <Dropdown memberId={reviewOne?.memberId} />}
+            {view && <Dropdown memberId={reviewOne?.memberId} reviewData={reviewOne}/>}
           </div>
         </div>
         <div className={DetailStyle.storeInfo}>
