@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
 import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 interface ReviewData {
   nickname: string;
@@ -30,12 +31,13 @@ interface ReportData {
 const useReview = () => {
   const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview, reportReview } = ReviewApi();
   const [reviewOne, setReviewOne] = useState<any>(); 
-  const { data, error, isLoading } = useQuery<any>({ queryKey: ['reviewList'], queryFn: getReviewAll });
+  const { data, error, isLoading } = useQuery({ queryKey: ['reviewList'], queryFn: () => getReviewAll({pageNumber: Number(searchParams.get('pageNumber'))}) });
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const { userInfo } = userStore();
   const [reportText, setReportText] = useState("");
   // const router = useRouter();
+  const searchParams = useSearchParams();
   
   const contentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);

@@ -9,6 +9,7 @@ import React, { useState } from "react";
 // import LikeButton from "@/app/(component)/likeButton";
 import ReviewItem from "@/app/(component)/reviewItem";
 import useReview from "../(hooks)/review/useReview";
+import Link from "next/link";
 // import useReview from "../(hooks)/review/useReview";
 // import useUserInfo from "@/app/(hooks)/useUserInfo";
 
@@ -32,9 +33,15 @@ const Review = () => {
   return (
     <>
       <Headers />
+      {data && data.content.length > 0?
+      <>
       {data?.content?.map((reviewItem: GetReviewOne) => {
-        <ReviewItem key={reviewItem.reviewId} reviewItem={reviewItem} />;
-      })}
+        return(
+          <Link href={`/review/${reviewItem.reviewId}`}>
+            <ReviewItem key={reviewItem.reviewId} reviewItem={reviewItem} />
+          </Link>);
+      })}</>:<div>작성된 리뷰가 없습니다</div>
+    }
     </>
   );
 };

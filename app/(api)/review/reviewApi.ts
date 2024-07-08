@@ -40,8 +40,8 @@ const getReviewOne = async (reviewId: number) => {
     return result;
   }
 
-  const getReviewAll = async () => {
-    const result = await axiosNonAuth.get(`/review`);
+  const getReviewAll = async ({pageNumber}: {pageNumber:number}) => {
+    const result = await axiosNonAuth.get(`/review?pageNumber=${pageNumber}`);
   
     return result;
   }

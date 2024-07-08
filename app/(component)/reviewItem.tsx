@@ -72,20 +72,13 @@ const ReviewItem = ({ reviewItem }: { reviewItem: GetReviewOne }) => {
               {reviewItem?.totalReviewCount})
             </p>
           </div>
-          <LikeButton reviewId={reviewItem?.reviewId} />
+          {/* <LikeButton reviewId={reviewItem?.reviewId} /> */}
         </div>
       </div>
       <div className={reviewStyle.reviewContent}>
-        Armageddon Shoot Imma get 'em Shoot Watch Uh Imma bite back Uh 짙은
-        어둠이 막아설 땐 Uh 한 걸음 앞으로 날아든 It's bad 사라진 Feedback
-        시작된 Code black Uh 깊어가 혼란스러운 밤 악몽은 또 짙게 번져가 뭔갈
-        숨기려고 해 I got it, I got it 혼돈을 타고 덮쳐 Killing like Bang chitty
-        bang Bang chitty bang bang 'Cause I wanna see I wanna see truly Bang
-        chitty bang Bang chitty bang bang 내게 다가와 다가와 Imma get it
-        {/* {reviewOne?.content} */}
+        {reviewItem?.content}
       </div>
       <div className={reviewStyle.reviewImg}>
-        {reviewItem?.content}
         <Image
           className={reviewStyle.reivewImage}
           // src={'/./'}
