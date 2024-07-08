@@ -9,17 +9,17 @@ const HomeApi = () => {
   }
 
   const getMonth = (local: string) => {
-    const result = axiosNonAuth.get(`/store/month?${local}`)
+    const result = axiosNonAuth.get(`/store/top10/month?local=${local}`)
     return result;
   }
 
   const getStar = (local: string) => {
-    const result = axiosNonAuth.get(`/store/star?${local}`)
+    const result = axiosNonAuth.get(`/store/top10/favorite?local=${local}`)
     return result;
   }
 
   const getViews = (local: string) => {
-    const result = axiosNonAuth.get(`/store/views?${local}`)
+    const result = axiosNonAuth.get(`/store/top10/views?local=${local}`)
     return result;
   }
 
