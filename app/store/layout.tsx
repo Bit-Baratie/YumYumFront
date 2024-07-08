@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5?autoload=false" />
+      <Script strategy='afterInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5?autoload=false" />
       <Header />
       <div>
         {children}
