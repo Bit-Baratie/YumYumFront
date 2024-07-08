@@ -10,7 +10,7 @@ interface PostReview {
   storeId: number;
   content: string;
   grade: number;
-  memberId: number;
+  imageList: any[]|null;
 }
 
 interface likeType {
@@ -34,7 +34,7 @@ const getReviewOne = async (reviewId: number) => {
 }
 
 // 용안이랑 완성한거
-  const postReview = async (postReviewData: PostReview) => {
+  const postReview = async ({postReviewData}: {postReviewData: PostReview}) => {
     const result = await axiosWithAuth.post(`/review`, postReviewData)
   
     return result;
@@ -43,7 +43,7 @@ const getReviewOne = async (reviewId: number) => {
   const getReviewAll = async ({pageNumber}: {pageNumber:number}) => {
     const result = await axiosNonAuth.get(`/review?pageNumber=${pageNumber}`);
   
-    return result;
+    return result.data;
   }
 
   const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {

@@ -4,8 +4,7 @@ import ReviewApi from "@/app/(api)/review/reviewApi";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
-import { useRouter } from "next/router";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 interface ReviewData {
   nickname: string;
@@ -36,7 +35,7 @@ const useReview = () => {
   const [rating, setRating] = useState<number>(0);
   const { userInfo } = userStore();
   const [reportText, setReportText] = useState("");
-  // const router = useRouter();
+  const router = useRouter();
   const searchParams = useSearchParams();
   
   const contentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -59,17 +58,16 @@ const useReview = () => {
       storeId: storeId,
       content: content,
       grade: rating,
-      memberId: userInfo.memberId,
       imageList: []
     };
-    console.log(reviewData);
 
-  //   const response = await postReview(reviewData);
-  //   if (response.status === 201) {
-  //     router.push("/reviews");
-  //   } else {
-  //     console.error("Failed to create review");
-  //   }
+    const response = await postReview({postReviewData: reviewData});
+    console.log(response)
+    if (response.status === 201) {
+      router.push("/review");
+    } else {
+      console.error("Failed to create review");
+    }
   }
 
   const modifyReview = (reviewId: number) => {

@@ -13,7 +13,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Router } from "next/router";
 
-const ReviewWrite: React.FC = () => {
+const ReviewWrite = () => {
   const { contentHandler, createReview, handleStarClick, rating } = useReview();
   const [images, setImages] = useState<string[]>([]);
   const searchParams = useSearchParams();
