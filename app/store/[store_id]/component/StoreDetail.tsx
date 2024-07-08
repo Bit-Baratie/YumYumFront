@@ -20,7 +20,7 @@ interface store {
   categoryList: string[],
   views: number,
   hashtagList: hastagListType[],
-  isFavorite: boolean,
+  favoriteStatus: boolean,
   avgGrade: number,
   hours: string,
   calls: string,
@@ -44,7 +44,7 @@ interface menuListType {
 }
 
 interface data {
-  isFavorite: boolean,
+  favoriteStatus: boolean,
   storeId: number
 }
 
@@ -57,7 +57,7 @@ const StoreDetail = () => {
   const storeId = params.store_id;
   console.log("디테일" + params.store_id);
 
-  const data: data = { isFavorite: !favorite, storeId: Number(storeId) }
+  const data: data = { favoriteStatus: !favorite, storeId: Number(storeId) }
   useEffect(() => {
     const fetchStoreDetail = async () => {
       const StoreInfoResult = await StoreDetailInfo(Number(storeId));
@@ -126,7 +126,7 @@ const StoreDetail = () => {
           <div>신고버튼</div>
         </div>
         <div className="favorite">
-          <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '55px', height: '55px' }} onClick={() => { postStar(data); favoriteHandler(storeList.isFavorite); }} />
+          <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '55px', height: '55px' }} onClick={() => { postStar(data); favoriteHandler(storeList.favoriteStatus); }} />
         </div>
       </div>
       <div className="DetailMap">

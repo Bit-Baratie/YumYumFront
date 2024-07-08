@@ -7,14 +7,14 @@ interface store {
   storeId: number,
   name: string,
   address: string,
-  favoriteCount: number,
-  reviewCount: number,
+  totalFavoriteCount: number,
+  totalReviewCount: number,
   imageList: Image[],
-  categoryList: string[],
+  categoryName: string,
   views: number,
   imageUrl: string,
-  hashtagList: hastagListType[],
-  isFavorite: boolean,
+  hashtags: hashtagListType[],
+  favoriteStatus: boolean,
   avgGrade: number,
   hours: string,
   calls: string,
@@ -27,17 +27,14 @@ interface menuListType {
   name: string,
   price: number
 }
-interface member {
-  memberId: number
-}
 interface LikeInfo {
-  isFavorite: boolean
+  favoriteStatus: boolean
 }
 interface pageNumber {
   totalPages: number,
   currentPages: number
 }
-interface hastagListType {
+interface hashtagListType {
   id: number,
   content: string
 }
@@ -47,7 +44,7 @@ interface location {
   longitude: number,
 }
 interface data {
-  isFavorite: boolean,
+  favoriteStatus: boolean,
   storeId: number
 }
 
@@ -65,31 +62,39 @@ const useStoreApi = () => {
 
 
   const getStoreInfo = async (location: location) => {
-    // const result : Array<store> = await axios.get(`http://localhost:3000/store?long=${location.longitude}&&lat=${location.latitude}`)
-    // .then((res) =>{
-    //     return res.data;
+    const result: Array<store> = await axios.get(`http://localhost:3000/store?long=${location.longitude}&&lat=${location.latitude}`)
+    // .then((res) => {
+    //   return res.data;
     // }).catch((err) => {
-    //     console.log(err);
-    //     alert("다시 시도해주세요.");
+    //   console.log(err);
+    //   alert("다시 시도해주세요.");
     // });
 
     //store 정보
     return [{
       storeId: 1,
-      name: "카넬로손파이",
-      address: "강남대로 200-1",
-      favoriteCount: 123,
-      reviewCount: 123,
+      name: "창고43 강남점",
+      address: "서울특별시 강남구 강남대로 362",
+      totalFavoriteCount: 6,
+      totalReviewCount: 14,
       imageUrl: "/",
-      categoryList: ["123", "456", "789"],
-      views: 12837,
-      hashtagList: ["123", "456", "789"],
-      isFavorite: false,
-      avgGrade: 4.5,
-      latitude: 36.5098556,
-      longtitude: 127.2431966
-    }
-    ]
+      categoryName: "양식",
+      views: 55,
+      hashtags: [{
+        id: 1,
+        content: "맛집"
+      },
+      {
+        id: 2,
+        content: "쓰레기"
+      }],
+      favoriteStatus: false,
+      avgGrade: 3.1,
+      totalPage: 10,
+      currentPage: 1,
+      latitude: 37.359531,
+      longitude: 127.1052133,
+    }]
   }
   const postStoreLike = async (isFavorite: LikeInfo) => {
     // const result = await axios.post(`http://localhost:3000/star/${storeId}`,isFavorite)

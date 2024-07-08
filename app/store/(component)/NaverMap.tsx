@@ -24,7 +24,7 @@ const TestMap = () => {
   useEffect(() => {
     const MapRender = async () => {
       const result = await getStoreInfo(LatLng);
-      const location = new naver.maps.LatLng(result[0].latitude, result[0].longtitude);
+      const location = new naver.maps.LatLng(result[0].latitude, result[0].longitude);
 
 
       map = new naver.maps.Map('map', {
@@ -41,7 +41,7 @@ const TestMap = () => {
 
       result.map(store => {
         var marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(store.latitude, store.longtitude),
+          position: new naver.maps.LatLng(store.latitude, store.longitude),
           map: map,
           title: "Location Marker"
         });
@@ -57,7 +57,7 @@ const TestMap = () => {
   return (
     <>
       <div id="map"></div>
-      <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5?" onLoad={initializeMap} />
+      {/* <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5?" onLoad={initializeMap} /> */}
       <button onClick={() => myLocation(map)} className="myLocation">
         <Location width='23' height='23' fill='white' />
       </button>
