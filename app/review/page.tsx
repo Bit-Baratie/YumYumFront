@@ -5,7 +5,6 @@ import Profile from "./profile";
 import "./review.scss";
 import Comment from "./(component)/comment/comment";
 import React, { useState } from "react";
-import Dropdown from "./Dropdown";
 // import { postReviewInfo } from "./(api)/reviewApi";
 // import LikeButton from "@/app/(component)/likeButton";
 import ReviewItem from "@/app/(component)/reviewItem";
