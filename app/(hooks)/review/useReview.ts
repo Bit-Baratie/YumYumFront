@@ -1,7 +1,10 @@
+'use client';
+
 import ReviewApi from "@/app/(api)/review/reviewApi";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
+import { useParams } from "next/navigation";
 
 interface ReviewData {
   nickname: string;
@@ -19,15 +22,22 @@ interface ReivewList{
   grade: number;
 }
 
+interface reportData{
+  reviewId: number;
+  reportText: string;
+}
+
 const useReview = () =>{
 
-  const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview } = ReviewApi();
-  const [reviewOne, setReviewOne] = useState<any>();
-  // const {data, error, isLoading} = useQuery<Array<ReivewList>>({queryKey: ['reviewList'], queryFn: getReviewAll});  // 1개의 리뷰 리스트 밖에 못들어오기 때문에 array
+  
+  const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview , reportReview } = ReviewApi();
+  const [reviewOne, setReviewOne] = useState<any>(); 
+  const {data, error, isLoading} = useQuery<any>({queryKey: ['reviewList'], queryFn: getReviewAll});  // 1개의 리뷰 리스트 밖에 못들어오기 때문에 array
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   // const [] = useState<string>(''); 리뷰 상세 가져오기
   const {userInfo} = userStore();
+  const [reportText, setReportText] = useState("");
   
   const contentHandler = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
@@ -49,7 +59,7 @@ const useReview = () =>{
       storeId: storeId,
       content: content,
       grade: rating,
-      memberId: userInfo.id
+      memberId: userInfo.memberId
     };
     console.log(reviewData);
 
@@ -60,7 +70,7 @@ const useReview = () =>{
     const reviewData = {
       content: content,
       grade: rating,
-      memberId: userInfo.id
+      memberId: userInfo.memberId
     };
 
     patchReview(reviewId, reviewData);
@@ -69,11 +79,25 @@ const useReview = () =>{
   const removeReview = (reviewId: number) => {
     deleteReview(reviewId);
   }
+
+  const handleTextareaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setReportText(event.target.value);
+  };
+
+  const createReport = (reviewId : number) => {
+    const reportData = {
+      reviewId: reviewId,
+      reportText: reportText
+    }
+    reportReview(reportData);
+  }
   
   return {
-    reviewOne, content, rating,
+    reviewOne, content, rating, reportText,
     contentHandler, handleStarClick,
-    fetchReviewOne, createReview, modifyReview, removeReview
+    fetchReviewOne, createReview, modifyReview, removeReview, data, handleTextareaChange,createReport
   }
 }
 
