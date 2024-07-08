@@ -30,7 +30,7 @@ const ReviewApi = () => {
 const getReviewOne = async (reviewId: number) => {
   const result = await axiosNonAuth.get(`/review/${reviewId}`);
 
-  return result;
+  return result.data;
 }
 
 // 용안이랑 완성한거
