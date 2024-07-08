@@ -139,6 +139,7 @@ const Slide = () => {
           spaceBetween={10}
           navigation={true}
           slidesPerView={5}
+          loop={true}
         >
           {data?
           <>
