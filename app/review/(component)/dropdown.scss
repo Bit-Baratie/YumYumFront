@@ -1,0 +1,41 @@
+.edit-list {
+    position: absolute;
+    width: 150px;
+    top: 80px;
+    right: 30px;
+    border: 1px solid #C7C7C7;
+    list-style: none;
+    border-radius: 10px;
+    line-height: 50px;
+    background-color: white;
+    z-index: 999;
+    text-align: center;
+    cursor: pointer;
+
+    li:hover {
+        // border-radius: 5px;
+        background-color: #F3F3F3;
+    }
+
+}
+
+.tlsrh {
+    border-bottom: 1px solid #C7C7C7;
+    border-radius: 10px 10px 0 0;
+    font-size: 25px;
+    padding: 10px;
+    height: 50px;
+}
+.tnwjd {
+    border-bottom: 1px solid #C7C7C7;
+    font-size: 25px;
+    padding: 10px;
+    height: 50px;
+}
+.tkrwp {
+    border-radius: 0 0 10px 10px;
+    font-size: 25px;
+    padding: 10px;
+    height: 50px;
+}
+
