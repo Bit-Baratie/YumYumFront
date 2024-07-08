@@ -11,6 +11,7 @@ import close from "../../../public/asset/image/close.png";
 import useReview from "@/app/(hooks)/review/useReview";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Router } from "next/router";
 
 const ReviewWrite: React.FC = () => {
   const { contentHandler, createReview, handleStarClick, rating } = useReview();
