@@ -59,7 +59,8 @@ const useReview = () =>{
       storeId: storeId,
       content: content,
       grade: rating,
-      memberId: userInfo.memberId
+      memberId: userInfo.memberId,
+      imageList: []
     };
     console.log(reviewData);
 

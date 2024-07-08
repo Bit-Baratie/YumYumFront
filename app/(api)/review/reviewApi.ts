@@ -28,7 +28,7 @@ const ReviewApi = () => {
 
 // 내가 하려는거...
 const getReviewOne = async (reviewId: number) => {
-  const result = await axiosNonAuth.get(`http://192.168.0.20:3000/review/${reviewId}`);
+  const result = await axiosNonAuth.get(`/review/${reviewId}`);
 
   return result;
 }
@@ -47,11 +47,11 @@ const getReviewOne = async (reviewId: number) => {
   }
 
   const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {
-    const result = await axiosWithAuth.patch(`${process.env.NEXT_PUBLIC_SERVER_IP}/review/${reviewId}`, patchReviewData)
+    const result = await axiosWithAuth.patch(`/review/${reviewId}`, patchReviewData)
   }
   
   const deleteReview = async (reviewId: number) => {
-    await axiosWithAuth.delete(`${process.env.NEXT_PUBLIC_SERVER_IP}/review/${reviewId}`)
+    await axiosWithAuth.delete(`/review/${reviewId}`)
   }
 
   const like = async ({liked}: {liked: likeType}) => {
