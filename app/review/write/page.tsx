@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import WriteStyle from "./write.module.scss";
 import Header from "@/app/header";
 import Image from "next/image";
@@ -9,10 +9,19 @@ import { CameraFilled, LeftOutlined } from "@ant-design/icons";
 // import Close from '../../../public/asset/image/close.png';
 import close from "../../../public/asset/image/close.png";
 import useReview from "@/app/(hooks)/review/useReview";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const ReviewWrite: React.FC = () => {
   const { contentHandler, createReview, handleStarClick, rating } = useReview();
   const [images, setImages] = useState<string[]>([]);
+  const searchParams = useSearchParams();
+  const [storeInfo, setStoreInfo] = useState();
+  // const storeInfo = JSON.parse(router.query.storeInfo);
+
+  useEffect(() => {
+    console.log(searchParams.get("storeId"));
+    // setStoreInfo(searchParams);
+  }, [storeInfo]);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -48,7 +57,9 @@ const ReviewWrite: React.FC = () => {
         <button className={WriteStyle.back}>
           <LeftOutlined />
         </button>
-        <div className={WriteStyle.storeName}>엄마 손 파이</div>
+        <div className={WriteStyle.storeName}>
+          {searchParams.get("storeName")}엄마 손 파이
+        </div>
         <div className={WriteStyle.star}>
           <Star rating={rating} handleStarClick={handleStarClick} />
         </div>
@@ -96,7 +107,10 @@ const ReviewWrite: React.FC = () => {
               </li>
             ))}
           </ul>
-          <button className={WriteStyle.submit} onClick={() => createReview(1)}>
+          <button
+            className={WriteStyle.submit}
+            onClick={() => createReview(Number(searchParams.get("storeId")))}
+          >
             작성완료
           </button>
         </div>
