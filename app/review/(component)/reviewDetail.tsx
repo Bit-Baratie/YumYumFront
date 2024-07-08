@@ -1,6 +1,6 @@
 "use client";
 
-import "../review.scss";
+import DetailStyle from "@/app/review/review.module.scss";
 import React, { useEffect, useState } from "react";
 // import Dropdown from "@/app/review/Dropdown";
 import Dropdown from "@/app/review/(component)/dropdown";
@@ -38,14 +38,14 @@ const Review = () => {
   return (
     <>
       <Header />
-      <div className="review">
-        <div className="top">
-          <button className="back" />
-          <div className="flqb">리뷰</div>
+      <div className={DetailStyle.review}>
+        <div className={DetailStyle.top}>
+          <button className={DetailStyle.back} />
+          <div className={DetailStyle.flqb}>리뷰</div>
           {/* 드롭다운 */}
-          <div className="dropdown">
+          <div className={DetailStyle.dropdown}>
             <button
-              className="edit"
+              className={DetailStyle.edit}
               onClick={() => {
                 setView(!view);
               }}
@@ -53,36 +53,42 @@ const Review = () => {
             {view && <Dropdown memberId={reviewOne?.memberId} />}
           </div>
         </div>
-        <div className="storeInfo">
-          <div className="sn">{reviewOne?.storeName}</div>
-          <div className="add">{reviewOne?.address}</div>
+        <div className={DetailStyle.storeInfo}>
+          <div className={DetailStyle.sn}>{reviewOne?.storeName}</div>
+          <div className={DetailStyle.add}>{reviewOne?.address}</div>
         </div>
-        <div className="ddd">
-          <div className="profile">
+        <div className={DetailStyle.ddd}>
+          <div className={DetailStyle.profile}>
             <Image
               src={"/"}
               width={100}
               height={100}
               alt="이미지"
-              className="profile-img"
+              className={DetailStyle.profileImg}
             />
-            <div className="profile-info">
-              <p className="profile-name">{reviewOne?.nickname}프로필 이름</p>
-              <p className="profile-date">{reviewOne?.createdAt}2020.20.20</p>
-              <p className="profile-star">
+            <div className={DetailStyle.profileInfo}>
+              <p className={DetailStyle.profileName}>
+                {reviewOne?.nickname}프로필 이름
+              </p>
+              <p className={DetailStyle.profileDate}>
+                {reviewOne?.createdAt}2020.20.20
+              </p>
+              <p className={DetailStyle.profileStar}>
                 별점: {reviewOne?.grade} &nbsp; 평균 별점: {reviewOne?.avgGrade}{" "}
                 ({reviewOne?.totalReviewCount})
               </p>
             </div>
           </div>
 
-          <LikeButton
-            reviewId={reviewOne?.reviewId}
-            likeStatus={reviewOne?.likeStatus}
-          />
+          <div className={DetailStyle.HeartPosition}>
+            <LikeButton
+              reviewId={reviewOne?.reviewId}
+              likeStatus={reviewOne?.likeStatus}
+            />
+          </div>
         </div>
-        <div className="review-content">{reviewOne?.content}</div>
-        <div className="review-image">
+        <div className={DetailStyle.reviewContent}>{reviewOne?.content}</div>
+        <div className={DetailStyle.reviewImage}>
           {reviewOne?.images?.map((imageUrl: string) => (
             <Image
               key={imageUrl}
@@ -90,7 +96,7 @@ const Review = () => {
               width={100}
               height={100}
               alt="리뷰이미지"
-              className="review-image-img"
+              className={DetailStyle.reviewImageImg}
             />
           ))}
         </div>
