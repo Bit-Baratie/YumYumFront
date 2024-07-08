@@ -8,10 +8,15 @@ import LikeButton from "@/app/(component)/likeButton";
 import ReviewItem from "@/app/(component)/reviewItem";
 // import useReview from "../(hooks)/review/useReview";
 // import useUserInfo from "@/app/(hooks)/useUserInfo";
-import Review from "@/app/review/(component)/reviewDetail";
+import Review from "@/app/review/(component)/reviewDetail";
 
-const ReviewId = () => {
-  return <Review />;
+const ReviewDatail = () => {
+  return (
+    <>
+      <Review />
+      <Comment />
+    </>
+  );
 };
 
-export default ReviewId;
+export default ReviewDatail;

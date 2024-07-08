@@ -1,8 +1,6 @@
 .ddd{
     display: flex;
     flex-direction: row;
-
-
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px 20px;
@@ -19,6 +17,14 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    position: absolute;
+    top: auto;
+    right: 30px;
+}
+.flqb{
+    position: absolute;
+    top: auto;
+    right: 45%;
 }
 
 .back {
@@ -28,6 +34,9 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    // position: absolute;
+    // top: auto;
+    // left: 30px;
 }
 
 .top {
@@ -39,10 +48,11 @@
 }
 
 .review {
+    position: relative;
     background-color: white;
     margin: 30px;
-    padding: 20px;
-    width: 660px;
+    // padding: 20px;
+    width: 700px;
     border: 3px solid lightgray;
     border-radius: 20px;
     text-align: center;
@@ -52,14 +62,17 @@
     padding: 0 30px 30px;
     line-height: 30px;
     text-align: start;
+    font-size: 23px;
 }
 
-.review-image {
-    padding: 30px;
-    // margin: auto;
-    // display: flex;
-    // justify-content: center;
-}
+// .review-image {
+//     padding: 30px;
+//     width: auto;
+//     height: auto;
+//     // margin: auto;
+//     // display: flex;
+//     // justify-content: center;
+// }
 .review-image-img {
     // display: flex; 
     float: left;
@@ -67,7 +80,65 @@
     height: 120px;
     border: 1px solid gray;
     border-radius: 10px;
-    margin: 5px;
+    margin: 35px;
 }
 
 
+.profile{
+    width: 700p;
+    height: 110px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.profile-img {
+    border: 1px solid rgb(193, 193, 193);
+    border-radius: 50%;
+}
+.profile-info {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* margin: 20px; */
+    padding: 10px 20px;
+    line-height: 34px;
+}
+
+.profile-name{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.profile-date{
+    
+}
+
+.profile-star{
+    color: gray;
+
+}
+
+.storeInfo {
+    color: rgb(255, 255, 255);
+    padding: 30px;
+    text-align: start;
+    width: calc(100% - 60px); 
+    background-color: #FFC657;
+    font-size: 25px;
+    line-height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .sn {
+    font-size: 35px;
+  }
+  
+  .add {
+    font-size: 20px;
+  }
+  

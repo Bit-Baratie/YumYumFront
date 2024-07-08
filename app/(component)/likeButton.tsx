@@ -1,27 +1,54 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { HeartOutlined, HeartFilled } from '@ant-design/icons';
-import ButtonStyle from './reviewItem.module.scss';
+import React, { useEffect, useState } from "react";
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
+import ButtonStyle from "./reviewItem.module.scss";
+import reviewApi from "../(api)/review/reviewApi";
 
-const LikeButton = () => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [notice, setNotice] = useState('');
+interface likeType {
+  status: boolean;
+  reviewId: number;
+}
+
+const LikeButton = ({
+  reviewId,
+  likeStatus,
+}: {
+  reviewId: number;
+  likeStatus: Boolean;
+}) => {
+  const [isChecked, setIsChecked] = useState<Boolean>(likeStatus);
+  const [notice, setNotice] = useState("");
+  const { like } = reviewApi();
+
+  useEffect(() => {
+    setIsChecked(likeStatus);
+  }, [likeStatus]);
 
   const onClick = () => {
     if (isChecked) {
       setIsChecked(false);
-      setNotice('');
     } else {
       setIsChecked(true);
-      // setNotice('좋아요 1');
     }
+  };
+
+  const postChecked = () => {
+    const liked: likeType = { status: !isChecked, reviewId: reviewId };
+    like({ liked });
+    // console.log(liked);
   };
 
   return (
     <>
       {/* <div className='icons-list' onClick={onClick}> */}
-      <div className={ButtonStyle.iconsList} onClick={onClick}>
+      <div
+        className={ButtonStyle.iconsList}
+        onClick={() => {
+          onClick();
+          postChecked();
+        }}
+      >
         {isChecked ? (
           <HeartFilled className={ButtonStyle.redBtn} />
         ) : (
