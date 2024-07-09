@@ -2,7 +2,7 @@
 
 import ReviewApi from "@/app/(api)/review/reviewApi";
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
 import { useSearchParams, useRouter } from "next/navigation";
 
@@ -14,6 +14,20 @@ interface ReviewData {
   content: string;
   grade: number;
   writeTime: Date;
+}
+
+interface GetReviewOne {
+  reviewId: number;
+  imageUrl: string;
+  nickname: string;
+  createdAt: string;
+  reviewTotalCount: number;
+  grade: number;
+  avgGrade: number;
+  storeName: string;
+  address: string;
+  content: string;
+  images: string[];
 }
 
 interface ReviewList {
@@ -30,7 +44,23 @@ interface ReportData {
 const useReview = () => {
   const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview, reportReview } = ReviewApi();
   const [reviewOne, setReviewOne] = useState<any>(); 
-  const { data, error, isLoading } = useQuery({ queryKey: ['reviewList'], queryFn: () => getReviewAll({pageNumber: Number(searchParams.get('pageNumber'))}) });
+  // const { data, error, isLoading } = useQuery({ queryKey: ['reviewList'], queryFn: () => getReviewAll({pageNumber: Number(searchParams.get('pageNumber'))}) });
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status
+  } = useInfiniteQuery<any, GetReviewOne[]>({
+    queryKey: ['reviewList'],
+    queryFn: ({pageParam}) => getReviewAll({pageNumber:pageParam}),
+    initialPageParam: 0,
+    getNextPageParam: (data) => {
+        return data.last? undefined: data.pageable.pageNumber+1;
+    }
+  })
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const { userInfo } = userStore();
@@ -103,7 +133,8 @@ const useReview = () => {
   return {
     reviewOne, content, rating, reportText,
     contentHandler, handleStarClick,
-    fetchReviewOne, createReview, modifyReview, removeReview, data, handleTextareaChange, createReport
+    fetchReviewOne, createReview, modifyReview, removeReview, data, handleTextareaChange, createReport,
+    fetchNextPage
   }
 }
 

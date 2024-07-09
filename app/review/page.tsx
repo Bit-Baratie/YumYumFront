@@ -18,7 +18,7 @@ interface GetReviewOne {
   imageUrl: string;
   nickname: string;
   createdAt: string;
-  totalReviewCount: number;
+  reviewTotalCount: number;
   grade: number;
   avgGrade: number;
   storeName: string;
@@ -28,17 +28,17 @@ interface GetReviewOne {
 }
 
 const Review = () => {
-  const { data } = useReview();
+  const { data, fetchNextPage } = useReview();
 
   return (
     <>
       <Headers />
-      {data && data.content.length > 0?
+      {data && data.pages.content.length > 0?
       <>
-      {data?.content?.map((reviewItem: GetReviewOne) => {
+      {data?.pages.content?.map((reviewItem: GetReviewOne) => {
         return(
-          <Link href={`/review/${reviewItem.reviewId}`}>
-            <ReviewItem key={reviewItem.reviewId} reviewItem={reviewItem} />
+          <Link key={reviewItem.reviewId} href={`/review/${reviewItem.reviewId}`}>
+            <ReviewItem reviewItem={reviewItem} />
           </Link>);
       })}</>:<div>작성된 리뷰가 없습니다</div>
     }

@@ -2,40 +2,52 @@
 
 import { useEffect } from "react";
 import '@/app/test/style.scss';
+import useImage from "../(hooks)/common/useImage";
+import Image from "next/image";
+import { Solitreo } from "next/font/google";
+import axios from "axios";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { group } from "console";
+import { initialize } from "next/dist/server/lib/render-server";
+import useReview from "../(hooks)/review/useReview";
+import ReviewApi from "../(api)/review/reviewApi";
+
+interface ReviewData {
+  nickname: string;
+  reviewCount: number;
+  gradeAvg: number;
+  profileImg: string;
+  content: string;
+  grade: number;
+  writeTime: Date;
+}
 
 const Test = () => {
-  let lat = 37.359531;
-  let lng = 127.1052133;
+  const {getReviewAll} = ReviewApi();
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status
+  } = useInfiniteQuery<any>({
+    queryKey: ['reviewList'],
+    queryFn: ({pageParam}) => getReviewAll({pageNumber:pageParam}),
+    initialPageParam: 0,
+    getNextPageParam: (data) => {
+        return data.last? undefined: data.pageable.pageNumber+1;
+    }
+  })
 
-  useEffect(() => {
-    const location = new naver.maps.LatLng(lat, lng);
-    //지도 그리기
-    const map = new naver.maps.Map('map', {
-      center: location,
-      zoomControl: true,   // 줌 설정
-      zoom: 15,
-      zoomControlOptions: {
-        style: naver.maps.ZoomControlStyle.SMALL,
-        position: naver.maps.Position.TOP_RIGHT,
-      },
-    });
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const currentLocation = new naver.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        new naver.maps.Marker({
-          position: currentLocation,
-          map: map,
-          title: "Your Location",
-        });
-
-        // 지도 첫 접속 시 사용자의 현 위치로 중심이 오도록 추가했습니다!
-        map.setCenter(currentLocation);
-      })};
-  }, [lat, lng]);
+  console.log(data)
 
   return (
-    <div id="map"></div>
+    <div>
+      {status === 'error' && <p>{error.message}</p>}
+      <button onClick={() => fetchNextPage()}>더 불러오기</button>
+    </div>
   );
 }
 
