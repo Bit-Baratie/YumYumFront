@@ -30,17 +30,6 @@ interface GetReviewOne {
   images: string[];
 }
 
-interface ReviewList {
-  id: number;
-  content: string;
-  grade: number;
-}
-
-interface ReportData {
-  reviewId: number;
-  reportText: string;
-}
-
 const useReview = () => {
   const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview, reportReview } = ReviewApi();
   const [reviewOne, setReviewOne] = useState<any>(); 
@@ -53,7 +42,7 @@ const useReview = () => {
     isFetching,
     isFetchingNextPage,
     status
-  } = useInfiniteQuery<any, GetReviewOne[]>({
+  } = useInfiniteQuery<any>({
     queryKey: ['reviewList'],
     queryFn: ({pageParam}) => getReviewAll({pageNumber:pageParam}),
     initialPageParam: 0,
