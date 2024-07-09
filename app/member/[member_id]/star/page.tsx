@@ -11,21 +11,15 @@ interface store {
   totalReviewCount: number;
   imageUrl: string;
   views: number;
-  hashtags: hashtagListType[];
+  hashtags: string[];
   categoryName: string,
   avgGrade: number;
   favoriteStatus: boolean;
 }
 
-interface hashtagListType {
-  id: number,
-  content: string
-}
-
-
 const StarPage = () => {
   const {likeStoreList} = useMember();
-  
+
   return (
     <>
     {likeStoreList && likeStoreList.content.length > 0?

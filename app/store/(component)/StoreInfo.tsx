@@ -64,7 +64,7 @@ const StoreInfo = ({ store }: { store: store }) => {
             <div>{store.address}</div>
           </div>
           <div className='hashTagList'>
-            {store.hashtags.map((tag, index) => (
+            {store.hashtags?.map((tag, index) => (
               <div key={index} className='hashTag'>{tag}</div>
             ))}
           </div>
