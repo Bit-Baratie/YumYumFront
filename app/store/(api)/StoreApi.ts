@@ -13,7 +13,7 @@ interface store {
   categoryName: string,
   views: number,
   imageUrl: string,
-  hashtags: hashtagListType[],
+  hashtags: string[],
   favoriteStatus: boolean,
   avgGrade: number,
   hours: string,
@@ -27,17 +27,11 @@ interface menuListType {
   name: string,
   price: number
 }
-interface LikeInfo {
-  favoriteStatus: boolean
-}
 interface pageNumber {
   totalPages: number,
   currentPages: number
 }
-interface hashtagListType {
-  id: number,
-  content: string
-}
+
 //나의 위도 경도
 interface location {
   latitude: number,
@@ -60,43 +54,12 @@ export interface SearchResponse {
 const useStoreApi = () => {
   const { axiosWithAuth, axiosNonAuth } = useAxiosWithAuth();
 
-
   const getStoreInfo = async (location: location) => {
-    const result: Array<store> = await axios.get(`http://localhost:3000/store?long=${location.longitude}&&lat=${location.latitude}`)
-    // .then((res) => {
-    //   return res.data;
-    // }).catch((err) => {
-    //   console.log(err);
-    //   alert("다시 시도해주세요.");
-    // });
-
-    //store 정보
-    return [{
-      storeId: 1,
-      name: "창고43 강남점",
-      address: "서울특별시 강남구 강남대로 362",
-      totalFavoriteCount: 6,
-      totalReviewCount: 14,
-      imageUrl: "/",
-      categoryName: "양식",
-      views: 55,
-      hashtags: [{
-        id: 1,
-        content: "맛집"
-      },
-      {
-        id: 2,
-        content: "쓰레기"
-      }],
-      favoriteStatus: false,
-      avgGrade: 3.1,
-      totalPage: 10,
-      currentPage: 1,
-      latitude: 37.359531,
-      longitude: 127.1052133,
-    }]
+    const result = await axiosWithAuth.get(`/store?lng=${location.longitude}&&lat=${location.latitude}`)
+    console.log(result)
+    return result.data
   }
-  const postStoreLike = async (isFavorite: LikeInfo) => {
+  const postStoreLike = async (isFavorite: boolean) => {
     // const result = await axios.post(`http://localhost:3000/star/${storeId}`,isFavorite)
     // .then((res) =>{
     //     return res.data;
@@ -244,20 +207,13 @@ const useStoreApi = () => {
 
     console.log(storeId)
     // const storeId = 1;
-    const result = await axios.get(`http://192.168.0.20:3000/store/${storeId}`)
-      .then((res) => {
-        console.log(res.data);
-        return res.data
-      }).catch((err) => {
-        alert("다시 한 번 시도하세요.")
-        console.log(err);
-      })
-    return result;
+    const result = await axiosWithAuth.get(`/store/${storeId}`)
+    return result.data
   };
   const postStar = async (data: data) => {
     const result = await axiosWithAuth.post("/star", data)
     console.log("요청 전송 완료" + data)
-    return result;
+    return result.data
   }
 
 

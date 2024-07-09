@@ -8,7 +8,7 @@ import StoreApi from "@/app/store/(api)/StoreApi";
 const useStore = () => {
   const { userInfo } = Store();
   const [storeImage, setStoreImage] = useState<string>('');
-  const [storeId, setStoreId] = useState<string>('');
+  const [storeId, setStoreId] = useState<Array<number>>([]);
   const [storeName, setStoreName] = useState<string>('');
   const [grade, setGrade] = useState<string>('');
   const [like, setLike] = useState<string>('');
@@ -19,7 +19,6 @@ const useStore = () => {
 
 
   const favoriteHandler = (isFavorite: boolean) => {
-    console.log("이전 상태 : ", favorite); // 현재 상태 출력
     setFavorite(currentFavorite => !currentFavorite); // 상태 토글
   };
 
