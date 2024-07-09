@@ -15,7 +15,7 @@ interface store {
   totalReviewCount: number;
   imageUrl: string;
   views: number;
-  hashtags: hashtagListType[];
+  hashtags: string[];
   categoryName: string,
   avgGrade: number;
   favoriteStatus: boolean;
@@ -25,46 +25,36 @@ interface location {
   latitude: number,
   longitude: number,
 }
-interface hashtagListType {
-  id: number,
-  content: string
-}
+
 const StoreList = () => {
-
+  // const { storeId, setStoreId } = useStore();
   const { getStoreInfo } = useStoreApi();
-  const { keyword, data } = useSearch();
+  const { data } = useSearch();
   const [storeList, setStoreList] = useState<Array<store> | undefined>([]);
-
-
+  console.log(storeList);
   useEffect(() => {
     const fetchStoreInfo = async () => {
-      let latitude = 37.359531;
-      let longitude = 127.1052133;
+      let latitude = 37.4995961;
+      let longitude = 127.0289929;
 
       const location = { longitude, latitude };
       try {
-        const keywordResult: store[] = await search(keyword);
         console.log(data);
         const StoreInfoResult = await getStoreInfo(location)
-
-
-        // setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
+        setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
         if (data?.length !== 0) {
-          console.log("b")
+          console.log("키워드 검색 완료")
           setStoreList(data)
         } else {
-          console.log("a")
-          setStoreList(StoreInfoResult);
+          console.log("최초 리스트 완료")
+          setStoreList(StoreInfoResult)
         }
-
       } catch (error) {
         console.error("Error fetching store info:", error);
       }
     };
-
     fetchStoreInfo();
-  }, [storeList]);
-
+  }, [data, setStoreList]);
   if (storeList?.length === 0) {
     return (
       <div id="storeList">
@@ -87,7 +77,7 @@ const StoreList = () => {
     <div id="storeList">
       <div id="searchStoreNumber">
         {/* Span에 검색결과 계산해서 가져와야함 */}
-        <div><span>1</span>건의 검색결과가 있습니다.</div>
+        <div><span>{storeList?.length}</span>건의 검색결과가 있습니다.</div>
       </div>
       <div className="StoreListMap">
         {storeList?.map(store => (

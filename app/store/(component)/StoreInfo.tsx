@@ -17,7 +17,7 @@ interface store {
   totalReviewCount: number;
   imageUrl: string;
   views: number;
-  hashtags: hashtagListType[];
+  hashtags: string[];
   categoryName: string,
   avgGrade: number;
   favoriteStatus: boolean;
@@ -26,10 +26,6 @@ interface store {
 interface data {
   favoriteStatus: boolean,
   storeId: number
-}
-interface hashtagListType {
-  id: number,
-  content: string
 }
 
 const { postStar } = useStoreApi();
@@ -68,8 +64,8 @@ const StoreInfo = ({ store }: { store: store }) => {
             <div>{store.address}</div>
           </div>
           <div className='hashTagList'>
-            {store.hashtags.map((tag: hashtagListType) => (
-              <div key={tag?.id} className='hashTag'>#{tag?.content}</div>
+            {store.hashtags.map((tag, index) => (
+              <div key={index} className='hashTag'>{tag}</div>
             ))}
           </div>
         </div>

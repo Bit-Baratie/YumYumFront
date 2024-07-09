@@ -14,12 +14,13 @@ interface store {
   storeId: number,
   name: string,
   address: string,
-  favoriteCount: number,
-  reviewCount: number,
+  totalFavoriteCount: number,
+  totalReviewCount: number,
   imageList: Image[],
-  categoryList: string[],
+  categoryName: string,
   views: number,
-  hashtagList: hastagListType[],
+  imageUrl: string,
+  hashtags: string[],
   favoriteStatus: boolean,
   avgGrade: number,
   hours: string,
@@ -32,10 +33,6 @@ interface location {
 }
 interface Image {
   imageUrl: string; // 이미지의 URL,
-}
-interface hastagListType {
-  id: number,
-  content: string
 }
 interface menuListType {
   id: number,
@@ -62,8 +59,8 @@ const StoreDetail = () => {
     const fetchStoreDetail = async () => {
       const StoreInfoResult = await StoreDetailInfo(Number(storeId));
       setStoreList(StoreInfoResult);
-      setFavorite(StoreInfoResult.isFavorite);
-      console.log("초기값" + StoreInfoResult.isFavorite);
+      setFavorite(StoreInfoResult.favoriteStatus);
+      console.log("초기값" + StoreInfoResult.favoriteStatus);
     };
     if (storeId) {
       fetchStoreDetail();
@@ -98,8 +95,8 @@ const StoreDetail = () => {
         <div className="storeInfoDetail">
           <div className="storeNameDetail">
             <span>{storeList.name}</span>
-            <div>★{storeList.avgGrade}({storeList.reviewCount})</div>
-            <div>♥️{storeList.favoriteCount}</div>
+            <div>★{storeList.avgGrade}({storeList.totalReviewCount})</div>
+            <div>♥️{storeList.totalFavoriteCount}</div>
             <div>👀{storeList.views}</div>
           </div>
           <div className="storeHour">
@@ -116,8 +113,8 @@ const StoreDetail = () => {
           </div>
         </div>
         <div className="storeHashTag">
-          {storeList.hashtagList.map((tag: hastagListType) => {
-            return (<div key={tag.id} className='hashTag'>{tag.content}</div>)
+          {storeList.hashtags?.map((tag, index) => {
+            return (<div key={index} className='hashTag'>{tag}</div>)
           })}
         </div>
         <div id="navBtn">
