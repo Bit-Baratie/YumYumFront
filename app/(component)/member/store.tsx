@@ -6,13 +6,13 @@ interface StoreType {
   id: number,
   name: string,
   address: string,
-  favoriteNumber: number,
+  totalFavoriteCount: number,
   reviewNumber: number,
   imageUrl: string,
   categoryList: string[],
   views: number,
   hashTagList: string[],
-  grade: number,
+  avgGrade: number,
   isFavorite: boolean,
 }
 
@@ -35,9 +35,9 @@ const Store = ({item}: {item:StoreType}) => {
   return (
     <Link href={`/store/${item.id}`}>
       <div className={StoreStyle.container}>
-        <Image src={item.imageUrl} width={170} height={110} alt="가게이미지"/>
+        <Image src={'/'} width={170} height={110} alt="가게이미지"/>
         <div className={StoreStyle.name}>{item.name}</div>
-        <div><span>⭐️{item.grade}</span><span>❤️{item.favoriteNumber}</span></div>
+        <div><span>⭐️{item.avgGrade}</span><span>❤️{item.totalFavoriteCount}</span></div>
       </div>
     </Link>
   );
