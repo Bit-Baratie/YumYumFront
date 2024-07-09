@@ -19,6 +19,8 @@ interface store {
   categoryName: string,
   avgGrade: number;
   favoriteStatus: boolean;
+  latitude: number,
+  longitude: number,
 }
 
 interface location {

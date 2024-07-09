@@ -21,8 +21,13 @@ interface store {
   categoryName: string,
   avgGrade: number;
   favoriteStatus: boolean;
+  latitude: number,
+  longitude: number,
 }
-
+interface location {
+  latitude: number,
+  longitude: number,
+}
 interface data {
   favoriteStatus: boolean,
   storeId: number
