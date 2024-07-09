@@ -143,7 +143,7 @@ const Slide = () => {
         >
           {data?
           <>
-          {data.map((item:StoreType) => {
+          {data.data.map((item:StoreType) => {
             return(<SwiperSlide key={item.storeId}>
               <Link href={`/store/${item.storeId}`}>
               <Item item={item}/>
