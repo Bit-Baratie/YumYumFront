@@ -9,7 +9,7 @@ const postLoginInfo = async (loginInfo: info) => {
   const {axiosNonAuth} = useAxiosWithAuth();
   const result = await axiosNonAuth.post(`/member/login`, loginInfo)
 
-  return result;
+  return result.data;
 }
 
 export default postLoginInfo;
