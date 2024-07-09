@@ -28,7 +28,7 @@ interface GetReviewOne {
   imageUrl: string;
   nickname: string;
   createdAt: string;
-  totalReviewCount: number;
+  reviewTotalCount: number;
   grade: number;
   avgGrade: number;
   storeName: string;
@@ -42,10 +42,10 @@ const ReviewItem = ({ reviewItem }: { reviewItem: GetReviewOne }) => {
     <div className={reviewStyle.reviewItem}>
       <div className={reviewStyle.storeInfo}>
         <span className={reviewStyle.storeName}>
-          {reviewItem?.storeName}엽기떡볶이
+          {reviewItem?.storeName}
         </span>
         <span className={reviewStyle.addr}>
-          {reviewItem?.address}서울 강남구 강남대로 20
+          {reviewItem?.address}
         </span>
       </div>
 
@@ -61,15 +61,15 @@ const ReviewItem = ({ reviewItem }: { reviewItem: GetReviewOne }) => {
           />
           <div className={reviewStyle.profileInfo}>
             <p className={reviewStyle.profileName}>
-              {reviewItem?.nickname}프로필 이름
+              {reviewItem?.nickname}
             </p>
             <p className={reviewStyle.profileDate}>
-              {reviewItem?.createdAt}2020.20.20
+              {reviewItem?.createdAt}
             </p>
             <p className={reviewStyle.profileStar}>
               별점: {reviewItem?.grade}
               &nbsp; 평균 별점: {reviewItem?.avgGrade}(
-              {reviewItem?.totalReviewCount})
+              {reviewItem?.reviewTotalCount})
             </p>
           </div>
           {/* <LikeButton reviewId={reviewItem?.reviewId} /> */}
