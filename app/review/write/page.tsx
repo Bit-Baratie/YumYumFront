@@ -10,6 +10,7 @@ import { CameraFilled, LeftOutlined } from "@ant-design/icons";
 import close from "../../../public/asset/image/close.png";
 import useReview from "@/app/(hooks)/review/useReview";
 import { useRouter, useSearchParams } from "next/navigation";
+import useImage from "@/app/(hooks)/common/useImage";
 
 interface GetReviewOne {
   id: number;
@@ -27,7 +28,6 @@ interface GetReviewOne {
 
 const ReviewWrite = () => {
   const { contentHandler, createReview, handleStarClick, rating, modifyReview } = useReview();
-  const [images, setImages] = useState<string[]>([]);
   const searchParams = useSearchParams();
   let defaultData = {
     storeName: searchParams.get('storeName'),
@@ -37,6 +37,7 @@ const ReviewWrite = () => {
     grade: 0
   };
   const [storeInfo, setStoreInfo] = useState(defaultData);
+  const {image, imageHandler, preview, removeImg} = useImage();
 
 
   useEffect(() => {
@@ -47,41 +48,6 @@ const ReviewWrite = () => {
       handleStarClick(patchData.grade-1);
     }
   }, []);
-
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (!files) return;
-
-    const newImages: string[] = [];
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        if (reader.result) {
-          newImages.push(reader.result as string);
-          if (newImages.length === files.length) {
-            setImages((prevImages) => [...prevImages, ...newImages]);
-          }
-        }
-      };
-
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const removeImg = (index: number) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-  };
-
-  // const handleSubmit = async () => {
-  //   const storeId = Number(searchParams.get("storeId"));
-  //   const response = await createStore(storeId);
-  //   if (response.status === 201) {
-  //     router.push("/review");
-  //   }
-  // };
 
   return (
     <>
@@ -118,11 +84,12 @@ const ReviewWrite = () => {
             type="file"
             id="fileInput"
             style={{ display: "none" }}
-            onChange={handleFileChange}
+            onChange={imageHandler}
             multiple
+            accept="image/*"
           />
           <ul className={WriteStyle.imgList}>
-            {images.map((src, index) => (
+            {preview.map((src:any, index:number) => (
               <li key={index}>
                 {/* 삭제 버튼 만들기 */}
                 <button

@@ -28,10 +28,16 @@ const useImage = () => {
     }
   }
 
+  const removeImg = (index: number) => {
+    setImage((image) => image.filter((_, i) => i !== index));
+    setPreview((prevImage: any[]) => prevImage.filter((_, i) => i !== index));
+  };
+
   return {
     image,
     preview,
-    imageHandler
+    imageHandler,
+    removeImg
   }
 }
 
