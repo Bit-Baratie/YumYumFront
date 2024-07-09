@@ -23,9 +23,6 @@ interface store {
   favoriteStatus: boolean;
 }
 
-interface StoreInfoProps {
-  store: store
-}
 interface data {
   favoriteStatus: boolean,
   storeId: number
@@ -37,7 +34,7 @@ interface hashtagListType {
 
 const { postStar } = useStoreApi();
 
-const StoreInfo = ({ store }: StoreInfoProps) => {
+const StoreInfo = ({ store }: { store: store }) => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
 
   const data: data = { favoriteStatus: favorite, storeId: store.storeId }
