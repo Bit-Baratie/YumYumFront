@@ -21,32 +21,32 @@ const MemberApi = () => {
 
   const getProfile = async () => {
     const result = await axiosWithAuth.get(`/member`)
-    return result;
+    return result.data;
   }
   
   const getMyReview = async (pageNumber: number) => {
-    const result = await axiosWithAuth.get(`/review/myreivew/pageNumber=${pageNumber}`);
-    return result;
+    const result = await axiosWithAuth.get(`/review/myReview?pageNumber=${pageNumber}`);
+    return result.data;
   }
   
   const getMyReply = async (pageNumber: number) => {
     const result = await axiosWithAuth.get(`/reply/myreply?pageNumber=${pageNumber}`);
-    return result;
+    return result.data;
   }
   
   const getLikeStore = async (pageNumber: number) => {
     const result = await axiosWithAuth.get(`/store/favorite?pageNumber=${pageNumber}`);
-    return result;
+    return result.data;
   }
   
   const getLikeReview = async (pageNumber: number) => {
     const result = await axiosWithAuth.get(`/review/likeReview?pageNumber=${pageNumber}`);
-    return result;
+    return result.data;
   }
 
   const patchMember = async ({data}: {data: PatchType}) => {
     const result = await axiosWithAuth.patch(`/member`, data);
-    return result;
+    return result.data;
   }
 
   const deleteMember = () => {

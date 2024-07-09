@@ -4,10 +4,11 @@ import userStore from "../userStore";
 import MemberApi from "@/app/(api)/member/memberApi";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
-  const {userInfo} = userStore();
+  const {userInfo, deleteUserInfo} = userStore();
   const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile()});
   const {data: myReviewList} = useQuery({queryKey: ['myReview', userInfo.memberId], queryFn: () => getMyReview(0)});
   const {data: myReplyList} = useQuery({queryKey: ['myReply', userInfo.memberId], queryFn: () => getMyReply(0)});
@@ -19,14 +20,12 @@ const useMember = () => {
   const [passwordCheck, setPasswordCheck] = useState('');
   const [phone, setPhone] = useState('');
   const [updateModal, setUpdateModal] = useState(false);
-  const [deleteModal, setDeleteModal] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     setImageUrl('/');
     setNickName(userInfo.nickName);
     setPhone(userInfo.phoneNumber);
-    console.log(userInfo.memberId)
   }, [userInfo.nickName, userInfo.phoneNumber, userInfo.profileUrl])
 
   const imageHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -74,8 +73,20 @@ const useMember = () => {
   }
 
   const removeMember = () => {
-    deleteMember();
-    router.push('/');
+    Swal.fire({
+      title: "정말 탈퇴하시겠습니까?",
+      text: '탈퇴 버튼 선택 시,  계정은 삭제되며 복구되지 않습니다.',
+      showCancelButton: true,
+      confirmButtonText: "탈퇴",
+      icon: 'warning'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteMember();
+        deleteUserInfo();
+        Swal.fire("탈퇴가 완료되었습니다", "", "success");
+        router.push('/');
+      }
+    });
   }
 
   return {
@@ -87,7 +98,6 @@ const useMember = () => {
     nickName,
     phone,
     updateModal,
-    deleteModal,
     imageHandler,
     nickNameHandler,
     passwordHanler,
@@ -95,8 +105,7 @@ const useMember = () => {
     phoneHandler,
     updateMember,
     removeMember,
-    setUpdateModal,
-    setDeleteModal
+    setUpdateModal
   }
 }
 

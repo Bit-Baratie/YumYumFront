@@ -37,7 +37,7 @@ const UpdateModal = (
         <div className={ModalStyle.img}></div>
 
         <div>
-          <input type="text" value={nickName} className={ModalStyle.nickname} onChange={(e) => nickNameHandler(e)}/>
+          <input type="text" defaultValue={nickName} className={ModalStyle.nickname} onChange={(e) => nickNameHandler(e)}/>
           <span>연필</span>
         </div>
 
@@ -45,7 +45,7 @@ const UpdateModal = (
           <div className={ModalStyle.inputSet}>
             <span className={ModalStyle.label}>연락처</span>
             <div className={ModalStyle.inputBox}>
-              <input type="text" className={ModalStyle.input} onChange={(e) => phoneHandler(e)}/>
+              <input type="text" defaultValue={phone} className={ModalStyle.input} onChange={(e) => phoneHandler(e)}/>
               <span>연필</span>
             </div>
           </div>

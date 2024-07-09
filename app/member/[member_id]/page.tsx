@@ -21,14 +21,13 @@ const Mypage = () => {
     passwordCheckHanler,
     phoneHandler,
     updateMember,
+    removeMember,
     nickName,
     phone,
     updateModal,
-    deleteModal,
-    setUpdateModal,
-    setDeleteModal} = useMember();
+    setUpdateModal} = useMember();
   const pathname = usePathname();
-  console.log(profile)
+
   return (
     <>
       <div className={MemberPageStyle.dashboardWrapper}>
@@ -38,13 +37,13 @@ const Mypage = () => {
           <div className={MemberPageStyle.profile}>
             <Image src={'/'} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage}/>
             <div className={MemberPageStyle.profileInfo}>
-              <span>{profile.nickName} <span onClick={() => setUpdateModal(!updateModal)}>연필</span></span>
-              <span>{profile.email}</span>
-              <span>{profile.phoneNumber}</span>
+              <div className={MemberPageStyle.nickname}>{profile.nickName}<Image src={'/asset/image/pencil.png'} width={15} height={15} alt='연필' onClick={() => setUpdateModal(!updateModal)}/></div>
+              <div>{profile.email}</div>
+              <div>{profile.phoneNumber}</div>
             </div>
           </div>
           <div className={MemberPageStyle.btnContainer}>
-            <button className={MemberPageStyle.btn} onClick={() => setDeleteModal(!deleteModal)}>회원탈퇴</button>
+            <button className={MemberPageStyle.btn} onClick={removeMember}>회원탈퇴</button>
           </div>
           </>
           }
@@ -52,7 +51,7 @@ const Mypage = () => {
         </div>
 
         <Wrapper title={'내가 쓴 리뷰'} link={`${pathname}/review`}>
-          {myReviewList?<ReviewContainer myReviewList={myReviewList}/>:'리뷰가 없습니다'}
+          {myReviewList?<ReviewContainer myReviewList={myReviewList.content}/>:'리뷰가 없습니다'}
         </Wrapper>
 
         <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`} totalCnt={likeReviewList?.numberOfElements}>
@@ -64,7 +63,7 @@ const Mypage = () => {
         </Wrapper>
 
         <Wrapper title={'즐겨찾기한 맛집'} link={`${pathname}/star`}>
-          {likeStoreList?<StoreContainer likeStoreList={likeStoreList}/>:'즐겨찾기한 맛집이 없습니다'}
+          {likeStoreList?<StoreContainer likeStoreList={likeStoreList.content}/>:'즐겨찾기한 맛집이 없습니다'}
         </Wrapper>
         
         {updateModal? <UpdateModal
