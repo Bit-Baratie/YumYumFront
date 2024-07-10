@@ -1,8 +1,7 @@
 import Naver from '@/public/asset/image/naver.svg';
 
 export const NaverLogin = () => {
-  const STATE = "false";
-  const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.NAVER_CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`;
+  const NAVER_AUTH_URL = `http://192.168.0.20:3000/oauth2/authorization/naver`;
 
   const naverLogin = () => {
     window.location.href = NAVER_AUTH_URL;
