@@ -1,42 +1,16 @@
 import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
-
-interface patchReviewType {
-  content: string;
-  grade: number;
-  memberId: number;
-}
-
-interface PostReview {
-  storeId: number;
-  content: string;
-  grade: number;
-  imageList: any[]|null;
-}
-
-interface likeType {
-  status: boolean;
-  reviewId: number;
-}
-
-interface ReportData {
-  reviewId: number;
-  reportText: string;
-}
+import { patchReviewType, postReviewType, likeReviewType, reportType } from "@/app/type";
 
 const ReviewApi = () => {
   const {axiosWithAuth, axiosNonAuth} = useAxiosWithAuth();
 
-// 내가 하려는거...
-const getReviewOne = async (reviewId: number) => {
-  const result = await axiosNonAuth.get(`/review/${reviewId}`);
+  const getReviewOne = async (reviewId: number) => {
+    const result = await axiosNonAuth.get(`/review/${reviewId}`);
+    return result.data;
+  }
 
-  return result.data;
-}
-
-// 용안이랑 완성한거
-  const postReview = async ({postReviewData}: {postReviewData: PostReview}) => {
+  const postReview = async ({postReviewData}: {postReviewData: postReviewType}) => {
     const result = await axiosWithAuth.post(`/review`, postReviewData)
-  
     return result;
   }
 
@@ -53,18 +27,17 @@ const getReviewOne = async (reviewId: number) => {
     await axiosWithAuth.delete(`/review/${reviewId}`)
   }
 
-  const like = async ({liked}: {liked: likeType}) => {
+  const like = async ({liked}: {liked: likeReviewType}) => {
     console.log(liked);
     await axiosWithAuth.post(`/like`, liked)
   }
   
-  const reportReview = async (reportData: ReportData) => {
+  const reportReview = async (reportData: reportType) => {
     await axiosWithAuth.post(`/notice`, reportData );
   };
 
   const getReviewBySroteId = async (storeId: number) => {
     const result = await axiosNonAuth.get(`/review/store/${storeId}`);
-
     return result;
   }
 
