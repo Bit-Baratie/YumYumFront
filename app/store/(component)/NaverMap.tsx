@@ -6,6 +6,8 @@ import Script from "next/script";
 import { useEffect, useRef } from "react";
 import useStoreApi from "@/app/store/(api)/StoreApi";
 import { initializeMap } from './mapInitializer';
+import useSearch from '@/app/(hooks)/common/useSearch';
+import { useParams, usePathname } from 'next/navigation';
 
 interface store {
   storeId: number,
@@ -40,19 +42,16 @@ interface location {
 }
 const TestMap = () => {
 
-
+  const { data } = useSearch();
   const { getStoreInfo } = useStoreApi();
   let latitude = 37.4995961;
   let longitude = 127.0289929;
   let map: naver.maps.Map;
 
-
   const LatLng: location = { latitude, longitude };
-
   useEffect(() => {
     const MapRender = async () => {
-      const result = await getStoreInfo(LatLng);
-      // const detailResult = await StoreDetailInfo();
+      const result = data ? data : await getStoreInfo(LatLng);
       const location = new naver.maps.LatLng(latitude, longitude);
 
 
@@ -110,9 +109,10 @@ const TestMap = () => {
 
 
       myLocation(map);
+      console.log(result);
     };
     MapRender();
-  }, [])
+  }, [data])
 
 
 
