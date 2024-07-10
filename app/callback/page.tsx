@@ -3,20 +3,21 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { naverApi } from "../(api)/member/socialApi";
 import userStore from "../(hooks)/userStore";
+import { useRouter } from "next/navigation";
 
 const Callback = () => {
   const searchParams = useSearchParams();
-  const code = searchParams.get('code');
-  const {setUserInfo} = userStore();
+  const atk: any = searchParams.get('atk');
+  const rtk: any = searchParams.get('rtk');
+  const router = useRouter();
+  const { setToken } = userStore();
 
     useEffect(() => {
-      const setToken = async () => {
-        console.log(code)
-        const res = await naverApi(code);
-        setUserInfo(res.jwt);
-      }
-      
-      setToken();
+      setToken({
+        atk: atk,
+        rtk: rtk
+      });
+      router.push('/');
   }, [])
 
   return (
