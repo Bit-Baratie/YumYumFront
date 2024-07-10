@@ -1,32 +1,41 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-interface UserInfoType {
-  memberId: number;
+interface userInfoType {
   profileUrl: string;
   nickName: string;
   phoneNumber: string;
-  atk: any;
-  rtk: any;
 }
 
-interface UserInfoState {
-  userInfo: UserInfoType;
+interface tokenType{
+  atk: string;
+  rtk: string;
 }
 
-interface UserInfoActions {
-  setUserInfo: (userInfo: UserInfoType) => void
-  deleteUserInfo: () => void
+interface userState {
+  userInfo: userInfoType;
+  token: tokenType;
 }
 
-const defaultState: UserInfoType = {memberId: 0, profileUrl: '', nickName: '', phoneNumber: '', atk: null, rtk: null }
+interface userActions {
+  setUserInfo: (userInfo: userInfoType) => void;
+  setToken: (token: tokenType) => void;
+  deleteToken: () => void;
+  deleteUserInfo: () => void;
+}
+
+const defaultToken: tokenType = {atk: '', rtk: ''}
+const defaultUserInfo: userInfoType = { profileUrl: '', nickName: '', phoneNumber: '' }
 
 const UserStore = create(
-  persist<UserInfoState & UserInfoActions>(
+  persist<userState & userActions>(
     (set) => ({
-      userInfo: defaultState,
-      setUserInfo: (userInfo: UserInfoType) => { set({ userInfo }) },
-      deleteUserInfo: () => { set({ userInfo: defaultState }) },
+      userInfo: defaultUserInfo,
+      token: defaultToken,
+      setUserInfo: (userInfo: userInfoType) => { set({ userInfo }) },
+      setToken: (token: tokenType) => {set({token})},
+      deleteToken: () => {set({token: defaultToken})},
+      deleteUserInfo: () => { set({ userInfo: defaultUserInfo }) },
     }),
     {
       name: 'user-info-storage',
