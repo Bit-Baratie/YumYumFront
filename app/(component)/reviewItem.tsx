@@ -34,7 +34,7 @@ interface GetReviewOne {
   storeName: string;
   address: string;
   content: string;
-  images: string[];
+  images: string[]|null;
 }
 
 const ReviewItem = ({ reviewItem }: { reviewItem: GetReviewOne }) => {

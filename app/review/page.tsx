@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ReviewItem from "@/app/(component)/reviewItem";
 import useReview from "../(hooks)/review/useReview";
 import Link from "next/link";
+import { useObserver } from "../(hooks)/common/useObserver";
 // import useReview from "../(hooks)/review/useReview";
 // import useUserInfo from "@/app/(hooks)/useUserInfo";
 
@@ -30,55 +31,49 @@ interface GetReviewOne {
 
 
 const Review = () => {
-  const { data, fetchNextPage } = useReview();
+  const { data, fetchNextPage, isFetching, isFetchingNextPage, status } = useReview();
   const bottomRef = useRef(null);
-
-  const useObserver = ({
-    target,
-    rootMargin = '0px',
-    threshold = 1.0,
-    onIntersect,
-  }: any) => {
-    useEffect(() => {
-      let observer: IntersectionObserver | undefined;
-
-      if (target && target.current) {
-        observer = new IntersectionObserver(onIntersect, {
-          root: null,
-          rootMargin,
-          threshold,
-        });
-
-        observer.observe(target.current);
-      }
-      return () => observer && observer.disconnect();
-    }, [target, rootMargin, threshold, onIntersect]);
-  };
-
-  const onIntersect = ([entry]: IntersectionObserverEntry[]) =>
-    entry.isIntersecting && fetchNextPage();
+  const onIntersect = ([entry]:any) => entry.isIntersecting && fetchNextPage();
 
   useObserver({
     target: bottomRef,
-    onIntersect,
+    onIntersect
   });
 
+  console.log(data)
+  
   return (
     <>
       <Headers />
-      {data && data.pages.length > 0?
+      {isFetching&& <p>Loading...</p>}
+      {status === 'success' &&
       <>
-      {data?.pages.map((item) => {
-        item.content?.map((reviewItem: GetReviewOne) => {
-          return(
-            <Link key={reviewItem.reviewId} href={`/review/${reviewItem.reviewId}`}>
-              <ReviewItem reviewItem={reviewItem} />
-            </Link>);
-      })
+        {data?.pages.map((page) => (
+          <>
+          {page.content.map((reviewItem:GetReviewOne) => (
+              <Link key={reviewItem.reviewId} href={`/review/${reviewItem.reviewId}`}>
+                <ReviewItem reviewItem={reviewItem} />
+              </Link>
+          ))}
+          </>
+        ))}
+      </>
+      }
+
+    {/* {status === 'success' &&
+      <>
+          {data?.pages[4].content?.map((reviewItem:GetReviewOne, index:number) => {
+            return(
+              <Link key={reviewItem.reviewId} href={`/review/${reviewItem.reviewId}`}>
+                <ReviewItem reviewItem={reviewItem} />
+              </Link>
+            );
+          })}</>
+      }  */}
       
-      })}</>:<div>작성된 리뷰가 없습니다</div>
-    }
-    <div ref={bottomRef}></div>
+      <div ref={bottomRef}></div>
+
+      {isFetchingNextPage&&<div>NextLoading...</div>}
     </>
   );
 };

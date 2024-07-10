@@ -42,7 +42,6 @@ const getReviewOne = async (reviewId: number) => {
 
   const getReviewAll = async ({pageNumber}: {pageNumber:unknown}) => {
     const result = await axiosNonAuth.get(`/review?pageNumber=${pageNumber}`);
-    console.log(result)
     return result.data;
   }
 

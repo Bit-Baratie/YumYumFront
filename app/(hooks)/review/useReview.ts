@@ -123,7 +123,7 @@ const useReview = () => {
     reviewOne, content, rating, reportText,
     contentHandler, handleStarClick,
     fetchReviewOne, createReview, modifyReview, removeReview, data, handleTextareaChange, createReport,
-    fetchNextPage
+    fetchNextPage, isFetching, isFetchingNextPage, status
   }
 }
 
