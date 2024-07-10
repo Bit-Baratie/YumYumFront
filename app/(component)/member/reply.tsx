@@ -15,10 +15,10 @@ interface myReplyType {
 export const ReplyWrapper = ({myReplyList}: {myReplyList: myReplyType[]}) => {
   return (
     <>
-      <DashboardReply item={myReplyList[0]}/>
-      <DashboardReply item={myReplyList[1]}/>
-      <DashboardReply item={myReplyList[2]}/>
-      <DashboardReply item={myReplyList[3]}/>
+      {myReplyList[0] && <DashboardReply item={myReplyList[0]}/>}
+      {myReplyList[1] && <DashboardReply item={myReplyList[1]}/>}
+      {myReplyList[2] && <DashboardReply item={myReplyList[2]}/>}
+      {myReplyList[3] && <DashboardReply item={myReplyList[3]}/>}
     </>
   );
 }

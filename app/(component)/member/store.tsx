@@ -18,20 +18,20 @@ interface StoreType {
 
 const StoreContainer = ({likeStoreList} : {likeStoreList:StoreType[]}) => {
   return (
-    <>
-    {likeStoreList && likeStoreList.length > 0?
-    <>
+    <div className={StoreStyle.dashboard}>
       {
-        likeStoreList?.map((item:StoreType) => {
-          return (<Store key={item.id} item={item}/>)
-        })
-      }</>:<div>즐겨찾기한 맛집이 없습니다</div>
-    }
-    </>
+        <>
+          {likeStoreList[0]?<DashboardStore item={likeStoreList[0]}/>:''}
+          {likeStoreList[1]?<DashboardStore item={likeStoreList[1]}/>:''}
+          {likeStoreList[2]?<DashboardStore item={likeStoreList[2]}/>:''}
+          {likeStoreList[3]?<DashboardStore item={likeStoreList[3]}/>:''}
+        </>
+      }
+      </div>
   );
 }
 
-const Store = ({item}: {item:StoreType}) => {
+const DashboardStore = ({item}: {item:StoreType}) => {
   return (
     <Link href={`/store/${item.id}`}>
       <div className={StoreStyle.container}>
