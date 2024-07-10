@@ -8,7 +8,7 @@ const useLogin = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
-  const {userInfo, setUserInfo, deleteUserInfo} = userStore();
+  const {userInfo, setToken, setUserInfo, deleteUserInfo, deleteToken} = userStore();
 
   const emailHanler = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -26,16 +26,26 @@ const useLogin = () => {
     }
 
     const res:any = await postLoginInfo(info);
+    console.log(res)
     if (res.atk) {
-      setUserInfo(res);
+      setUserInfo({
+        nickName: res.nickName,
+        profileUrl: "/",
+        phoneNumber: res.phoneNumber
+      });
+      setToken({
+        atk: res.atk,
+        rtk: res.rtk
+      })
       router.push('/');
     } else {
-      alert(res.message);
+      alert('이메일 또는 비밀번호를 확인해주세요');
     }
   }
 
   const logout = () => {
     deleteUserInfo();
+    deleteToken();
     router.push('/');
   }
 
