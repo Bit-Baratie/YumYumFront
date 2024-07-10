@@ -15,22 +15,23 @@ interface store {
   categoryName: string,
   avgGrade: number;
   favoriteStatus: boolean;
+  latitude: number,
+  longitude: number,
 }
 
 const StarPage = () => {
   const {likeStoreList} = useMember();
 
   return (
-    <>
-    {likeStoreList && likeStoreList.content.length > 0?
-      <div className={PageStyle.container}>
-        {likeStoreList?.content.map((item: store) => {
-          return(<StoreInfo store={item}/>)
-        })}
-      </div>:
-      <div>즐겨찾기한 맛집이 없습니다</div> 
-    }
-    </>
+    <div className={PageStyle.container}>
+      {likeStoreList?.pages.map((page) => (
+        <>
+          {page.content.map((item: store) => (
+            <StoreInfo store={item}/>
+          ))}
+        </>
+      ))}
+    </div>
   );
 }
 

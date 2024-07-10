@@ -50,20 +50,20 @@ const Mypage = () => {
           
         </div>
 
-        <Wrapper title={'내가 쓴 리뷰'} link={`${pathname}/review`}>
-          {myReviewList?<ReviewContainer myReviewList={myReviewList.content}/>:'리뷰가 없습니다'}
+        <Wrapper title={'내가 쓴 리뷰'} link={`${pathname}/review`} totalCnt={myReviewList?.pages[0].numberOfElements}>
+          {myReviewList?<ReviewContainer myReviewList={myReviewList.pages[0].content}/>:'리뷰가 없습니다'}
         </Wrapper>
 
-        <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`} totalCnt={likeReviewList?.numberOfElements}>
-          {likeReviewList?<ReviewContainer myReviewList={likeReviewList.content}/>:'리뷰가 없습니다'}
+        <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`} totalCnt={likeReviewList?.pages[0].numberOfElements}>
+          {likeReviewList?<ReviewContainer myReviewList={likeReviewList.pages[0].content}/>:'리뷰가 없습니다'}
         </Wrapper>
 
-        <Wrapper title={'내가 쓴 댓글'} link={`${pathname}/reply`} totalCnt={myReplyList?.numberOfElements}>
-          {myReplyList?<ReplyWrapper myReplyList={myReplyList.content}/>:'댓글이 없습니다'}
+        <Wrapper title={'내가 쓴 댓글'} link={`${pathname}/reply`} totalCnt={myReplyList?.pages[0].numberOfElements}>
+          {myReplyList?<ReplyWrapper myReplyList={myReplyList.pages[0].content}/>:'댓글이 없습니다'}
         </Wrapper>
 
-        <Wrapper title={'즐겨찾기한 맛집'} link={`${pathname}/star`}>
-          {likeStoreList?<StoreContainer likeStoreList={likeStoreList.content}/>:'즐겨찾기한 맛집이 없습니다'}
+        <Wrapper title={'즐겨찾기한 맛집'} link={`${pathname}/star`} totalCnt={likeStoreList?.pages[0].numberOfElements}>
+          {likeStoreList?<StoreContainer likeStoreList={likeStoreList.pages[0].content}/>:'즐겨찾기한 맛집이 없습니다'}
         </Wrapper>
         
         {updateModal? <UpdateModal

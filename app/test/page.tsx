@@ -45,6 +45,8 @@ const Test = () => {
 
   return (
     <div>
+      {isFetching && <p>loading...</p>}
+
       {status === 'error' && <p>{error.message}</p>}
       <button onClick={() => fetchNextPage()}>더 불러오기</button>
     </div>

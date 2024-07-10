@@ -2,6 +2,7 @@
 import ReviewItem from "@/app/(component)/reviewItem";
 import useMember from "@/app/(hooks)/member/useMember";
 import PageStyle from './page.module.scss';
+import Link from "next/link";
 
 interface GetReviewOne {
   reviewId: number;
@@ -21,14 +22,17 @@ const ReviewPage = () => {
   const {myReviewList} = useMember();
 
   return (
-    (myReviewList !== undefined?
-      <div className={PageStyle.container}>
-      {myReviewList.content.map((item: GetReviewOne) => {
-        return(<ReviewItem reviewItem={item}/>)
-      })}
-      </div>:
-      <div>작성한 리뷰가 없습니다</div>
-    )
+    <div className={PageStyle.container}>
+      {myReviewList?.pages.map((page) => (
+        <>
+          {page.content.map((item: GetReviewOne) => (
+            <Link href={`/review/${item.reviewId}`}>
+              <ReviewItem reviewItem={item}/>
+            </Link>
+          ))}
+        </>
+      ))}
+    </div>
   );
 }
 

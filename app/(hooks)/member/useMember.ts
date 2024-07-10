@@ -1,5 +1,5 @@
 'use client'
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
 import MemberApi from "@/app/(api)/member/memberApi";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -10,10 +10,56 @@ const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
   const {userInfo, deleteUserInfo} = userStore();
   const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile()});
-  const {data: myReviewList} = useQuery({queryKey: ['myReview', userInfo.memberId], queryFn: () => getMyReview(0)});
-  const {data: myReplyList} = useQuery({queryKey: ['myReply', userInfo.memberId], queryFn: () => getMyReply(0)});
-  const {data: likeReviewList} = useQuery({queryKey: ['likeReview', userInfo.memberId], queryFn: () => getLikeReview(0)});
-  const {data: likeStoreList} = useQuery({queryKey: ['likeStore', userInfo.memberId], queryFn: () => getLikeStore(0)});
+  // const {data: myReviewList} = useQuery({queryKey: ['myReview', userInfo.memberId], queryFn: () => getMyReview(0)});
+  // const {data: myReplyList} = useQuery({queryKey: ['myReply', userInfo.memberId], queryFn: () => getMyReply(0)});
+  // const {data: likeReviewList} = useQuery({queryKey: ['likeReview', userInfo.memberId], queryFn: () => getLikeReview(0)});
+  // const {data: likeStoreList} = useQuery({queryKey: ['likeStore', userInfo.memberId], queryFn: () => getLikeStore(0)});
+  const {
+    data: myReviewList,
+    fetchNextPage: nextMyReviewList,
+  } = useInfiniteQuery<any>({
+    queryKey: ['reviewList'],
+    queryFn: ({pageParam}) => getMyReview({pageNumber:pageParam}),
+    initialPageParam: 0,
+    getNextPageParam: (data) => {
+        return data.last? undefined: data.pageable.pageNumber+1;
+    }
+  });
+  const {
+    data: myReplyList,
+    fetchNextPage: nextMyReplyList,
+  } = useInfiniteQuery<any>({
+    queryKey: ['myReply'],
+    queryFn: ({pageParam}) => getMyReply({pageNumber:pageParam}),
+    initialPageParam: 0,
+    getNextPageParam: (data) => {
+        return data.last? undefined: data.pageable.pageNumber+1;
+    }
+  });
+  const {
+    data: likeReviewList,
+    fetchNextPage: nextLikeReviewList,
+  } = useInfiniteQuery<any>({
+    queryKey: ['likeReview'],
+    queryFn: ({pageParam}) => getLikeReview({pageNumber:pageParam}),
+    initialPageParam: 0,
+    getNextPageParam: (data) => {
+        return data.last? undefined: data.pageable.pageNumber+1;
+    }
+  });
+  const {
+    data: likeStoreList,
+    fetchNextPage: nextLikeStoreList,
+  } = useInfiniteQuery<any>({
+    queryKey: ['likeStore'],
+    queryFn: ({pageParam}) => getLikeStore({pageNumber:pageParam}),
+    initialPageParam: 0,
+    getNextPageParam: (data) => {
+        return data.last? undefined: data.pageable.pageNumber+1;
+    }
+  });
+  
+
   const [imageUrl, setImageUrl] = useState('/');
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
@@ -98,6 +144,10 @@ const useMember = () => {
     nickName,
     phone,
     updateModal,
+    nextMyReviewList,
+    nextLikeReviewList,
+    nextLikeStoreList,
+    nextMyReplyList,
     imageHandler,
     nickNameHandler,
     passwordHanler,

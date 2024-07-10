@@ -2,6 +2,7 @@
 import ReviewItem from "@/app/(component)/reviewItem";
 import useMember from "@/app/(hooks)/member/useMember";
 import PageStyle from './page.module.scss';
+import Link from "next/link";
 
 interface GetReviewOne {
   reviewId: number;
@@ -19,15 +20,19 @@ interface GetReviewOne {
 
 const LikePage = () => {
   const {likeReviewList} = useMember();
-
+  console.log(likeReviewList)
   return (
-    (likeReviewList !== undefined?
-      <div className={PageStyle.container}>
-      {likeReviewList.content.map((item: GetReviewOne) => {
-        return(<ReviewItem reviewItem={item}/>);
-      })}</div>:
-      <div>좋아요 한 리뷰가 없습니다</div>
-    )
+    <div className={PageStyle.container}>
+      {likeReviewList?.pages.map((page) => (
+        <>
+          {page.content.map((item: GetReviewOne) => (
+            <Link href={`/review/${item.reviewId}`}>
+              <ReviewItem reviewItem={item}/>
+            </Link>
+          ))}
+        </>
+      ))}
+    </div>
   );
 }
 

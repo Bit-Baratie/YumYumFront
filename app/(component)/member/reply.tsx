@@ -25,30 +25,24 @@ export const ReplyWrapper = ({myReplyList}: {myReplyList: myReplyType[]}) => {
 
 const DashboardReply = ({item}: {item: myReplyType}) => {
   return (
-    <div className={replyStyle.dashboardItem}>{item.content}</div>
+    <Link href={`/review/${item.reviewId}`}>
+      <div className={replyStyle.dashboardItem}>{item.content}</div>
+    </Link>
   );
 }
 
-export const Reply = ({ myReplyList }: { myReplyList: myReplyType[] }) => {
+export const Reply = ({ item }: { item: myReplyType }) => {
   const {userInfo} = userStore();
 
   return (
-    <>
-      {myReplyList?.map((item) => {
-        return(
-          <Link href={`/review/${item.reviewId}`}>
-            <div className={replyStyle.replyContainer} key={item.id}>
-              <Image src={userInfo.profileUrl} width={100} height={100} alt=''/>
-              <div className={replyStyle.replyRight}>
-                <span>{item.nickName}</span>
-                <span>{item.createdAt}</span>
-                <span>{item.content}</span>
-              </div>
-            </div>
-          </Link>
-          )
-      })}
-    </>
+    <div className={replyStyle.replyContainer} key={item.id}>
+      <Image src={userInfo.profileUrl} width={100} height={100} alt=''/>
+      <div className={replyStyle.replyRight}>
+        <span>{item.nickName}</span>
+        <span>{item.createdAt}</span>
+        <span>{item.content}</span>
+      </div>
+    </div> 
   )
 }
 

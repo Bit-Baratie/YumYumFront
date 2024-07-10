@@ -24,22 +24,22 @@ const MemberApi = () => {
     return result.data;
   }
   
-  const getMyReview = async (pageNumber: number) => {
+  const getMyReview = async ({pageNumber}: {pageNumber:unknown}) => {
     const result = await axiosWithAuth.get(`/review/myReview?pageNumber=${pageNumber}`);
     return result.data;
   }
   
-  const getMyReply = async (pageNumber: number) => {
+  const getMyReply = async ({pageNumber}: {pageNumber:unknown}) => {
     const result = await axiosWithAuth.get(`/reply/myreply?pageNumber=${pageNumber}`);
     return result.data;
   }
   
-  const getLikeStore = async (pageNumber: number) => {
+  const getLikeStore = async ({pageNumber}: {pageNumber:unknown}) => {
     const result = await axiosWithAuth.get(`/store/favorite?pageNumber=${pageNumber}`);
     return result.data;
   }
   
-  const getLikeReview = async (pageNumber: number) => {
+  const getLikeReview = async ({pageNumber}: {pageNumber:unknown}) => {
     const result = await axiosWithAuth.get(`/review/likeReview?pageNumber=${pageNumber}`);
     return result.data;
   }
