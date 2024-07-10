@@ -130,12 +130,19 @@ export interface reportType {
   reportType: string;
 }
 
+// 댓글 fetch 타입
 export interface getReplyType {
   id: number;
   reviewId: number,
   nickName: string,
   createdAt: string,
   content: string,
+}
+
+// 댓글 작성 타입
+export interface postReplyType {
+  reviewId: number;
+  content: string;
 }
 
 // 관리자 페이지 타입
