@@ -11,11 +11,11 @@ import Header from "@/app/header";
 const Review = () => {
   const { fetchReviewOne, reviewOne, removeReview} = useReview();
   const params = useParams();
+  const router = useRouter();
   const [view, setView] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     fetchReviewOne(Number(params.review_id));
-    console.log(reviewOne);
   }, []);
 
   return (
@@ -23,7 +23,7 @@ const Review = () => {
       <Header />
       <div className={DetailStyle.review}>
         <div className={DetailStyle.top}>
-          <button className={DetailStyle.back} />
+          <button className={DetailStyle.back} onClick={() => router.back()}/>
           <div className={DetailStyle.flqb}>리뷰</div>
           {/* 드롭다운 */}
           <div className={DetailStyle.dropdown}>
