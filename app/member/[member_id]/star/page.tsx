@@ -2,6 +2,8 @@
 import StoreInfo from "@/app/store/(component)/StoreInfo";
 import PageStyle from './page.module.scss';
 import useMember from "@/app/(hooks)/member/useMember";
+import { useObserver } from "@/app/(hooks)/common/useObserver";
+import { useRef } from "react";
 
 interface store {
   storeId: number;
@@ -20,9 +22,17 @@ interface store {
 }
 
 const StarPage = () => {
-  const {likeStoreList} = useMember();
+  const {likeStoreList, nextLikeStoreList} = useMember();
+  const bottomRef = useRef(null);
+  const onIntersect = ([entry]:any) => entry.isIntersecting && nextLikeStoreList();
 
+  useObserver({
+    target: bottomRef,
+    onIntersect
+  });
+  
   return (
+    <>
     <div className={PageStyle.container}>
       {likeStoreList?.pages.map((page) => (
         <>
@@ -32,6 +42,9 @@ const StarPage = () => {
         </>
       ))}
     </div>
+
+    <div ref={bottomRef}></div>
+    </>
   );
 }
 
