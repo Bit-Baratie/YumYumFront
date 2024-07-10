@@ -3,11 +3,13 @@ import '@/app/store/(component)/map.scss';
 import Location from '../../../public/asset/image/location.svg'
 import myLocation from "./MyLocation";
 import Script from "next/script";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useStoreApi from "@/app/store/(api)/StoreApi";
 import { initializeMap } from './mapInitializer';
 import useSearch from '@/app/(hooks)/common/useSearch';
 import { useParams, usePathname } from 'next/navigation';
+import { search } from "@/app/(api)/common/searchApi";
+import StoreList from './StoreList';
 
 interface store {
   storeId: number,
@@ -15,7 +17,7 @@ interface store {
   address: string,
   totalFavoriteCount: number,
   totalReviewCount: number,
-  imageList: Image[],
+  imageUrl: string[],
   categoryName: string,
   views: number,
   hashtags: string[],
@@ -27,9 +29,7 @@ interface store {
   latitude: number,
   longitude: number,
 }
-interface Image {
-  imageUrl: string; // 이미지의 URL,
-}
+
 interface menuListType {
   id: number,
   name: string,
@@ -41,19 +41,16 @@ interface location {
   longitude: number,
 }
 const TestMap = () => {
-
-  const { data } = useSearch();
-  const { getStoreInfo } = useStoreApi();
   let latitude = 37.4995961;
   let longitude = 127.0289929;
-  let map: naver.maps.Map;
-
   const LatLng: location = { latitude, longitude };
+  const { data } = useSearch();
+  const { getStoreInfo } = useStoreApi();
+  let map: naver.maps.Map;
   useEffect(() => {
     const MapRender = async () => {
       const result = data ? data : await getStoreInfo(LatLng);
-      const location = new naver.maps.LatLng(latitude, longitude);
-
+      const location = new naver.maps.LatLng(latitude, longitude)
 
       map = new naver.maps.Map('map', {
         center: location,
@@ -87,7 +84,6 @@ const TestMap = () => {
         });
 
 
-        // result.map((store: store) => {
         var marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(store.latitude, store.longitude),
           map: map,
@@ -102,14 +98,12 @@ const TestMap = () => {
         });
 
         infowindow.open(map, marker);
-        // });
       })
 
 
 
 
       myLocation(map);
-      console.log(result);
     };
     MapRender();
   }, [data])

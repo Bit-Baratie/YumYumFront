@@ -57,7 +57,7 @@ const useStoreApi = () => {
   const getStoreInfo = async (location: location) => {
     const result = await axiosWithAuth.get(`/store?lng=${location.longitude}&&lat=${location.latitude}`)
     console.log(result)
-    return result.data
+    return result?.data
   }
   const postStoreLike = async (isFavorite: boolean) => {
     // const result = await axios.post(`http://localhost:3000/star/${storeId}`,isFavorite)
@@ -205,14 +205,11 @@ const useStoreApi = () => {
 
   const StoreDetailInfo = async (storeId: number) => {
 
-    console.log(storeId)
-    // const storeId = 1;
     const result = await axiosWithAuth.get(`/store/${storeId}`)
     return result.data
   };
   const postStar = async (data: data) => {
     const result = await axiosWithAuth.post("/star", data)
-    console.log("요청 전송 완료" + data)
     return result.data
   }
 

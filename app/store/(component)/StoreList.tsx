@@ -33,7 +33,6 @@ const StoreList = () => {
   const { getStoreInfo } = useStoreApi();
   const { data } = useSearch();
   const [storeList, setStoreList] = useState<Array<store> | undefined>([]);
-  console.log(storeList);
   useEffect(() => {
     const fetchStoreInfo = async () => {
       let latitude = 37.4995961;
@@ -41,14 +40,11 @@ const StoreList = () => {
 
       const location = { longitude, latitude };
       try {
-        console.log(data);
         const StoreInfoResult = await getStoreInfo(location)
         setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
         if (data?.length !== 0) {
-          console.log("키워드 검색 완료")
           setStoreList(data)
         } else {
-          console.log("최초 리스트 완료")
           setStoreList(StoreInfoResult)
         }
       } catch (error) {
@@ -61,7 +57,7 @@ const StoreList = () => {
     return (
       <div id="storeList">
         <div id="searchStoreNumber">
-          <div><span>0</span>건의 검색결과가 있습니다.</div>
+          <div>검색된 결과가 없습니다</div>
         </div>
         <div id="noDataMessage">
           <div id="noDataImage" />
