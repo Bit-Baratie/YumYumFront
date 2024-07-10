@@ -1,13 +1,15 @@
 'use client'
 import { useState } from "react"
 import  postLoginInfo  from "../../(api)/member/loginApi";
-import { useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import userStore from "@/app/(hooks)/userStore";
 
 const useLogin = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
+  const pathname = usePathname();
+  const params = useParams();
   const {userInfo, setToken, setUserInfo, deleteUserInfo, deleteToken} = userStore();
 
   const emailHanler = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +31,7 @@ const useLogin = () => {
     console.log(res)
     if (res.atk) {
       setUserInfo({
+        memberId: res.memberId,
         nickName: res.nickName,
         profileUrl: "/",
         phoneNumber: res.phoneNumber
@@ -46,7 +49,11 @@ const useLogin = () => {
   const logout = () => {
     deleteUserInfo();
     deleteToken();
-    router.push('/');
+    if (pathname === '/home') {
+      router.refresh();
+    } else {
+      router.push('/');
+    }
   }
 
   return {
