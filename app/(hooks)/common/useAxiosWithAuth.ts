@@ -6,7 +6,7 @@ const useAxiosWithAuth = (): any => {
 
   const axiosWithAuth: AxiosInstance = axios.create({
     baseURL: 'http://192.168.0.20:3000',
-    headers: {Authorization: `Bearer ${Store.getState().userInfo.atk}`,
+    headers: {Authorization: `Bearer ${Store.getState().token.atk}`,
     "Content-Type": 'application/json'
   }
  
