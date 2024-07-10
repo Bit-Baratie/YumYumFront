@@ -1,19 +1,29 @@
 import "./comment.scss";
-import CommentList from "./commentList";
+import { getReplyType } from "../type";
 
-const Comment = () => {
+const Comment = ({item}: {item: getReplyType}) => {
     return (
-        <div className="comment">
-            <div className="commentList">
-                <CommentList/>
-                <CommentList/>
+        <>
+            <div className="commentContainer">
+            <div className="content">
+                <img src="" alt="프로필 이미지" className="comment-img" />
+
+                <div className="right">
+                <p className="profile-name">{item.nickName}</p>
+                <p>{item.content}</p>
+                <p>{item.createdAt}</p>
+                </div>
             </div>
-            <div className="comment-write">
-                <img src="../../public/asset/image/IMG_1282.jpg" alt="프로필이미지" className="profile-img"/>
-                <input type="text" placeholder="댓글 달기" className="write"></input>
-                <button>작성</button>
+
+            <div className="btn">
+                <button className="dec"></button>
+                <button className="mod"></button>
+                <button className="del"></button>
             </div>
-        </div>
+            </div>
+
+            <hr />
+        </>
     );
 }
 

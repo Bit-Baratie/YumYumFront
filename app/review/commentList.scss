@@ -67,5 +67,11 @@ hr {
 }
 // 
 // 
-
+.plus {
+  margin-bottom: 50px;
+  font-size: 20px;
+  &:hover{
+    cursor: pointer;
+  }
+}
 
