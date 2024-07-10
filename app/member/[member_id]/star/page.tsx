@@ -4,22 +4,7 @@ import PageStyle from './page.module.scss';
 import useMember from "@/app/(hooks)/member/useMember";
 import { useObserver } from "@/app/(hooks)/common/useObserver";
 import { useRef } from "react";
-
-interface store {
-  storeId: number;
-  name: string;
-  address: string;
-  totalFavoriteCount: number;
-  totalReviewCount: number;
-  imageUrl: string;
-  views: number;
-  hashtags: string[];
-  categoryName: string,
-  avgGrade: number;
-  favoriteStatus: boolean;
-  latitude: number,
-  longitude: number,
-}
+import { getStoreType } from "@/app/type";
 
 const StarPage = () => {
   const {likeStoreList, nextLikeStoreList} = useMember();
@@ -33,17 +18,17 @@ const StarPage = () => {
   
   return (
     <>
-    <div className={PageStyle.container}>
-      {likeStoreList?.pages.map((page) => (
-        <>
-          {page.content.map((item: store) => (
-            <StoreInfo store={item}/>
-          ))}
-        </>
-      ))}
-    </div>
+      <div className={PageStyle.container}>
+        {likeStoreList?.pages.map((page) => (
+          <>
+            {page.content.map((item: getStoreType) => (
+              <StoreInfo store={item}/>
+            ))}
+          </>
+        ))}
+      </div>
 
-    <div ref={bottomRef}></div>
+      <div ref={bottomRef}></div>
     </>
   );
 }

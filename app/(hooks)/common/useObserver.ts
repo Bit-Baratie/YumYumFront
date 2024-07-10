@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
   export const useObserver = ({
       target, // 감지할 대상, ref를 넘길 예정
@@ -15,12 +15,12 @@ import { useEffect } from "react"
               // callback의 인자로 들어오는 entry는 기본적으로 순환자이기 때문에
               // 복잡한 로직을 필요로 할때가 많다. 
               // callback을 선언하는 곳에서 로직을 짜서 통째로 넘기도록 하겠다.
-              observer = new IntersectionObserver(onIntersect, { root, rootMargin, threshold })
+              observer = new IntersectionObserver(onIntersect, { root, rootMargin, threshold });
               // 실제 Element가 들어있는 current 관측을 시작한다.
-              observer.observe(target.current)
+              observer.observe(target.current);
           }
 
           // observer를 사용하는 컴포넌트가 해제되면 observer 역시 꺼 주자. 
-          return () => observer && observer.disconnect()
-      }, [target, rootMargin, threshold])
+          return () => observer && observer.disconnect();
+      }, [target, rootMargin, threshold]);
   }

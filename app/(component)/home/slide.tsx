@@ -8,73 +8,7 @@ import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-interface StoreType {
-  storeId: number,
-  name: string,
-  address: string,
-  favoriteCount: number,
-  reviewCount: number,
-  imageUrl: string,
-  avgGrade: number
-}
-
-const test = [
-  {
-    storeId: 1,
-    name: 'asd',
-    address: 'asd',
-    favoriteCount: 1,
-    reviewCount: 1,
-    imageUrl: 'asd',
-    avgGrade: 1
-  },
-  {
-    storeId: 2,
-    name: 'asd',
-    address: 'asd',
-    favoriteCount: 1,
-    reviewCount: 1,
-    imageUrl: 'asd',
-    avgGrade: 1
-  },
-  {
-    storeId: 3,
-    name: 'asd',
-    address: 'asd',
-    favoriteCount: 1,
-    reviewCount: 1,
-    imageUrl: 'asd',
-    avgGrade: 1
-  },
-  {
-    storeId: 4,
-    name: 'asd',
-    address: 'asd',
-    favoriteCount: 1,
-    reviewCount: 1,
-    imageUrl: 'asd',
-    avgGrade: 1
-  },
-  {
-    storeId: 5,
-    name: 'asd',
-    address: 'asd',
-    favoriteCount: 1,
-    reviewCount: 1,
-    imageUrl: 'asd',
-    avgGrade: 1
-  },
-  {
-    storeId: 6,
-    name: 'asd',
-    address: 'asd',
-    favoriteCount: 1,
-    reviewCount: 1,
-    imageUrl: 'asd',
-    avgGrade: 1
-  }
-]
+import { getStoreType } from "@/app/type";
 
 const Slide = () => {
   const {
@@ -85,8 +19,8 @@ const Slide = () => {
     fetchStar,
     fetchViews,
     data} = useHome();
-    SwiperCore.use([Navigation]);
-
+  SwiperCore.use([Navigation]);
+  
   return (
     <div className={SlideStyle.container}>
       <div className={SlideStyle.header}>
@@ -108,6 +42,7 @@ const Slide = () => {
           <option value="강원">강원</option>
           <option value="제주">제주</option>
         </select>
+
         <div className={SlideStyle.btnSet}>
           <button onClick={fetchTop10} style={{backgroundColor: select==='top10'? '#FFC657' : 'rgba(0,0,0,0)', color: select==='top10'?'white':'black'}}>TOP10</button>
           <button onClick={fetchMonth} style={{backgroundColor: select==='month'? '#FFC657' : 'rgba(0,0,0,0)', color: select==='month'?'white':'black'}}>이달의 맛집</button>
@@ -117,24 +52,6 @@ const Slide = () => {
       </div>
 
       <div className={SlideStyle.itemContainer}>
-        {/* data */}
-        {/* {data?
-          <>
-            {data.map((item:StoreType) => {
-              return(<Item key={item.id} item={item}/>)
-            })}
-          </>:
-          <div>데이터 없음</div>
-        } */}
-        {/* {test?
-          <>
-            {test.map((item:StoreType) => {
-              return(<Item key={item.id} item={item}/>)
-            })}
-          </>:
-          <div>데이터 없음</div>
-        } */}
-
         <Swiper
           spaceBetween={10}
           navigation={true}
@@ -143,7 +60,7 @@ const Slide = () => {
         >
           {data?
           <>
-          {data.data.map((item:StoreType) => {
+          {data.map((item:getStoreType) => {
             return(<SwiperSlide key={item.storeId}>
               <Link href={`/store/${item.storeId}`}>
               <Item item={item}/>

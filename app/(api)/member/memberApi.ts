@@ -1,20 +1,5 @@
-import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth"
-import axios from "axios"
-
-interface profilType {
-  email: string
-  imageUrl: string
-  nickName: string
-  password: null
-  phoneNumber: string
-}
-
-interface PatchType {
-  imageUrl: string;
-  nickName: string;
-  password: string|null;
-  phoneNumber: string;
-}
+import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
+import { getMemberType, patchMemberType } from "@/app/type";
 
 const MemberApi = () => {
   const {axiosWithAuth} = useAxiosWithAuth();
@@ -44,7 +29,7 @@ const MemberApi = () => {
     return result.data;
   }
 
-  const patchMember = async ({data}: {data: PatchType}) => {
+  const patchMember = async ({data}: {data: patchMemberType}) => {
     const result = await axiosWithAuth.patch(`/member`, data);
     return result.data;
   }

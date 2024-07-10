@@ -5,20 +5,7 @@ import PageStyle from './page.module.scss';
 import Link from "next/link";
 import { useObserver } from "@/app/(hooks)/common/useObserver";
 import { useRef } from "react";
-
-interface GetReviewOne {
-  reviewId: number;
-  imageUrl: string;
-  nickname: string;
-  createdAt: string;
-  reviewTotalCount: number;
-  grade: number;
-  avgGrade: number;
-  storeName: string;
-  address: string;
-  content: string;
-  images: string[];
-}
+import { getReviewType } from "@/app/type";
 
 const LikePage = () => {
   const {likeReviewList, nextLikeReviewList} = useMember();
@@ -35,7 +22,7 @@ const LikePage = () => {
       <div className={PageStyle.container}>
         {likeReviewList?.pages.map((page) => (
           <>
-            {page.content.map((item: GetReviewOne) => (
+            {page.content.map((item: getReviewType) => (
               <Link href={`/review/${item.reviewId}`}>
                 <ReviewItem reviewItem={item}/>
               </Link>

@@ -6,25 +6,10 @@ import Header from "@/app/header";
 import Image from "next/image";
 import Star from "./Star";
 import { CameraFilled, LeftOutlined } from "@ant-design/icons";
-// import Close from '../../../public/asset/image/close.png';
 import close from "../../../public/asset/image/close.png";
 import useReview from "@/app/(hooks)/review/useReview";
 import { useRouter, useSearchParams } from "next/navigation";
 import useImage from "@/app/(hooks)/common/useImage";
-
-interface GetReviewOne {
-  id: number;
-  imageUrl: string;
-  nickname: string;
-  createdAt: string;
-  totalReviewCount: number;
-  grade: number;
-  avgGrade: number;
-  storeName: string;
-  address: string;
-  content: string;
-  images: string[];
-}
 
 const ReviewWrite = () => {
   const { contentHandler, createReview, handleStarClick, rating, modifyReview } = useReview();

@@ -1,22 +1,9 @@
 import Image from "next/image";
 import StoreStyle from './store.module.scss';
 import Link from "next/link";
+import { getStoreType } from "@/app/type";
 
-interface StoreType {
-  id: number,
-  name: string,
-  address: string,
-  totalFavoriteCount: number,
-  reviewNumber: number,
-  imageUrl: string,
-  categoryList: string[],
-  views: number,
-  hashTagList: string[],
-  avgGrade: number,
-  isFavorite: boolean,
-}
-
-const StoreContainer = ({likeStoreList} : {likeStoreList:StoreType[]}) => {
+const StoreContainer = ({likeStoreList} : {likeStoreList: getStoreType[]}) => {
   return (
     <div className={StoreStyle.dashboard}>
       {
@@ -31,9 +18,9 @@ const StoreContainer = ({likeStoreList} : {likeStoreList:StoreType[]}) => {
   );
 }
 
-const DashboardStore = ({item}: {item:StoreType}) => {
+const DashboardStore = ({item}: {item:getStoreType}) => {
   return (
-    <Link href={`/store/${item.id}`}>
+    <Link href={`/store/${item.storeId}`}>
       <div className={StoreStyle.container}>
         <Image src={'/'} width={170} height={110} alt="가게이미지"/>
         <div className={StoreStyle.name}>{item.name}</div>

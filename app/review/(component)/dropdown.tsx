@@ -1,27 +1,12 @@
 "use client";
-
 import React, { useState } from "react";
 import "./dropdown.scss";
 import userStore from "@/app/(hooks)/userStore";
 import Link from "next/link";
 import ReportModal from "@/app/(component)/reportModal";
-import { useRouter } from "next/router";
+import { getReviewType } from "@/app/type";
 
-interface GetReviewOne {
-  reviewId: number;
-  imageUrl: string;
-  nickname: string;
-  createdAt: string;
-  totalReviewCount: number;
-  grade: number;
-  avgGrade: number;
-  storeName: string;
-  address: string;
-  content: string;
-  images: string[];
-}
-
-const Dropdown = ({ memberId, reviewData, removeReview }: { memberId: number, reviewData: GetReviewOne, removeReview:(reviewId:number) => void }) => {
+const Dropdown = ({ memberId, reviewData, removeReview }: { memberId: number, reviewData: getReviewType, removeReview:(reviewId:number) => void }) => {
   const { userInfo } = userStore();
   const [modal, setModal] = useState(false);
 

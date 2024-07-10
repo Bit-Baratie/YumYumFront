@@ -2,17 +2,9 @@ import replyStyle from '@/app/(component)/member/reply.module.scss';
 import userStore from '@/app/(hooks)/userStore';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { getReplyType } from '@/app/type';
 
-interface myReplyType {
-  id: number;
-  reviewId: number,
-  nickName: string,
-  createdAt: string,
-  content: string,
-}
-
-export const ReplyWrapper = ({myReplyList}: {myReplyList: myReplyType[]}) => {
+export const ReplyWrapper = ({myReplyList}: {myReplyList: getReplyType[]}) => {
   return (
     <>
       {myReplyList[0] && <DashboardReply item={myReplyList[0]}/>}
@@ -23,7 +15,7 @@ export const ReplyWrapper = ({myReplyList}: {myReplyList: myReplyType[]}) => {
   );
 }
 
-const DashboardReply = ({item}: {item: myReplyType}) => {
+const DashboardReply = ({item}: {item: getReplyType}) => {
   return (
     <Link href={`/review/${item.reviewId}`}>
       <div className={replyStyle.dashboardItem}>{item.content}</div>
@@ -31,7 +23,7 @@ const DashboardReply = ({item}: {item: myReplyType}) => {
   );
 }
 
-export const Reply = ({ item }: { item: myReplyType }) => {
+export const Reply = ({ item }: { item: getReplyType }) => {
   const {userInfo} = userStore();
 
   return (

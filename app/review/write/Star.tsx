@@ -1,18 +1,7 @@
-import React, { useState } from "react";
 import StarStyle from "./starStyle.module.scss";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
-import useReview from "@/app/(hooks)/review/useReview";
-import { useSearchParams } from "next/navigation";
 
 const Star = ({ rating, handleStarClick }: any) => {
-  const searchParams = useSearchParams();
-  // const { handleStarClick, rating } = useReview();
-  // const [rating, setRating] = useState<number>(0);
-
-  // const handleStarClick = (starIndex: number) => {
-  //     setRating(starIndex + 1);
-  // };
-
   return (
     <div className={StarStyle.starContainer}>
       {[...Array(5)].map((_, index) => {

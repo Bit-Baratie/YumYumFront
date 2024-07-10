@@ -1,26 +1,9 @@
 "use client";
-
-import React, { useState } from "react";
 import Style from "./report.module.scss";
 import { AlertFilled } from "@ant-design/icons";
-import axios from "axios";
-import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
 import useReview from "../(hooks)/review/useReview";
 
 const ReportModal = ({ onClose }: { onClose: () => void }) => {
-  // const { axiosWithAuth } = useAxiosWithAuth();
-  // const [reportText, setReportText] = useState("");
-
-  // const handleTextareaChange = (
-  //   event: React.ChangeEvent<HTMLTextAreaElement>
-  // ) => {
-  //   setReportText(event.target.value);
-  // };
-
-  // const handleSubmit = async () => {
-  //   await axiosWithAuth.post("/notice", reportText);
-  // };
-
   const { handleTextareaChange, reportText, createReport } = useReview();
 
   return (

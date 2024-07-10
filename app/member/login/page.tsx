@@ -5,7 +5,6 @@ import Link from 'next/link';
 import useLogin from '@/app/(hooks)/member/useLogin';
 import Google from '@/public/asset/image/Google.svg';
 import Kakao from '@/public/asset/image/Kakao.svg';
-import Naver from '@/public/asset/image/naver.svg';
 import { NaverLogin } from '@/app/(component)/auth/social';
 
 const Login = () => {

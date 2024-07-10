@@ -1,44 +1,16 @@
 'use client';
-
 import ReviewApi from "@/app/(api)/review/reviewApi";
 import { useState } from "react";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import userStore from "../userStore";
-import { useSearchParams, useRouter } from "next/navigation";
-
-interface ReviewData {
-  nickname: string;
-  reviewCount: number;
-  gradeAvg: number;
-  profileImg: string;
-  content: string;
-  grade: number;
-  writeTime: Date;
-}
-
-interface GetReviewOne {
-  reviewId: number;
-  imageUrl: string;
-  nickname: string;
-  createdAt: string;
-  reviewTotalCount: number;
-  grade: number;
-  avgGrade: number;
-  storeName: string;
-  address: string;
-  content: string;
-  images: string[];
-}
+import { useRouter } from "next/navigation";
 
 const useReview = () => {
   const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview, reportReview } = ReviewApi();
-  const [reviewOne, setReviewOne] = useState<any>(); 
-  // const { data, error, isLoading } = useQuery({ queryKey: ['reviewList'], queryFn: () => getReviewAll({pageNumber: Number(searchParams.get('pageNumber'))}) });
+  const [reviewOne, setReviewOne] = useState<any>();
   const {
     data,
-    error,
     fetchNextPage,
-    hasNextPage,
     isFetching,
     isFetchingNextPage,
     status
@@ -49,13 +21,12 @@ const useReview = () => {
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageable.pageNumber+1;
     }
-  })
+  });
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const { userInfo } = userStore();
   const [reportText, setReportText] = useState("");
   const router = useRouter();
-  const searchParams = useSearchParams();
   
   const contentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
@@ -93,7 +64,7 @@ const useReview = () => {
     const reviewData = {
       content: content,
       grade: rating,
-      memberId: userInfo.memberId
+      imageList: []
     };
 
     patchReview(reviewId, reviewData);
@@ -102,7 +73,7 @@ const useReview = () => {
 
   const removeReview = (reviewId: number) => {
     deleteReview(reviewId);
-    router.push('/review')
+    router.push('/review');
   }
 
   const handleTextareaChange = (
@@ -113,9 +84,11 @@ const useReview = () => {
 
   const createReport = (reviewId: number) => {
     const reportData = {
-      reviewId: reviewId,
-      reportText: reportText
-    }
+      targetId: reviewId,
+      content: reportText,
+      reportType: '리뷰'
+    };
+    
     reportReview(reportData);
   }
   

@@ -10,10 +10,6 @@ const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
   const {userInfo, deleteUserInfo} = userStore();
   const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile()});
-  // const {data: myReviewList} = useQuery({queryKey: ['myReview', userInfo.memberId], queryFn: () => getMyReview(0)});
-  // const {data: myReplyList} = useQuery({queryKey: ['myReply', userInfo.memberId], queryFn: () => getMyReply(0)});
-  // const {data: likeReviewList} = useQuery({queryKey: ['likeReview', userInfo.memberId], queryFn: () => getLikeReview(0)});
-  // const {data: likeStoreList} = useQuery({queryKey: ['likeStore', userInfo.memberId], queryFn: () => getLikeStore(0)});
   const {
     data: myReviewList,
     fetchNextPage: nextMyReviewList,
@@ -72,7 +68,7 @@ const useMember = () => {
     setImageUrl('/');
     setNickName(userInfo.nickName);
     setPhone(userInfo.phoneNumber);
-  }, [userInfo.nickName, userInfo.phoneNumber, userInfo.profileUrl])
+  }, [userInfo.nickName, userInfo.phoneNumber, userInfo.profileUrl]);
 
   const imageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setImageUrl(e.target.value);

@@ -1,14 +1,14 @@
 'use client';
-import axios, { AxiosInstance, AxiosRequestHeaders } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import Store from '../userStore';
 
 const useAxiosWithAuth = (): any => {
-
   const axiosWithAuth: AxiosInstance = axios.create({
     baseURL: 'http://192.168.0.20:3000',
-    headers: {Authorization: `Bearer ${Store.getState().token.atk}`,
-    "Content-Type": 'application/json'
-  }
+    headers: {
+      Authorization: `Bearer ${Store.getState().token.atk}`,
+      "Content-Type": 'application/json'
+    }
  
   });
 

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const useHome = () => {
   const {getTop10, getMonth, getStar, getViews} = HomeApi();
   const [local, setLocal] = useState('서울');
-  const {data: top10} = useQuery({queryKey: ['top1', local], queryFn:() => getTop10(local)});
+  const {data: top10} = useQuery({queryKey: ['top10', local], queryFn:() => getTop10(local)});
   const {data: month} = useQuery({queryKey: ['month', local], queryFn:() =>  getMonth(local)});
   const {data: star} = useQuery({queryKey: ['star', local], queryFn:() =>  getStar(local)});
   const {data: views} = useQuery({queryKey: ['views', local], queryFn:() =>  getViews(local)});

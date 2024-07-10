@@ -9,7 +9,6 @@ const useLogin = () => {
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
   const pathname = usePathname();
-  const params = useParams();
   const {userInfo, setToken, setUserInfo, deleteUserInfo, deleteToken} = userStore();
 
   const emailHanler = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +27,7 @@ const useLogin = () => {
     }
 
     const res:any = await postLoginInfo(info);
-    console.log(res)
+
     if (res.atk) {
       setUserInfo({
         memberId: res.memberId,
@@ -39,7 +38,7 @@ const useLogin = () => {
       setToken({
         atk: res.atk,
         rtk: res.rtk
-      })
+      });
       router.push('/');
     } else {
       alert('이메일 또는 비밀번호를 확인해주세요');

@@ -1,7 +1,6 @@
 'use client'
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { naverApi } from "../(api)/member/socialApi";
 import userStore from "../(hooks)/userStore";
 import { useRouter } from "next/navigation";
 

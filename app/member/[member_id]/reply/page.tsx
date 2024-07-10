@@ -4,16 +4,7 @@ import { useObserver } from '@/app/(hooks)/common/useObserver';
 import useMember from '@/app/(hooks)/member/useMember';
 import Link from 'next/link';
 import { useRef } from 'react';
-
-interface myReplyType {
-  id: number;
-  reviewId: number;
-  imageUrl: string,
-  nickName: string,
-  createdAt: string,
-  content: string,
-}
-
+import { getReplyType } from '@/app/type';
 
 const ReplyPage = () => {
   const {myReplyList, nextMyReplyList} = useMember();
@@ -30,7 +21,7 @@ const ReplyPage = () => {
       <div>
         {myReplyList?.pages.map((page) => (
           <>
-            {page.content.map((item: myReplyType) => (
+            {page.content.map((item: getReplyType) => (
               <Link href={`/review/${item.reviewId}`}>
                 <Reply item={item}/>
               </Link>

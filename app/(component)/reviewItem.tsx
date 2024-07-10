@@ -1,43 +1,10 @@
 "use client";
-
 import Image from "next/image";
 import reviewStyle from "@/app/(component)/reviewItem.module.scss";
-import Profile from "@/app/review/profile";
-import { useEffect, useState } from "react";
 import React from "react";
-import ReactDOM from "react-dom";
-import LikeButton from "@/app/(component)/likeButton";
-import useReview from "../(hooks)/review/useReview";
-import { useParams, useRouter } from "next/navigation";
+import { getReviewType } from "../type";
 
-// interface GetReviewOne {
-//     imageUrl: string;
-//     nickname: string;
-//     createdAt: string;
-//     totalReviewCount: number;
-//     grade: number;
-//     avgGrade: number;
-//     storeName: string;
-//     address: string;
-//     content: string;
-//     images: string[];
-// }
-
-interface GetReviewOne {
-  reviewId: number;
-  imageUrl: string;
-  nickname: string;
-  createdAt: string;
-  reviewTotalCount: number;
-  grade: number;
-  avgGrade: number;
-  storeName: string;
-  address: string;
-  content: string;
-  images: string[]|null;
-}
-
-const ReviewItem = ({ reviewItem }: { reviewItem: GetReviewOne }) => {
+const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
   return (
     <div className={reviewStyle.reviewItem}>
       <div className={reviewStyle.storeInfo}>

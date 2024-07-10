@@ -68,7 +68,7 @@ const useSignup = () => {
     }
 
     const res = await postSignupInfo(info);
-      router.push('/member/login');
+    router.push('/member/login');
   }
 
   return {

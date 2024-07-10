@@ -5,11 +5,9 @@ import Reply from '@/public/asset/image/replyIcon.svg'
 import Like from '@/public/asset/image/heartIcon.svg'
 import Bookmark from '@/public/asset/image/bookmark.svg'
 import sidebarStyle from './sidebar.module.scss';
-import { useParams, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import UserStore from '../(hooks)/userStore'
-import Lib from '@ant-design/icons'
 
 const Sidebar = () => {
   const pathname = usePathname();

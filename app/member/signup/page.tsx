@@ -1,8 +1,9 @@
-'use client'
+'use client';
 import Logo from '@/public/asset/image/logo.svg';
 import signupStyle from '@/app/member/signup/signupForm.module.scss';
 import useSignup from './(hooks)/useSignup';
 import Link from 'next/link';
+
 const Signup = () => {
   const {email, password, passwordCheck, nickname, phone, image, fileInput,
     emailHanler, passwordHanler, passwordCheckHanler, nicknameHanler, phoneHanler, imageHanler,
