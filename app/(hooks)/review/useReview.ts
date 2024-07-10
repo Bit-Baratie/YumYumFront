@@ -24,13 +24,11 @@ const useReview = () => {
   });
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
-  const { userInfo } = userStore();
   const [reportText, setReportText] = useState("");
   const router = useRouter();
   
   const contentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
-    console.log(content);
   }
 
   const handleStarClick = (starIndex: number) => {
@@ -39,7 +37,6 @@ const useReview = () => {
 
   const fetchReviewOne = async (reviewId: number) => {
     const result = await getReviewOne(reviewId);
-    console.log(result);
     setReviewOne(result);
   }
 
