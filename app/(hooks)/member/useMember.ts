@@ -14,7 +14,7 @@ const useMember = () => {
     data: myReviewList,
     fetchNextPage: nextMyReviewList,
   } = useInfiniteQuery<any>({
-    queryKey: ['reviewList'],
+    queryKey: ['myReview'],
     queryFn: ({pageParam}) => getMyReview({pageNumber:pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
