@@ -19,19 +19,18 @@ const StoreDetail = () => {
 
   const params = useParams() as { store_id: string };
   const storeId = params.store_id;
-  console.log("디테일" + params.store_id);
 
   const data: favorite = { favoriteStatus: !favorite, storeId: Number(storeId) }
   useEffect(() => {
     const fetchStoreDetail = async () => {
       const StoreInfoResult = await StoreDetailInfo(Number(storeId));
-      setStoreList(StoreInfoResult);
+      setStoreList(StoreInfoResult.data);
       setFavorite(StoreInfoResult.favoriteStatus);
     };
     if (storeId) {
       fetchStoreDetail();
     }
-  }, [storeId]);
+  }, [setStoreList]);
 
   if (!storeList) {
     return <div>Loading...</div>;
@@ -94,7 +93,7 @@ const StoreDetail = () => {
       </div>
       <div className="DetailMap">
         <div className="map">
-          <TestMap />
+          <TestMap storeId={storeId} />
         </div>
         <div className="menu">
           <div className="menuInfo">

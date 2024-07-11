@@ -2,53 +2,9 @@
 import useAxiosWithAuth from '@/app/(hooks)/common/useAxiosWithAuth';
 import axios from "axios";
 import Store from "@/app/(hooks)/userStore";
+import { getStoreType, location, favorite } from '@/app/type';
 
-interface store {
-  storeId: number,
-  name: string,
-  address: string,
-  totalFavoriteCount: number,
-  totalReviewCount: number,
-  imageList: Image[],
-  categoryName: string,
-  views: number,
-  imageUrl: string,
-  hashtags: string[],
-  favoriteStatus: boolean,
-  avgGrade: number,
-  hours: string,
-  calls: string,
-  menuList: menuListType[],
-}
-interface Image {
-  imageUrl: string; // 이미지의 URL
-}
-interface menuListType {
-  name: string,
-  price: number
-}
-interface pageNumber {
-  totalPages: number,
-  currentPages: number
-}
 
-//나의 위도 경도
-interface location {
-  latitude: number,
-  longitude: number,
-}
-interface data {
-  favoriteStatus: boolean,
-  storeId: number
-}
-
-export interface SearchResponse {
-  totalPages: number;
-  currentPage: number;
-  //한 번에 표시할 결과의 수
-  limit: number;
-  data: store[];
-}
 
 
 const useStoreApi = () => {
@@ -206,9 +162,9 @@ const useStoreApi = () => {
   const StoreDetailInfo = async (storeId: number) => {
 
     const result = await axiosWithAuth.get(`/store/${storeId}`)
-    return result.data
+    return result
   };
-  const postStar = async (data: data) => {
+  const postStar = async (data: favorite) => {
     const result = await axiosWithAuth.post("/star", data)
     return result.data
   }
