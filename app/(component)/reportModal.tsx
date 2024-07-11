@@ -2,9 +2,10 @@
 import Style from "./report.module.scss";
 import { AlertFilled } from "@ant-design/icons";
 import useReview from "../(hooks)/review/useReview";
+import useModal from "../(hooks)/common/useModal";
 
-const ReportModal = ({ onClose }: { onClose: () => void }) => {
-  const { handleTextareaChange, reportText, createReport } = useReview();
+const ReportModal = ({ onClose, reviewId, createReport }: { onClose: () => void,  reviewId:number, createReport: Function} ) => {
+  const { content, contentHandler, createReviewReport} = useModal();
 
   return (
     <div className={Style.modalOverlay}>
@@ -21,10 +22,10 @@ const ReportModal = ({ onClose }: { onClose: () => void }) => {
           <textarea
             className={Style.tlsrh}
             placeholder="신고내용을 작성해주세요"
-            value={reportText}
-            onChange={handleTextareaChange}
+            value={content}
+            onChange={contentHandler}
           />
-          <button className={Style.wjsthd} onClick={() => createReport(1)}>
+          <button className={Style.wjsthd} onClick={() => createReport(reviewId)}>
             전송
           </button>
         </div>
