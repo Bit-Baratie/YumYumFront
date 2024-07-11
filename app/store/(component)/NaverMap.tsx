@@ -2,44 +2,12 @@
 import '@/app/store/(component)/map.scss';
 import Location from '../../../public/asset/image/location.svg'
 import myLocation from "./MyLocation";
-import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import useStoreApi from "@/app/store/(api)/StoreApi";
-import { initializeMap } from './mapInitializer';
 import useSearch from '@/app/(hooks)/common/useSearch';
-import { useParams, usePathname } from 'next/navigation';
-import { search } from "@/app/(api)/common/searchApi";
-import StoreList from './StoreList';
+import { location, getStoreType } from "@/app/type"
 
-interface store {
-  storeId: number,
-  name: string,
-  address: string,
-  totalFavoriteCount: number,
-  totalReviewCount: number,
-  imageUrl: string[],
-  categoryName: string,
-  views: number,
-  hashtags: string[],
-  favoriteStatus: boolean,
-  avgGrade: number,
-  hours: string,
-  calls: string,
-  menuList: menuListType[],
-  latitude: number,
-  longitude: number,
-}
 
-interface menuListType {
-  id: number,
-  name: string,
-  price: number
-}
-
-interface location {
-  latitude: number,
-  longitude: number,
-}
 const TestMap = () => {
   let latitude = 37.4995961;
   let longitude = 127.0289929;
@@ -63,7 +31,7 @@ const TestMap = () => {
         },
       });
       // 지도 그리기
-      result.map((store: store) => {
+      result.map((store: getStoreType) => {
         var contentString = [
           '<div">',
           `   <h3>${store.name}</h3>`,
