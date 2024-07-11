@@ -20,7 +20,7 @@ export interface getMemberType {
 export interface patchMemberType {
   imageUrl: string;
   nickName: string;
-  password: string|null;
+  password: string | null;
   phoneNumber: string;
 }
 
@@ -51,7 +51,7 @@ export interface getStoreType {
   address: string;
   totalFavoriteCount: number;
   totalReviewCount: number;
-  imageList: string[];
+  imageList: imageType[];
   categoryName: string;
   views: number;
   imageUrl: string;
@@ -65,6 +65,18 @@ export interface getStoreType {
   longitude: number;
 }
 
+//즐겨찾기 데이터 타입
+export interface favorite {
+  favoriteStatus: boolean,
+  storeId: number
+}
+
+//위치 정보 타입
+export interface location {
+  latitude: number,
+  longitude: number,
+}
+
 // 이미지 타입
 interface imageType {
   imageUrl: string; // 이미지의 URL
@@ -72,6 +84,7 @@ interface imageType {
 
 // 맛집 메뉴리스트 타입
 interface menuType {
+  id: number;
   name: string;
   price: number;
 }
@@ -91,30 +104,30 @@ export interface postReviewType {
   storeId: number;
   content: string;
   grade: number;
-  imageList: any[]|null;
+  imageList: any[] | null;
 }
 
 // 리뷰 fetch 타입
 export interface getReviewType {
+  memberId: number;
   reviewId: number;
   imageUrl: string;
   nickname: string;
   createdAt: string;
-  reviewTotalCount: number;
+  totalReviewCount: number;
   grade: number;
   avgGrade: number;
   storeName: string;
   address: string;
   content: string;
   images: string[];
-
 }
 
 // 리뷰 수정 타입
 export interface patchReviewType {
   content: string;
   grade: number;
-  imageList: any[]|null;
+  imageList: any[] | null;
 }
 
 // 리뷰 좋아요 타입
@@ -130,19 +143,12 @@ export interface reportType {
   reportType: string;
 }
 
-// 댓글 fetch 타입
 export interface getReplyType {
   id: number;
   reviewId: number,
   nickName: string,
   createdAt: string,
   content: string,
-}
-
-// 댓글 작성 타입
-export interface postReplyType {
-  reviewId: number;
-  content: string;
 }
 
 // 관리자 페이지 타입
