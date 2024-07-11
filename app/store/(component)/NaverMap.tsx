@@ -8,22 +8,28 @@ import useSearch from '@/app/(hooks)/common/useSearch';
 import { location, getStoreType } from "@/app/type"
 
 
-const TestMap = () => {
+const TestMap = ({ storeId }: { storeId: string }) => {
   let latitude = 37.4995961;
   let longitude = 127.0289929;
-  const LatLng: location = { latitude, longitude };
-  const { data } = useSearch();
-  const { getStoreInfo } = useStoreApi();
+  // const LatLng: location = { latitude, longitude };
+  const { data, fetchData } = useSearch();
+  const { StoreDetailInfo } = useStoreApi();
   let map: naver.maps.Map;
   useEffect(() => {
     const MapRender = async () => {
-      const result = data ? data : await getStoreInfo(LatLng);
-      const location = new naver.maps.LatLng(latitude, longitude)
+      const detail = await StoreDetailInfo(Number(storeId));
+      const list = await fetchData();
+
+      const result = list.length > 0 ? list : Array(detail.data)
+      console.log(result)
+      const location1 = new naver.maps.LatLng(latitude, longitude)
+      const location2 = new naver.maps.LatLng(result[0].latitude, result[0].longitude)
+      const location = result.length > 1 ? location1 : location2
 
       map = new naver.maps.Map('map', {
         center: location,
         zoomControl: true,   // 줌 설정
-        zoom: 15,
+        zoom: 16,
         minZoom: 6,
         zoomControlOptions: {
           style: naver.maps.ZoomControlStyle.LARGE,
@@ -51,7 +57,6 @@ const TestMap = () => {
           anchorSkew: true
         });
 
-
         var marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(store.latitude, store.longitude),
           map: map,
@@ -71,10 +76,10 @@ const TestMap = () => {
 
 
 
-      myLocation(map);
+      // myLocation(map);
     };
     MapRender();
-  }, [data])
+  }, [])
 
 
 

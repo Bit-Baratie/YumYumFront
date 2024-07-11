@@ -89,6 +89,14 @@ interface menuType {
   price: number;
 }
 
+//검색시 페이지 타입
+export interface SearchResponse {
+  totalPages: number;
+  currentPage: number;
+  //한 번에 표시할 결과의 수
+  limit: number;
+  data: getStoreType[];
+}
 // 메뉴 정보수정 타입
 export interface patchStoreType {
   name: string;
