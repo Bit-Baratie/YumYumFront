@@ -143,6 +143,11 @@ export interface reportType {
   reportType: string;
 }
 
+export interface postReplyType {
+  reviewId: number,
+  content: string,
+}
+
 export interface getReplyType {
   id: number;
   reviewId: number,
