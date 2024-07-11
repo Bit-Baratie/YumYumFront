@@ -4,8 +4,7 @@ import { AlertFilled } from "@ant-design/icons";
 import useReview from "../(hooks)/review/useReview";
 import useModal from "../(hooks)/common/useModal";
 
-const ReportModal = ({ onClose, targetId, createReport }: { onClose: () => void,  targetId:number, createReport: Function} ) => {
-  const { content, contentHandler} = useModal();
+const ReportModal = ({ onClose, targetId, createReport, content, contentHandler  }: { onClose: () => void,  targetId:number, createReport: Function, content:string, contentHandler:Function} ) => {
 
   return (
     <div className={Style.modalOverlay}>
@@ -23,7 +22,7 @@ const ReportModal = ({ onClose, targetId, createReport }: { onClose: () => void,
             className={Style.tlsrh}
             placeholder="신고내용을 작성해주세요"
             value={content}
-            onChange={contentHandler}
+            onChange={(e) => contentHandler(e)}
           />
           <button className={Style.wjsthd} onClick={() => createReport(targetId)}>
             전송

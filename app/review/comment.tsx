@@ -4,7 +4,7 @@ import useModal from "../(hooks)/common/useModal";
 import ReportModal from "../(component)/reportModal";
 
 const Comment = ({item, updateReply, removeReply}: {item: getReplyType, updateReply: Function, removeReply: Function}) => {
-    const {modal, setModal, createReplyReport} = useModal();
+    const {modal, setModal, createReplyReport, contentHandler, content} = useModal();
 
     const onClose = () => {
         setModal(false);
@@ -26,13 +26,13 @@ const Comment = ({item, updateReply, removeReply}: {item: getReplyType, updateRe
             <div className="btn">
                 <button className="dec" onClick={() => setModal(true)}></button>
                 <button className="mod" onClick={() => updateReply()}></button>
-                <button className="del" onClick={() => removeReply(item.id)}></button>
+                <button className="del" onClick={() => removeReply(item.replyId)}></button>
             </div>
             </div>
 
             <hr />
 
-            {modal && <ReportModal onClose={() => onClose()} targetId={item.id} createReport={createReplyReport}/>}
+            {modal && <ReportModal onClose={() => onClose()} targetId={item.replyId} createReport={createReplyReport} content={content} contentHandler={contentHandler}/>}
         </>
     );
 }

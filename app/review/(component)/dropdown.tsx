@@ -7,9 +7,9 @@ import ReportModal from "@/app/(component)/reportModal";
 import { getReviewType } from "@/app/type";
 import useModal from "@/app/(hooks)/common/useModal";
 
-const Dropdown = ({ memberId, reviewData, removeReview }: { memberId: number, reviewData: getReviewType, removeReview:(reviewId:number) => void }) => {
+const Dropdown = ({ memberId, reviewData, removeReview}: { memberId: number, reviewData: getReviewType, removeReview:(reviewId:number) => void }) => {
   const { userInfo } = userStore();
-  const {modal, setModal, createReviewReport} = useModal();
+  const {modal, setModal, createReviewReport, content, contentHandler } = useModal();
 
   const closeModal = () => {
     setModal(false);
@@ -31,7 +31,7 @@ const Dropdown = ({ memberId, reviewData, removeReview }: { memberId: number, re
           {/* {userInfo.memberId === memberId ? <li className="tkrwp">삭제</li> : ""} */}
           {userInfo.memberId === memberId ? <li className="tkrwp" onClick={() => removeReview(reviewData.reviewId)}>삭제</li> : ""}
       </ul>
-      {modal && <ReportModal onClose={() => closeModal()} targetId={reviewData.reviewId} createReport={createReviewReport}/>}
+      {modal && <ReportModal onClose={() => closeModal()} targetId={reviewData.reviewId} createReport={createReviewReport}  content={content} contentHandler={contentHandler}/>}
     </div>
   );
 };
