@@ -8,59 +8,25 @@ import useStore from "@/app/store/(hooks)/useStore";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { getStoreType, favorite } from "@/app/type";
 
 
-interface store {
-  storeId: number,
-  name: string,
-  address: string,
-  totalFavoriteCount: number,
-  totalReviewCount: number,
-  imageList: Image[],
-  categoryName: string,
-  views: number,
-  imageUrl: string,
-  hashtags: string[],
-  favoriteStatus: boolean,
-  avgGrade: number,
-  hours: string,
-  calls: string,
-  menuList: menuListType[],
-}
-interface location {
-  latitude: number,
-  longitude: number,
-}
-interface Image {
-  imageUrl: string; // 이미지의 URL,
-}
-interface menuListType {
-  id: number,
-  name: string,
-  price: number
-}
-
-interface data {
-  favoriteStatus: boolean,
-  storeId: number
-}
 
 const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
   const { StoreDetailInfo, postStar } = useStoreApi();
-  const [storeList, setStoreList] = useState<store | null>(null);
+  const [storeList, setStoreList] = useState<getStoreType | null>(null);
 
   const params = useParams() as { store_id: string };
   const storeId = params.store_id;
   console.log("디테일" + params.store_id);
 
-  const data: data = { favoriteStatus: !favorite, storeId: Number(storeId) }
+  const data: favorite = { favoriteStatus: !favorite, storeId: Number(storeId) }
   useEffect(() => {
     const fetchStoreDetail = async () => {
       const StoreInfoResult = await StoreDetailInfo(Number(storeId));
       setStoreList(StoreInfoResult);
       setFavorite(StoreInfoResult.favoriteStatus);
-      console.log("초기값" + StoreInfoResult.favoriteStatus);
     };
     if (storeId) {
       fetchStoreDetail();
@@ -82,14 +48,14 @@ const StoreDetail = () => {
             <div className="subImage" id="sub2">{storeList.imageUrl}</div>
             <div className="subImage">{storeList.imageUrl}</div>
             <div className="subImage">{storeList.imageUrl}</div> */}
-            {storeList.imageList.map((image) => (
+            {/* {storeList.imageList.map((image) => (
               <img
                 key={image.imageUrl}
                 className="subImage"
                 src={image.imageUrl}
                 alt={`Sub Image ${image.imageUrl + 1}`}
               />
-            ))}
+            ))} */}
           </div>
         </div>
         <div className="storeInfoDetail">

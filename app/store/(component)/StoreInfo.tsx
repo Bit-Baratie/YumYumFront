@@ -7,38 +7,15 @@ import Logo from "@/public/asset/image/logo.svg"
 import Link from "next/link";
 import useStoreApi from "@/app/store/(api)/StoreApi"
 import StoreDetail from '../[store_id]/component/StoreDetail';
+import { favorite, getStoreType } from '@/app/type';
 
-
-interface store {
-  storeId: number;
-  name: string;
-  address: string;
-  totalFavoriteCount: number;
-  totalReviewCount: number;
-  imageUrl: string;
-  views: number;
-  hashtags: string[];
-  categoryName: string,
-  avgGrade: number;
-  favoriteStatus: boolean;
-  latitude: number,
-  longitude: number,
-}
-interface location {
-  latitude: number,
-  longitude: number,
-}
-interface data {
-  favoriteStatus: boolean,
-  storeId: number
-}
 
 const { postStar } = useStoreApi();
 
-const StoreInfo = ({ store }: { store: store }) => {
+const StoreInfo = ({ store }: { store: getStoreType }) => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
 
-  const data: data = { favoriteStatus: favorite, storeId: store.storeId }
+  const data: favorite = { favoriteStatus: favorite, storeId: store.storeId }
 
   useEffect(() => {
     favoriteHandler(store.favoriteStatus);

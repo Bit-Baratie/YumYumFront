@@ -6,33 +6,13 @@ import { search } from "@/app/(api)/common/searchApi";
 import useSearch from "@/app/(hooks)/common/useSearch";
 import useStore from "@/app/store/(hooks)/useStore"
 import Store from "../page";
-
-interface store {
-  storeId: number;
-  name: string;
-  address: string;
-  totalFavoriteCount: number;
-  totalReviewCount: number;
-  imageUrl: string;
-  views: number;
-  hashtags: string[];
-  categoryName: string,
-  avgGrade: number;
-  favoriteStatus: boolean;
-  latitude: number,
-  longitude: number,
-}
-
-interface location {
-  latitude: number,
-  longitude: number,
-}
+import { getStoreType } from "@/app/type";
 
 const StoreList = () => {
   // const { storeId, setStoreId } = useStore();
   const { getStoreInfo } = useStoreApi();
   const { data } = useSearch();
-  const [storeList, setStoreList] = useState<Array<store> | undefined>([]);
+  const [storeList, setStoreList] = useState<Array<getStoreType> | undefined>([]);
   useEffect(() => {
     const fetchStoreInfo = async () => {
       let latitude = 37.4995961;
