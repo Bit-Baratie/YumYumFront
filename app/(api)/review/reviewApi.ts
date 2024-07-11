@@ -6,12 +6,12 @@ const ReviewApi = () => {
 
   const getReviewOne = async (reviewId: number) => {
     const result = await axiosNonAuth.get(`/review/${reviewId}`);
-    return result.data;
+    return result;
   }
 
   const postReview = async ({postReviewData}: {postReviewData: postReviewType}) => {
     const result = await axiosWithAuth.post(`/review`, postReviewData)
-    return result.data;
+    return result;
   }
 
   const getReviewAll = async ({pageNumber}: {pageNumber:unknown}) => {
@@ -21,27 +21,27 @@ const ReviewApi = () => {
 
   const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {
     const result = await axiosWithAuth.patch(`/review/${reviewId}`, patchReviewData);
-    return result.data
+    return result;
   }
   
   const deleteReview = async (reviewId: number) => {
     const result = await axiosWithAuth.delete(`/review/${reviewId}`);
-    return result.data;
+    return result;
   }
 
   const like = async ({liked}: {liked: likeReviewType}) => {
     const result = await axiosWithAuth.post(`/like`, liked);
-    return result.data
+    return result;
   }
   
   const reportReview = async (reportData: reportType) => {
-    const result = await axiosWithAuth.post(`/notice`, reportData );
-    return result.data
+    const result = await axiosWithAuth.post(`/report`, reportData );
+    return result;
   };
 
   const getReviewByStoreId = async (storeId: number) => {
     const result = await axiosNonAuth.get(`/review/store/${storeId}`);
-    return result.data;
+    return result;
   }
 
   return {

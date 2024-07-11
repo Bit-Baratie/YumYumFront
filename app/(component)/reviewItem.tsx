@@ -36,7 +36,7 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
             <p className={reviewStyle.profileStar}>
               별점: {reviewItem?.grade}
               &nbsp; 평균 별점: {reviewItem?.avgGrade}(
-              {reviewItem?.reviewTotalCount})
+              {reviewItem?.totalReviewCount})
             </p>
           </div>
           {/* <LikeButton reviewId={reviewItem?.reviewId} /> */}

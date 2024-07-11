@@ -51,10 +51,10 @@ const Review = () => {
             />
             <div className={DetailStyle.profileInfo}>
               <p className={DetailStyle.profileName}>
-                {reviewOne?.nickname}프로필 이름
+                {reviewOne?.nickname}
               </p>
               <p className={DetailStyle.profileDate}>
-                {reviewOne?.createdAt}2020.20.20
+                {reviewOne?.createdAt}
               </p>
               <p className={DetailStyle.profileStar}>
                 별점: {reviewOne?.grade} &nbsp; 평균 별점: {reviewOne?.avgGrade}{" "}
