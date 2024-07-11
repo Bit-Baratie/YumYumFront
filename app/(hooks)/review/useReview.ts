@@ -24,7 +24,6 @@ const useReview = () => {
   });
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
-  const [reportText, setReportText] = useState("");
   const router = useRouter();
   
   const contentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -37,7 +36,13 @@ const useReview = () => {
 
   const fetchReviewOne = async (reviewId: number) => {
     const result = await getReviewOne(reviewId);
-    setReviewOne(result);
+    if (result.status === 200) {
+      setReviewOne(result.data);
+    } else {
+      alert('잠시후 다시 시도해주세요'+result.error);
+      router.back();
+    }
+    
   }
 
   const createReview = async (storeId: number) => {
@@ -49,7 +54,6 @@ const useReview = () => {
     };
 
     const response = await postReview({postReviewData: reviewData});
-    console.log(response)
     if (response.status === 201) {
       router.push("/review");
     } else {
@@ -57,42 +61,31 @@ const useReview = () => {
     }
   }
 
-  const modifyReview = (reviewId: number) => {
+  const modifyReview = async (reviewId: number) => {
     const reviewData = {
       content: content,
       grade: rating,
       imageList: []
     };
 
-    patchReview(reviewId, reviewData);
-    router.push('/review');
+    const result = await patchReview(reviewId, reviewData);
+    if (result.status === 202) {
+      alert('수정이 완료되었습니다');
+      router.push(`/review/${reviewId}`);
+    } else {
+      alert('잠시후 다시 시도해주세요'+result.error);
+    }
   }
 
   const removeReview = (reviewId: number) => {
     deleteReview(reviewId);
     router.push('/review');
   }
-
-  const handleTextareaChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setReportText(event.target.value);
-  };
-
-  const createReport = (reviewId: number) => {
-    const reportData = {
-      targetId: reviewId,
-      content: reportText,
-      reportType: '리뷰'
-    };
-    
-    reportReview(reportData);
-  }
   
   return {
-    reviewOne, content, rating, reportText,
+    reviewOne, content, rating,
     contentHandler, handleStarClick,
-    fetchReviewOne, createReview, modifyReview, removeReview, data, handleTextareaChange, createReport,
+    fetchReviewOne, createReview, modifyReview, removeReview, data,
     fetchNextPage, isFetching, isFetchingNextPage, status
   }
 }
