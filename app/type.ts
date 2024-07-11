@@ -157,7 +157,7 @@ export interface postReplyType {
 }
 
 export interface getReplyType {
-  id: number;
+  replyId: number;
   reviewId: number,
   nickName: string,
   createdAt: string,
