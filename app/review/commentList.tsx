@@ -5,8 +5,7 @@ import Comment from "@/app/review/comment";
 import replyApi from "@/app/(api)/reply/replyApi";
 import { useParams } from "next/navigation";
 import { getReplyType } from "../type";
-import { useEffect, useRef } from "react";
-import { useObserver } from "../(hooks)/common/useObserver";
+import useReply from "../(hooks)/reply/useReply";
 
 const CommentList = () => {
   const {getReplyAll} = replyApi();
@@ -18,13 +17,14 @@ const CommentList = () => {
     isFetchingNextPage,
     error
   } = useInfiniteQuery<any>({
-    queryKey: ['reviewList', params],
+    queryKey: ['reviewList', params.review_id],
     queryFn: ({pageParam}) => getReplyAll(Number(params.review_id), {pageNumber: pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
         return data?.last? undefined: data.pageable.pageNumber+1;
     }
   });
+  const {content, contentHandler, createReply, removeReply, updateReply} = useReply();
 
   return (
     <>
@@ -35,15 +35,15 @@ const CommentList = () => {
           {data?.pages.map((page) => (
             <>
               {page.content.map((item: getReplyType) => (
-                <Comment key={item.createdAt} item={item}/> // key replyId로 바꿔야댐
+                <Comment key={item.createdAt} item={item} updateReply={updateReply} removeReply={removeReply}/> // key replyId로 바꿔야댐
               ))}
             </>
           ))}
       </div>
       <div className="comment-write">
           <img src="../../public/asset/image/IMG_1282.jpg" alt="프로필이미지" className="profile-img"/>
-          <input type="text" placeholder="댓글 달기" className="write"></input>
-          <button>작성</button>
+          <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
+          <button onClick={() => createReply(Number(params.review_id))}>작성</button>
       </div>
     </div>
 

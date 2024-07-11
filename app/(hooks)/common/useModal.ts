@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const useModal = () => {
   const [modal, setModal] = useState(false);
-  const {reviewReport} = reportApi();
+  const {postReport} = reportApi();
   const [content, setContent] = useState('');
 
   const contentHandler = (
@@ -13,16 +13,30 @@ const useModal = () => {
     setContent(event.target.value);
   };
 
-  const createReviewReport = async (reviewId:number) => {
-    console.log(reviewId)
+  const createReviewReport = async (targetId:number) => {
     const reportData = {
-      targetId: reviewId,
+      targetId: targetId,
       content: content,
       reportType: 'REVIEW'
     };
    
-    const result = await reviewReport(reportData);
-    console.log(result.status)
+    const result = await postReport(reportData);
+    if (result.status === 201) {
+      alert('신고가 완료되었습니다');
+      setModal(false);
+    } else {
+      alert('잠시후 다시 시도해 주세요₩n'+result.error.massege);
+    }
+  }
+
+  const createReplyReport = async (targetId:number) => {
+    const reportData = {
+      targetId: targetId,
+      content: content,
+      reportType: 'REPLY'
+    };
+
+    const result = await postReport(reportData);
     if (result.status === 201) {
       alert('신고가 완료되었습니다');
       setModal(false);
@@ -35,8 +49,9 @@ const useModal = () => {
     contentHandler,
     content,
     createReviewReport,
+    createReplyReport,
     modal,
-    setModal
+    setModal,
   }
 }
 

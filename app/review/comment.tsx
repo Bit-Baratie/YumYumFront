@@ -1,7 +1,15 @@
 import "./comment.scss";
 import { getReplyType } from "../type";
+import useModal from "../(hooks)/common/useModal";
+import ReportModal from "../(component)/reportModal";
 
-const Comment = ({item}: {item: getReplyType}) => {
+const Comment = ({item, updateReply, removeReply}: {item: getReplyType, updateReply: Function, removeReply: Function}) => {
+    const {modal, setModal, createReplyReport} = useModal();
+
+    const onClose = () => {
+        setModal(false);
+    }
+
     return (
         <>
             <div className="commentContainer">
@@ -16,13 +24,15 @@ const Comment = ({item}: {item: getReplyType}) => {
             </div>
 
             <div className="btn">
-                <button className="dec"></button>
-                <button className="mod"></button>
-                <button className="del"></button>
+                <button className="dec" onClick={() => setModal(true)}></button>
+                <button className="mod" onClick={() => updateReply()}></button>
+                <button className="del" onClick={() => removeReply(item.id)}></button>
             </div>
             </div>
 
             <hr />
+
+            {modal && <ReportModal onClose={() => onClose()} targetId={item.id} createReport={createReplyReport}/>}
         </>
     );
 }

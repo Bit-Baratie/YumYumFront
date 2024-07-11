@@ -31,7 +31,7 @@ const Dropdown = ({ memberId, reviewData, removeReview }: { memberId: number, re
           {/* {userInfo.memberId === memberId ? <li className="tkrwp">삭제</li> : ""} */}
           {userInfo.memberId === memberId ? <li className="tkrwp" onClick={() => removeReview(reviewData.reviewId)}>삭제</li> : ""}
       </ul>
-      {modal && <ReportModal onClose={() => closeModal()} reviewId={reviewData.reviewId} createReport={createReviewReport}/>}
+      {modal && <ReportModal onClose={() => closeModal()} targetId={reviewData.reviewId} createReport={createReviewReport}/>}
     </div>
   );
 };

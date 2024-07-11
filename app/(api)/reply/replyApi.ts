@@ -4,9 +4,9 @@ import { postReplyType } from "@/app/type";
 const replyApi = () => {
   const {axiosWithAuth, axiosNonAuth} = useAxiosWithAuth();
 
-  const postReply = async ({postReplyData}: {postReplyData: postReplyType} ) => {
+  const postReply = async ({postReplyData}: {postReplyData: postReplyType}) => {
     const result = await axiosWithAuth.post(`/reply`, postReplyData);
-    return result.data;
+    return result;
   }
 
   const getReplyAll = async (reviewId: number, {pageNumber}: {pageNumber:unknown}) => {
@@ -16,12 +16,12 @@ const replyApi = () => {
 
   const patchReply = async (reviewId: number, patchReplyData: string) => {
     const result = await axiosWithAuth.patch(`/reply/${reviewId}`, patchReplyData);
-    return result.data;
+    return result;
   }
 
   const deleteReply = async (replyId: number) => {
     const result = await axiosWithAuth.delete(`/reply/${replyId}`);
-    return result.data;
+    return result;
   }
 
   return {

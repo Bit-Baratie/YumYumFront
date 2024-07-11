@@ -4,8 +4,8 @@ import { AlertFilled } from "@ant-design/icons";
 import useReview from "../(hooks)/review/useReview";
 import useModal from "../(hooks)/common/useModal";
 
-const ReportModal = ({ onClose, reviewId, createReport }: { onClose: () => void,  reviewId:number, createReport: Function} ) => {
-  const { content, contentHandler, createReviewReport} = useModal();
+const ReportModal = ({ onClose, targetId, createReport }: { onClose: () => void,  targetId:number, createReport: Function} ) => {
+  const { content, contentHandler} = useModal();
 
   return (
     <div className={Style.modalOverlay}>
@@ -25,7 +25,7 @@ const ReportModal = ({ onClose, reviewId, createReport }: { onClose: () => void,
             value={content}
             onChange={contentHandler}
           />
-          <button className={Style.wjsthd} onClick={() => createReport(reviewId)}>
+          <button className={Style.wjsthd} onClick={() => createReport(targetId)}>
             전송
           </button>
         </div>
