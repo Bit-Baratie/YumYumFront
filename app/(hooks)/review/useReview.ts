@@ -55,7 +55,7 @@ const useReview = () => {
 
     const response = await postReview({postReviewData: reviewData});
     if (response.status === 201) {
-      router.push("/review");
+      router.back();
     } else {
       console.error("Failed to create review");
     }
