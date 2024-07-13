@@ -169,6 +169,10 @@ const useStoreApi = () => {
     return result.data
   }
 
+  const getStoreReview = async (storeId: number, { pageNumber }: { pageNumber: unknown }) => {
+    const result = await axiosWithAuth.get(`/review/store/${storeId}?pageNumber=${pageNumber}`)
+    return result.data
+  }
 
   return {
     postStar,
@@ -176,6 +180,7 @@ const useStoreApi = () => {
     searchStoreInfo,
     getStoreInfo,
     postStoreLike,
+    getStoreReview
   };
 }
 

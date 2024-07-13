@@ -8,7 +8,7 @@ import { location } from "@/app/type";
 
 const useSearch = () => {
   const searchParams = useSearchParams().get('keyword');
-  const { data } = useQuery({ queryKey: ['keySearch', searchParams], queryFn: () => search(searchParams) });
+  const { data, isLoading, isError } = useQuery({ queryKey: ['keySearch', searchParams], queryFn: () => search(searchParams) });
   const [keyword, setKeyword] = useState<string>('');
 
   const router = useRouter();
@@ -18,9 +18,10 @@ const useSearch = () => {
     let latitude = 37.4995961;
     let longitude = 127.0289929;
     const LatLng: location = { latitude, longitude };
-    const result = await data ? await data : await getStoreInfo(LatLng);
-    return result;
+    const result = data ? data : await getStoreInfo(LatLng);
+    return result
   }
+
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   }

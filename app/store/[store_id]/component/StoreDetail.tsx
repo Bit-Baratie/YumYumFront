@@ -7,8 +7,10 @@ import "@/app/store/[store_id]/storeDetailPage.scss"
 import useStore from "@/app/store/(hooks)/useStore";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
+import ReportModal from "@/app/(component)/reportModal";
 import Link from "next/link";
 import { getStoreType, favorite } from "@/app/type";
+import useModal from "@/app/(hooks)/common/useModal";
 
 
 
@@ -16,6 +18,13 @@ const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
   const { StoreDetailInfo, postStar } = useStoreApi();
   const [storeList, setStoreList] = useState<getStoreType | null>(null);
+  const [menuStatus, setMenuStatus] = useState(false);
+  const { modal, setModal, createStoreReport, content, contentHandler } = useModal();
+
+
+  const closeModal = () => {
+    setModal(false);
+  }
 
   const params = useParams() as { store_id: string };
   const storeId = params.store_id;
@@ -84,9 +93,10 @@ const StoreDetail = () => {
         </div>
         <div id="navBtn">
           <Link href={`/review/write?storeId=${storeList.storeId}&storeName=${storeList.name}`}>리뷰</Link>
-          <div>길찾기</div>
-          <div>신고버튼</div>
+          <a target="_blank" href={`https://map.naver.com/p/search/${storeList.name}`}>길찾기</a>
+          <div onClick={() => { setModal(true) }}>신고버튼</div>
         </div>
+        {modal && <ReportModal onClose={() => closeModal()} targetId={storeList.storeId} createReport={createStoreReport} content={content} contentHandler={contentHandler} />}
         <div className="favorite">
           <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '55px', height: '55px' }} onClick={() => { postStar(data); favoriteHandler(storeList.favoriteStatus); }} />
         </div>
@@ -98,18 +108,51 @@ const StoreDetail = () => {
         <div className="menu">
           <div className="menuInfo">
             <p>메뉴정보</p>
-            <span>더보기+</span>
+            <span onClick={() => setMenuStatus(true)}>더보기+</span>
           </div>
           <div className="menuList">
             <ul>
-              {storeList.menuList.map((menu) => (
-                <li key={menu.id}>
-                  <span className="menuName">{menu.name}</span>
-                  <div className="line">--------------------</div>
-                  <span className="menuPrice">{menu.price}원</span>
-                </li>
-              ))}
+              {menuStatus == true &&
+                <>
+                  {
+                    storeList.menuList.map((menu) => (
+                      <li key={menu.id}>
+                        <span className="menuName">{menu.name}</span>
+                        <div className="line">--------------------</div>
+                        <span className="menuPrice">{menu.price}원</span>
+                      </li>
+                    ))
+                  }
+                </>
+                // || menuStatus == false &&
+                // <div className="menuList">
+                //   <ul>
+                //     <>
+                //       <li>
+                //         <span className="menuName">{storeList.menuList[0].name}</span>
+                //         <div className="line">--------------------</div>
+                //         <span className="menuPrice">{storeList.menuList[0].price}원</span>
+                //       </li>
+                //       <li>
+                //         <span className="menuName">{storeList.menuList[1].name}</span>
+                //         <div className="line">--------------------</div>
+                //         <span className="menuPrice">{storeList.menuList[1].price}원</span>
+                //       </li>
+                //       <li>
+                //         <span className="menuName">{storeList.menuList[2].name}</span>
+                //         <div className="line">--------------------</div>
+                //         <span className="menuPrice">{storeList.menuList[2].price}원</span>
+                //       </li>
+                //     </>
+                //   </ul>
+                // </div>
+                // || storeList.menuList &&
+                // <>
+                //   <div>메뉴 정보가 존재하지 않습니다</div>
+                // </>
+              }
             </ul>
+
           </div>
         </div>
       </div>

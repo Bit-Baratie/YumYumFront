@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const useModal = () => {
   const [modal, setModal] = useState(false);
-  const {postReport} = reportApi();
+  const { postReport } = reportApi();
   const [content, setContent] = useState('');
 
   const contentHandler = (
@@ -13,23 +13,37 @@ const useModal = () => {
     setContent(event.target.value);
   };
 
-  const createReviewReport = async (targetId:number) => {
+  const createReviewReport = async (targetId: number) => {
     const reportData = {
       targetId: targetId,
       content: content,
       reportType: 'REVIEW'
     };
-   
+
     const result = await postReport(reportData);
     if (result.status === 201) {
       alert('신고가 완료되었습니다');
       setModal(false);
     } else {
-      alert('잠시후 다시 시도해 주세요₩n'+result.error.massege);
+      alert('잠시후 다시 시도해 주세요₩n' + result.error.massege);
+    }
+  }
+  const createStoreReport = async (targetId: number) => {
+    const reportData = {
+      targetId: targetId,
+      content: content,
+      reportType: 'STORE'
+    };
+    const result = await postReport(reportData);
+    if (result.status === 201) {
+      alert('신고가 완료되었습니다');
+      setModal(false);
+    } else {
+      alert('잠시후 다시 시도해 주세요₩n' + result.error.massege);
     }
   }
 
-  const createReplyReport = async (targetId:number) => {
+  const createReplyReport = async (targetId: number) => {
     const reportData = {
       targetId: targetId,
       content: content,
@@ -41,7 +55,7 @@ const useModal = () => {
       alert('신고가 완료되었습니다');
       setModal(false);
     } else {
-      alert('잠시후 다시 시도해 주세요₩n'+result.error.massege);
+      alert('잠시후 다시 시도해 주세요₩n' + result.error.massege);
     }
   }
 
@@ -50,6 +64,7 @@ const useModal = () => {
     content,
     createReviewReport,
     createReplyReport,
+    createStoreReport,
     modal,
     setModal,
   }
