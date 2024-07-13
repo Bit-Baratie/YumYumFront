@@ -27,7 +27,7 @@ export const Reply = ({ item }: { item: getReplyType }) => {
   const {userInfo} = userStore();
 
   return (
-    <div className={replyStyle.replyContainer} key={item.id}>
+    <div className={replyStyle.replyContainer} key={item.replyId}>
       <Image src={userInfo.profileUrl} width={100} height={100} alt=''/>
       <div className={replyStyle.replyRight}>
         <span>{item.nickName}</span>
