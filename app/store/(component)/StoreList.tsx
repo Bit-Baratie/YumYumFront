@@ -19,12 +19,16 @@ const StoreList = () => {
       let longitude = 127.0289929;
 
       const location = { longitude, latitude };
+
+      //api데이터 예외처리
       try {
         const StoreInfoResult = await getStoreInfo(location)
-        setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
+        // setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
         if (data?.length !== 0) {
+          console.log(data);
           setStoreList(data)
         } else {
+          console.log(StoreInfoResult)
           setStoreList(StoreInfoResult)
         }
       } catch (error) {
@@ -32,7 +36,7 @@ const StoreList = () => {
       }
     };
     fetchStoreInfo();
-  }, [data, setStoreList]);
+  }, [data]);
   if (storeList?.length === 0) {
     return (
       <div id="storeList">
@@ -61,8 +65,7 @@ const StoreList = () => {
         {storeList?.map(store => (
           <StoreInfo
             key={store.storeId}
-            store={store}
-          />
+            store={store} />
         ))}
       </div>
     </div>
