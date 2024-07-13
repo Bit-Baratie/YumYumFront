@@ -1,0 +1,31 @@
+/* App.scss */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+    background-image: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: inherit;
+  }
+}
+
+.skeleton {
+  background-color: #e5e7eb;
+  border-radius: inherit;
+}
+
+.card {
+  background-color: #e5e7eb;
+}
