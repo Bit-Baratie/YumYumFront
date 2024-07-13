@@ -55,16 +55,15 @@ const Slide = () => {
         <Swiper
           spaceBetween={10}
           navigation={true}
-          slidesPerView={5}
-          loop={true}
+          slidesPerView={data?.length>5?5:data?.length}
+          // centeredSlides={true}
+          // loop={true}
         >
           {data?
           <>
           {data.map((item:getStoreType) => {
             return(<SwiperSlide key={item.storeId}>
-              <Link href={`/store/${item.storeId}`}>
-              <Item item={item}/>
-              </Link>
+                <Item item={item}/>
             </SwiperSlide>)
           })}</>:<div>데이터 없음</div>}
         </Swiper>
