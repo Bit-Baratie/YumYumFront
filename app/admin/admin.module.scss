@@ -1,0 +1,60 @@
+.container{
+  padding: 30px;
+  width: 1200px;
+}
+.pStyle {
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  padding-bottom: 20px;
+  height: 25px;
+}
+
+.pAndSearch{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tableStyle {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableStyle th,
+.tableStyle td {
+  border: 1px solid rgb(147, 147, 147);
+  border-collapse: collapse;
+  padding: 8px;
+}
+
+.trStyle{
+  background-color: #F9F9F9;
+}
+
+.nickname {
+  // width: 10% !important;
+  width: 150px !important;
+}
+
+.reviewContent{
+  // width: 40% !important;
+  width: 500px !important;
+}
+
+.reportContent {
+  // width: 25% !important;
+  width: 200px;
+}
+
+.date {
+  // width: 15% !important;
+  width: 230px;
+
+}
+
+.Pagenation{
+  display: flex;
+  color: red;
+
+  // background-color: red;
+}
