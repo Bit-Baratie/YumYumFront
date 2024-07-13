@@ -4,7 +4,7 @@ import Store from '../userStore';
 
 const useAxiosWithAuth = (): any => {
   const axiosWithAuth: AxiosInstance = axios.create({
-    baseURL: 'http://192.168.0.20:3000',
+    baseURL: 'http://223.130.158.171:80',
     headers: {
       Authorization: `Bearer ${Store.getState().token.atk}`,
       "Content-Type": 'application/json'
@@ -13,7 +13,7 @@ const useAxiosWithAuth = (): any => {
   });
 
   const axiosNonAuth: AxiosInstance = axios.create({
-    baseURL: 'http://192.168.0.20:3000'
+    baseURL: 'http://223.130.158.171:80'
   });
 
   axiosWithAuth.interceptors.response.use(
