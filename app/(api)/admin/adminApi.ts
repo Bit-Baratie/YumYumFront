@@ -37,13 +37,18 @@ const AdminApi = () => {
     console.log(result)
     return result.data;
   }
+  const getStoreList = async () => {
+    const result = await axiosWithAuth.get("/store/admin");
+    console.log(result)
+    return result.data;
+  }
 
 
-return {
-  getReviewReport,
-  getCommentReport,
-  getUserReport,
-    
+  return {
+    getReviewReport,
+    getCommentReport,
+    getUserReport,
+    getStoreList,
   }
 }
 

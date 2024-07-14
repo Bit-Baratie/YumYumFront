@@ -7,18 +7,23 @@ const nextConfig = {
         destination: "/home",
         permanent: true,
       },
+      {
+        source: "/admin",
+        destination: "/admin/user",
+        permanent: true,
+      },
     ];
   },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: ["@svgr/webpack"],
     });
 
     return config;
   },
   images: {
-    domains: ['kr.object.ncloudstorage.com'], // 외부 이미지 도메인 추가
+    domains: ["kr.object.ncloudstorage.com"], // 외부 이미지 도메인 추가
   },
 };
 
