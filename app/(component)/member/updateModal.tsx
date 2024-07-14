@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ModalStyle from './updateModal.module.scss';
 import { ChangeEvent } from 'react';
 
@@ -8,8 +9,7 @@ interface Props {
   passwordCheckHanler: (e: ChangeEvent<HTMLInputElement>) => void;
   phoneHandler: (e: ChangeEvent<HTMLInputElement>) => void;
   updateMember: () => void;
-  nickName: string;
-  phone: string;
+  profile: any;
   modal: boolean;
   setModal: (i:boolean) => void;
 }
@@ -21,8 +21,7 @@ const UpdateModal = (
   passwordCheckHanler,
   phoneHandler,
   updateMember,
-  nickName,
-  phone,
+  profile,
   modal,
   setModal}: Props
 ) => {
@@ -34,10 +33,11 @@ const UpdateModal = (
       <div className={ModalStyle.container}>
         <div className={ModalStyle.esc} onClick={() => setModal(false)}>BC</div>
         <span className={ModalStyle.title}>프로필 수정</span>
-        <div className={ModalStyle.img}></div>
+        <Image className={ModalStyle.img} src={profile.profileImage} width={100} height={100} alt='프로필'/>
+        {/* <div className={ModalStyle.img}></div> */}
 
         <div>
-          <input type="text" defaultValue={nickName} className={ModalStyle.nickname} onChange={(e) => nickNameHandler(e)}/>
+          <input type="text" defaultValue={profile.nickName} className={ModalStyle.nickname} onChange={(e) => nickNameHandler(e)}/>
           <span>연필</span>
         </div>
 
@@ -45,7 +45,7 @@ const UpdateModal = (
           <div className={ModalStyle.inputSet}>
             <span className={ModalStyle.label}>연락처</span>
             <div className={ModalStyle.inputBox}>
-              <input type="text" defaultValue={phone} className={ModalStyle.input} onChange={(e) => phoneHandler(e)}/>
+              <input type="text" defaultValue={profile.phone} className={ModalStyle.input} onChange={(e) => phoneHandler(e)}/>
               <span>연필</span>
             </div>
           </div>

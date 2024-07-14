@@ -96,7 +96,7 @@ const ReviewWrite = () => {
           {!searchParams.get('data')?
           <button
             className={WriteStyle.submit}
-            onClick={() => createReview(Number(searchParams.get("storeId")))}
+            onClick={() => createReview(Number(searchParams.get("storeId")), image)}
           >
             작성완료
           </button>

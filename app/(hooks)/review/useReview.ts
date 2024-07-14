@@ -45,12 +45,12 @@ const useReview = () => {
     
   }
 
-  const createReview = async (storeId: number) => {
+  const createReview = async (storeId: number, image: File[]) => {
     const reviewData = {
       storeId: storeId,
       content: content,
       grade: rating,
-      imageList: []
+      imageList: image
     };
 
     const response = await postReview({postReviewData: reviewData});
