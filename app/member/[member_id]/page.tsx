@@ -8,6 +8,8 @@ import Wrapper from '@/app/(component)/member/wrapper';
 import { usePathname } from 'next/navigation';
 import StoreContainer from '@/app/(component)/member/store';
 import UpdateModal from '@/app/(component)/member/updateModal';
+import CardSkeleton from '@/app/(component)/skeleton/card';
+import ProfileSkeleton from '@/app/(component)/skeleton/profile';
 
 const Mypage = () => {
   const {profile, 
@@ -32,10 +34,10 @@ const Mypage = () => {
     <>
       <div className={MemberPageStyle.dashboardWrapper}>
         <div className={MemberPageStyle.dashboard}>
-        {!profile ? '회원정보가 없습니다':
+        {!profile ? <ProfileSkeleton/>:
           <>
             <div className={MemberPageStyle.profile}>
-              <Image src={'/'} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage}/>
+              <Image src={'https://kr.object.ncloudstorage.com/baratie-yumyum/store/grid-column%2C%20grid-row.png'} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage}/>
               <div className={MemberPageStyle.profileInfo}>
                 <div className={MemberPageStyle.nickname}>{profile.nickName}<Image src={'/asset/image/pencil.png'} width={15} height={15} alt='연필' onClick={() => setUpdateModal(!updateModal)}/></div>
                 <div>{profile.email}</div>
@@ -51,19 +53,19 @@ const Mypage = () => {
         </div>
 
         <Wrapper title={'내가 쓴 리뷰'} link={`${pathname}/review`} totalCnt={myReviewList?.pages[0].numberOfElements}>
-          {myReviewList?<ReviewContainer myReviewList={myReviewList.pages[0].content}/>:'리뷰가 없습니다'}
+          {myReviewList?<ReviewContainer myReviewList={myReviewList.pages[0].content}/>:<CardSkeleton/>}
         </Wrapper>
 
         <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`} totalCnt={likeReviewList?.pages[0].numberOfElements}>
-          {likeReviewList?<ReviewContainer myReviewList={likeReviewList.pages[0].content}/>:'리뷰가 없습니다'}
+          {likeReviewList?<ReviewContainer myReviewList={likeReviewList.pages[0].content}/>:<CardSkeleton/>}
         </Wrapper>
 
         <Wrapper title={'내가 쓴 댓글'} link={`${pathname}/reply`} totalCnt={myReplyList?.pages[0].numberOfElements}>
-          {myReplyList?<ReplyWrapper myReplyList={myReplyList.pages[0].content}/>:'댓글이 없습니다'}
+          {myReplyList?<ReplyWrapper myReplyList={myReplyList.pages[0].content}/>:<CardSkeleton/>}
         </Wrapper>
 
         <Wrapper title={'즐겨찾기한 맛집'} link={`${pathname}/star`} totalCnt={likeStoreList?.pages[0].numberOfElements}>
-          {likeStoreList?<StoreContainer likeStoreList={likeStoreList.pages[0].content}/>:'즐겨찾기한 맛집이 없습니다'}
+          {likeStoreList?<StoreContainer likeStoreList={likeStoreList.pages[0].content}/>:<CardSkeleton/>}
         </Wrapper>
         
         {updateModal? <UpdateModal
@@ -73,8 +75,7 @@ const Mypage = () => {
           passwordCheckHanler = {passwordCheckHanler}
           phoneHandler = {phoneHandler}
           updateMember = {updateMember}
-          nickName = {nickName}
-          phone = {phone}
+          profile = {profile}
           modal = {updateModal}
           setModal = {setUpdateModal}
         /> : ''}

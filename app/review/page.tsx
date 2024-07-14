@@ -8,6 +8,7 @@ import useReview from "../(hooks)/review/useReview";
 import Link from "next/link";
 import { useObserver } from "../(hooks)/common/useObserver";
 import { getReviewType } from "../type";
+import ReviewSkeleton from "../(component)/skeleton/review";
 
 const Review = () => {
   const { data, fetchNextPage, isFetching, isFetchingNextPage, status } = useReview();
@@ -24,7 +25,7 @@ const Review = () => {
   return (
     <>
       <Headers />
-      {isFetching && <p>Loading...</p>}
+      {isFetching && <ReviewSkeleton/>}
       {status === 'success' &&
       <>
         {data?.pages.map((page) => (
