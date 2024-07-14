@@ -1,14 +1,30 @@
+'use client'
 import Header from "@/app/header";
 import "@/app/admin/comment/comment.module.scss";
 import { useEffect, useState } from "react";
 import adminApi from "@/app/(api)/admin/adminApi";
 import AdminStyle from "@/app/admin/admin.module.scss";
 import Search from "../(component)/Search";
-import UserList from "@/app/admin/user/userList"
+import UserList from "@/app/admin/store/storeList";
 // import SideBar from "../sidebar";
 // import SideBar from "../(component)/sideBar";
+import { adminStoreType } from "@/app/type";
 
 const userPage = () => {
+  const [adminStore, setAdminStore] = useState<Array<adminStoreType>>();
+  const { getStoreList } = adminApi();
+
+
+  useEffect(() => {
+    const fetchAdminStore = async () => {
+      const result = await getStoreList();
+      setAdminStore(result.content);
+    }
+    fetchAdminStore();
+  }, [])
+
+
+
   return (
     <div className={AdminStyle.container}>
       <div className={AdminStyle.pAndSearch}>
@@ -25,10 +41,12 @@ const userPage = () => {
           </tr>
         </thead>
         <tbody>
-          <UserList />
-          <UserList />
-          <UserList />
-          <UserList />
+          {adminStore?.map(store => (
+            <UserList
+              key={store.storeId}
+              store={store}
+            />
+          ))}
         </tbody>
       </table>
     </div>
