@@ -10,7 +10,7 @@ import AdminApi from "@/app/(api)/admin/adminApi";
 // import SideBar from "../sidebar";
 // import SideBar from "../(component)/sideBar";
 
-interface ReportData {
+interface UserData {
   reportId: number;
   nickName: string;
   reportContents: string;
@@ -21,7 +21,7 @@ interface ReportData {
 
 const userPage = () => {
   const [page, setPage] = useState(1);
-  const [userCheck, setUserCheck] = useState<Array<ReportData>>([]);
+  const [userCheck, setUserCheck] = useState<Array<UserData>>([]);
   const [loading, setLoading] = useState(true);
   const { getuserAll } = AdminApi();
 
@@ -57,8 +57,8 @@ const userPage = () => {
           </tr>
         </thead>
         <tbody>
-          {userCheck.map((reportData) => (
-            <UserList key={reportData.reportId} reportData={reportData} />
+          {userCheck.map((userData, index) => (
+            <UserList key={userData} userData={userData} />
           ))}
         </tbody>
       </table>
