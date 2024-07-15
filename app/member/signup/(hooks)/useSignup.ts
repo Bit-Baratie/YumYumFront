@@ -10,6 +10,7 @@ const useSignup = () => {
   const [passwordCheck, setPasswordCheck] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [image, setImage] = useState<string>('/asset/image/defaultImage.png');
+  const [file, setFile] = useState<File|undefined>();
   const fileInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
@@ -38,7 +39,7 @@ const useSignup = () => {
     if (!file) {
       return;
     }
-    
+    setFile(file);
     // 이미지 화면에 띄우기
     const reader = new FileReader();
     // 파일을 불러오는 메서드, 종료되는 시점에 readyState는 Done(2)이 되고 onLoad 시작
@@ -59,7 +60,7 @@ const useSignup = () => {
       password: password,
       nickName: nickname,
       phoneNumber: phone, 
-      imageUrl: image
+      imageUrl: file
     };
 
     if (password !== passwordCheck) {
@@ -68,7 +69,12 @@ const useSignup = () => {
     }
 
     const res = await postSignupInfo(info);
-    router.push('/member/login');
+    if (res.status === 201) {
+      router.push('/member/login');
+    } else {
+      alert('회원가입 실패');
+    }
+    
   }
 
   return {
