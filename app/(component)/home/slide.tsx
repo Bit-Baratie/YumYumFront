@@ -9,6 +9,7 @@ import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { getStoreType } from "@/app/type";
+import CardSkeleton from "../skeleton/card";
 
 const Slide = () => {
   const {
@@ -52,12 +53,13 @@ const Slide = () => {
       </div>
 
       <div className={SlideStyle.itemContainer}>
+        {data?
         <Swiper
           spaceBetween={10}
           navigation={true}
-          slidesPerView={data?.length>5?5:data?.length}
+          slidesPerView={data?.length>5?5:data.length}
           // centeredSlides={true}
-          // loop={true}
+          loop={true}
         >
           {data?
           <>
@@ -66,7 +68,7 @@ const Slide = () => {
                 <Item item={item}/>
             </SwiperSlide>)
           })}</>:<div>데이터 없음</div>}
-        </Swiper>
+        </Swiper>: <CardSkeleton/>}
       </div>
     </div>
   );
