@@ -1,0 +1,93 @@
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.storeId{
+    display: none;
+}
+.storeDetail{
+    width: 600px;
+    height: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+.storeImageDetail{
+    padding: 0px;
+    margin: 0px;
+    width: 600px;
+    height: 330px;
+    display: flex;
+    justify-content: center;
+    .MainImage{
+        width: 400px;
+        height: 380px;
+        background-color:aquamarine;
+        border-top-left-radius: 20px;
+    }
+
+    .subImage{
+        width: 200px;
+        height: 215px;
+        background-color:blueviolet;
+    }
+}
+
+.subImageList{
+    width: 400px;
+    height: 330px;
+    display: flex;
+    flex-wrap: wrap;
+    #sub2{
+        border-top-right-radius: 20px;
+    }
+}
+
+.storeInfoDetail{
+    line-height: 2;
+    width: 500px;
+    margin-top: 40px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    div{
+        align-items: center;
+        height: 70px;
+        justify-content: space-between;
+        display: flex;
+    }
+}
+.storeNameDetail{
+    display: flex;
+            div{
+                align-items:end;
+            }
+            span{
+                font-size: 40px;
+            }
+}
+input{
+  width: 300px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid grey; 
+  background-color: #E8E8E8;
+}
+.inputHashTag{
+  margin-top: 70px;
+  height: 110px;
+}
+  button{
+  width: 160px;
+  height: 60px;
+  border-radius: 20px;
+  }
