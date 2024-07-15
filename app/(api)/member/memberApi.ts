@@ -31,11 +31,12 @@ const MemberApi = () => {
 
   const patchMember = async ({data}: {data: patchMemberType}) => {
     const result = await axiosWithAuth.patch(`/member`, data);
-    return result.data;
+    return result;
   }
 
   const deleteMember = () => {
-    axiosWithAuth.delete('/member');
+    const result = axiosWithAuth.delete('/member');
+    return result;
   }
 
   return {

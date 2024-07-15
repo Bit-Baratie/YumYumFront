@@ -90,7 +90,7 @@ const useMember = () => {
     setPhone(e.target.value)
   }
 
-  const updateMember = () => {
+  const updateMember = async () => {
     if (password !== passwordCheck) {
       alert('비밀번호가 일치하지 않습니다');
       return;
@@ -111,7 +111,12 @@ const useMember = () => {
       phoneNumber: phone
     }
 
-    patchMember({data});
+    const res = await patchMember({data});
+    if (res.status === 202) {
+      router.refresh();
+    } else {
+      alert('잠시후 다시 시도해주세요');
+    }
   }
 
   const removeMember = () => {
