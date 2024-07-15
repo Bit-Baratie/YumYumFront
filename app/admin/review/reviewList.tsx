@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { report } from "process";
 import AdminApi from "@/app/(api)/admin/adminApi";
 import ReviewStyle from "@/app/admin/review/reviewList.module.scss";
 import { CloseOutlined } from "@ant-design/icons";
 import Pagination from "react-js-pagination";
 import PageStyle from "@/app/admin/pageStyle.module.scss";
+import Swal from "sweetalert2";
+import router from "next/router";
 
 interface ReportData {
   reportId: number;
@@ -20,9 +21,26 @@ interface ReportData {
 
 const ReviewList = ({ reportData }: { reportData: ReportData }) => {
   const [page, setPage] = useState(1);
+  const { deleteReview } = AdminApi();
 
   const handlePageChange = (page: number) => {
     setPage(page);
+  };
+
+  const removeReview = () => {
+    Swal.fire({
+      title: "리뷰를 삭제하시겠습니까?",
+      text: "삭제 버튼 선택 시, 리뷰는 삭제되며 복구되지 않습니다.",
+      showCancelButton: true,
+      confirmButtonText: "삭제",
+      icon: "warning",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteReview();
+        Swal.fire("삭제가 완료되었습니다", "", "success");
+        router.push("/admin/review");
+      }
+    });
   };
 
   // const [reportContents, setReportContents] = useState<any>();
@@ -55,7 +73,7 @@ const ReviewList = ({ reportData }: { reportData: ReportData }) => {
           </td>
           <td className={ReviewStyle.data}>
             {reportData?.createdAt}
-            <button className={ReviewStyle.BtnStyle}>
+            <button className={ReviewStyle.BtnStyle} onClick={removeReview}>
               <CloseOutlined />
             </button>
           </td>

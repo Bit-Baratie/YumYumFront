@@ -11,12 +11,10 @@ import AdminApi from "@/app/(api)/admin/adminApi";
 // import SideBar from "../(component)/sideBar";
 
 interface UserData {
-  reportId: number;
-  nickName: string;
-  reportContents: string;
-  reportReason: string;
-  createdAt: string;
-  targetContent: string;
+  email: string;
+  isDeleted: boolean;
+  nickname: string;
+  phoneNumber: string;
 }
 
 const userPage = () => {
@@ -58,7 +56,7 @@ const userPage = () => {
         </thead>
         <tbody>
           {userCheck.map((userData, index) => (
-            <UserList key={userData} userData={userData} />
+            <UserList key={index} userData={userData} />
           ))}
         </tbody>
       </table>
