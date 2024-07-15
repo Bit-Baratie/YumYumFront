@@ -48,12 +48,33 @@ const AdminApi = () => {
     return result.data;
   }
 
+  const deleteUser = async () => {
+    const result = await axiosWithAuth.delete("/admin/member");
+    console.log(result)
+    return result.data;
+  }
+
+  const deleteReview = async () => {
+    const result = await axiosWithAuth.delete("/report/review");
+    console.log(result)
+    return result.data;
+  }
+
+  const deleteComment = async () => {
+    const result = await axiosWithAuth.delete("/report/reply");
+    console.log(result)
+    return result.data;
+  }
+
   return {
     getReviewReport,
     getCommentReport,
     getuserAll,
     getStoreList,
-    getStoreReport
+    getStoreReport,
+    deleteUser,
+    deleteReview,
+    deleteComment
   }
 }
 
