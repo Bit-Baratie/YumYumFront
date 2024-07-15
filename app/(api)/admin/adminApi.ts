@@ -32,7 +32,7 @@ const AdminApi = () => {
     return result.data;
   }
 
-  const getUserReport = async () => {
+  const getuserAll = async () => {
     const result = await axiosWithAuth.get("/member/admin/member");
     console.log(result)
     return result.data;
@@ -51,7 +51,7 @@ const AdminApi = () => {
   return {
     getReviewReport,
     getCommentReport,
-    getUserReport,
+    getuserAll,
     getStoreList,
     getStoreReport
   }
