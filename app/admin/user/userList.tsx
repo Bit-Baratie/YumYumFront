@@ -5,16 +5,14 @@ import adminApi from "@/app/(api)/admin/adminApi";
 import UserStyle from "@/app/admin/user/userList.module.scss";
 import useMember from "@/app/(hooks)/member/useMember";
 
-interface ReportData {
-  reportId: number;
-  nickName: string;
-  reportContents: string;
-  reportReason: string;
-  createdAt: string;
-  targetContent: string;
+interface UserData {
+  email: string;
+  isDeleted: boolean;
+  nickname: string;
+  phoneNumber: string;
 }
 
-const UserList = ({ reportData }: { reportData: ReportData }) => {
+const UserList = ({ userData }: { userData: UserData }) => {
   const [page, setPage] = useState(1);
 
   const handlePageChange = (page: number) => {
@@ -36,12 +34,15 @@ const UserList = ({ reportData }: { reportData: ReportData }) => {
 
   return (
     <>
-      {reportData && (
+      {userData && (
         <tr className={UserStyle.trStyle}>
-          <td className={UserStyle.Unikname}>{reportData?.reportId}꼬마돌</td>
-          <td className={UserStyle.email}>{}ddd@naver.com</td>
-          <td className={UserStyle.userNumbe}>010-1234-5678</td>
+          <td className={UserStyle.Unikname}>{userData?.nickname}꼬마돌</td>
+          <td className={UserStyle.email}>{userData.email}ddd@naver.com</td>
+          <td className={UserStyle.userNumbe}>
+            {userData.phoneNumber}010-1234-5678
+          </td>
           <td className={UserStyle.date}>
+            {userData.isDeleted}
             상태{" "}
             <button className={UserStyle.UBtnStyle} onClick={removeMember}>
               회원탈퇴

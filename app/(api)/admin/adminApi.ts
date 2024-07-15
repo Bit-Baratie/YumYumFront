@@ -33,7 +33,7 @@ const AdminApi = () => {
   }
 
   const getuserAll = async () => {
-    const result = await axiosWithAuth.get("/member/admin/member");
+    const result = await axiosWithAuth.get("/admin/member");
     console.log(result)
     return result.data;
   }
