@@ -4,7 +4,7 @@ import { loginType } from "@/app/type";
 const postLoginInfo = async (loginInfo: loginType) => {
   const {axiosNonAuth} = useAxiosWithAuth();
   const result = await axiosNonAuth.post(`/member/login`, loginInfo);
-  return result;
+  return result.data;
 }
 
 export default postLoginInfo;

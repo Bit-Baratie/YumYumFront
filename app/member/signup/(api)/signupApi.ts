@@ -1,9 +1,16 @@
 import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
-import { postMemberType } from "@/app/type";
+import axios from "axios";
 
-export const postSignupInfo = async (signupInfo: postMemberType) => {
+export const postSignupInfo = async (signupInfo: FormData) => {
   const {axiosNonAuth} = useAxiosWithAuth();
-  const result = await axiosNonAuth.post('/member', signupInfo);
+  console.log(signupInfo);
+  const result = await axios.post('http://192.168.0.20:3000/member',
+    signupInfo,
+    {
+      headers:{
+        "Content-Type": 'multipart/form-data'
+      }
+    });
 
   return result;
 }

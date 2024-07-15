@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { postSignupInfo } from "../(api)/signupApi";
 import { useRouter } from "next/navigation";
 
@@ -10,7 +10,7 @@ const useSignup = () => {
   const [passwordCheck, setPasswordCheck] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [image, setImage] = useState<string>('/asset/image/defaultImage.png');
-  const [file, setFile] = useState<File|undefined>();
+  const [file, setFile] = useState<any>();
   const fileInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
@@ -40,6 +40,7 @@ const useSignup = () => {
       return;
     }
     setFile(file);
+    console.log(file)
     // 이미지 화면에 띄우기
     const reader = new FileReader();
     // 파일을 불러오는 메서드, 종료되는 시점에 readyState는 Done(2)이 되고 onLoad 시작
@@ -52,15 +53,16 @@ const useSignup = () => {
     }
   }
 
-  const signup = async (e:React.MouseEvent<HTMLButtonElement>) => {
+  const signup = useCallback (async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
 
     const info = {
       email: email,
       password: password,
       nickName: nickname,
-      phoneNumber: phone, 
-      imageUrl: file
+      phoneNumber: phone
     };
 
     if (password !== passwordCheck) {
@@ -68,14 +70,17 @@ const useSignup = () => {
       return;
     }
 
-    const res = await postSignupInfo(info);
+    const upload = JSON.stringify(info);
+    formData.append('signUpDto', new Blob([upload], {type: 'application/json'}));
+
+    const res = await postSignupInfo(formData);
     if (res.status === 201) {
       router.push('/member/login');
     } else {
       alert('회원가입 실패');
     }
     
-  }
+  }, [])
 
   return {
     email, password, passwordCheck, nickname, phone, image, fileInput,

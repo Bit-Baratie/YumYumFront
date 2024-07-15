@@ -65,7 +65,7 @@ const useMember = () => {
   const router = useRouter();
 
   useEffect(() => {
-    setImageUrl('/');
+    setImageUrl(userInfo.profileUrl);
     setNickName(userInfo.nickName);
     setPhone(userInfo.phoneNumber);
   }, [userInfo.nickName, userInfo.phoneNumber, userInfo.profileUrl]);
