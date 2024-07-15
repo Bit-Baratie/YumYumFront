@@ -10,22 +10,22 @@ const MemberApi = () => {
   }
   
   const getMyReview = async ({pageNumber}: {pageNumber:unknown}) => {
-    const result = await axiosWithAuth.get(`/review/myReview?pageNumber=${pageNumber}`);
+    const result = await axiosWithAuth.get(`/member/myReview?pageNumber=${pageNumber}`);
     return result.data;
   }
   
   const getMyReply = async ({pageNumber}: {pageNumber:unknown}) => {
-    const result = await axiosWithAuth.get(`/reply/myreply?pageNumber=${pageNumber}`);
+    const result = await axiosWithAuth.get(`/member/myreply?pageNumber=${pageNumber}`);
     return result.data;
   }
   
   const getLikeStore = async ({pageNumber}: {pageNumber:unknown}) => {
-    const result = await axiosWithAuth.get(`/store/favorite?pageNumber=${pageNumber}`);
+    const result = await axiosWithAuth.get(`/member/favorite?pageNumber=${pageNumber}`);
     return result.data;
   }
   
   const getLikeReview = async ({pageNumber}: {pageNumber:unknown}) => {
-    const result = await axiosWithAuth.get(`/review/likeReview?pageNumber=${pageNumber}`);
+    const result = await axiosWithAuth.get(`/member/likeReview?pageNumber=${pageNumber}`);
     return result.data;
   }
 
