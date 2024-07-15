@@ -111,7 +111,6 @@ const TestMap = ({ storeId }: { storeId: string }) => {
         console.error('Error initializing map:', error);
       }
     };
-    console.log(result);
     initializeMap();
   }, [storeId, result]);
 

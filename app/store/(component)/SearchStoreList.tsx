@@ -1,5 +1,5 @@
 import TestMap from "@/app/store/(component)/NaverMap";
-import myLocation from "./MyLocation"
+// import myLocation from "./MyLocation"
 import StoreList from "./StoreList";
 
 const SearchStoreList = () => {
