@@ -46,38 +46,39 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
         {reviewItem?.content}
       </div>
       <div className={reviewStyle.reviewImg}>
-        <Image
+        {reviewItem.images[0]?<Image
           className={reviewStyle.reivewImage}
           // src={'/./'}
-          src={"/asset/image/ddddddd.JPG"}
+          
+          src={reviewItem.images[0]}
           width={350}
           height={350}
           alt="리뷰이미지"
-        />
-        <Image
+        />:""}
+        {reviewItem.images[1]?<Image
           className={reviewStyle.reivewImage}
-          src={"/asset/image/ddddddd.JPG"}
+          src={reviewItem.images[1]}
           width={350}
           height={350}
           alt="리뷰이미지"
-        />
-        <Image
+        />:''}
+        {reviewItem.images[2]?<Image
           className={reviewStyle.reivewImage}
-          src={"/asset/image/ddddddd.JPG"}
+          src={reviewItem.images[2]}
           width={350}
           height={350}
           alt="리뷰이미지"
-        />
-        <div className={reviewStyle.contL}>
+        />:''}
+        {reviewItem.images[3]?<div className={reviewStyle.contL}>
           <Image
             className={reviewStyle.reivewImageLast}
-            src={"/asset/image/ddddddd.JPG"}
+            src={reviewItem.images[3]}
             width={350}
             height={350}
             alt="리뷰이미지"
           />
-          <p>+3</p>
-        </div>
+          {reviewItem.images.length>4?<p>+{reviewItem.images.length-3}</p>:''}
+        </div>:''}
       </div>
     </div>
   );
