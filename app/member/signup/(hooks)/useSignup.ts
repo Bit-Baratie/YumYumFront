@@ -40,7 +40,6 @@ const useSignup = () => {
       return;
     }
     setFile(file);
-    console.log(file)
     // 이미지 화면에 띄우기
     const reader = new FileReader();
     // 파일을 불러오는 메서드, 종료되는 시점에 readyState는 Done(2)이 되고 onLoad 시작
