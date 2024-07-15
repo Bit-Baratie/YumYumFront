@@ -4,22 +4,22 @@ const HomeApi = () => {
   const {axiosNonAuth} = useAxiosWithAuth();
 
   const getTop10 = async (local: string) => {
-    const result = await axiosNonAuth.get(`/store/top10?local=${local}`);
+    const result = await axiosNonAuth.get(`/top10?local=${local}`);
     return result.data;
   }
 
   const getMonth = async (local: string) => {
-    const result = await axiosNonAuth.get(`/store/top10/month?local=${local}`);
+    const result = await axiosNonAuth.get(`/top10/month?local=${local}`);
     return result.data;
   }
 
   const getStar = async (local: string) => {
-    const result = await axiosNonAuth.get(`/store/top10/favorite?local=${local}`);
+    const result = await axiosNonAuth.get(`/top10/favorite?local=${local}`);
     return result.data;
   }
 
   const getViews = async (local: string) => {
-    const result = await axiosNonAuth.get(`/store/top10/views?local=${local}`);
+    const result = await axiosNonAuth.get(`/top10/views?local=${local}`);
     return result.data;
   }
 
