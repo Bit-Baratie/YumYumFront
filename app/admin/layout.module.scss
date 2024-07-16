@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.b {
+.NavBar {
   flex: 0 1 200px; /* 왼쪽의 NavBar 부분, 너비를 고정할 수 있음 */
   display: flex;
   // flex-direction: column;
@@ -17,11 +17,11 @@
   flex-direction: column;
 }
 
-.a {
+.Header {
   flex: 0 1 auto; /* 상단의 Header 부분 */
 }
 
-.c {
+.Main {
   flex: 1; /* 남은 공간을 차지하도록 설정 */
   display: flex;
   flex-direction: column;
