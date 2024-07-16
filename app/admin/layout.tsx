@@ -18,9 +18,7 @@ export default function RootLayout({
       </div>
       <div className={Style.right}>
         <div className={Style.a}>
-          <Link href={"/home"}>
-            <Header />
-          </Link>
+          <Header />
         </div>
         <div className={Style.c}>{children}</div>
       </div>

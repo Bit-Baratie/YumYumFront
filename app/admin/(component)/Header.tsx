@@ -7,9 +7,11 @@ const Header = () => {
   return (
     <>
       <div className={HeaderStyle.container}>
-        <button>
-          <Home /> HOME
-        </button>
+        <Link href={"/home"}>
+          <button>
+            <Home /> HOME
+          </button>
+        </Link>
         <button>
           <Link href="/home">
             <LogOut width={30} height={20} /> LOGOUT
