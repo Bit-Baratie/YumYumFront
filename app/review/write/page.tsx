@@ -12,7 +12,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import useImage from "@/app/(hooks)/common/useImage";
 
 const ReviewWrite = () => {
-  const { contentHandler, createReview, handleStarClick, rating, modifyReview } = useReview();
+  const { contentHandler, createReviewHandler, handleStarClick, rating, updateReviewHandler } = useReview();
   const searchParams = useSearchParams();
   let defaultData = {
     storeName: searchParams.get('storeName'),
@@ -96,14 +96,14 @@ const ReviewWrite = () => {
           {!searchParams.get('data')?
           <button
             className={WriteStyle.submit}
-            onClick={() => createReview(Number(searchParams.get("storeId")), image)}
+            onClick={() => createReviewHandler(Number(searchParams.get("storeId")), image)}
           >
             작성완료
           </button>
           :
           <button
             className={WriteStyle.submit}
-            onClick={() => modifyReview(storeInfo.reviewId, image)}
+            onClick={() => updateReviewHandler(storeInfo.reviewId, image)}
           >
             수정완료
           </button>

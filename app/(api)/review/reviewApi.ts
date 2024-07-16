@@ -25,7 +25,7 @@ const ReviewApi = () => {
     return result.data;
   }
 
-  const patchReview = async (reviewId: number , patchReviewData: FormData) => {
+  const patchReview = async ({reviewId, patchReviewData}: {reviewId: number , patchReviewData: FormData}) => {
     const result = await axiosWithAuth.patch(`/review/${reviewId}`, patchReviewData,
       {
         headers: {

@@ -6,7 +6,7 @@ import userStore from "../userStore";
 import { useRouter } from "next/navigation";
 
 const useReview = () => {
-  const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview, reportReview } = ReviewApi();
+  const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview } = ReviewApi();
   const [reviewOne, setReviewOne] = useState<any>();
   const queryClient = useQueryClient();
   const {
@@ -28,13 +28,26 @@ const useReview = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey:['reviewList']});
       router.back();
-    }
+    },
+    onError: () => alert('잠시후 다시 시도해주세요')
   });
   const updateReview = useMutation({
     mutationFn: ({reviewId, patchReviewData}: {reviewId: number, patchReviewData: FormData}) => 
       patchReview({reviewId: reviewId, patchReviewData: patchReviewData}),
-
-  })
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey:['reviewList']});
+      router.back();
+    },
+    onError: () => alert('잠시후 다시 시도해주세요')
+  });
+  const removeReview = useMutation({
+    mutationFn: (reviewId: number) => deleteReview(reviewId),
+    onSuccess: () =>{
+      queryClient.invalidateQueries({queryKey:['reviewList']});
+      router.back();
+    },
+    onError: () => alert('잠시후 다시 시도해주세요')
+  });
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const router = useRouter();
@@ -73,7 +86,7 @@ const useReview = () => {
     createReview.mutate(formData);
   }
 
-  const modifyReview = async (reviewId: number, image: File[]) => {
+  const updateReviewHandler = async (reviewId: number, image: File[]) => {
     const formData = new FormData();
     image.forEach((img) => formData.append('files', img));
 
@@ -84,23 +97,17 @@ const useReview = () => {
     };
 
     formData.append('patchReviewDto', new Blob([JSON.stringify(reviewData)], {type: 'application/json'}));
-
-    const result = await patchReview({reviewId: reviewId, patchReviewData: formData});
-    if (result?.status === 202) {
-      alert('수정이 완료되었습니다');
-      router.push(`/review/${reviewId}`);
-    }
+    updateReview.mutate({reviewId: reviewId, patchReviewData: formData});
   }
 
-  const removeReview = (reviewId: number) => {
-    deleteReview(reviewId);
-    router.push('/review');
+  const removeReviewHandler = (reviewId: number) => {
+    removeReview.mutate(reviewId);
   }
   
   return {
     reviewOne, content, rating,
     contentHandler, handleStarClick,
-    fetchReviewOne, createReviewHandler, modifyReview, removeReview, data,
+    fetchReviewOne, createReviewHandler, updateReviewHandler, removeReviewHandler, data,
     fetchNextPage, isFetching, isFetchingNextPage, status
   }
 }
