@@ -1,11 +1,11 @@
 'use client';
 import { useInfiniteQuery } from "@tanstack/react-query";
 import "./commentList.scss";
-import Comment from "@/app/review/comment";
+import Comment from "@/app/(component)/reply/comment";
 import replyApi from "@/app/(api)/reply/replyApi";
 import { useParams } from "next/navigation";
-import { getReplyType } from "../type";
-import useReply from "../(hooks)/reply/useReply";
+import { getReplyType } from "../../type";
+import useReply from "../../(hooks)/reply/useReply";
 
 const CommentList = () => {
   const {getReplyAll} = replyApi();

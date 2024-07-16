@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import ButtonStyle from "./reviewItem.module.scss";
-import reviewApi from "../(api)/review/reviewApi";
+import reviewApi from "@/app/(api)/review/reviewApi";
 
 const LikeButton = ({
   reviewId,

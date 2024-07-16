@@ -103,7 +103,7 @@ const ReviewWrite = () => {
           :
           <button
             className={WriteStyle.submit}
-            onClick={() => modifyReview(storeInfo.reviewId)}
+            onClick={() => modifyReview(storeInfo.reviewId, image)}
           >
             수정완료
           </button>

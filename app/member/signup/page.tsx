@@ -1,7 +1,7 @@
 'use client';
 import Logo from '@/public/asset/image/logo.svg';
 import signupStyle from '@/app/member/signup/signupForm.module.scss';
-import useSignup from './(hooks)/useSignup';
+import useSignup from '../../(hooks)/member/useSignup';
 import Link from 'next/link';
 
 const Signup = () => {

@@ -1,5 +1,5 @@
 'use client'
-import ReviewItem from "@/app/(component)/reviewItem";
+import ReviewItem from "@/app/(component)/review/reviewItem";
 import useMember from "@/app/(hooks)/member/useMember";
 import PageStyle from './page.module.scss';
 import Link from "next/link";

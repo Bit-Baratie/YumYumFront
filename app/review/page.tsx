@@ -1,14 +1,14 @@
 "use client";
 
 import Headers from "../header";
-import "@/app/review/review.module.scss";
+// import "@/app/review/review.module.scss";
 import { useRef } from "react";
-import ReviewItem from "@/app/(component)/reviewItem";
-import useReview from "../(hooks)/review/useReview";
+import ReviewItem from "@/app/(component)/review/reviewItem";
+import useReview from "@/app/(hooks)/review/useReview";
 import Link from "next/link";
-import { useObserver } from "../(hooks)/common/useObserver";
-import { getReviewType } from "../type";
-import ReviewSkeleton from "../(component)/skeleton/review";
+import { useObserver } from "@/app/(hooks)/common/useObserver";
+import { getReviewType } from "@/app/type";
+import ReviewSkeleton from "@/app/(component)/skeleton/review";
 
 const Review = () => {
   const { data, fetchNextPage, isFetching, isFetchingNextPage, status } = useReview();

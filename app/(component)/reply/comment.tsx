@@ -1,7 +1,7 @@
 import "./comment.scss";
-import { getReplyType } from "../type";
-import useModal from "../(hooks)/common/useModal";
-import ReportModal from "../(component)/reportModal";
+import { getReplyType } from "../../type";
+import useModal from "../../(hooks)/common/useModal";
+import ReportModal from "../reportModal";
 
 const Comment = ({item, updateReply, removeReply}: {item: getReplyType, updateReply: Function, removeReply: Function}) => {
     const {modal, setModal, createReplyReport, contentHandler, content} = useModal();

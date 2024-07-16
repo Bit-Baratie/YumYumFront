@@ -1,6 +1,6 @@
 'use client'
 import { useCallback, useRef, useState } from "react";
-import { postSignupInfo } from "../(api)/signupApi";
+import { postSignupInfo } from "../../(api)/member/signupApi";
 import { useRouter } from "next/navigation";
 
 const useSignup = () => {

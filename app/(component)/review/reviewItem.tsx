@@ -1,8 +1,7 @@
-"use client";
 import Image from "next/image";
-import reviewStyle from "@/app/(component)/reviewItem.module.scss";
+import reviewStyle from "@/app/(component)/review/reviewItem.module.scss";
 import React from "react";
-import { getReviewType } from "../type";
+import { getReviewType } from "../../type";
 
 const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
   return (
@@ -46,7 +45,10 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
         {reviewItem?.content}
       </div>
       <div className={reviewStyle.reviewImg}>
-        {reviewItem.images[0]?<Image
+
+        
+
+        {reviewItem.images?.length>0?<Image
           className={reviewStyle.reivewImage}
           // src={'/./'}
           
@@ -55,21 +57,21 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
           height={350}
           alt="리뷰이미지"
         />:""}
-        {reviewItem.images[1]?<Image
+        {reviewItem.images?.length>1?<Image
           className={reviewStyle.reivewImage}
           src={reviewItem.images[1]}
           width={350}
           height={350}
           alt="리뷰이미지"
         />:''}
-        {reviewItem.images[2]?<Image
+        {reviewItem.images?.length>2?<Image
           className={reviewStyle.reivewImage}
           src={reviewItem.images[2]}
           width={350}
           height={350}
           alt="리뷰이미지"
         />:''}
-        {reviewItem.images[3]?<div className={reviewStyle.contL}>
+        {reviewItem.images?.length>3?<div className={reviewStyle.contL}>
           <Image
             className={reviewStyle.reivewImageLast}
             src={reviewItem.images[3]}
@@ -77,7 +79,7 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
             height={350}
             alt="리뷰이미지"
           />
-          {reviewItem.images.length>4?<p>+{reviewItem.images.length-3}</p>:''}
+          {reviewItem.images?.length>4?<p>+{reviewItem.images.length-3}</p>:''}
         </div>:''}
       </div>
     </div>

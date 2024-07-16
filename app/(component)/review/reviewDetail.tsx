@@ -1,14 +1,14 @@
 "use client";
-import DetailStyle from "@/app/review/review.module.scss";
+import DetailStyle from "@/app/(component)/review/review.module.scss";
 import React, { useEffect, useState } from "react";
-import Dropdown from "@/app/review/(component)/dropdown";
-import LikeButton from "@/app/(component)/likeButton";
+import Dropdown from "@/app/(component)/review/dropdown";
+import LikeButton from "@/app/(component)/review/likeButton";
 import useReview from "@/app/(hooks)/review/useReview";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import Header from "@/app/header";
 
-const Review = () => {
+const ReviewDetail = () => {
   const { fetchReviewOne, reviewOne, removeReview} = useReview();
   const params = useParams();
   const router = useRouter();
@@ -88,4 +88,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default ReviewDetail;

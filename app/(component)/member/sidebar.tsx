@@ -7,7 +7,7 @@ import Bookmark from '@/public/asset/image/bookmark.svg'
 import sidebarStyle from './sidebar.module.scss';
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import UserStore from '../(hooks)/userStore'
+import UserStore from '@/app/(hooks)/userStore'
 
 const Sidebar = () => {
   const pathname = usePathname();
