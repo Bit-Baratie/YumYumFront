@@ -29,7 +29,7 @@ const StoreList = ({ myLatLng }: { myLatLng: location }) => {
       }
     };
     fetchStoreInfo();
-  }, [data, storeList]);
+  }, [data, setStoreList]);
   if (storeList?.length === 0) {
     return (
       <div id="storeList">
