@@ -1,7 +1,7 @@
-// 'use client';
+'use client';
 
-// import AdminApi from "@/app/(api)/admin/adminApi";
-// import { useState } from "react";
+import AdminApi from "@/app/(api)/admin/adminApi";
+import { useState } from "react";
 
 // interface Report {
 //   id: string;
@@ -20,46 +20,33 @@
 // }
 
 
-// const useAdmin = async () => {
-//   // const [ ddd, setDdd] = useState<any>();
+const useAdmin = () => {
+  const { deleteUser, deleteComment, deleteReview } = AdminApi();
 
-//   // const getReviewReport = async (type: string) => {
-//   //   const result = await getReport("review");
-//   //   return result.data;
-//   // }
+  const removeUser = async (memberId: number) => {
+    const result = await deleteUser(memberId);
+    if(result?.status === 204) {
+      alert('유저 정보를 삭제했습니다.');
+    }else {
+      alert('잠시후 다시 시도해주세요'+result?.error);
+    }
+  }
+  const removeReply = async (replyId: number) => {
+    const result = await deleteComment(replyId);
+    if (result?.status === 204) {
+      alert('댓글을 삭제했습니다.');
+    }else {
+      alert('잠시후 다시 시도해주세요' + result?.error);
+    }
+  }
+  // const getReviewReport = async (type: string) => {
+  //   const result = await getReport("review");
+  //   return result.data;
 
+  return {
+    removeUser,
+    removeReply
+  }
+}
+export default useAdmin;
 
-//   return {
-//     reportContents, fetchReviewReport
-//   }
-
-// }
-// export default useAdmin;
-
-// // useAdminReports.ts
-
-
-// // const useAdminReports = () => {
-// //   const adminApi = AdminApi();
-// //   const [reports, setReports] = useState<Report[]>([]);
-// //   const [loading, setLoading] = useState(true);
-
-// //   useEffect(() => {
-// //     const fetchReports = async () => {
-// //       try {
-// //         const data = await adminApi.getReport('리뷰'); // 예시로 '리뷰' 타입의 신고를 가져오도록 설정
-// //         setReports(data);
-// //         setLoading(false);
-// //       } catch (error) {
-// //         console.error('Error fetching reports:', error);
-// //         setLoading(false);
-// //       }
-// //     };
-
-// //     fetchReports();
-// //   }, [adminApi]);
-
-// //   return { reports, loading };
-// // };
-
-// // export default useAdminReports;
