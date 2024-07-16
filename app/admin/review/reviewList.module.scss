@@ -12,10 +12,9 @@
 .BtnStyle {
   border: none !important;
   background: none;
-  width: 30px;
-  height: 30px;
+  font-size: 20px;
   cursor: pointer;
-  color: red;
+  color: rgb(0, 0, 0);
   :hover {
       color: red;
   }
@@ -44,6 +43,6 @@
 
   .BtnStyle{
     position: absolute;
-    right: 0;
+    right: 10px;
   }
 }

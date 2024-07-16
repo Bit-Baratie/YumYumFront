@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import AdminApi from "@/app/(api)/admin/adminApi";
 import ReviewStyle from "@/app/admin/review/reviewList.module.scss";
-import { CloseOutlined } from "@ant-design/icons";
+import { CloseCircleFilled, CloseOutlined } from "@ant-design/icons";
 import Pagination from "react-js-pagination";
 import PageStyle from "@/app/admin/pageStyle.module.scss";
 import Swal from "sweetalert2";
@@ -27,21 +27,21 @@ const ReviewList = ({ reportData }: { reportData: ReportData }) => {
     setPage(page);
   };
 
-  const removeReview = () => {
-    Swal.fire({
-      title: "리뷰를 삭제하시겠습니까?",
-      text: "삭제 버튼 선택 시, 리뷰는 삭제되며 복구되지 않습니다.",
-      showCancelButton: true,
-      confirmButtonText: "삭제",
-      icon: "warning",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteReview();
-        Swal.fire("삭제가 완료되었습니다", "", "success");
-        router.push("/admin/review");
-      }
-    });
-  };
+  // const removeReview = () => {
+  //   Swal.fire({
+  //     title: "리뷰를 삭제하시겠습니까?",
+  //     text: "삭제 버튼 선택 시, 리뷰는 삭제되며 복구되지 않습니다.",
+  //     showCancelButton: true,
+  //     confirmButtonText: "삭제",
+  //     icon: "warning",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       deleteReview();
+  //       Swal.fire("삭제가 완료되었습니다", "", "success");
+  //       router.push("/admin/review");
+  //     }
+  // });
+  // };
 
   // const [reportContents, setReportContents] = useState<any>();
   // const { getReviewReport } = AdminApi();
@@ -71,10 +71,13 @@ const ReviewList = ({ reportData }: { reportData: ReportData }) => {
             {reportData?.reportReason}
             @@@@@@@
           </td>
-          <td className={ReviewStyle.data}>
+          <td className={ReviewStyle.date}>
             {reportData?.createdAt}
-            <button className={ReviewStyle.BtnStyle} onClick={removeReview}>
-              <CloseOutlined />
+            <button
+              className={ReviewStyle.BtnStyle}
+              // onClick={removeReview}
+            >
+              <CloseCircleFilled />
             </button>
           </td>
         </tr>
