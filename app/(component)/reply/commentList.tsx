@@ -17,7 +17,7 @@ const CommentList = () => {
     isFetchingNextPage,
     error
   } = useInfiniteQuery<any>({
-    queryKey: ['reviewList', params.review_id],
+    queryKey: ['replyList', params.review_id],
     queryFn: ({pageParam}) => getReplyAll(Number(params.review_id), {pageNumber: pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
