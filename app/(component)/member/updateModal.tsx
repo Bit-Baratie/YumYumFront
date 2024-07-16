@@ -74,7 +74,7 @@ const UpdateModal = (
           </div>
         </div>
 
-        <button className={ModalStyle.submit} onClick={() => {updateMember; setModal(false)}}>확인</button>
+        <button className={ModalStyle.submit} onClick={() => {updateMember(); setModal(false)}}>확인</button>
       </div>
     </>
   );
