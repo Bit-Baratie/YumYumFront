@@ -19,7 +19,7 @@ const useMember = () => {
     queryFn: ({pageParam}) => getMyReview({pageNumber:pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
-        return data.last? undefined: data.pageable.pageNumber+1;
+        return data.last? undefined: data.pageNumber+1;
     }
   });
   const {
@@ -30,7 +30,7 @@ const useMember = () => {
     queryFn: ({pageParam}) => getMyReply({pageNumber:pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
-        return data.last? undefined: data.pageable.pageNumber+1;
+        return data.last? undefined: data.pageNumber+1;
     }
   });
   const {
@@ -41,7 +41,7 @@ const useMember = () => {
     queryFn: ({pageParam}) => getLikeReview({pageNumber:pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
-        return data.last? undefined: data.pageable.pageNumber+1;
+        return data.last? undefined: data.pageNumber+1;
     }
   });
   const {
@@ -52,7 +52,7 @@ const useMember = () => {
     queryFn: ({pageParam}) => getLikeStore({pageNumber:pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
-        return data.last? undefined: data.pageable.pageNumber+1;
+        return data.last? undefined: data.pageNumber+1;
     }
   });
   const queryClient = useQueryClient();

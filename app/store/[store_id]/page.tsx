@@ -31,7 +31,7 @@ const Store = () => {
     queryFn: ({ pageParam }) => getStoreReview(Number(params.store_id), { pageNumber: pageParam }),
     initialPageParam: 0,
     getNextPageParam: (data) => {
-      return data?.last ? undefined : data.pageable.pageNumber + 1;
+      return data?.last ? undefined : data?.pageNumber + 1;
     }
   });
 

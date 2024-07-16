@@ -21,7 +21,7 @@ const CommentList = () => {
     queryFn: ({pageParam}) => getReplyAll(Number(params.review_id), {pageNumber: pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
-        return data?.last? undefined: data.pageable.pageNumber+1;
+        return data?.last? undefined: data.pageNumber+1;
     }
   });
   const {content, contentHandler, createReplyHandler, removeReplyHandler, updateReplyHandler} = useReply();

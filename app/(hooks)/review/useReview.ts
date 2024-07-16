@@ -1,13 +1,14 @@
 'use client';
 import ReviewApi from "@/app/(api)/review/reviewApi";
 import { useState } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import userStore from "../userStore";
 import { useRouter } from "next/navigation";
 
 const useReview = () => {
   const { deleteReview, getReviewAll, getReviewOne, patchReview, postReview, reportReview } = ReviewApi();
   const [reviewOne, setReviewOne] = useState<any>();
+  const queryClient = useQueryClient();
   const {
     data,
     fetchNextPage,
@@ -19,9 +20,21 @@ const useReview = () => {
     queryFn: ({pageParam}) => getReviewAll({pageNumber:pageParam}),
     initialPageParam: 0,
     getNextPageParam: (data) => {
-        return data.last? undefined: data.pageable.pageNumber+1;
+        return data.last? undefined: data.pageNumber+1;
     }
   });
+  const createReview = useMutation({
+    mutationFn: (postReviewData: FormData) => postReview(postReviewData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey:['reviewList']});
+      router.back();
+    }
+  });
+  const updateReview = useMutation({
+    mutationFn: ({reviewId, patchReviewData}: {reviewId: number, patchReviewData: FormData}) => 
+      patchReview({reviewId: reviewId, patchReviewData: patchReviewData}),
+
+  })
   const [content, setContent] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
   const router = useRouter();
@@ -45,7 +58,7 @@ const useReview = () => {
     
   }
 
-  const createReview = async (storeId: number, image: File[]) => {
+  const createReviewHandler = async (storeId: number, image: File[]) => {
     const formData = new FormData();
     image.forEach((img) => formData.append('files', img));
 
@@ -57,14 +70,7 @@ const useReview = () => {
     };
 
     formData.append('createReviewDto', new Blob([JSON.stringify(reviewData)], {type: 'application/json'}));
-
-    const response = await postReview(formData);
-    
-    if (response?.status === 201) {
-      router.back();
-    } else {
-      alert("Failed to create review");
-    }
+    createReview.mutate(formData);
   }
 
   const modifyReview = async (reviewId: number, image: File[]) => {
@@ -79,7 +85,7 @@ const useReview = () => {
 
     formData.append('patchReviewDto', new Blob([JSON.stringify(reviewData)], {type: 'application/json'}));
 
-    const result = await patchReview(reviewId, formData);
+    const result = await patchReview({reviewId: reviewId, patchReviewData: formData});
     if (result?.status === 202) {
       alert('수정이 완료되었습니다');
       router.push(`/review/${reviewId}`);
@@ -94,7 +100,7 @@ const useReview = () => {
   return {
     reviewOne, content, rating,
     contentHandler, handleStarClick,
-    fetchReviewOne, createReview, modifyReview, removeReview, data,
+    fetchReviewOne, createReviewHandler, modifyReview, removeReview, data,
     fetchNextPage, isFetching, isFetchingNextPage, status
   }
 }
