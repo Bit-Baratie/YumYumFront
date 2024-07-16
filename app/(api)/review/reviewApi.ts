@@ -9,8 +9,14 @@ const ReviewApi = () => {
     return result;
   }
 
-  const postReview = async ({postReviewData}: {postReviewData: postReviewType}) => {
-    const result = await axiosWithAuth.post(`/review`, postReviewData)
+  const postReview = async (postReviewData: FormData) => {
+    const result = await axiosWithAuth.post(`/review`,
+      postReviewData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
     return result;
   }
 
@@ -19,8 +25,14 @@ const ReviewApi = () => {
     return result.data;
   }
 
-  const patchReview = async (reviewId: number , patchReviewData: patchReviewType) => {
-    const result = await axiosWithAuth.patch(`/review/${reviewId}`, patchReviewData);
+  const patchReview = async (reviewId: number , patchReviewData: FormData) => {
+    const result = await axiosWithAuth.patch(`/review/${reviewId}`, patchReviewData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    );
     return result;
   }
   

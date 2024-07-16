@@ -36,7 +36,7 @@ const useReview = () => {
 
   const fetchReviewOne = async (reviewId: number) => {
     const result = await getReviewOne(reviewId);
-    if (result.status === 200) {
+    if (result?.status === 200) {
       setReviewOne(result.data);
     } else {
       alert('잠시후 다시 시도해주세요'+result.error);
@@ -46,34 +46,43 @@ const useReview = () => {
   }
 
   const createReview = async (storeId: number, image: File[]) => {
+    const formData = new FormData();
+    image.forEach((img) => formData.append('files', img));
+
+    console.log(formData.getAll('files'))
     const reviewData = {
       storeId: storeId,
       content: content,
-      grade: rating,
-      imageList: image
+      grade: rating 
     };
 
-    const response = await postReview({postReviewData: reviewData});
-    if (response.status === 201) {
+    formData.append('createReviewDto', new Blob([JSON.stringify(reviewData)], {type: 'application/json'}));
+
+    const response = await postReview(formData);
+    
+    if (response?.status === 201) {
       router.back();
     } else {
-      console.error("Failed to create review");
+      alert("Failed to create review");
     }
   }
 
-  const modifyReview = async (reviewId: number) => {
+  const modifyReview = async (reviewId: number, image: File[]) => {
+    const formData = new FormData();
+    image.forEach((img) => formData.append('files', img));
+
     const reviewData = {
       content: content,
       grade: rating,
       imageList: []
     };
 
-    const result = await patchReview(reviewId, reviewData);
-    if (result.status === 202) {
+    formData.append('patchReviewDto', new Blob([JSON.stringify(reviewData)], {type: 'application/json'}));
+
+    const result = await patchReview(reviewId, formData);
+    if (result?.status === 202) {
       alert('수정이 완료되었습니다');
       router.push(`/review/${reviewId}`);
-    } else {
-      alert('잠시후 다시 시도해주세요'+result.error);
     }
   }
 
