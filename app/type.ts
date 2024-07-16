@@ -180,6 +180,14 @@ export interface adminStoreType {
   address: string;
   isClosed: boolean;
 }
+export interface adminReportStore {
+  reportId: number;
+  nickName: string;
+  targetContent: string;
+  targetId: number;
+  reportReason: string;
+  createdAt: string;
+}
 
 export interface adminReviewType {
   reportId: number;

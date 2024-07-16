@@ -8,16 +8,16 @@ import Search from "@/app/admin/(component)/Search";
 import UserList from "@/app/admin/store/report/reportStore";
 // import SideBar from "../sidebar";
 // import SideBar from "../(component)/sideBar";
-import { adminStoreType } from "@/app/type";
+import { adminReportStore } from "@/app/type";
 
 const ReportPage = () => {
-  const [adminStore, setAdminStore] = useState<Array<adminStoreType>>();
-  const { getStoreList } = adminApi();
+  const [adminStore, setAdminStore] = useState<Array<adminReportStore>>();
+  const { getStoreReport } = adminApi();
 
 
   useEffect(() => {
     const fetchAdminStore = async () => {
-      const result = await getStoreList();
+      const result = await getStoreReport();
       setAdminStore(result.content);
     }
     fetchAdminStore();
@@ -34,17 +34,16 @@ const ReportPage = () => {
       <table className={AdminStyle.tableStyle}>
         <thead>
           <tr className={AdminStyle.trStyle}>
-            <th className={AdminStyle.nickname}>매장명</th>
-            <th className={AdminStyle.reviewContent}>주소</th>
-            <th className={AdminStyle.reportContent}>연락처</th>
-            <th className={AdminStyle.date}>상태</th>
-            <th className={AdminStyle.date}>신고내용</th>
+            <th className={AdminStyle.nickname}>닉네임</th>
+            <th className={AdminStyle.reviewContent}>매장명</th>
+            <th className={AdminStyle.reportContent}>신고내용</th>
+            <th className={AdminStyle.date}>작성일자</th>
           </tr>
         </thead>
         <tbody>
           {adminStore?.map(store => (
             <UserList
-              key={store.storeId}
+              key={store.reportId}
               store={store}
             />
           ))}

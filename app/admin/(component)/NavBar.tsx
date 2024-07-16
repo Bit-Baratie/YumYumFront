@@ -19,7 +19,7 @@ const NavBar = () => {
       <div className={NavStyle.sideBar}>
         <div className={NavStyle.logoAdmin}>
           <div className={NavStyle.logo}>
-            <Link href={"/home"}>
+            <Link href={"/admin"}>
               <Logo style={{}} />
             </Link>
           </div>
