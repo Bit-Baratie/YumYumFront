@@ -20,8 +20,8 @@ interface ReportType {
 const AdminApi = () => {
   const { axiosWithAuth } = useAxiosWithAuth();
 
-  const getReviewReport = async (pageNumber: number) => {
-    const result = await axiosWithAuth.get(`/report/review?pageNumber=${pageNumber}`);
+  const getReviewReport = async (page: number) => {
+    const result = await axiosWithAuth.get(`/report/review?page=${page}`);
     console.log(result)
     return result.data;
   }

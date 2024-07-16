@@ -22,17 +22,19 @@ interface ReportData {
 
 const AdminReview = () => {
   const [page, setPage] = useState(1);
-  const [reportContents, setReportContents] = useState<Array<ReportData>>([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [reportContents, setReportContents] = useState<any>();
   const [loading, setLoading] = useState(true);
   const { getReviewReport } = AdminApi();
 
   useEffect(() => {
     fetchReviewReport();
-  }, []);
+  }, [page, totalPages]);
 
   const fetchReviewReport = async () => {
-    const result = await getReviewReport();
+    const result = await getReviewReport(page-1);
     setReportContents(result.content);
+    setTotalPages(result.totalElements);
     setLoading(false);
   };
 
@@ -50,6 +52,7 @@ const AdminReview = () => {
       {loading ? (
         <p>Loading...</p> // 로딩 중 표시
       ) : (
+        <>
         <table className={AdminStyle.tableStyle}>
           <thead>
             <tr className={AdminStyle.trStyle}>
@@ -60,25 +63,24 @@ const AdminReview = () => {
             </tr>
           </thead>
           <tbody>
-            {reportContents.map((reportData) => (
+            {reportContents?.map((reportData: ReportData) => (
               <ReviewList key={reportData.reportId} reportData={reportData} />
             ))}
           </tbody>
         </table>
-      )}
-      {!loading && (
-        <Paging />
 
-        // <Pagination
-        //   activePage={page}
-        //   itemsCountPerPage={5}
-        //   totalItemsCount={100}
-        //   pageRangeDisplayed={5}
-        //   prevPageText={<LeftOutlined />}
-        //   nextPageText={<RightOutlined />}
-        //   onChange={handlePageChange}
-        // />
+      <Pagination
+        activePage={page}
+        itemsCountPerPage={5}
+        totalItemsCount={totalPages}
+        pageRangeDisplayed={5}
+        prevPageText={<LeftOutlined />}
+        nextPageText={<RightOutlined />}
+        onChange={handlePageChange}
+      />
+      </>
       )}
+        
     </div>
   );
 };
