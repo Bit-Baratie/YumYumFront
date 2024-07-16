@@ -29,7 +29,7 @@ const useLogin = () => {
 
     const res: any = await postLoginInfo(info);
 
-    if (res.atk) {
+    if (res?.atk) {
       setUserInfo({
         memberId: res.memberId,
         nickName: res.nickName,
