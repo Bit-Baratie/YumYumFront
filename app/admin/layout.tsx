@@ -13,14 +13,14 @@ export default function RootLayout({
 }>) {
   return (
     <div className={Style.container}>
-      <div className={Style.b}>
+      <div className={Style.NavBar}>
         <NavBar />
       </div>
       <div className={Style.right}>
-        <div className={Style.a}>
+        <div className={Style.Header}>
           <Header />
         </div>
-        <div className={Style.c}>{children}</div>
+        <div className={Style.Main}>{children}</div>
       </div>
       {/* <div className={Grid.footer}><Footer /></div> */}
     </div>
