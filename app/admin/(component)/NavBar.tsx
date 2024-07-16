@@ -1,11 +1,11 @@
 "use client";
 
+import { useState } from "react";
+import { SearchOutlined } from "@ant-design/icons";
+import { CaretDownFilled, CaretUpFilled } from "@ant-design/icons";
 import Logo from "@/public/asset/image/logoBlack.svg";
 import NavStyle from "@/app/admin/(component)/NavBar.module.scss";
 import Link from "next/link";
-import { useState } from "react";
-import { SearchOutlined } from "@ant-design/icons";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
 
 const NavBar = () => {
   const [view, setView] = useState(false);
@@ -26,14 +26,6 @@ const NavBar = () => {
           <div className={NavStyle.adminId}>Admin</div>
         </div>
         <div className={NavStyle.spah}>
-          <div className={NavStyle.search}>
-            <input
-              type="text"
-              className={NavStyle.sideBarSearch}
-              placeholder="Search"
-            ></input>
-            {/* <SearchOutlined /> */}
-          </div>
           <div className={NavStyle.list}>
             <ul
               className={`${NavStyle.dropdown} ${view ? NavStyle.active : ""}`}
@@ -41,8 +33,12 @@ const NavBar = () => {
                 setView(!view);
               }}
             >
-              사용자 관리
-              {view ? <UpOutlined /> : <DownOutlined />}
+              <span>사용자 관리</span>
+              {view ? (
+                <CaretUpFilled className={NavStyle.icon} />
+              ) : (
+                <CaretDownFilled className={NavStyle.icon} />
+              )}
               {view && (
                 <Link href={"/admin/user"}>
                   <li>사용자목록</li>
@@ -51,14 +47,19 @@ const NavBar = () => {
             </ul>
 
             <ul
-              className={`${NavStyle.dropdown} ${storeView ? NavStyle.active : ""
-                }`}
+              className={`${NavStyle.dropdown} ${
+                storeView ? NavStyle.active : ""
+              }`}
               onClick={() => {
                 setStoreView(!storeView);
               }}
             >
-              매장 관리
-              {storeView ? <UpOutlined /> : <DownOutlined />}
+              <span>매장 관리</span>
+              {storeView ? (
+                <CaretUpFilled className={NavStyle.icon} />
+              ) : (
+                <CaretDownFilled className={NavStyle.icon} />
+              )}
               {storeView && (
                 <>
                   <Link href={"/admin/store"}>
@@ -75,14 +76,19 @@ const NavBar = () => {
             </ul>
 
             <ul
-              className={`${NavStyle.dropdown} ${reviewView ? NavStyle.active : ""
-                }`}
+              className={`${NavStyle.dropdown} ${
+                reviewView ? NavStyle.active : ""
+              }`}
               onClick={() => {
                 setReviewView(!reviewView);
               }}
             >
-              리뷰 관리
-              {reviewView ? <UpOutlined /> : <DownOutlined />}
+              <span>리뷰 관리</span>
+              {reviewView ? (
+                <CaretUpFilled className={NavStyle.icon} />
+              ) : (
+                <CaretDownFilled className={NavStyle.icon} />
+              )}
               {reviewView && (
                 <Link href={"/admin/review"}>
                   <li>리뷰 신고 목록</li>
@@ -91,14 +97,19 @@ const NavBar = () => {
             </ul>
 
             <ul
-              className={`${NavStyle.dropdown} ${replyView ? NavStyle.active : ""
-                }`}
+              className={`${NavStyle.dropdown} ${
+                replyView ? NavStyle.active : ""
+              }`}
               onClick={() => {
                 setReplyView(!replyView);
               }}
             >
-              댓글 관리
-              {replyView ? <UpOutlined /> : <DownOutlined />}
+              <span>댓글 관리</span>
+              {replyView ? (
+                <CaretUpFilled className={NavStyle.icon} />
+              ) : (
+                <CaretDownFilled className={NavStyle.icon} />
+              )}
               {replyView && (
                 <Link href={"/admin/comment"}>
                   <li>댓글 신고 목록</li>
