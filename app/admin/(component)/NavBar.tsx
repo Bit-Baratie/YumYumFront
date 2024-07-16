@@ -51,9 +51,8 @@ const NavBar = () => {
             </ul>
 
             <ul
-              className={`${NavStyle.dropdown} ${
-                storeView ? NavStyle.active : ""
-              }`}
+              className={`${NavStyle.dropdown} ${storeView ? NavStyle.active : ""
+                }`}
               onClick={() => {
                 setStoreView(!storeView);
               }}
@@ -65,10 +64,10 @@ const NavBar = () => {
                   <Link href={"/admin/store"}>
                     <li>매장 목록</li>
                   </Link>
-                  <Link href={"/admin/store"}>
+                  <Link href={"/admin/store/register"}>
                     <li>매장 등록</li>
                   </Link>
-                  <Link href={"/admin/store"}>
+                  <Link href={"/admin/store/report"}>
                     <li>매장 신고 목록</li>
                   </Link>
                 </>
@@ -76,9 +75,8 @@ const NavBar = () => {
             </ul>
 
             <ul
-              className={`${NavStyle.dropdown} ${
-                reviewView ? NavStyle.active : ""
-              }`}
+              className={`${NavStyle.dropdown} ${reviewView ? NavStyle.active : ""
+                }`}
               onClick={() => {
                 setReviewView(!reviewView);
               }}
@@ -93,9 +91,8 @@ const NavBar = () => {
             </ul>
 
             <ul
-              className={`${NavStyle.dropdown} ${
-                replyView ? NavStyle.active : ""
-              }`}
+              className={`${NavStyle.dropdown} ${replyView ? NavStyle.active : ""
+                }`}
               onClick={() => {
                 setReplyView(!replyView);
               }}
