@@ -10,6 +10,7 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Paging from "../(component)/pagenation";
 import "./../(component)/Paging.scss";
 import AdminStyle from "@/app/admin/admin.module.scss";
+import { useSearchParams } from "next/navigation";
 
 interface ReportData {
   reportId: number;
@@ -22,17 +23,19 @@ interface ReportData {
 
 const AdminReview = () => {
   const [page, setPage] = useState(1);
-  const [reportContents, setReportContents] = useState<Array<ReportData>>([]);
+  const [reportContents, setReportContents] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const { getReviewReport } = AdminApi();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    fetchReviewReport();
-  }, []);
+    fetchReviewReport(Number(searchParams.get("pageNumber")) - 1);
+    console.log(searchParams.get("pageNumber"));
+  }, [searchParams.get("pageNumber")]);
 
-  const fetchReviewReport = async () => {
-    const result = await getReviewReport();
-    setReportContents(result.content);
+  const fetchReviewReport = async (page: number) => {
+    const result = await getReviewReport(page);
+    setReportContents(result);
     setLoading(false);
   };
 
@@ -60,14 +63,14 @@ const AdminReview = () => {
             </tr>
           </thead>
           <tbody>
-            {reportContents.map((reportData) => (
+            {reportContents.content.map((reportData: ReportData) => (
               <ReviewList key={reportData.reportId} reportData={reportData} />
             ))}
           </tbody>
         </table>
       )}
       {!loading && (
-        <Paging />
+        <Paging reportContents={reportContents} />
 
         // <Pagination
         //   activePage={page}
