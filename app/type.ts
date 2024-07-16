@@ -54,7 +54,7 @@ export interface getStoreType {
   imageList: imageType[];
   categoryName: string;
   views: number;
-  imageUrl: string;
+  images: string[];
   hashtags: string[];
   favoriteStatus: boolean;
   avgGrade: number;

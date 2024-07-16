@@ -8,6 +8,7 @@ import Link from "next/link";
 import useStoreApi from "@/app/store/(api)/StoreApi"
 import StoreDetail from '../[store_id]/component/StoreDetail';
 import { favorite, getStoreType } from '@/app/type';
+import Image from 'next/image';
 
 
 const { postStar } = useStoreApi();
@@ -28,7 +29,8 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
       <div className='storeId'>{store.storeId}</div>
       <Link href={`/store/${store.storeId}`} >
         <div className="storeImage">
-          <Logo />
+          <Image src={store.images[0]} width={200} height={155} alt='가게이미지'/>
+          {/* <Logo /> */}
         </div>
         <div className="storeInfo">
           <div className="storeName">
