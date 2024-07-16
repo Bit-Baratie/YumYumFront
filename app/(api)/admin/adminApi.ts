@@ -20,8 +20,8 @@ interface ReportType {
 const AdminApi = () => {
   const { axiosWithAuth } = useAxiosWithAuth();
 
-  const getReviewReport = async () => {
-    const result = await axiosWithAuth.get("/report/review");
+  const getReviewReport = async (pageNumber:number) => {
+    const result = await axiosWithAuth.get(`/report/review?pageNumber=${pageNumber}`);
     console.log(result)
     return result.data;
   }
@@ -31,6 +31,14 @@ const AdminApi = () => {
     console.log(result)
     return result.data;
   }
+
+  // const getCommentReport = async (page: any, itemsPerPage: any) => {
+  //   // 페이지와 항목 수에 맞게 데이터를 가져오는 로직을 추가합니다.
+  //   const result = await axiosWithAuth.fetch(`/api/comments?page=${page}&size=${itemsPerPage}`);
+  //   console.log(result);
+  //   return result.data;
+  // };
+  
 
   const getuserAll = async () => {
     const result = await axiosWithAuth.get("/admin/member");
@@ -48,23 +56,25 @@ const AdminApi = () => {
     return result.data;
   }
 
-  const deleteUser = async () => {
-    const result = await axiosWithAuth.delete("/admin/member");
+  const deleteUser = async (memberId:number) => {
+    const result = await axiosWithAuth.delete(`/admin/${memberId}`); 
     console.log(result)
-    return result.data;
+    return result;
   }
 
-  const deleteReview = async () => {
-    const result = await axiosWithAuth.delete("/report/review");
+  const deleteReview = async (reviewId:number) => {
+    const result = await axiosWithAuth.delete(`admin/${reviewId}`);  //이거뭐임
     console.log(result)
-    return result.data;
+    return result;
   }
 
-  const deleteComment = async () => {
-    const result = await axiosWithAuth.delete("/report/reply");
+  const deleteComment = async (replyId:number) => {
+    const result = await axiosWithAuth.delete(`admin/${replyId}`);
     console.log(result)
-    return result.data;
+    return result;
   }
+  
+
 
   return {
     getReviewReport,

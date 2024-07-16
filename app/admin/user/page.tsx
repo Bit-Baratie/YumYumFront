@@ -7,10 +7,12 @@ import adminApi from "@/app/(api)/admin/adminApi";
 import AdminStyle from "@/app/admin/admin.module.scss";
 import Search from "../(component)/Search";
 import AdminApi from "@/app/(api)/admin/adminApi";
+import Paging from "../(component)/pagenation";
 // import SideBar from "../sidebar";
 // import SideBar from "../(component)/sideBar";
 
 interface UserData {
+  reviewId: number;
   email: string;
   isDeleted: boolean;
   nickname: string;
@@ -56,10 +58,15 @@ const userPage = () => {
         </thead>
         <tbody>
           {userCheck.map((userData, index) => (
-            <UserList key={index} userData={userData} />
+            <UserList
+              key={index}
+              userData={userData}
+              // removeMember={removeMember}
+            />
           ))}
         </tbody>
       </table>
+      {!loading && <Paging />}
     </div>
   );
 };
