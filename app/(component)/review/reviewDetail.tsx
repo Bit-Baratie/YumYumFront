@@ -9,7 +9,7 @@ import { useParams, useRouter } from "next/navigation";
 import Header from "@/app/header";
 
 const ReviewDetail = () => {
-  const { fetchReviewOne, reviewOne, removeReview} = useReview();
+  const { fetchReviewOne, reviewOne, removeReviewHandler} = useReview();
   const params = useParams();
   const router = useRouter();
   const [view, setView] = useState<boolean | undefined>(undefined);
@@ -33,7 +33,7 @@ const ReviewDetail = () => {
                 setView(!view);
               }}
             />
-            {view && <Dropdown memberId={reviewOne?.memberId} reviewData={reviewOne} removeReview={removeReview}/>}
+            {view && <Dropdown memberId={reviewOne?.memberId} reviewData={reviewOne} removeReview={removeReviewHandler}/>}
           </div>
         </div>
         <div className={DetailStyle.storeInfo}>
@@ -43,7 +43,7 @@ const ReviewDetail = () => {
         <div className={DetailStyle.ddd}>
           <div className={DetailStyle.profile}>
             <Image
-              src={"/"}
+              src={reviewOne?.imageUrl}
               width={100}
               height={100}
               alt="이미지"
@@ -75,7 +75,7 @@ const ReviewDetail = () => {
           {reviewOne?.images?.map((imageUrl: string) => (
             <Image
               key={imageUrl}
-              src={"/"}
+              src={imageUrl}
               width={100}
               height={100}
               alt="리뷰이미지"
