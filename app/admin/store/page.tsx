@@ -4,13 +4,13 @@ import "@/app/admin/comment/comment.module.scss";
 import { useEffect, useState } from "react";
 import adminApi from "@/app/(api)/admin/adminApi";
 import AdminStyle from "@/app/admin/admin.module.scss";
-import Search from "../(component)/Search";
+import Search from "@/app/admin/(component)/Search";
 import StoreList from "@/app/admin/store/storeList";
 // import SideBar from "../sidebar";
 // import SideBar from "../(component)/sideBar";
 import { adminStoreType } from "@/app/type";
 
-const userPage = () => {
+const Store = () => {
   const [adminStore, setAdminStore] = useState<Array<adminStoreType>>();
   const { getStoreList } = adminApi();
 
@@ -53,4 +53,4 @@ const userPage = () => {
   );
 };
 
-export default userPage;
+export default Store;

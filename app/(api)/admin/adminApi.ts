@@ -20,7 +20,7 @@ interface ReportType {
 const AdminApi = () => {
   const { axiosWithAuth } = useAxiosWithAuth();
 
-  const getReviewReport = async (pageNumber:number) => {
+  const getReviewReport = async (pageNumber: number) => {
     const result = await axiosWithAuth.get(`/report/review?pageNumber=${pageNumber}`);
     console.log(result)
     return result.data;
@@ -38,7 +38,7 @@ const AdminApi = () => {
   //   console.log(result);
   //   return result.data;
   // };
-  
+
 
   const getuserAll = async () => {
     const result = await axiosWithAuth.get("/admin/member");
@@ -46,7 +46,7 @@ const AdminApi = () => {
     return result.data;
   }
   const getStoreList = async () => {
-    const result = await axiosWithAuth.get("/store/admin");
+    const result = await axiosWithAuth.get("/admin/store");
     console.log(result)
     return result.data;
   }
@@ -56,24 +56,24 @@ const AdminApi = () => {
     return result.data;
   }
 
-  const deleteUser = async (memberId:number) => {
-    const result = await axiosWithAuth.delete(`/admin/${memberId}`); 
+  const deleteUser = async (memberId: number) => {
+    const result = await axiosWithAuth.delete(`/admin/${memberId}`);
     console.log(result)
     return result;
   }
 
-  const deleteReview = async (reviewId:number) => {
+  const deleteReview = async (reviewId: number) => {
     const result = await axiosWithAuth.delete(`admin/${reviewId}`);  //이거뭐임
     console.log(result)
     return result;
   }
 
-  const deleteComment = async (replyId:number) => {
+  const deleteComment = async (replyId: number) => {
     const result = await axiosWithAuth.delete(`admin/${replyId}`);
     console.log(result)
     return result;
   }
-  
+
 
 
   return {
