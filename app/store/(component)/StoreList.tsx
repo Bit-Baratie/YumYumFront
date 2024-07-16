@@ -3,22 +3,19 @@ import useStoreApi from "../(api)/StoreApi";
 import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
 import useSearch from "@/app/(hooks)/common/useSearch";
-import { getStoreType } from "@/app/type";
+import { getStoreType, location } from "@/app/type";
 
-const StoreList = () => {
+const StoreList = ({ myLatLng }: { myLatLng: location }) => {
   // const { storeId, setStoreId } = useStore();
   const { getStoreInfo } = useStoreApi();
   const { data } = useSearch();
   const [storeList, setStoreList] = useState<Array<getStoreType> | undefined>([]);
   useEffect(() => {
     const fetchStoreInfo = async () => {
-      let latitude = 37.4995961;
-      let longitude = 127.0289929;
 
-      const location = { longitude, latitude };
       //api데이터 예외처리
       try {
-        const StoreInfoResult = await getStoreInfo(location)
+        const StoreInfoResult = await getStoreInfo(myLatLng)
         // setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
         if (data?.length !== 0) {
           // console.log(data);

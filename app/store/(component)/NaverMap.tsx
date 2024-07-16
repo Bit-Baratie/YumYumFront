@@ -3,19 +3,21 @@ import '@/app/store/(component)/map.scss';
 import { useEffect, useRef } from 'react';
 import { getStoreType, location } from '@/app/type';
 import Script from 'next/script';
+import useSearch from '@/app/(hooks)/common/useSearch';
 
 const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng: location | null }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   let map: naver.maps.Map | null = null;
+  const { data } = useSearch();
 
   const initializeMap = async () => {
     const { naver } = window;
     if (!mapRef.current || !naver) return;
 
     console.log(storeInfo);
-    if (storeInfo.length > 2 && myLatLng) {
+    if (storeInfo?.length > 1) {
       map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(myLatLng.latitude, myLatLng.longitude),
+        center: new naver.maps.LatLng(myLatLng?.latitude, myLatLng?.longitude),
         zoomControl: true,
         zoom: 15,
         minZoom: 6,
@@ -24,7 +26,7 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
           position: naver.maps.Position.TOP_RIGHT,
         },
       });
-    } else if (storeInfo.length > 0) {
+    } else if (storeInfo?.length == 1) {
       map = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(storeInfo[0]?.latitude, storeInfo[0]?.longitude),
         zoomControl: true,
@@ -36,7 +38,6 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
         },
       });
     }
-
     storeInfo?.map((store: getStoreType) => {
       const contentString = [
         '<div>',
@@ -58,7 +59,7 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
       });
 
       if (map) {
-        const marker = new naver.maps.Marker({
+        let marker = new naver.maps.Marker({
           position: new naver.maps.LatLng(store.latitude, store.longitude),
           map: map,
           title: store.name,
@@ -79,7 +80,7 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
 
   useEffect(() => {
     initializeMap();
-  }, [storeInfo, myLatLng]);
+  }, [storeInfo]);
 
   return (
     <>

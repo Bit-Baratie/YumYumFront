@@ -30,15 +30,25 @@ const SearchStoreList = () => {
       });
     };
     const fetchStore = async () => {
-      const LatLng = await myLocation()
-      const result = await data.length !== 0 ? await Array(data) : await getStoreInfo(LatLng);
-      setMyLatLng(LatLng)
-      setStoreList(result)
+      try {
+        const LatLng = await myLocation()
+        const result = await getStoreInfo(LatLng);
+        if (data?.length !== 0) {
+          setStoreList(data)
+        } else {
+          console.log(data);
+          setStoreList(result);
+          setMyLatLng(LatLng)
+        }
+      } catch (err) {
+        console.error(err);
+      }
+
     }
 
 
     fetchStore();
-  }, [])
+  }, [data])
 
 
   return (
@@ -47,7 +57,7 @@ const SearchStoreList = () => {
         {/* 지도 Api  */}
         <TestMap storeInfo={storeList} myLatLng={myLatLng} />
         {/* 가게 리스트 */}
-        <StoreList />
+        <StoreList myLatLng={myLatLng} />
       </div>
     </div>
   )
