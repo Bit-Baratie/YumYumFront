@@ -60,8 +60,9 @@ const useMember = () => {
     mutationFn: (item: FormData) => patchMember(item),
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey:['profile']});
-      return false;
-    }
+    },
+    onError: () => 
+      alert('잠시후 다시 시도해주세요')
   });
 
   const [imageUrl, setImageUrl] = useState('/');
