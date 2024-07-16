@@ -29,8 +29,15 @@ const MemberApi = () => {
     return result.data;
   }
 
-  const patchMember = async ({data}: {data: patchMemberType}) => {
-    const result = await axiosWithAuth.patch(`/member`, data);
+  const patchMember = async (data :FormData) => {
+    const result = await axiosWithAuth.patch(`http://192.168.0.20:3000/member`,
+      data,
+      {
+        headers: {
+          "Content-Type": 'multipart/form-data'
+        }
+      }
+    );
     return result;
   }
 

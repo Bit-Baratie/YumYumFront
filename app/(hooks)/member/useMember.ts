@@ -1,10 +1,11 @@
 'use client'
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { QueryClient, useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import userStore from "../userStore";
 import MemberApi from "@/app/(api)/member/memberApi";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import { patchMemberType } from "@/app/type";
 
 const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
@@ -54,24 +55,47 @@ const useMember = () => {
         return data.last? undefined: data.pageable.pageNumber+1;
     }
   });
-  
+  const queryClient = useQueryClient();
+  const updateMember = useMutation({
+    mutationFn: (item: FormData) => patchMember(item),
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey:['profile']});
+      return false;
+    }
+  });
 
   const [imageUrl, setImageUrl] = useState('/');
+  const [file, setFile] = useState<any>()
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [phone, setPhone] = useState('');
   const [updateModal, setUpdateModal] = useState(false);
   const router = useRouter();
+  const fileInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setImageUrl(userInfo.profileUrl);
-    setNickName(userInfo.nickName);
-    setPhone(userInfo.phoneNumber);
-  }, [userInfo.nickName, userInfo.phoneNumber, userInfo.profileUrl]);
+    setImageUrl(profile?.imageUrl);
+    setNickName(profile?.nickName);
+    setPhone(profile?.phoneNumber);
+  }, [profile?.nickName, profile?.phoneNumber, profile?.imageUrl]);
 
-  const imageHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setImageUrl(e.target.value);
+  const imageHandler = (e: any) => {
+    const file = e.target.files[0];
+    if (!file) {
+      return;
+    }
+    setFile(file);
+    // 이미지 화면에 띄우기
+    const reader = new FileReader();
+    // 파일을 불러오는 메서드, 종료되는 시점에 readyState는 Done(2)이 되고 onLoad 시작
+    reader.readAsDataURL(file);
+    reader.onload = (e: any) => {
+    	if(reader.readyState === 2) {
+        	// 파일 onLoad가 성공하면 2, 진행 중은 1, 실패는 0 반환
+          setImageUrl(e.target.result);
+        }
+    }
   }
 
   const nickNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -90,7 +114,7 @@ const useMember = () => {
     setPhone(e.target.value)
   }
 
-  const updateMember = async () => {
+  const updateHandler = async () => {
     if (password !== passwordCheck) {
       alert('비밀번호가 일치하지 않습니다');
       return;
@@ -104,19 +128,23 @@ const useMember = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append('file', file);
     const data = {
-      imageUrl: imageUrl,
       nickName: nickName,
       password: password===''? null: password,
-      phoneNumber: phone
+      phoneNumber: phone,
+      checkPassword: passwordCheck
     }
+    formData.append('updateMemberDto', new Blob([JSON.stringify(data)], {type: 'application/json'}));
 
-    const res = await patchMember({data});
-    if (res.status === 202) {
-      router.refresh();
-    } else {
-      alert('잠시후 다시 시도해주세요');
-    }
+    updateMember.mutate(formData);
+    // const res = await patchMember({data});
+    // if (res.status === 202) {
+    //   router.refresh();
+    // } else {
+    //   alert('잠시후 다시 시도해주세요');
+    // }
   }
 
   const removeMember = () => {
@@ -145,6 +173,8 @@ const useMember = () => {
     nickName,
     phone,
     updateModal,
+    imageUrl,
+    fileInput,
     nextMyReviewList,
     nextLikeReviewList,
     nextLikeStoreList,
@@ -154,7 +184,7 @@ const useMember = () => {
     passwordHanler,
     passwordCheckHanler,
     phoneHandler,
-    updateMember,
+    updateHandler,
     removeMember,
     setUpdateModal
   }

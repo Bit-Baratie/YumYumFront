@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import ModalStyle from './updateModal.module.scss';
 import { ChangeEvent } from 'react';
+import useMember from '@/app/(hooks)/member/useMember';
 
 interface Props {
   imageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -10,6 +11,8 @@ interface Props {
   phoneHandler: (e: ChangeEvent<HTMLInputElement>) => void;
   updateMember: () => void;
   profile: any;
+  imageUrl: any;
+  fileInput: any;
   modal: boolean;
   setModal: (i:boolean) => void;
 }
@@ -22,6 +25,8 @@ const UpdateModal = (
   phoneHandler,
   updateMember,
   profile,
+  imageUrl,
+  fileInput,
   modal,
   setModal}: Props
 ) => {
@@ -33,7 +38,9 @@ const UpdateModal = (
       <div className={ModalStyle.container}>
         <div className={ModalStyle.esc} onClick={() => setModal(false)}>BC</div>
         <span className={ModalStyle.title}>프로필 수정</span>
-        <Image className={ModalStyle.img} src={profile.profileImage} width={100} height={100} alt='프로필'/>
+        <img className={ModalStyle.img} src={imageUrl} width={100} height={100} alt='프로필'/>
+        <label htmlFor="input-file" >Profile Image</label>
+          <input type="file" id='input-file' placeholder='Profile Image' ref={fileInput} onChange={(e) => imageHandler(e)} style={{display:'none'}} />
         {/* <div className={ModalStyle.img}></div> */}
 
         <div>
@@ -45,7 +52,7 @@ const UpdateModal = (
           <div className={ModalStyle.inputSet}>
             <span className={ModalStyle.label}>연락처</span>
             <div className={ModalStyle.inputBox}>
-              <input type="text" defaultValue={profile.phone} className={ModalStyle.input} onChange={(e) => phoneHandler(e)}/>
+              <input type="text" defaultValue={profile.phoneNumber} className={ModalStyle.input} onChange={(e) => phoneHandler(e)}/>
               <span>연필</span>
             </div>
           </div>
@@ -67,7 +74,7 @@ const UpdateModal = (
           </div>
         </div>
 
-        <button className={ModalStyle.submit} onClick={updateMember}>확인</button>
+        <button className={ModalStyle.submit} onClick={() => {updateMember; setModal(false)}}>확인</button>
       </div>
     </>
   );
