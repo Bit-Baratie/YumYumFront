@@ -24,7 +24,7 @@ const CommentList = () => {
         return data?.last? undefined: data.pageable.pageNumber+1;
     }
   });
-  const {content, contentHandler, createReply, removeReply, updateReply} = useReply();
+  const {content, contentHandler, createReplyHandler, removeReplyHandler, updateReplyHandler} = useReply();
 
   return (
     <>
@@ -35,7 +35,7 @@ const CommentList = () => {
           {data?.pages.map((page) => (
             <>
               {page.content.map((item: getReplyType) => (
-                <Comment key={item.createdAt} item={item} updateReply={updateReply} removeReply={removeReply}/> // key replyId로 바꿔야댐
+                <Comment key={item.createdAt} item={item} updateReply={updateReplyHandler} removeReply={removeReplyHandler}/> // key replyId로 바꿔야댐
               ))}
             </>
           ))}
@@ -43,7 +43,7 @@ const CommentList = () => {
       <div className="comment-write">
           <img src="../../public/asset/image/IMG_1282.jpg" alt="프로필이미지" className="profile-img"/>
           <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
-          <button onClick={() => createReply(Number(params.review_id))}>작성</button>
+          <button onClick={() => createReplyHandler(Number(params.review_id))}>작성</button>
       </div>
     </div>
 
