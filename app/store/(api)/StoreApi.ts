@@ -11,8 +11,7 @@ const useStoreApi = () => {
   const { axiosWithAuth, axiosNonAuth } = useAxiosWithAuth();
 
   const getStoreInfo = async (location: location) => {
-    const result = await axiosWithAuth.get(`/store?lng=${location.longitude}&&lat=${location.latitude}`)
-    console.log(result)
+    const result = await axiosWithAuth.get(`/search?lng=${location.longitude}&&lat=${location.latitude}`)
     return result?.data
   }
   const postStoreLike = async (isFavorite: boolean) => {

@@ -2,10 +2,7 @@
 import useStoreApi from "../(api)/StoreApi";
 import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
-import { search } from "@/app/(api)/common/searchApi";
 import useSearch from "@/app/(hooks)/common/useSearch";
-import useStore from "@/app/store/(hooks)/useStore"
-import Store from "../page";
 import { getStoreType } from "@/app/type";
 
 const StoreList = () => {
@@ -19,16 +16,15 @@ const StoreList = () => {
       let longitude = 127.0289929;
 
       const location = { longitude, latitude };
-
       //api데이터 예외처리
       try {
         const StoreInfoResult = await getStoreInfo(location)
         // setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
         if (data?.length !== 0) {
-          console.log(data);
+          // console.log(data);
           setStoreList(data)
         } else {
-          console.log(StoreInfoResult)
+          // console.log(StoreInfoResult)
           setStoreList(StoreInfoResult)
         }
       } catch (error) {
@@ -36,7 +32,7 @@ const StoreList = () => {
       }
     };
     fetchStoreInfo();
-  }, [data]);
+  }, [data, storeList]);
   if (storeList?.length === 0) {
     return (
       <div id="storeList">
@@ -58,7 +54,6 @@ const StoreList = () => {
   return (
     <div id="storeList">
       <div id="searchStoreNumber">
-        {/* Span에 검색결과 계산해서 가져와야함 */}
         <div><span>{storeList?.length}</span>건의 검색결과가 있습니다.</div>
       </div>
       <div className="StoreListMap">

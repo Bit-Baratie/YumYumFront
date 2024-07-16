@@ -17,7 +17,7 @@ import useModal from "@/app/(hooks)/common/useModal";
 const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
   const { StoreDetailInfo, postStar } = useStoreApi();
-  const [storeList, setStoreList] = useState<getStoreType | null>(null);
+  const [storeDetail, setStoreDetail] = useState<Array<getStoreType>>([]);
   const [menuStatus, setMenuStatus] = useState(false);
   const { modal, setModal, createStoreReport, content, contentHandler } = useModal();
 
@@ -33,22 +33,22 @@ const StoreDetail = () => {
   useEffect(() => {
     const fetchStoreDetail = async () => {
       const StoreInfoResult = await StoreDetailInfo(Number(storeId));
-      setStoreList(StoreInfoResult.data);
+      setStoreDetail(Array(StoreInfoResult.data));
       setFavorite(StoreInfoResult.favoriteStatus);
     };
     if (storeId) {
       fetchStoreDetail();
     }
-  }, [setStoreList]);
+  }, [setStoreDetail]);
 
-  if (!storeList) {
+  if (!storeDetail) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="container">
       <div className="storeDetail">
-        <div className="storeId">{storeList.storeId}</div>
+        <div className="storeId">{storeDetail[0]?.storeId}</div>
         <div className="storeImageDetail">
           {/* <div className="MainImage">{storeList.imageList}</div> */}
           <div className="subImageList">
@@ -68,42 +68,43 @@ const StoreDetail = () => {
         </div>
         <div className="storeInfoDetail">
           <div className="storeNameDetail">
-            <span>{storeList.name}</span>
-            <div>★{storeList.avgGrade}({storeList.totalReviewCount})</div>
-            <div>♥️{storeList.totalFavoriteCount}</div>
-            <div>👀{storeList.views}</div>
+            <span>{storeDetail[0]?.name}</span>
+            <div>★{storeDetail[0]?.avgGrade}({storeDetail[0]?.totalReviewCount})</div>
+            <div>♥️{storeDetail[0]?.totalFavoriteCount}</div>
+            <div>👀{storeDetail[0]?.views}</div>
           </div>
           <div className="storeHour">
             <div>영업시간</div>
-            <div>{storeList.hours}</div>
+            <div>{storeDetail[0]?.hours}</div>
           </div>
           <div className="storeAddress">
             <div>주소</div>
-            <div>{storeList.address}</div>
+            <div>{storeDetail[0]?.address}</div>
           </div>
           <div className="storeNumber">
             <div>전화번호</div>
-            <div>{storeList.calls}</div>
+            <div>{storeDetail[0]?.calls}</div>
           </div>
         </div>
         <div className="storeHashTag">
-          {storeList.hashtags?.map((tag, index) => {
+          {storeDetail[0]?.hashtags?.map((tag, index) => {
             return (<div key={index} className='hashTag'>{tag}</div>)
           })}
         </div>
         <div id="navBtn">
-          <Link href={`/review/write?storeId=${storeList.storeId}&storeName=${storeList.name}`}>리뷰</Link>
-          <a target="_blank" href={`https://map.naver.com/p/search/${storeList.name}`}>길찾기</a>
+          <Link href={`/review/write?storeId=${storeDetail[0]?.storeId}&storeName=${storeDetail[0]?.name}`}>리뷰</Link>
+          <a target="_blank" href={`https://map.naver.com/p/search/${storeDetail[0]?.name}`}>길찾기</a>
           <div onClick={() => { setModal(true) }}>신고버튼</div>
         </div>
-        {modal && <ReportModal onClose={() => closeModal()} targetId={storeList.storeId} createReport={createStoreReport} content={content} contentHandler={contentHandler} />}
+        {modal && <ReportModal onClose={() => closeModal()} targetId={storeDetail[0]?.storeId} createReport={createStoreReport} content={content} contentHandler={contentHandler} />}
         <div className="favorite">
-          <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '55px', height: '55px' }} onClick={() => { postStar(data); favoriteHandler(storeList.favoriteStatus); }} />
+          <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '55px', height: '55px' }} onClick={() => { postStar(data); favoriteHandler(storeDetail[0]?.favoriteStatus); }} />
         </div>
       </div>
       <div className="DetailMap">
         <div className="map">
-          <TestMap storeId={storeId} />
+          <TestMap storeInfo={storeDetail}
+            myLatLng={null} />
         </div>
         <div className="menu">
           <div className="menuInfo">
@@ -115,7 +116,7 @@ const StoreDetail = () => {
               {menuStatus == true &&
                 <>
                   {
-                    storeList.menuList.map((menu) => (
+                    storeDetail[0].menuList.map((menu) => (
                       <li key={menu.id}>
                         <span className="menuName">{menu.name}</span>
                         <div className="line">--------------------</div>

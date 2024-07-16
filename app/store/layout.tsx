@@ -13,9 +13,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const Callback = () => {
+    console.log("Callbacks")
+  }
   return (
     <>
-      <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5?autoload=false" />
+      {/* <Script strategy='beforeInteractive' src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5&callback=Callback" /> */}
       <Header />
       <div>
         {children}
