@@ -15,7 +15,7 @@ const MemberApi = () => {
   }
   
   const getMyReply = async ({pageNumber}: {pageNumber:unknown}) => {
-    const result = await axiosWithAuth.get(`/member/myreply?pageNumber=${pageNumber}`);
+    const result = await axiosWithAuth.get(`/member/myReply?pageNumber=${pageNumber}`);
     return result.data;
   }
   

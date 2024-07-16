@@ -29,6 +29,10 @@ const Mypage = () => {
     imageUrl,
     fileInput,
     updateModal,
+    myReplyState,
+    myReviewState,
+    likeReviewState,
+    likeStoreState,
     setUpdateModal} = useMember();
   const pathname = usePathname();
 
@@ -55,19 +59,24 @@ const Mypage = () => {
         </div>
 
         <Wrapper title={'내가 쓴 리뷰'} link={`${pathname}/review`} totalCnt={myReviewList?.pages[0].numberOfElements}>
-          {myReviewList?<ReviewContainer myReviewList={myReviewList.pages[0].content}/>:<CardSkeleton/>}
+          {myReviewState?<CardSkeleton/>:
+          <>
+          {myReviewList?<ReviewContainer myReviewList={myReviewList.pages[0].content}/>:'리뷰가 없습니다'}</>}
         </Wrapper>
 
         <Wrapper title={'좋아요 한 리뷰'} link={`${pathname}/like`} totalCnt={likeReviewList?.pages[0].numberOfElements}>
-          {likeReviewList?<ReviewContainer myReviewList={likeReviewList.pages[0].content}/>:<CardSkeleton/>}
+          {likeReviewState?<CardSkeleton/>:<>
+          {likeReviewList?<ReviewContainer myReviewList={likeReviewList.pages[0].content}/>:'리뷰가 없습니다'}</>}
         </Wrapper>
 
         <Wrapper title={'내가 쓴 댓글'} link={`${pathname}/reply`} totalCnt={myReplyList?.pages[0].numberOfElements}>
-          {myReplyList?<ReplyWrapper myReplyList={myReplyList.pages[0].content}/>:<CardSkeleton/>}
+          {myReplyState?<CardSkeleton/>:<>
+          {myReplyList?<ReplyWrapper myReplyList={myReplyList.pages[0].content}/>:'작성한 댓글이 없습니다'}</>}
         </Wrapper>
 
         <Wrapper title={'즐겨찾기한 맛집'} link={`${pathname}/star`} totalCnt={likeStoreList?.pages[0].numberOfElements}>
-          {likeStoreList?<StoreContainer likeStoreList={likeStoreList.pages[0].content}/>:<CardSkeleton/>}
+          {likeStoreState?<CardSkeleton/>:<>
+          {likeStoreList?<StoreContainer likeStoreList={likeStoreList.pages[0].content}/>:'즐겨찾기한 맛집이 없습니다'}</>}
         </Wrapper>
         
         {updateModal? <UpdateModal

@@ -14,6 +14,7 @@ const useMember = () => {
   const {
     data: myReviewList,
     fetchNextPage: nextMyReviewList,
+    isFetching: myReviewState
   } = useInfiniteQuery<any>({
     queryKey: ['myReview'],
     queryFn: ({pageParam}) => getMyReview({pageNumber:pageParam}),
@@ -25,6 +26,7 @@ const useMember = () => {
   const {
     data: myReplyList,
     fetchNextPage: nextMyReplyList,
+    isFetching: myReplyState
   } = useInfiniteQuery<any>({
     queryKey: ['myReply'],
     queryFn: ({pageParam}) => getMyReply({pageNumber:pageParam}),
@@ -36,6 +38,7 @@ const useMember = () => {
   const {
     data: likeReviewList,
     fetchNextPage: nextLikeReviewList,
+    isFetching: likeReviewState
   } = useInfiniteQuery<any>({
     queryKey: ['likeReview'],
     queryFn: ({pageParam}) => getLikeReview({pageNumber:pageParam}),
@@ -47,6 +50,7 @@ const useMember = () => {
   const {
     data: likeStoreList,
     fetchNextPage: nextLikeStoreList,
+    isFetching: likeStoreState
   } = useInfiniteQuery<any>({
     queryKey: ['likeStore'],
     queryFn: ({pageParam}) => getLikeStore({pageNumber:pageParam}),
@@ -176,6 +180,10 @@ const useMember = () => {
     updateModal,
     imageUrl,
     fileInput,
+    myReplyState,
+    myReviewState,
+    likeReviewState,
+    likeStoreState,
     nextMyReviewList,
     nextLikeReviewList,
     nextLikeStoreList,
