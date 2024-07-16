@@ -165,7 +165,7 @@ const useStoreApi = () => {
   };
   const postStar = async (data: favorite) => {
     const result = await axiosWithAuth.post("/star", data)
-    return result.data
+    return result
   }
 
   const getStoreReview = async (storeId: number, { pageNumber }: { pageNumber: unknown }) => {
