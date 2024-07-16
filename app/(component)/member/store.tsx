@@ -5,16 +5,12 @@ import { getStoreType } from "@/app/type";
 
 const StoreContainer = ({likeStoreList} : {likeStoreList: getStoreType[]}) => {
   return (
-    <div className={StoreStyle.dashboard}>
-      {
-        <>
-          {likeStoreList[0]?<DashboardStore item={likeStoreList[0]}/>:''}
-          {likeStoreList[1]?<DashboardStore item={likeStoreList[1]}/>:''}
-          {likeStoreList[2]?<DashboardStore item={likeStoreList[2]}/>:''}
-          {likeStoreList[3]?<DashboardStore item={likeStoreList[3]}/>:''}
-        </>
-      }
-      </div>
+    <>
+      {likeStoreList[0]?<DashboardStore item={likeStoreList[0]}/>:''}
+      {likeStoreList[1]?<DashboardStore item={likeStoreList[1]}/>:''}
+      {likeStoreList[2]?<DashboardStore item={likeStoreList[2]}/>:''}
+      {likeStoreList[3]?<DashboardStore item={likeStoreList[3]}/>:''}
+    </>
   );
 }
 

@@ -4,16 +4,13 @@ import { getReviewType } from "@/app/type";
 
 const ReviewContainer = ({myReviewList} : {myReviewList: getReviewType[]}) => {
   return (
-      <div className={reviewStyle.dashboard}>
-          {
-             <>
-                {myReviewList[0] && <DashboardReview item={myReviewList[0]}/>}
-                {myReviewList[1] && <DashboardReview item={myReviewList[1]}/>}
-                {myReviewList[2] && <DashboardReview item={myReviewList[2]}/>}
-                {myReviewList[3] && <DashboardReview item={myReviewList[3]}/>}
-            </>
-          }
-      </div>
+
+        <>
+        {myReviewList[0] && <DashboardReview item={myReviewList[0]}/>}
+        {myReviewList[1] && <DashboardReview item={myReviewList[1]}/>}
+        {myReviewList[2] && <DashboardReview item={myReviewList[2]}/>}
+        {myReviewList[3] && <DashboardReview item={myReviewList[3]}/>}
+    </>
   );
 }
 
