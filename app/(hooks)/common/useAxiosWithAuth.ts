@@ -1,6 +1,7 @@
 'use client';
 import axios, { AxiosInstance } from 'axios';
 import Store from '../userStore';
+import { redirect } from 'next/navigation';
 
 const useAxiosWithAuth = (): any => {
   const axiosWithAuth: AxiosInstance = axios.create({
@@ -18,7 +19,11 @@ const useAxiosWithAuth = (): any => {
 
   axiosWithAuth.interceptors.response.use(
     (response) => {
-      return response;
+      if (response.status === 401) {
+        redirect('/member/login');
+      } else {
+        return response;
+      }
     },
     (error) => {
       console.error(error.message);
