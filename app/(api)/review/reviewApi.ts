@@ -1,9 +1,7 @@
-import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosNonAuth, axiosWithAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
 import { patchReviewType, postReviewType, likeReviewType, reportType } from "@/app/type";
 
 const ReviewApi = () => {
-  const {axiosWithAuth, axiosNonAuth} = useAxiosWithAuth();
-
   const getReviewOne = async (reviewId: number) => {
     const result = await axiosNonAuth.get(`/review/${reviewId}`);
     return result;

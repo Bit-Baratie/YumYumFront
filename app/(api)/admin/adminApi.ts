@@ -1,4 +1,4 @@
-import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosWithAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
 
 interface Report {
   id: string;
@@ -18,8 +18,6 @@ interface ReportType {
 
 
 const AdminApi = () => {
-  const { axiosWithAuth } = useAxiosWithAuth();
-
   const getReviewReport = async (page: number) => {
     const result = await axiosWithAuth.get(`/report/review?page=${page}`);
     console.log(result)

@@ -1,9 +1,7 @@
-import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosWithAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
 import { getMemberType, patchMemberType } from "@/app/type";
 
 const MemberApi = () => {
-  const {axiosWithAuth} = useAxiosWithAuth();
-
   const getProfile = async () => {
     const result = await axiosWithAuth.get(`/member`)
     return result.data;

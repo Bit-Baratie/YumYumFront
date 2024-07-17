@@ -1,8 +1,6 @@
-import useAxiosWithAuth from '@/app/(hooks)/common/useAxiosWithAuth';
+import {axiosNonAuth} from '@/app/(hooks)/common/useAxiosWithAuth';
 
 const HomeApi = () => {
-  const {axiosNonAuth} = useAxiosWithAuth();
-
   const getTop10 = async (local: string) => {
     const result = await axiosNonAuth.get(`/top10?local=${local}`);
     return result.data;

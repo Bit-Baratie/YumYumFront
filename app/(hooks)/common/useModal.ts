@@ -25,7 +25,7 @@ const useModal = () => {
       alert('신고가 완료되었습니다');
       setModal(false);
     } else {
-      alert('잠시후 다시 시도해 주세요₩n' + result.error.massege);
+      alert('잠시후 다시 시도해 주세요');
     }
   }
   const createStoreReport = async (targetId: number) => {
@@ -39,7 +39,7 @@ const useModal = () => {
       alert('신고가 완료되었습니다');
       setModal(false);
     } else {
-      alert('잠시후 다시 시도해 주세요₩n' + result.error.massege);
+      alert('잠시후 다시 시도해 주세요');
     }
   }
 
@@ -55,7 +55,7 @@ const useModal = () => {
       alert('신고가 완료되었습니다');
       setModal(false);
     } else {
-      alert('잠시후 다시 시도해 주세요₩n' + result.error.massege);
+      alert('잠시후 다시 시도해 주세요');
     }
   }
 

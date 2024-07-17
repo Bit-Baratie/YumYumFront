@@ -1,9 +1,7 @@
-import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosNonAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
 import axios from "axios";
 
 export const postSignupInfo = async (signupInfo: FormData) => {
-  const {axiosNonAuth} = useAxiosWithAuth();
-  console.log(signupInfo);
   const result = await axiosNonAuth.post('/member',
     signupInfo,
     {

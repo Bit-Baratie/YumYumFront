@@ -1,9 +1,7 @@
-import useAxiosWithAuth from "@/app/(hooks)/common/useAxiosWithAuth"
+import {axiosNonAuth, axiosWithAuth} from "@/app/(hooks)/common/useAxiosWithAuth"
 import { postReplyType } from "@/app/type";
 
 const replyApi = () => {
-  const {axiosWithAuth, axiosNonAuth} = useAxiosWithAuth();
-
   const postReply = async (postReplyData: postReplyType) => {
     const result = await axiosWithAuth.post(`/reply`, postReplyData);
     return result;
