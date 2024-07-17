@@ -1,4 +1,4 @@
-import {axiosWithAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosWithAuth} from "@/app/(hooks)/common/axiosWithAuth";
 
 interface Report {
   id: string;

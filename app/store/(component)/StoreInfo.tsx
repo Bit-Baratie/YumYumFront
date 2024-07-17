@@ -11,10 +11,11 @@ import { favorite, getStoreType } from '@/app/type';
 import Image from 'next/image';
 
 
-const { postStar } = useStoreApi();
+
 
 const StoreInfo = ({ store }: { store: getStoreType }) => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
+  const { postStar } = useStoreApi();
 
   const data: favorite = { favoriteStatus: favorite, storeId: store.storeId }
 
