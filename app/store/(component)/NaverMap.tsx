@@ -44,7 +44,7 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
         `   <h3>${store.name}</h3>`,
         `   <div>★${store.avgGrade}(${store.totalReviewCount})♥️${store.totalFavoriteCount}</div>`,
         `   <p>${store.address}<br />`,
-        `   <div>${store.categoryName ? store.categoryName : ''}</div>`,
+        `   <div>${store.categoryList ? store.categoryList : ''}</div>`,
         '</div>',
       ].join('');
 
