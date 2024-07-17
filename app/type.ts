@@ -52,10 +52,10 @@ export interface getStoreType {
   totalFavoriteCount: number;
   totalReviewCount: number;
   imageList: imageType[];
-  categoryName: string;
+  categoryList: string[];
   views: number;
   images: string[];
-  hashtags: string[];
+  hashtagList: string[];
   favoriteStatus: boolean;
   avgGrade: number;
   hours: string;
