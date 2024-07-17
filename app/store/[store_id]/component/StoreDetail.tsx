@@ -11,7 +11,12 @@ import ReportModal from "@/app/(component)/reportModal";
 import Link from "next/link";
 import { getStoreType, favorite } from "@/app/type";
 import useModal from "@/app/(hooks)/common/useModal";
-import { EyeFilled, StarFilled } from "@ant-design/icons";
+import {
+  EyeFilled,
+  StarFilled,
+  SignatureFilled,
+  AlertFilled,
+} from "@ant-design/icons";
 import Navi from "@/public/asset/image/navigation.svg";
 import Siren from "@/public/asset/image/siren.svg";
 import GoReview from "@/public/asset/image/review.svg";
@@ -94,16 +99,16 @@ const StoreDetail = () => {
             </div>
           </div>
           <div className="storeHour">
-            <div>영업시간</div>
-            <div>{storeDetail[0]?.hours}</div>
+            <div className="fix">영업시간</div>
+            <div className="fix2">{storeDetail[0]?.hours}</div>
           </div>
           <div className="storeAddress">
-            <div>주소</div>
-            <div>{storeDetail[0]?.address}</div>
+            <div className="fix">주소</div>
+            <div className="fix2">{storeDetail[0]?.address}</div>
           </div>
           <div className="storeNumber">
-            <div>전화번호</div>
-            <div>{storeDetail[0]?.calls}</div>
+            <div className="fix">전화번호</div>
+            <div className="fix2">{storeDetail[0]?.calls}</div>
           </div>
         </div>
         <div className="storeHashTag">
@@ -118,19 +123,21 @@ const StoreDetail = () => {
         <div id="navBtn">
           <Link
             href={`/review/write?storeId=${storeDetail[0]?.storeId}&storeName=${storeDetail[0]?.name}`}
-          ></Link>
+          >
+            <SignatureFilled className="review-icon" />
+          </Link>
           <a
             target="_blank"
             href={`https://map.naver.com/p/search/${storeDetail[0]?.name}`}
           >
-            <Navi />
+            <Navi className="navi-icon" />
           </a>
           <div
             onClick={() => {
               setModal(true);
             }}
           >
-            <Siren className="siren-icon" />
+            <AlertFilled className="siren-icon" />
           </div>
         </div>
         {modal && (

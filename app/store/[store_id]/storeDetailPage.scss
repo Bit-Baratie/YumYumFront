@@ -1,3 +1,15 @@
+@font-face {
+    font-family: "appleM";
+    src: url("../../../public/asset/font/AppleSDGothicNeoM.ttf");
+}
+@font-face {
+    font-family: "appleB";
+    src: url("../../../public/asset/font/AppleSDGothicNeoB.ttf");
+}
+body{
+    font-family: "appleM";
+}
+
 .container{
     width: 100%;
     height: auto;
@@ -9,6 +21,7 @@
     display: none;
 }
 .storeDetail{
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
     width: 800px;
     height: 1000px;
     text-align: center;
@@ -19,6 +32,7 @@
     border-radius: 20px;
     font-size: 20px;
     margin-top: 50px;
+    white-space: nowrap;
 }
 .storeImageDetail{
     padding: 0px;
@@ -62,11 +76,12 @@
     div{
         align-items: center;
         height: 70px;
-        justify-content: space-between;
+        // justify-content: space-between;
         display: flex;
     }
 }
 .storeNameDetail{
+    padding-bottom: 20px;
     display: flex;
             div{
                 align-items:end;
@@ -110,4 +125,31 @@
    top: 47%;
    width: 55px;
    height: 55px;
+}
+
+.custum-icon {
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 5px 7px 10px;
+}
+
+.fix{
+    font-family: "appleB";
+    font-size: 25px;
+}
+
+.fix2{
+    font-size: 25px;
+    position: absolute;
+    left: 180px;
+}
+
+.review-icon,
+.navi-icon,
+.siren-icon{
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
 }
