@@ -8,7 +8,7 @@ import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { getStoreType } from "@/app/type";
+import { getStoreListType, getStoreType } from "@/app/type";
 import CardSkeleton from "../skeleton/card";
 
 const Slide = () => {
@@ -63,7 +63,7 @@ const Slide = () => {
         >
           {data?
           <>
-          {data.map((item:getStoreType) => {
+          {data.map((item:getStoreListType) => {
             return(<SwiperSlide key={item.storeId}>
                 <Item item={item}/>
             </SwiperSlide>)
