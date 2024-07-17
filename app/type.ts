@@ -99,7 +99,7 @@ interface imageType {
 }
 
 // 맛집 메뉴리스트 타입
-interface menuType {
+export interface menuType {
   id: number;
   name: string;
   price: number;
