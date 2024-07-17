@@ -10,6 +10,7 @@ import StoreContainer from '@/app/(component)/member/store';
 import UpdateModal from '@/app/(component)/member/updateModal';
 import CardSkeleton from '@/app/(component)/skeleton/card';
 import ProfileSkeleton from '@/app/(component)/skeleton/profile';
+import useImage from '@/app/(hooks)/common/useImage';
 
 const Mypage = () => {
   const {profile, 
@@ -34,6 +35,7 @@ const Mypage = () => {
     likeReviewState,
     likeStoreState,
     setUpdateModal} = useMember();
+    const {errorImage} = useImage();
   const pathname = usePathname();
 
   return (
@@ -43,7 +45,7 @@ const Mypage = () => {
         {!profile ? <ProfileSkeleton/>:
           <>
             <div className={MemberPageStyle.profile}>
-              <Image src={profile.imageUrl} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage}/>
+              <Image src={profile.imageUrl} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage} onError={errorImage}/>
               <div className={MemberPageStyle.profileInfo}>
                 <div className={MemberPageStyle.nickname}>{profile.nickName}<Image src={'/asset/image/pencil.png'} width={15} height={15} alt='연필' onClick={() => setUpdateModal(!updateModal)}/></div>
                 <div>{profile.email}</div>

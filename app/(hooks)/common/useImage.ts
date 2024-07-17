@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, ReactEventHandler, useState } from "react";
 
 const useImage = () => {
   const [image, setImage] = useState<File[]>([]);
@@ -33,10 +33,15 @@ const useImage = () => {
     setPreview((prevImage: any[]) => prevImage.filter((_, i) => i !== index));
   };
 
+  const errorImage = (e: any) => {
+    e.target.src = '/asset/image/defaultImage.png';
+  }
+
   return {
     image,
     preview,
     imageHandler,
+    errorImage,
     removeImg
   }
 }
