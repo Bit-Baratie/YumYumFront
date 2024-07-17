@@ -15,6 +15,13 @@
   align-items: center;
 }
 
+.load{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
+
 .tableStyle {
   width: 100%;
   border-collapse: collapse;
