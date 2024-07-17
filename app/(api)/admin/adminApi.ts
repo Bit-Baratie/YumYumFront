@@ -24,8 +24,8 @@ const AdminApi = () => {
     return result.data;
   }
 
-  const getCommentReport = async () => {
-    const result = await axiosWithAuth.get("/report/reply");
+  const getCommentReport = async (page: number) => {
+    const result = await axiosWithAuth.get(`/report/reply?page=${page}`);
     console.log(result)
     return result.data;
   }
@@ -38,8 +38,8 @@ const AdminApi = () => {
   // };
 
 
-  const getuserAll = async () => {
-    const result = await axiosWithAuth.get("/admin/member");
+  const getuserAll = async (page: number) => {
+    const result = await axiosWithAuth.get(`/admin/member?page=${page}`);
     console.log(result)
     return result.data;
   }
@@ -82,8 +82,6 @@ const AdminApi = () => {
       });
     return result;
   }
-
-
 
   return {
     getReviewReport,
