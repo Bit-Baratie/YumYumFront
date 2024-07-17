@@ -1,5 +1,4 @@
-'use client';
-import useAxiosWithAuth from '@/app/(hooks)/common/useAxiosWithAuth';
+import {axiosWithAuth} from '@/app/(hooks)/common/useAxiosWithAuth';
 import axios from "axios";
 import Store from "@/app/(hooks)/userStore";
 import { getStoreType, location, favorite } from '@/app/type';
@@ -8,8 +7,6 @@ import { getStoreType, location, favorite } from '@/app/type';
 
 
 const useStoreApi = () => {
-  const { axiosWithAuth, axiosNonAuth } = useAxiosWithAuth();
-
   const getStoreInfo = async (location: location) => {
     const result = await axiosWithAuth.get(`/search?lng=${location.longitude}&&lat=${location.latitude}`)
     return result?.data
