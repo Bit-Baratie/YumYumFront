@@ -40,7 +40,7 @@ const StoreDetail = () => {
     const fetchStoreDetail = async () => {
       const StoreInfoResult = await StoreDetailInfo(Number(storeId));
       setStoreDetail(Array(StoreInfoResult.data));
-      setFavorite(StoreInfoResult.favoriteStatus);
+      setFavorite(StoreInfoResult.data.favoriteStatus);
     };
     if (storeId) {
       fetchStoreDetail();
@@ -107,7 +107,7 @@ const StoreDetail = () => {
           </div>
         </div>
         <div className="storeHashTag">
-          {storeDetail[0]?.hashtags?.map((tag, index) => {
+          {storeDetail[0]?.hashtagList?.map((tag, index) => {
             return (
               <div key={index} className="hashTag">
                 {tag}
