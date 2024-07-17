@@ -30,7 +30,7 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
       <div className='storeId'>{store.storeId}</div>
       <Link href={`/store/${store.storeId}`} >
         <div className="storeImage">
-          <Image src={store.images[0]} width={200} height={155} alt='가게이미지'/>
+          <Image src={store.images[0]} width={200} height={155} alt='가게이미지' />
           {/* <Logo /> */}
         </div>
         <div className="storeInfo">
@@ -43,13 +43,13 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
             <div id="views">👀{store.views}</div>
           </div>
           <div className='categoryList'>
-            <div className='category'>{store.categoryName}</div>
+            <div className='category'>{store.categoryList}</div>
           </div>
           <div className="storeAddress">
             <div>{store.address}</div>
           </div>
           <div className='hashTagList'>
-            {store.hashtags?.map((tag, index) => (
+            {store.hashtagList?.map((tag, index) => (
               <div key={index} className='hashTag'>{tag}</div>
             ))}
           </div>

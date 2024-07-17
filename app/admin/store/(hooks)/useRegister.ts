@@ -98,7 +98,7 @@ const useRegister = () => {
     //api 호출 후 목록으로 이동
     const res = await registerStore(formData);
     try {
-      if (res.status === 201) {
+      if (res?.status === 201) {
         Swal.fire({
           title: '가게 등록 성공!',
           icon: 'success',
