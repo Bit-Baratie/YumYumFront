@@ -25,21 +25,21 @@ const CommentList = ({ reportData }: { reportData: CReportData }) => {
     setPage(page);
   };
 
-  // const removeComment = () => {
-  //   Swal.fire({
-  //     title: "댓글을 삭제하시겠습니까?",
-  //     text: "삭제 버튼 선택 시, 리뷰는 삭제되며 복구되지 않습니다.",
-  //     showCancelButton: true,
-  //     confirmButtonText: "삭제",
-  //     icon: "warning",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       deleteComment();
-  //       Swal.fire("삭제가 완료되었습니다", "", "success");
-  //       router.push("/admin/review");
-  //     }
-  //   });
-  // };
+  const removeComment = () => {
+    Swal.fire({
+      title: "댓글을 삭제하시겠습니까?",
+      text: "삭제 버튼 선택 시, 리뷰는 삭제되며 복구되지 않습니다.",
+      showCancelButton: true,
+      confirmButtonText: "삭제",
+      icon: "warning",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // deleteComment();
+        Swal.fire("삭제가 완료되었습니다", "", "success");
+        router.push("/admin/review");
+      }
+    });
+  };
   // const [reportContents, setReportContents] = useState<any>();
   // const { getCommentReport } = AdminApi();
 
@@ -68,10 +68,7 @@ const CommentList = ({ reportData }: { reportData: CReportData }) => {
           </td>
           <td className={CommentStyle.date}>
             {reportData?.createdAt}
-            <button
-              className={CommentStyle.BtnStyle}
-              // onClick={removeComment}
-            >
+            <button className={CommentStyle.BtnStyle} onClick={removeComment}>
               <CloseCircleFilled />
             </button>
           </td>
