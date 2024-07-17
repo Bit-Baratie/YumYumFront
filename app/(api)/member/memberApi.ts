@@ -1,4 +1,4 @@
-import {axiosWithAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosWithAuth} from "@/app/(hooks)/common/axiosWithAuth";
 import { getMemberType, patchMemberType } from "@/app/type";
 
 const MemberApi = () => {

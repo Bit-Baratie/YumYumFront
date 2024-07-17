@@ -1,4 +1,4 @@
-import {axiosWithAuth} from '@/app/(hooks)/common/useAxiosWithAuth';
+import {axiosWithAuth} from '@/app/(hooks)/common/axiosWithAuth';
 import axios from "axios";
 import Store from "@/app/(hooks)/userStore";
 import { getStoreType, location, favorite } from '@/app/type';

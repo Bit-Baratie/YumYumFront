@@ -1,4 +1,4 @@
-import {axiosNonAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosNonAuth} from "@/app/(hooks)/common/axiosWithAuth";
 import { loginType } from "@/app/type";
 
 const postLoginInfo = async (loginInfo: loginType) => {

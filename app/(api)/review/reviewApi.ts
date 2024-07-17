@@ -1,4 +1,4 @@
-import {axiosNonAuth, axiosWithAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosNonAuth, axiosWithAuth} from "@/app/(hooks)/common/axiosWithAuth";
 import { patchReviewType, postReviewType, likeReviewType, reportType } from "@/app/type";
 
 const ReviewApi = () => {

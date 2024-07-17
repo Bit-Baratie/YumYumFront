@@ -1,4 +1,4 @@
-import {axiosNonAuth} from '@/app/(hooks)/common/useAxiosWithAuth';
+import {axiosNonAuth} from '@/app/(hooks)/common/axiosWithAuth';
 
 const HomeApi = () => {
   const getTop10 = async (local: string) => {

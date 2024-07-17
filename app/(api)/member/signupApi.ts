@@ -1,4 +1,4 @@
-import {axiosNonAuth} from "@/app/(hooks)/common/useAxiosWithAuth";
+import {axiosNonAuth} from "@/app/(hooks)/common/axiosWithAuth";
 import axios from "axios";
 
 export const postSignupInfo = async (signupInfo: FormData) => {
