@@ -28,7 +28,7 @@ const ReportPage = () => {
   return (
     <div className={AdminStyle.container}>
       <div className={AdminStyle.pAndSearch}>
-        <p className={AdminStyle.pStyle}>매장 목록</p>
+        <p className={AdminStyle.pStyle}>매장 신고 목록</p>
         <Search />
       </div>
       <table className={AdminStyle.tableStyle}>

@@ -44,27 +44,26 @@
 }
 
 .imgList li {
-  position: relative; 
+  position: relative;
 }
 
 .closeBtn {
   position: absolute;
   top: -10px;
   left: -10px;
-  width: 30px; 
-  height: 30px; 
+  width: 30px;
+  height: 30px;
   background-color: transparent;
-  border: 5px solid rgb(255, 255, 255); 
+  border: 5px solid rgb(255, 255, 255);
   border-radius: 50%;
-  padding: 0; 
+  padding: 0;
   cursor: pointer;
   box-sizing: content-box;
 }
 
-
 .closeBtn img {
   width: 110%;
-  height: 110%; 
+  height: 110%;
 }
 
 .reviewImg {

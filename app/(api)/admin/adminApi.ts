@@ -1,4 +1,4 @@
-import {axiosWithAuth} from "@/app/(hooks)/common/axiosWithAuth";
+import { axiosWithAuth } from "@/app/(hooks)/common/axiosWithAuth";
 
 interface Report {
   id: string;
@@ -71,6 +71,17 @@ const AdminApi = () => {
     console.log(result)
     return result;
   }
+  const registerStore = async (formData: FormData) => {
+    const result = await axiosWithAuth.post("/store", formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).catch((err: { message: any; }) => {
+        alert(err.message);
+      });
+    return result;
+  }
 
 
 
@@ -82,7 +93,8 @@ const AdminApi = () => {
     getStoreReport,
     deleteUser,
     deleteReview,
-    deleteComment
+    deleteComment,
+    registerStore
   }
 }
 
