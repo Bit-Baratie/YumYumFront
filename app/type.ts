@@ -54,7 +54,7 @@ export interface getStoreType {
   imageList: imageType[];
   categoryList: string[];
   views: number;
-  images: string[];
+  imageUrl: string;
   hashtagList: string[];
   favoriteStatus: boolean;
   avgGrade: number;
@@ -92,7 +92,6 @@ export interface location {
   latitude: number,
   longitude: number,
 }
-
 // 이미지 타입
 interface imageType {
   imageUrl: string; // 이미지의 URL

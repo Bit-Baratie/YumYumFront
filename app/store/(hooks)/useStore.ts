@@ -18,8 +18,8 @@ const useStore = () => {
   const [favorite, setFavorite] = useState<boolean>(false);
 
 
-  const favoriteHandler = (isFavorite: boolean) => {
-    setFavorite(currentFavorite => !currentFavorite); // 상태 토글
+  const favoriteHandler = (favoriteStatus: boolean) => {
+    setFavorite(favoriteStatus => !favoriteStatus); // 상태 토글
   };
 
 

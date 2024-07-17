@@ -29,10 +29,16 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
     <div id="searchStoreList">
       <div className='storeId'>{store.storeId}</div>
       <Link href={`/store/${store.storeId}`} >
-        <div className="storeImage">
-          <Image src={store.images[0]} width={200} height={155} alt='가게이미지' />
-          {/* <Logo /> */}
-        </div>
+        {store.imageUrl ?
+          <>
+            <div className="storeImage">
+              <Image src={store.imageUrl} width={200} height={155} alt='가게이미지' />
+            </div>
+          </>
+          :
+          <>
+            <Logo />
+          </>}
         <div className="storeInfo">
           <div className="storeName">
             {store.name}

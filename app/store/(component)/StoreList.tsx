@@ -17,7 +17,7 @@ const StoreList = ({ myLatLng }: { myLatLng: location }) => {
       try {
         const StoreInfoResult = await getStoreInfo(myLatLng)
         // setStoreList(Array.isArray(StoreInfoResult) ? StoreInfoResult : [StoreInfoResult]);
-        if (data?.length !== 0) {
+        if (data) {
           // console.log(data);
           setStoreList(data)
         } else {
