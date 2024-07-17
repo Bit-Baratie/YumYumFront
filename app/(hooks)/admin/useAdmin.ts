@@ -28,7 +28,7 @@ const useAdmin = () => {
     if(result?.status === 204) {
       alert('유저 정보를 삭제했습니다.');
     }else {
-      alert('잠시후 다시 시도해주세요'+result?.error);
+      alert('잠시후 다시 시도해주세요');
     }
   }
   const removeReply = async (replyId: number) => {
@@ -36,7 +36,7 @@ const useAdmin = () => {
     if (result?.status === 204) {
       alert('댓글을 삭제했습니다.');
     }else {
-      alert('잠시후 다시 시도해주세요' + result?.error);
+      alert('잠시후 다시 시도해주세요');
     }
   }
   // const getReviewReport = async (type: string) => {
