@@ -17,7 +17,7 @@ const Login = () => {
       <form className={loginStyle.form}>
         <input type="text" placeholder='이메일' value={email} onChange={(e) => emailHanler(e)}/>
         <input type="password" placeholder='비밀번호' value={password} onChange={(e) => passwordHanler(e)}/>
-        <div className={loginStyle.text}>Don't have an account?</div>
+        <div className={loginStyle.text}>Don&apos;t have an account?</div>
         <Link href={'/member/signup'}><div className={loginStyle.link}>Sign up!</div></Link>
         <button onClick={(e) => login(e)}>LOGIN</button>
       </form>

@@ -20,13 +20,13 @@ const ReplyPage = () => {
     <>
       <div>
         {myReplyList?.pages.map((page) => (
-          <>
+          <div key={page}>
             {page.content.map((item: getReplyType) => (
               <Link href={`/review/${item.reviewId}`}>
-                <Reply item={item}/>
+                <Reply item={item} key={item.replyId}/>
               </Link>
             ))}
-          </>
+          </div>
         ))}
       </div>
       

@@ -21,13 +21,13 @@ const LikePage = () => {
     <>
       <div className={PageStyle.container}>
         {likeReviewList?.pages.map((page) => (
-          <>
+          <div key={page}>
             {page.content.map((item: getReviewType) => (
-              <Link href={`/review/${item.reviewId}`}>
+              <Link href={`/review/${item.reviewId}`} key={item.reviewId}>
                 <ReviewItem reviewItem={item}/>
               </Link>
             ))}
-          </>
+          </div>
         ))}
       </div>
 
