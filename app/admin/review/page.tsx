@@ -10,6 +10,7 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Paging from "../(component)/pagenation";
 import "./../(component)/Paging.scss";
 import AdminStyle from "@/app/admin/admin.module.scss";
+import Loading from "@/app/admin/(component)/Loading";
 
 interface ReportData {
   reportId: number;
@@ -32,7 +33,7 @@ const AdminReview = () => {
   }, [page, totalPages]);
 
   const fetchReviewReport = async () => {
-    const result = await getReviewReport(page-1);
+    const result = await getReviewReport(page - 1);
     setReportContents(result.content);
     setTotalPages(result.totalElements);
     setLoading(false);
@@ -50,37 +51,38 @@ const AdminReview = () => {
         <Search />
       </div>
       {loading ? (
-        <p>Loading...</p> // 로딩 중 표시
+        <div className={AdminStyle.load}>
+          <Loading />{" "}
+        </div>
       ) : (
         <>
-        <table className={AdminStyle.tableStyle}>
-          <thead>
-            <tr className={AdminStyle.trStyle}>
-              <th className={AdminStyle.nickname}>신고자</th>
-              <th className={AdminStyle.reviewContent}>리뷰 내용</th>
-              <th className={AdminStyle.reportContent}>신고 내용</th>
-              <th className={AdminStyle.date}>작성일자</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reportContents?.map((reportData: ReportData) => (
-              <ReviewList key={reportData.reportId} reportData={reportData} />
-            ))}
-          </tbody>
-        </table>
+          <table className={AdminStyle.tableStyle}>
+            <thead>
+              <tr className={AdminStyle.trStyle}>
+                <th className={AdminStyle.nickname}>신고자</th>
+                <th className={AdminStyle.reviewContent}>리뷰 내용</th>
+                <th className={AdminStyle.reportContent}>신고 내용</th>
+                <th className={AdminStyle.date}>작성일자</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reportContents?.map((reportData: ReportData) => (
+                <ReviewList key={reportData.reportId} reportData={reportData} />
+              ))}
+            </tbody>
+          </table>
 
-      <Pagination
-        activePage={page}
-        itemsCountPerPage={5}
-        totalItemsCount={totalPages}
-        pageRangeDisplayed={5}
-        prevPageText={<LeftOutlined />}
-        nextPageText={<RightOutlined />}
-        onChange={handlePageChange}
-      />
-      </>
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={5}
+            totalItemsCount={totalPages}
+            pageRangeDisplayed={5}
+            prevPageText={<LeftOutlined />}
+            nextPageText={<RightOutlined />}
+            onChange={handlePageChange}
+          />
+        </>
       )}
-        
     </div>
   );
 };
