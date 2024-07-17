@@ -65,7 +65,7 @@ const useReview = () => {
     if (result?.status === 200) {
       setReviewOne(result.data);
     } else {
-      alert('잠시후 다시 시도해주세요'+result.error);
+      alert('잠시후 다시 시도해주세요');
       router.back();
     }
     
