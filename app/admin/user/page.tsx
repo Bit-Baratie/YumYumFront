@@ -22,7 +22,7 @@ interface UserData {
   phoneNumber: string;
 }
 
-const userPage = () => {
+const UserPage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [userCheck, setUserCheck] = useState<Array<UserData>>([]);
@@ -96,4 +96,4 @@ const userPage = () => {
   );
 };
 
-export default userPage;
+export default UserPage;
