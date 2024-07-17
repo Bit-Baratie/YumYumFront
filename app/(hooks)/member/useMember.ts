@@ -6,10 +6,12 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { patchMemberType } from "@/app/type";
+import useLogin from "./useLogin";
 
 const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
-  const {userInfo, deleteUserInfo} = userStore();
+  const {userInfo, deleteUserInfo, deleteToken} = userStore();
+  const {logout} = useLogin();
   const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile()});
   const {
     data: myReviewList,
@@ -68,9 +70,19 @@ const useMember = () => {
     onError: () => 
       alert('잠시후 다시 시도해주세요')
   });
+  const removeMember = useMutation({
+    mutationFn: () => deleteMember(),
+    onSuccess: () => {
+      logout();
+      Swal.fire("탈퇴가 완료되었습니다", "", "success");
+      router.push('/');
+    },
+    onError: () => 
+      alert('잠시후 다시 시도해주세요')
+  });
 
   const [imageUrl, setImageUrl] = useState('/');
-  const [file, setFile] = useState<any>()
+  const [file, setFile] = useState<any>();
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -78,12 +90,6 @@ const useMember = () => {
   const [updateModal, setUpdateModal] = useState(false);
   const router = useRouter();
   const fileInput = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    setImageUrl(profile?.imageUrl);
-    setNickName(profile?.nickName);
-    setPhone(profile?.phoneNumber);
-  }, [profile?.nickName, profile?.phoneNumber, profile?.imageUrl]);
 
   const imageHandler = (e: any) => {
     const file = e.target.files[0];
@@ -144,15 +150,9 @@ const useMember = () => {
     formData.append('updateMemberDto', new Blob([JSON.stringify(data)], {type: 'application/json'}));
 
     updateMember.mutate(formData);
-    // const res = await patchMember({data});
-    // if (res.status === 202) {
-    //   router.refresh();
-    // } else {
-    //   alert('잠시후 다시 시도해주세요');
-    // }
   }
 
-  const removeMember = () => {
+  const removeMemberHandler = () => {
     Swal.fire({
       title: "정말 탈퇴하시겠습니까?",
       text: '탈퇴 버튼 선택 시,  계정은 삭제되며 복구되지 않습니다.',
@@ -161,10 +161,7 @@ const useMember = () => {
       icon: 'warning'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteMember();
-        deleteUserInfo();
-        Swal.fire("탈퇴가 완료되었습니다", "", "success");
-        router.push('/');
+        removeMember.mutate();
       }
     });
   }
@@ -194,7 +191,7 @@ const useMember = () => {
     passwordCheckHanler,
     phoneHandler,
     updateHandler,
-    removeMember,
+    removeMemberHandler,
     setUpdateModal
   }
 }

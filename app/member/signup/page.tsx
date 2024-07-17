@@ -7,7 +7,7 @@ import Link from 'next/link';
 const Signup = () => {
   const {email, password, passwordCheck, nickname, phone, image, fileInput,
     emailHanler, passwordHanler, passwordCheckHanler, nicknameHanler, phoneHanler, imageHanler,
-    signup} = useSignup();
+    signupHandler} = useSignup();
 
   return (
     <div className={signupStyle.container}>
@@ -24,7 +24,7 @@ const Signup = () => {
           <label htmlFor="input-file" >Profile Image</label>
           <input type="file" id='input-file' placeholder='Profile Image' ref={fileInput} onChange={(e) => imageHanler(e)} />
         </div>
-        <button onClick={(e) => signup(e)}>SIGN UP</button>
+        <button onClick={(e) => signupHandler(e)}>SIGN UP</button>
       </form>
     </div>
   );

@@ -23,7 +23,7 @@ const Mypage = () => {
     passwordCheckHanler,
     phoneHandler,
     updateHandler,
-    removeMember,
+    removeMemberHandler,
     nickName,
     phone,
     imageUrl,
@@ -51,7 +51,7 @@ const Mypage = () => {
               </div>
             </div>
             <div className={MemberPageStyle.btnContainer}>
-              <button className={MemberPageStyle.btn} onClick={removeMember}>회원탈퇴</button>
+              <button className={MemberPageStyle.btn} onClick={removeMemberHandler}>회원탈퇴</button>
             </div>
           </>
         }

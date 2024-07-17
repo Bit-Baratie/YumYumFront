@@ -2,6 +2,7 @@
 import { useCallback, useRef, useState } from "react";
 import { postSignupInfo } from "../../(api)/member/signupApi";
 import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
 
 const useSignup = () => {
   const [email, setEmail] = useState<string>('');
@@ -13,6 +14,16 @@ const useSignup = () => {
   const [file, setFile] = useState<any>();
   const fileInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  const signup = useMutation({
+    mutationFn: (formData: FormData) => postSignupInfo(formData),
+    onSuccess: () => {
+      router.push('/member/login');
+    },
+    onError: (err) => {
+      alert(err.message);
+    }
+  });
 
   const emailHanler = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -52,7 +63,7 @@ const useSignup = () => {
     }
   }
 
-  const signup = useCallback (async (e:React.MouseEvent<HTMLButtonElement>) => {
+  const signupHandler = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
@@ -72,19 +83,13 @@ const useSignup = () => {
     const upload = JSON.stringify(info);
     formData.append('signUpDto', new Blob([upload], {type: 'application/json'}));
 
-    const res = await postSignupInfo(formData);
-    if (res.status === 201) {
-      router.push('/member/login');
-    } else {
-      alert('회원가입 실패');
-    }
-    
-  }, [])
+    signup.mutate(formData);
+  }
 
   return {
     email, password, passwordCheck, nickname, phone, image, fileInput,
     emailHanler, passwordHanler, passwordCheckHanler, nicknameHanler, phoneHanler, imageHanler,
-    signup
+    signupHandler
   };
 }
 
