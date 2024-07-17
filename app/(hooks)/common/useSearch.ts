@@ -8,9 +8,8 @@ import { location } from "@/app/type";
 
 const useSearch = () => {
   const searchParams = useSearchParams().get('keyword');
-  const { data } = useQuery({ queryKey: ['keySearch', searchParams], queryFn: () => search(searchParams) });
   const [keyword, setKeyword] = useState<string>('');
-
+  const { data } = useQuery({ queryKey: ['keySearch', searchParams], queryFn: () => search(searchParams), enabled: Boolean(searchParams) });
   const router = useRouter();
 
 
