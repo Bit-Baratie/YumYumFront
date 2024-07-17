@@ -65,6 +65,22 @@ export interface getStoreType {
   longitude: number;
 }
 
+export interface getStoreListType {
+  storeId: number;
+  name: string;
+  address: string;
+  totalFavoriteCount: number;
+  totalReviewCount: number;
+  categoryName: string;
+  views: number;
+  imageUrl: string;
+  hashtags: string[];
+  favoriteStatus: boolean;
+  avgGrade: number;
+  latitude: number;
+  longitude: number;
+}
+
 //즐겨찾기 데이터 타입
 export interface favorite {
   favoriteStatus: boolean,
