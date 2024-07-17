@@ -8,7 +8,7 @@ const Item = ({item}: {item:getStoreListType}) => {
   const {errorImage} = useImage();
   return (
     <Link href={`/store/${item.storeId}`} className={ItemStyle.container}> 
-      <Image src={item.imageUrl} width={180} height={180} alt="가게이미지" onError={errorImage}/>
+      <img src={item.imageUrl} width={180} height={180} alt="가게이미지"/>
       <div className={ItemStyle.name}>{item.name}</div>
       <div><span>⭐️{item.avgGrade}</span><span>❤️{item.totalFavoriteCount}</span></div>
     </Link>
