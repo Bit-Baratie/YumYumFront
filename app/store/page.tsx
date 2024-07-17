@@ -1,8 +1,11 @@
+import { Suspense } from "react";
 import SearchStoreList from "./(component)/SearchStoreList";
 const Store = () => {
   return (
     <>
-      <SearchStoreList />
+      <Suspense>
+        <SearchStoreList />
+      </Suspense>
     </>
   );
 }

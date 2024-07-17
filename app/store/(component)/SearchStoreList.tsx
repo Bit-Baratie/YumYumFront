@@ -33,7 +33,7 @@ const SearchStoreList = () => {
       try {
         const LatLng = await myLocation()
         const result = await getStoreInfo(LatLng);
-        if (data?.length !== 0) {
+        if (data) {
           setStoreList(data)
         } else {
           console.log(data);
