@@ -13,6 +13,7 @@ const StoreList = ({ myLatLng }: { myLatLng: location }) => {
   useEffect(() => {
     const fetchStoreInfo = async () => {
 
+
       //api데이터 예외처리
       try {
         const StoreInfoResult = await getStoreInfo(myLatLng)
