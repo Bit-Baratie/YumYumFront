@@ -1,11 +1,17 @@
-'use client';
-import '@/app/store/(component)/map.scss';
-import { useEffect, useRef } from 'react';
-import { getStoreType, location } from '@/app/type';
-import Script from 'next/script';
-import useSearch from '@/app/(hooks)/common/useSearch';
+"use client";
+import "@/app/store/(component)/map.scss";
+import { useEffect, useRef } from "react";
+import { getStoreType, location } from "@/app/type";
+import Script from "next/script";
+import useSearch from "@/app/(hooks)/common/useSearch";
 
-const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng: location | null }) => {
+const TestMap = ({
+  storeInfo,
+  myLatLng,
+}: {
+  storeInfo: getStoreType[];
+  myLatLng: location | null;
+}) => {
   const mapRef = useRef<HTMLDivElement>(null);
   let map: naver.maps.Map | null = null;
   const { data } = useSearch();
@@ -16,7 +22,7 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
 
     console.log(storeInfo);
     if (storeInfo?.length > 1) {
-      map = new naver.maps.Map('map', {
+      map = new naver.maps.Map("map", {
         center: new naver.maps.LatLng(myLatLng?.latitude, myLatLng?.longitude),
         zoomControl: true,
         zoom: 15,
@@ -27,8 +33,11 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
         },
       });
     } else if (storeInfo?.length == 1) {
-      map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(storeInfo[0]?.latitude, storeInfo[0]?.longitude),
+      map = new naver.maps.Map("map", {
+        center: new naver.maps.LatLng(
+          storeInfo[0]?.latitude,
+          storeInfo[0]?.longitude
+        ),
         zoomControl: true,
         zoom: 15,
         minZoom: 6,
@@ -38,23 +47,25 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
         },
       });
     }
+
     storeInfo?.map((store: getStoreType) => {
       const contentString = [
-        '<div>',
+        "<div class='infowindow-content'>",
         `   <h3>${store.name}</h3>`,
-        `   <div>★${store.avgGrade}(${store.totalReviewCount})♥️${store.totalFavoriteCount}</div>`,
+        `   <div>★${store.avgGrade}(${store.totalReviewCount})&nbsp;♥️${store.totalFavoriteCount}</div>`,
         `   <p>${store.address}<br />`,
-        `   <div>${store.categoryList ? store.categoryList : ''}</div>`,
-        '</div>',
-      ].join('');
+        `   <div>${store.categoryList ? store.categoryList : ""}</div></p>`,
+        "</div>",
+      ].join("");
 
       const infowindow = new naver.maps.InfoWindow({
         content: contentString,
         maxWidth: 300,
-        borderColor: '#FFFFA1',
-        backgroundColor: '#FFFaEF',
-        borderWidth: 3,
-        anchorColor: '#EEE',
+        // borderColor 설정 제거 또는 주석 처리
+        // borderColor: "#FFFFA1",
+        backgroundColor: "#FFFaEF",
+        borderWidth: "none", //이거하니까 중앙으로 안오네ㅔㅔㅔㅔㅔㅔㅔㅔㅔ
+        anchorColor: "white",
         anchorSkew: true,
       });
 
@@ -65,7 +76,7 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
           title: store.name,
         });
 
-        naver.maps.Event.addListener(marker, 'click', function () {
+        naver.maps.Event.addListener(marker, "click", function () {
           if (infowindow.getMap()) {
             infowindow.close();
           } else {
@@ -85,8 +96,11 @@ const TestMap = ({ storeInfo, myLatLng }: { storeInfo: getStoreType[], myLatLng:
   return (
     <>
       <div id="map" ref={mapRef}></div>
-      {/* Naver Maps API 스크립트 로드 */}
-      <Script strategy="afterInteractive" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5?" onLoad={initializeMap} />
+      <Script
+        strategy="afterInteractive"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nqz0uvnoe5?"
+        onLoad={initializeMap}
+      />
     </>
   );
 };
