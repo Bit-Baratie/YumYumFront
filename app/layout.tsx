@@ -5,6 +5,7 @@ import Header from "./header";
 import Script from "next/script";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ReactQueryProviders from "./(hooks)/common/useReactQuery";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
 
 declare global {
   interface Window {
-    naver:any;
-    Kakao:any; // 나중에 설명할 카카오 로그인을 위해 이 부분도 추가해주세요!
+    naver: any;
+    Kakao: any; // 나중에 설명할 카카오 로그인을 위해 이 부분도 추가해주세요!
   }
 };
 
@@ -28,12 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <Script
+        <Script
           src='https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js'
           strategy='beforeInteractive'
         />
         <ReactQueryProviders>
-          {children}
+          <Suspense>
+            {children}
+          </Suspense>
         </ReactQueryProviders>
       </body>
     </html>
