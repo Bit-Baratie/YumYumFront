@@ -71,6 +71,12 @@ const AdminApi = () => {
     console.log(result)
     return result;
   }
+  const deleteStore = async (storeId: number) => {
+    const result = await axiosWithAuth.delete(`/admin/store/${storeId}`);
+    console.log(result)
+    return result;
+  }
+
   const registerStore = async (formData: FormData) => {
     const result = await axiosWithAuth.post("/store", formData,
       {
@@ -83,6 +89,7 @@ const AdminApi = () => {
     return result;
   }
 
+
   return {
     getReviewReport,
     getCommentReport,
@@ -92,7 +99,8 @@ const AdminApi = () => {
     deleteUser,
     deleteReview,
     deleteComment,
-    registerStore
+    registerStore,
+    deleteStore,
   }
 }
 

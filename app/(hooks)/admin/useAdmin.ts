@@ -1,7 +1,10 @@
 'use client';
 
 import AdminApi from "@/app/(api)/admin/adminApi";
+import { useRouter } from "next/navigation";
+import router from "next/router";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 // interface Report {
 //   id: string;
@@ -21,13 +24,13 @@ import { useState } from "react";
 
 
 const useAdmin = () => {
-  const { deleteUser, deleteComment, deleteReview } = AdminApi();
+  const { deleteUser, deleteComment, deleteReview, deleteStore } = AdminApi();
 
   const removeUser = async (memberId: number) => {
     const result = await deleteUser(memberId);
-    if(result?.status === 204) {
+    if (result?.status === 204) {
       alert('유저 정보를 삭제했습니다.');
-    }else {
+    } else {
       alert('잠시후 다시 시도해주세요');
     }
   }
@@ -35,7 +38,7 @@ const useAdmin = () => {
     const result = await deleteComment(replyId);
     if (result?.status === 204) {
       alert('댓글을 삭제했습니다.');
-    }else {
+    } else {
       alert('잠시후 다시 시도해주세요');
     }
   }
@@ -48,6 +51,19 @@ const useAdmin = () => {
       alert('잠시후 다시 시도해주세요');
     }
   }
+  const removeStore = async (storeId: number) => {
+    const result = await deleteStore(storeId);
+    if (result?.status !== 204) {
+      Swal.fire({
+        title: "요청을 실패하였습니다",
+        text: "다시 한 번 시도해주십시오",
+        showCancelButton: true,
+        confirmButtonText: "확인",
+        icon: "error",
+      })
+    }
+  }
+
   // const getReviewReport = async (type: string) => {
   //   const result = await getReport("review");
   //   return result.data;
@@ -55,7 +71,8 @@ const useAdmin = () => {
   return {
     removeUser,
     removeReply,
-    removeReview
+    removeReview,
+    removeStore
   }
 }
 export default useAdmin;
