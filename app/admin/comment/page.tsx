@@ -15,7 +15,7 @@ import Loading from "@/app/admin/(component)/Loading";
 interface CReportData {
   createdAt: string;
   nickName: string;
-  reportId: string;
+  reportId: number;
   reportReason: string;
   targetContent: string;
   targetId: number;
