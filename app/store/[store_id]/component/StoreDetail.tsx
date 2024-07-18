@@ -44,7 +44,7 @@ const StoreDetail = () => {
   useEffect(() => {
     const fetchStoreDetail = async () => {
       const StoreInfoResult = await StoreDetailInfo(Number(storeId));
-      setStoreDetail(Array(StoreInfoResult.data));
+      setStoreDetail([StoreInfoResult.data]);
       setFavorite(StoreInfoResult.data.favoriteStatus);
     };
     if (storeId) {
@@ -52,7 +52,7 @@ const StoreDetail = () => {
     }
   }, [setStoreDetail]);
 
-  if (!storeDetail) {
+  if (storeDetail.length === 0) {
     return (
       <div>
         <Loading />
@@ -111,15 +111,14 @@ const StoreDetail = () => {
             <div className="fix2">{storeDetail[0]?.calls}</div>
           </div>
         </div>
-        <div className="storeHashTag">
-          {storeDetail[0]?.hashtagList?.map((tag, index) => {
-            return (
-              <div key={index} className="hashTag">
-                {tag}
-              </div>
-            );
-          })}
-        </div>
+        {storeDetail[0]?.hashtagList &&
+          <div className="storeHashTag">
+            {storeDetail[0].hashtagList?.map((tag, index) => (
+              <div key={index} className='hashTag'>{tag}</div>
+            ))}
+          </div>
+          || !storeDetail[0]?.hashtagList &&
+          <div>Loading...</div>}
         <div id="navBtn">
           <Link
             href={`/review/write?storeId=${storeDetail[0]?.storeId}&storeName=${storeDetail[0]?.name}`}

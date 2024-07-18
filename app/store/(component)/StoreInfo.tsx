@@ -20,8 +20,8 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
   const data: favorite = { favoriteStatus: favorite, storeId: store.storeId }
 
   useEffect(() => {
-    favoriteHandler(store.favoriteStatus);
-    setFavorite(store.favoriteStatus);
+    favoriteHandler(!store.favoriteStatus);
+    setFavorite(!store.favoriteStatus);
   }, [])
 
 

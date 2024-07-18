@@ -19,7 +19,7 @@ const StoreList = ({ store }: { store: adminStoreType }) => {
       </Link>
       <td className={StoreStyle.email}>{store.address}</td>
       <td className={StoreStyle.userNumbe}>{store.call}</td>
-      <td className={StoreStyle.date}>{store.isClosed}<button className={StoreStyle.UBtnStyle}>삭제</button>{" "}
+      <td className={StoreStyle.date}>{store.isClosed}<button className={StoreStyle.UBtnStyle}>수정</button><button className={StoreStyle.UBtnStyle}>X</button>
       </td>
     </tr>
   );
