@@ -66,20 +66,16 @@ const StoreDetail = () => {
         <div className="storeId">{storeDetail[0]?.storeId}</div>
         <div className="storeImageDetail">
           {/* <div className="MainImage">{storeList.imageList}</div> */}
-          <div className="subImageList">
-            {/* <div className="subImage">{storeList.imageUrl}</div>
-            <div className="subImage" id="sub2">{storeList.imageUrl}</div>
-            <div className="subImage">{storeList.imageUrl}</div>
-            <div className="subImage">{storeList.imageUrl}</div> */}
-            {/* {storeList.imageList.map((image) => (
-              <img
-                key={image.imageUrl}
-                className="subImage"
-                src={image.imageUrl}
-                alt={`Sub Image ${image.imageUrl + 1}`}
-              />
-            ))} */}
-          </div>
+          {storeDetail[0].imageList.length ?
+            <>
+              <img className="MainImage" src={storeDetail[0]?.imageList[4]} />
+              <div className="subImageList">
+                <img className="subImage" src={storeDetail[0]?.imageList[0]} />
+                <img className="subImage" id="sub2" src={storeDetail[0]?.imageList[1]} />
+                <img className="subImage" src={storeDetail[0]?.imageList[2]} />
+                <img className="subImage" src={storeDetail[0]?.imageList[3]} />
+              </div>
+            </> : <div>매장에 등록된 사진이 없습니다.</div>}
         </div>
         <div className="storeInfoDetail">
           <div className="storeNameDetail">

@@ -5,7 +5,7 @@ import { getReviewType } from "../../type";
 import useImage from "@/app/(hooks)/common/useImage";
 
 const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
-  const {errorImage} = useImage();
+  const { errorImage } = useImage();
 
   return (
     <div className={reviewStyle.reviewItem}>
@@ -21,7 +21,7 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
       <div className={reviewStyle.bottom}>
         {/* 프로필 */}
         <div className={reviewStyle.profile}>
-          <Image
+          <img
             src={reviewItem?.profileImage}
             width={100}
             height={100}
@@ -50,41 +50,41 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
       </div>
       <div className={reviewStyle.reviewImg}>
 
-        
 
-        {reviewItem.images?.length>0?<Image
+
+        {reviewItem.imageList?.length > 0 ? <Image
           className={reviewStyle.reivewImage}
           // src={'/./'}
-          
-          src={reviewItem.images[0]}
+
+          src={reviewItem.imageList[0]}
           width={350}
           height={350}
           alt="리뷰이미지"
-        />:""}
-        {reviewItem.images?.length>1?<Image
+        /> : ""}
+        {reviewItem.imageList?.length > 1 ? <Image
           className={reviewStyle.reivewImage}
-          src={reviewItem.images[1]}
+          src={reviewItem.imageList[1]}
           width={350}
           height={350}
           alt="리뷰이미지"
-        />:''}
-        {reviewItem.images?.length>2?<Image
+        /> : ''}
+        {reviewItem.imageList?.length > 2 ? <Image
           className={reviewStyle.reivewImage}
-          src={reviewItem.images[2]}
+          src={reviewItem.imageList[2]}
           width={350}
           height={350}
           alt="리뷰이미지"
-        />:''}
-        {reviewItem.images?.length>3?<div className={reviewStyle.contL}>
+        /> : ''}
+        {reviewItem.imageList?.length > 3 ? <div className={reviewStyle.contL}>
           <Image
             className={reviewStyle.reivewImageLast}
-            src={reviewItem.images[3]}
+            src={reviewItem.imageList[3]}
             width={350}
             height={350}
             alt="리뷰이미지"
           />
-          {reviewItem.images?.length>4?<p>+{reviewItem.images.length-3}</p>:''}
-        </div>:''}
+          {reviewItem.imageList?.length > 4 ? <p>+{reviewItem.imageList.length - 3}</p> : ''}
+        </div> : ''}
       </div>
     </div>
   );
