@@ -14,7 +14,7 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Loading from "@/app/admin/(component)/Loading";
 
 interface UserData {
-  memberId: string;
+  memberId: number;
   reviewId: number;
   email: string;
   isDeleted: boolean;
