@@ -1,166 +1,166 @@
-.container{
-    width: 100%;
-    height: 150vh;
-    background-color:#F3F3F3;
-    display: flex;
-    justify-content: center;
+.container {
+  width: 100%;
+  height: 150vh;
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
 }
-.StoreListMap{
-    overflow-y: scroll;
-    height: 700px;
+.StoreListMap {
+  overflow-y: scroll;
+  height: 700px;
 }
-.content{
-    margin-top:100px;
-    display: flex;
-    justify-content: center;
-    background-color: #F8F8F8;
-    width: 1280px;
-    height: 800px;
-    border-radius: 30px;
-    box-shadow: 5px -1px 30px 1px grey;
-    position: relative;
+.content {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  width: 1280px;
+  height: 800px;
+  border-radius: 30px;
+  box-shadow: 5px -1px 30px 1px grey;
+  position: relative;
 }
-#storeList{
-    margin-top: 40px;
-    padding-left: 30px;
-    width: 600px;
-    height: 760px;
-    background-color: #F8F8F8;
-    border-bottom-right-radius: 30px;
+#storeList {
+  margin-top: 40px;
+  padding-left: 30px;
+  width: 600px;
+  height: 760px;
+  background-color: #f8f8f8;
+  border-bottom-right-radius: 30px;
 }
-#searchStoreList{
-    background-color: #FFFFFF;
-    display: flex;
-    position: relative;
-    width: 560px;
-    height: 200px;
-    align-items: center;
-    margin-top: 30px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px grey;
-    overflow-y: scroll;
+#searchStoreList {
+  background-color: #ffffff;
+  display: flex;
+  position: relative;
+  width: 560px;
+  height: 200px;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px grey;
+  overflow-y: scroll;
 }
-.storeImage{
-    background-color: #F2F2F2;
-    width: 200px;
-    height: 155px;
-    // background: url("../../public//asset/image/store1Image.png");
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.storeImage {
+  background-color: #f2f2f2;
+  width: 200px;
+  height: 155px;
+  // background: url("../../public//asset/image/store1Image.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#searchStoreNumber{
-    span{
-        font-weight: bold;
-        font-size: 18px;
-    }
-}
-.storeInfo{
-    display: flex;
-    flex-direction: column;
-    justify-content:space-evenly;
-    margin-left: 30px;
-    width: 280px;
-    height: 150px;
-    line-height: 1.8;
-    margin-top: 25px;
-}
-.storeName{
-    font-size: 20px;
+#searchStoreNumber {
+  span {
     font-weight: bold;
+    font-size: 18px;
+  }
 }
-.gradeLikeViews{
-    display: flex;
-    align-items: center;
-    div{
-        margin-right: 10px;
-        color: #A4A4A4;
-    }
+.storeInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 30px;
+  width: 280px;
+  height: 150px;
+  line-height: 1.8;
+  margin-top: 25px;
 }
-.categoryList{
+.storeName {
+  font-size: 20px;
+  font-weight: bold;
+}
+.gradeLikeViews {
+  display: flex;
+  align-items: center;
+  div {
+    margin-right: 10px;
+    color: #a4a4a4;
+  }
+}
+.categoryList {
   display: flex;
 }
 // .gradeLikeViews > div{
 //     margin-right: 10px;
 //     color: #A4A4A4;
 // }
-.hashTagList{
- display: flex;
+.hashTagList {
+  display: flex;
 }
-.hashTag{
-    border: 2px solid rgb(255,198,87);
-    width: 60px;
-    height: 20px;
-    border-radius: 30px;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   margin-right: 10px;
+.hashTag {
+  border: 2px solid rgb(255, 198, 87);
+  width: 60px;
+  height: 20px;
+  border-radius: 30px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
 }
-.favorite{
-    position: absolute;
-    left: 90%;
-    top: 20px;
-    width: 30px;
-    height: 30px;
-    // background-image: qurl("../../public/asset/image/bookmark.svg");
-    // background-repeat: no-repeat;
-    // background-size: cover;
+.favorite {
+  position: absolute;
+  left: 90%;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  background-image: qurl("../../../public/asset/image/bookmark.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.myLocation{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    left: 45%;
-    top: 90%;
-    z-index: 999;
-    cursor: pointer;
-    border: 1px solid black;
-    background-color: #FCFCFC;
-    border-radius: 5px;
+.myLocation {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 45%;
+  top: 90%;
+  z-index: 999;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: #fcfcfc;
+  border-radius: 5px;
 }
-#noDataMessage{
-        background-color: #FFFFFF;
-        display: flex;
-        position: relative;
-        justify-content: space-between;
-        width: 560px;
-        height: 200px;
-        align-items: center;
-        margin-top: 30px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px 5px grey;
+#noDataMessage {
+  background-color: #ffffff;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 560px;
+  height: 200px;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px grey;
 }
-#noDataImage{
-    width: 160px;
-    height: 160px;
-    border: 1px solid #E2E2E2;
-    background-color: #E2E2E2;
-    border-radius: 20px;
-    margin-left: 30px;
+#noDataImage {
+  width: 160px;
+  height: 160px;
+  border: 1px solid #e2e2e2;
+  background-color: #e2e2e2;
+  border-radius: 20px;
+  margin-left: 30px;
 }
-#noDataInfo{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 150px;
-    margin-right: 20px;
+#noDataInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 150px;
+  margin-right: 20px;
 
-    .noDataInfo{
-        width: 250px;
-        background-color: #e2e2e2;
-        height: 30px;
-        border-radius: 10px;
-    }
+  .noDataInfo {
+    width: 250px;
+    background-color: #e2e2e2;
+    height: 30px;
+    border-radius: 10px;
+  }
 }
-.storeId{
-    display: none;
+.storeId {
+  display: none;
 }
-a{
+a {
   display: flex;
 }
