@@ -55,7 +55,7 @@ const AdminApi = () => {
   }
 
   const deleteUser = async (memberId: number) => {
-    const result = await axiosWithAuth.delete(`/admin/${memberId}`);
+    const result = await axiosWithAuth.delete(`/admin/member/${memberId}`);
     console.log(result)
     return result;
   }

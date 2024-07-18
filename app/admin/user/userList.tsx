@@ -10,7 +10,7 @@ import useAdmin from "@/app/(hooks)/admin/useAdmin";
 import { useRouter } from "next/navigation";
 
 interface UserData {
-  reviewId: number;
+  memberId: number;
   email: string;
   isDeleted: boolean;
   nickname: string;
@@ -36,7 +36,7 @@ const UserList = ({ userData }: { userData: UserData }) => {
       icon: "warning",
     }).then((result) => {
       if (result.isConfirmed) {
-        removeUser(userData?.reviewId);
+        removeUser(userData?.memberId);
         Swal.fire("삭제가 완료되었습니다", "", "success");
         router.push("/admin/user");
       }
