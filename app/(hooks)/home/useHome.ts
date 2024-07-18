@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 const useHome = () => {
   const {getTop10, getMonth, getStar, getViews} = HomeApi();
   const [local, setLocal] = useState('서울');
-  const {data: top10} = useQuery({queryKey: ['top10', local], queryFn:() => getTop10(local)});
-  const {data: month} = useQuery({queryKey: ['month', local], queryFn:() =>  getMonth(local)});
-  const {data: star} = useQuery({queryKey: ['star', local], queryFn:() =>  getStar(local)});
-  const {data: views} = useQuery({queryKey: ['views', local], queryFn:() =>  getViews(local)});
-  const [data, setData] = useState(top10);
   const [select, setSelect] = useState('top10');
+  const {data: top10} = useQuery({queryKey: ['top10', local], queryFn:() => getTop10(local), enabled: select==='top10'});
+  const {data: month} = useQuery({queryKey: ['month', local], queryFn:() =>  getMonth(local), enabled: select==='month'});
+  const {data: star} = useQuery({queryKey: ['star', local], queryFn:() =>  getStar(local), enabled: select==='star'});
+  const {data: views} = useQuery({queryKey: ['views', local], queryFn:() =>  getViews(local), enabled: select==='views'});
+  const [data, setData] = useState(top10);
 
   useEffect(() => {
     if (select === 'top10') setData(top10);
