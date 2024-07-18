@@ -29,7 +29,7 @@ const Review = () => {
       {status === 'success' &&
       <>
         {data?.pages.map((page) => (
-          <div key={page}>
+          <div key={page.pageNumber}>
           {page.content.map((reviewItem:getReviewType) => (
               <Link key={reviewItem.reviewId} href={`/review/${reviewItem.reviewId}`}>
                 <ReviewItem reviewItem={reviewItem} />
