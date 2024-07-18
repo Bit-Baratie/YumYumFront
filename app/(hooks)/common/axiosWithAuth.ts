@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 
 
 export const axiosWithAuth: AxiosInstance = axios.create({
-  baseURL: 'http://223.130.158.171:80',
+  baseURL: 'https://223.130.158.171:80',
   headers: {
     Authorization: `Bearer ${Store.getState().token.atk}`,
     "Content-Type": 'application/json'
