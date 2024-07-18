@@ -3,6 +3,7 @@ import userStore from '@/app/(hooks)/userStore';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getReplyType } from '@/app/type';
+import useImage from '@/app/(hooks)/common/useImage';
 
 export const ReplyWrapper = ({myReplyList}: {myReplyList: getReplyType[]}) => {
   return (
@@ -25,10 +26,11 @@ const DashboardReply = ({item}: {item: getReplyType}) => {
 
 export const Reply = ({ item }: { item: getReplyType }) => {
   const {userInfo} = userStore();
+  const {errorImage} = useImage();
 
   return (
     <div className={replyStyle.replyContainer} key={item.replyId}>
-      <Image src={userInfo.profileUrl} width={100} height={100} alt=''/>
+      <img src={userInfo.profileUrl} width={100} height={100} alt='' onError={errorImage}/>
       <div className={replyStyle.replyRight}>
         <span>{item.nickName}</span>
         <span>{item.createdAt}</span>

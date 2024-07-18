@@ -45,7 +45,7 @@ const Mypage = () => {
         {!profile ? <ProfileSkeleton/>:
           <>
             <div className={MemberPageStyle.profile}>
-              <Image src={profile.imageUrl} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage} onError={errorImage}/>
+              <img src={profile.imageUrl} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage} onError={errorImage}/>
               <div className={MemberPageStyle.profileInfo}>
                 <div className={MemberPageStyle.nickname}>{profile.nickName}<Image src={'/asset/image/pencil.png'} width={15} height={15} alt='연필' onClick={() => setUpdateModal(!updateModal)}/></div>
                 <div>{profile.email}</div>
