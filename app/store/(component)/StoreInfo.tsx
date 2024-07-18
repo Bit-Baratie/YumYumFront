@@ -93,8 +93,8 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
         <Bookmarks
           style={{
             fill: favorite ? "#E2E2E2" : "#FFC657",
-            width: "25px",
-            height: "25px",
+            width: "35px",
+            height: "35px",
           }}
           onClick={() => {
             postStar(data);
