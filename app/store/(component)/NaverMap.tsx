@@ -61,10 +61,8 @@ const TestMap = ({
       const infowindow = new naver.maps.InfoWindow({
         content: contentString,
         maxWidth: 300,
-        // borderColor 설정 제거 또는 주석 처리
-        // borderColor: "#FFFFA1",
         backgroundColor: "#FFFaEF",
-        borderWidth: "none", //이거하니까 중앙으로 안오네ㅔㅔㅔㅔㅔㅔㅔㅔㅔ
+        borderWidth: 0,
         anchorColor: "white",
         anchorSkew: true,
       });
