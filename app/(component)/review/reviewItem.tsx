@@ -2,8 +2,11 @@ import Image from "next/image";
 import reviewStyle from "@/app/(component)/review/reviewItem.module.scss";
 import React from "react";
 import { getReviewType } from "../../type";
+import useImage from "@/app/(hooks)/common/useImage";
 
 const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
+  const {errorImage} = useImage();
+
   return (
     <div className={reviewStyle.reviewItem}>
       <div className={reviewStyle.storeInfo}>
@@ -19,11 +22,12 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
         {/* 프로필 */}
         <div className={reviewStyle.profile}>
           <Image
-            src={reviewItem?.imageUrl}
+            src={reviewItem?.profileImage}
             width={100}
             height={100}
             alt="이미지"
             className={reviewStyle.profileImg}
+            onError={errorImage}
           />
           <div className={reviewStyle.profileInfo}>
             <p className={reviewStyle.profileName}>
