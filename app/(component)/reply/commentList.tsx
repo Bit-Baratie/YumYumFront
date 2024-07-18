@@ -6,6 +6,8 @@ import replyApi from "@/app/(api)/reply/replyApi";
 import { useParams } from "next/navigation";
 import { getReplyType } from "../../type";
 import useReply from "../../(hooks)/reply/useReply";
+import { useRef } from "react";
+import { useObserver } from "@/app/(hooks)/common/useObserver";
 
 const CommentList = () => {
   const {getReplyAll} = replyApi();
@@ -26,9 +28,22 @@ const CommentList = () => {
   });
   const {content, contentHandler, createReplyHandler, removeReplyHandler, updateReplyHandler} = useReply();
 
+  const bottomRef = useRef(null);
+  const onIntersect = ([entry]:any) => entry.isIntersecting && fetchNextPage();
+
+  useObserver({
+    target: bottomRef,
+    onIntersect
+  });
+
   return (
     <>
       <div className="comment">
+      <div className="comment-write">
+          <img src="../../public/asset/image/IMG_1282.jpg" alt="프로필이미지" className="profile-img"/>
+          <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
+          <button onClick={() => createReplyHandler(Number(params.review_id))}>작성</button>
+      </div>
       <div className="commentList">
         {isFetching && <p>Loading...</p>}
         {error && <p>댓글을 불러올 수 없습니다</p>}
@@ -40,14 +55,10 @@ const CommentList = () => {
             </>
           ))}
       </div>
-      <div className="comment-write">
-          <img src="../../public/asset/image/IMG_1282.jpg" alt="프로필이미지" className="profile-img"/>
-          <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
-          <button onClick={() => createReplyHandler(Number(params.review_id))}>작성</button>
-      </div>
+      
     </div>
 
-    <div onClick={() => fetchNextPage()} className="plus">댓글 더보기</div>
+    <div ref={bottomRef}></div>
 
     {isFetchingNextPage && <p>NextLoading...</p>}
   </>
