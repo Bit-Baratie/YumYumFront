@@ -39,13 +39,23 @@ const useAdmin = () => {
       alert('잠시후 다시 시도해주세요');
     }
   }
+
+  const removeReview = async (reviewId: number) => {
+    const result = await deleteReview(reviewId);
+    if (result?.status === 204) {
+      alert('리뷰를 삭제했습니다.');
+    } else {
+      alert('잠시후 다시 시도해주세요');
+    }
+  }
   // const getReviewReport = async (type: string) => {
   //   const result = await getReport("review");
   //   return result.data;
 
   return {
     removeUser,
-    removeReply
+    removeReply,
+    removeReview
   }
 }
 export default useAdmin;

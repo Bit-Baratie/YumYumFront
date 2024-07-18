@@ -13,6 +13,8 @@ import AdminStyle from "@/app/admin/admin.module.scss";
 import Loading from "@/app/admin/(component)/Loading";
 
 interface ReportData {
+  reviewId: number;
+  targetId: number;
   reportId: number;
   nickName: string;
   reportContents: string;

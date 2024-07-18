@@ -7,11 +7,13 @@ import AdminApi from "@/app/(api)/admin/adminApi";
 import Swal from "sweetalert2";
 import router from "next/router";
 import { CloseCircleFilled } from "@ant-design/icons";
+import useAdmin from "@/app/(hooks)/admin/useAdmin";
+import { useRouter } from "next/navigation";
 
 interface CReportData {
   createdAt: string;
   nickName: string;
-  reportId: string;
+  reportId: number;
   reportReason: string;
   targetContent: string;
   targetId: number;
@@ -19,13 +21,16 @@ interface CReportData {
 
 const CommentList = ({ reportData }: { reportData: CReportData }) => {
   const [page, setPage] = useState(1);
-  const { deleteComment } = AdminApi();
+  // const { deleteComment } = AdminApi();
+  const { removeReply } = useAdmin();
+
+  const router = useRouter();
 
   const handlePageChange = (page: number) => {
     setPage(page);
   };
 
-  const removeComment = () => {
+  const WithdrawalReply = () => {
     Swal.fire({
       title: "댓글을 삭제하시겠습니까?",
       text: "삭제 버튼 선택 시, 리뷰는 삭제되며 복구되지 않습니다.",
@@ -34,7 +39,7 @@ const CommentList = ({ reportData }: { reportData: CReportData }) => {
       icon: "warning",
     }).then((result) => {
       if (result.isConfirmed) {
-        // deleteComment();
+        removeReply(reportData?.reportId);
         Swal.fire("삭제가 완료되었습니다", "", "success");
         router.push("/admin/review");
       }
@@ -68,7 +73,10 @@ const CommentList = ({ reportData }: { reportData: CReportData }) => {
           </td>
           <td className={CommentStyle.date}>
             {reportData?.createdAt}
-            <button className={CommentStyle.BtnStyle} onClick={removeComment}>
+            <button
+              className={CommentStyle.BtnStyle}
+              onClick={() => WithdrawalReply()}
+            >
               <CloseCircleFilled />
             </button>
           </td>
@@ -79,3 +87,6 @@ const CommentList = ({ reportData }: { reportData: CReportData }) => {
 };
 
 export default CommentList;
+function removeReply(reviewId: number) {
+  throw new Error("Function not implemented.");
+}
