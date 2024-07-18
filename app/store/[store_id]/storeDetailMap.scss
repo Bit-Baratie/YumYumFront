@@ -3,7 +3,7 @@
     margin-top: 40px;
     margin-bottom: 40px;
     width: 800px;
-    height: 960px;
+    // height: 960px;
     background-color: #FFFFFF;
     border-radius: 20px;
     display: flex;
@@ -23,7 +23,7 @@
 .menuInfo{
     height: 80px;
     width: 300px;
-    margin-top: 50px;
+    margin: 10px 0px 20px 0px;
     display: flex;
     font-size: 32px;
     align-items: center;
@@ -60,7 +60,28 @@ span{
   cursor: pointer;
 }
 
-
-
-
-
+.menuLine {
+  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    // padding-bottom: 20px;
+  
+    .menuName {
+    //   flex: 1;
+    }
+  
+    .line {
+      flex-grow: 1;
+      height: 2px;  
+      background-color: #9c9c9c; 
+      margin: 0 25px; 
+    }
+  
+    .menuPrice {
+    //   flex: 1;
+    //   text-align: right;
+    }
+  }
+  

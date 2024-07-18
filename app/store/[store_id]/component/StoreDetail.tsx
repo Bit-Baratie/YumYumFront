@@ -111,14 +111,16 @@ const StoreDetail = () => {
             <div className="fix2">{storeDetail[0]?.calls}</div>
           </div>
         </div>
-        {storeDetail[0]?.hashtagList &&
+        {(storeDetail[0]?.hashtagList && (
           <div className="storeHashTag">
             {storeDetail[0].hashtagList?.map((tag, index) => (
-              <div key={index} className='hashTag'>{tag}</div>
+              <div key={index} className="hashTag">
+                {tag}
+              </div>
             ))}
           </div>
-          || !storeDetail[0]?.hashtagList &&
-          <div>Loading...</div>}
+        )) ||
+          (!storeDetail[0]?.hashtagList && <div>Loading...</div>)}
         <div id="navBtn">
           <Link
             href={`/review/write?storeId=${storeDetail[0]?.storeId}&storeName=${storeDetail[0]?.name}`}
@@ -180,9 +182,11 @@ const StoreDetail = () => {
                   <>
                     {storeDetail[0].menuList.map((menu) => (
                       <li key={menu.id}>
-                        <span className="menuName">{menu.name}</span>
-                        <div className="line">--------------------</div>
-                        <span className="menuPrice">{menu.price}원</span>
+                        <div className="menuLine">
+                          <span className="menuName">{menu.name}</span>
+                          <div className="line"></div>
+                          <span className="menuPrice">{menu.price}원</span>
+                        </div>
                       </li>
                     ))}
                   </>
