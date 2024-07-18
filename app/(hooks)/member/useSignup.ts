@@ -71,7 +71,7 @@ const useSignup = () => {
     const info = {
       email: email,
       password: password,
-      nickName: nickname,
+      nickname: nickname,
       phoneNumber: phone
     };
 

@@ -31,7 +31,7 @@ const useLogin = () => {
     if (res?.atk) {
       setUserInfo({
         memberId: res.memberId,
-        nickName: res.nickName,
+        nickName: res.nickname,
         profileUrl: res.profileUrl,
         phoneNumber: res.phoneNumber
       });

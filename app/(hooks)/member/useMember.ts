@@ -1,18 +1,17 @@
 'use client'
-import { QueryClient, useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import userStore from "../userStore";
 import MemberApi from "@/app/(api)/member/memberApi";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { patchMemberType } from "@/app/type";
 import useLogin from "./useLogin";
 
 const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
-  const {userInfo, deleteUserInfo, deleteToken} = userStore();
   const {logout} = useLogin();
-  const {data: profile} = useQuery({queryKey: ['profile', userInfo.memberId], queryFn:() => getProfile()});
+  const {data: profile} = useQuery({queryKey: ['profile'], queryFn:() => getProfile()});
   const {
     data: myReviewList,
     fetchNextPage: nextMyReviewList,
@@ -142,7 +141,7 @@ const useMember = () => {
     const formData = new FormData();
     formData.append('file', file);
     const data = {
-      nickName: nickName,
+      nickname: nickName,
       password: password===''? null: password,
       phoneNumber: phone,
       checkPassword: passwordCheck
@@ -192,7 +191,10 @@ const useMember = () => {
     phoneHandler,
     updateHandler,
     removeMemberHandler,
-    setUpdateModal
+    setUpdateModal,
+    setImageUrl,
+    setNickName,
+    setPhone
   }
 }
 

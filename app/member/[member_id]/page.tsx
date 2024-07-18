@@ -34,7 +34,10 @@ const Mypage = () => {
     myReviewState,
     likeReviewState,
     likeStoreState,
-    setUpdateModal} = useMember();
+    setUpdateModal,
+    setImageUrl,
+    setNickName,
+    setPhone} = useMember();
     const {errorImage} = useImage();
   const pathname = usePathname();
 
@@ -47,7 +50,7 @@ const Mypage = () => {
             <div className={MemberPageStyle.profile}>
               <img src={profile.imageUrl} width={150} height={150} alt='프로필이미지' className={MemberPageStyle.profileImage} onError={errorImage}/>
               <div className={MemberPageStyle.profileInfo}>
-                <div className={MemberPageStyle.nickname}>{profile.nickName}<Image src={'/asset/image/pencil.png'} width={15} height={15} alt='연필' onClick={() => setUpdateModal(!updateModal)}/></div>
+                <div className={MemberPageStyle.nickname}>{profile.nickname}<Image src={'/asset/image/pencil.png'} width={15} height={15} alt='연필' onClick={() => setUpdateModal(!updateModal)}/></div>
                 <div>{profile.email}</div>
                 <div>{profile.phoneNumber}</div>
               </div>
@@ -93,6 +96,9 @@ const Mypage = () => {
           fileInput = {fileInput}
           modal = {updateModal}
           setModal = {setUpdateModal}
+          setImageUrl = {setImageUrl}
+          setPhone = {setPhone}
+          setNickName = {setNickName}
         /> : ''}
       </div>
     </>

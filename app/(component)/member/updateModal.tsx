@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import ModalStyle from './updateModal.module.scss';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 import useMember from '@/app/(hooks)/member/useMember';
 
 interface Props {
@@ -28,8 +28,18 @@ const UpdateModal = (
   imageUrl,
   fileInput,
   modal,
-  setModal}: Props
+  setModal,
+  setImageUrl,
+  setPhone,
+  setNickName
+}: any
 ) => {
+
+  useEffect(() => {
+    setImageUrl(profile.imageUrl);
+    setNickName(profile.nickname);
+    setPhone(profile.phoneNumber);
+  }, [])
 
   return (
     <>
@@ -44,7 +54,7 @@ const UpdateModal = (
         {/* <div className={ModalStyle.img}></div> */}
 
         <div>
-          <input type="text" defaultValue={profile.nickName} className={ModalStyle.nickname} onChange={(e) => nickNameHandler(e)}/>
+          <input type="text" defaultValue={profile.nickname} className={ModalStyle.nickname} onChange={(e) => nickNameHandler(e)}/>
           <span>연필</span>
         </div>
 
