@@ -5,11 +5,32 @@
   align-items: center;
   width: 200px;
   height: 280px;
-  background-color: #F5F5F5;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 4px #d9d9d9;
+  
 }
 
 .name {
+  font-size: 18px;
+  font-weight: bold;
   margin: 10px 0;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  // margin-right: 10px; /* 아이콘 사이의 간격을 조절합니다 */
+}
+
+.iconText {
+  display: flex;
+  align-items: center;
+}
+
+.iconText span {
+  margin-left: 10px; /* 아이콘과 텍스트 사이의 간격을 조절합니다 */
 }
