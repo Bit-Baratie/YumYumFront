@@ -8,7 +8,7 @@ const replyApi = () => {
   }
 
   const getReplyAll = async (reviewId: number, {pageNumber}: {pageNumber:unknown}) => {
-    const result = await axiosNonAuth.get(`/reply/${reviewId}?pageNumber=${pageNumber}`);
+    const result = await axiosNonAuth.get(`/reply/${reviewId}?page=${pageNumber}`);
     return result.data;
   }
 

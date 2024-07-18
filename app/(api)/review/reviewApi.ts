@@ -19,7 +19,7 @@ const ReviewApi = () => {
   }
 
   const getReviewAll = async ({pageNumber}: {pageNumber:unknown}) => {
-    const result = await axiosNonAuth.get(`/review?pageNumber=${pageNumber}`);
+    const result = await axiosNonAuth.get(`/review?page=${pageNumber}`);
     return result.data;
   }
 
