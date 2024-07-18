@@ -62,7 +62,7 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
         </div>
       </Link>
       <div className="favorite">
-        <Bookmarks style={{ fill: favorite ? '#FFC657' : '#E2E2E2', width: '25px', height: '25px' }} onClick={() => { postStar(data); favoriteHandler(store.favoriteStatus); }} />
+        <Bookmarks style={{ fill: favorite ? '#E2E2E2' : '#FFC657', width: '25px', height: '25px' }} onClick={() => { postStar(data); favoriteHandler(store.favoriteStatus); }} />
       </div>
     </div >
   )
