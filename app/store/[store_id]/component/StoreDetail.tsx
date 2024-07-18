@@ -20,6 +20,7 @@ import {
 import Navi from "@/public/asset/image/navigation.svg";
 import Siren from "@/public/asset/image/siren.svg";
 import GoReview from "@/public/asset/image/review.svg";
+import Mark from "@/public/asset/image/mark.svg";
 import Loading from "@/app/admin/(component)/Loading";
 
 const StoreDetail = () => {
@@ -66,32 +67,43 @@ const StoreDetail = () => {
         <div className="storeId">{storeDetail[0]?.storeId}</div>
         <div className="storeImageDetail">
           {/* <div className="MainImage">{storeList.imageList}</div> */}
-          {storeDetail[0].imageList.length ?
+          {storeDetail[0].imageList.length ? (
             <>
               <img className="MainImage" src={storeDetail[0]?.imageList[4]} />
               <div className="subImageList">
                 <img className="subImage" src={storeDetail[0]?.imageList[0]} />
-                <img className="subImage" id="sub2" src={storeDetail[0]?.imageList[1]} />
+                <img
+                  className="subImage"
+                  id="sub2"
+                  src={storeDetail[0]?.imageList[1]}
+                />
                 <img className="subImage" src={storeDetail[0]?.imageList[2]} />
                 <img className="subImage" src={storeDetail[0]?.imageList[3]} />
               </div>
-            </> : <div>매장에 등록된 사진이 없습니다.</div>}
+            </>
+          ) : (
+            <div className="noStore">매장에 등록된 사진이 없습니다.</div>
+          )}
         </div>
         <div className="storeInfoDetail">
           <div className="storeNameDetail">
             <span>{storeDetail[0]?.name}</span>
             <div>
               <StarFilled className="custum-icon" />
-              {storeDetail[0]?.avgGrade}&nbsp;(
-              {storeDetail[0]?.totalReviewCount})
+              <div className="smallText">
+                {storeDetail[0]?.avgGrade}&nbsp;(
+                {storeDetail[0]?.totalReviewCount})
+              </div>
             </div>
             <div>
-              <Bookmarks className="custum-icon" />
-              {storeDetail[0]?.totalFavoriteCount}
+              <Mark className="custum-icon" />
+              <div className="smallText">
+                {storeDetail[0]?.totalFavoriteCount}
+              </div>
             </div>
             <div>
               <EyeFilled className="custum-icon" />
-              {storeDetail[0]?.views}
+              <div className="smallText">{storeDetail[0]?.views}</div>
             </div>
           </div>
           <div className="storeHour">
@@ -152,8 +164,8 @@ const StoreDetail = () => {
             style={{
               fill: favorite ? "#FFC657" : "#E2E2E2",
               width: "55px",
-              height: "55px",
-              stroke: "white",
+              height: "65px",
+              // stroke: "white",
             }}
             onClick={() => {
               postStar(data);

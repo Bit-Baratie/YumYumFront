@@ -37,7 +37,19 @@
   }
 }
 .bookmark{
-  :hover{
-    transform: scale(1.2);
+  width: 40px;
+  height: 40px;
+  transition: transform 300ms ease;
+  filter: drop-shadow( 0px 0px 2px rgb(187, 187, 187));
+  &:hover {
+    transform: scale(1.1); // 크기를 10% 증가시킴
   }
+}
+
+.noStore{
+  color: rgb(152, 152, 152);
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
