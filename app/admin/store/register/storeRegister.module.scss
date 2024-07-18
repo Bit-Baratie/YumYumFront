@@ -78,7 +78,8 @@
     font-size: 30px;
   }
 }
-input {
+
+.inputInfo {
   width: 250px;
   height: 30px;
   border-radius: 10px;
@@ -92,7 +93,7 @@ input {
   width: 1000px;
   height: 200px;
 }
-button {
+.buttonStyle {
   cursor: pointer;
   width: 160px;
   height: 60px;
@@ -116,6 +117,7 @@ button {
 .hashTagBtn {
   width: 30px;
   height: 30px;
+  border-radius: 30px;
 }
 .storeHashTag {
   width: 430px;
@@ -176,7 +178,15 @@ button {
   justify-content: center;
   margin-bottom: 20px;
 }
-.input {
+.inputMenu {
+  border-radius: 10px;
+  height: 20px;
+}
+.inputPrice {
+  border-radius: 10px;
+  height: 20px;
+}
+.inputStyle {
   width: 60%;
 }
 .menuInfo {
