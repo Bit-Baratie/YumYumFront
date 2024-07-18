@@ -51,7 +51,7 @@ export interface getStoreType {
   address: string;
   totalFavoriteCount: number;
   totalReviewCount: number;
-  imageList: imageType[];
+  imageList: string[];
   categoryList: string[];
   views: number;
   imageUrl: string;
@@ -74,7 +74,7 @@ export interface getStoreListType {
   categoryName: string;
   views: number;
   imageUrl: string;
-  hashtags: string[];
+  hashtagList: string[];
   favoriteStatus: boolean;
   avgGrade: number;
   latitude: number;
@@ -92,10 +92,7 @@ export interface location {
   latitude: number,
   longitude: number,
 }
-// 이미지 타입
-interface imageType {
-  imageUrl: string; // 이미지의 URL
-}
+
 
 // 맛집 메뉴리스트 타입
 export interface menuType {
@@ -118,7 +115,7 @@ export interface patchStoreType {
   call: string;
   address: string;
   hours: string;
-  imageList: imageType[];
+  imageList: string[];
   hashtagList: string[];
 }
 
@@ -143,7 +140,7 @@ export interface getReviewType {
   storeName: string;
   address: string;
   content: string;
-  images: string[];
+  imageList: string[];
 }
 
 // 리뷰 수정 타입

@@ -50,18 +50,22 @@ const Store = () => {
           }}
         >
           <StoreDetail />
-          {data?.pages.map((page) => (
-            <div key={page}>
-              {page.content.map((reviewItem: getReviewType) => (
-                <Link
-                  key={reviewItem.reviewId}
-                  href={`/review/${reviewItem.reviewId}`}
-                >
-                  <ReviewItem reviewItem={reviewItem} />
-                </Link>
+          {ReviewItem.length !== 0 ?
+            <>
+              {data?.pages.map((page) => (
+                <div key={page}>
+                  {page.content.map((reviewItem: getReviewType) => (
+                    <Link
+                      key={reviewItem.reviewId}
+                      href={`/review/${reviewItem.reviewId}`}
+                    >
+                      <ReviewItem reviewItem={reviewItem} />
+                    </Link>
+                  ))}
+                </div>
               ))}
-            </div>
-          ))}
+            </>
+            : <div>작성된 리뷰가 없습니다</div>}
           {isFetchingNextPage && <p>NextLoading...</p>}
         </div>
       )}
