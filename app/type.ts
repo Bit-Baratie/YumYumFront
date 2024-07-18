@@ -134,7 +134,7 @@ export interface postReviewType {
 export interface getReviewType {
   memberId: number;
   reviewId: number;
-  imageUrl: string;
+  profileImage: string;
   nickname: string;
   createdAt: string;
   totalReviewCount: number;
