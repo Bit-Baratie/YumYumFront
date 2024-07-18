@@ -28,7 +28,6 @@ const useLogin = () => {
     }
 
     const res: any = await postLoginInfo(info);
-
     if (res?.atk) {
       setUserInfo({
         memberId: res.memberId,
@@ -46,11 +45,13 @@ const useLogin = () => {
         timer: 1500,
         showConfirmButton: false,
         width: 400,
-      }).then((result) => {
-        if (result) {
-          router.push('/');
-        }
       });
+
+      if (res.role === 'ADMIN') {
+        router.push('/admin');
+      }else {
+        router.push('/');
+      }
     } else {
       alert('이메일 또는 비밀번호를 확인해주세요');
     }
