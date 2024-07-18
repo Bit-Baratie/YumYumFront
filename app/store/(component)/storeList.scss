@@ -1,16 +1,17 @@
 .container {
   width: 100%;
   height: 150vh;
-  background-color: #f3f3f3;
   display: flex;
   justify-content: center;
 }
+
 .StoreListMap {
   overflow-y: scroll;
   height: 700px;
 }
+
 .content {
-  margin-top: 100px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   background-color: #f8f8f8;
@@ -20,6 +21,7 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   position: relative;
 }
+
 #storeList {
   margin-top: 40px;
   padding-left: 30px;
@@ -28,6 +30,7 @@
   background-color: #f8f8f8;
   border-bottom-right-radius: 30px;
 }
+
 #searchStoreList {
   background-color: #ffffff;
   display: flex;
@@ -38,14 +41,13 @@
   margin-top: 30px;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
   overflow-y: scroll;
 }
+
 .storeImage {
   background-color: #f2f2f2;
   width: 200px;
   height: 155px;
-  // background: url("../../public//asset/image/store1Image.png");
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -54,12 +56,14 @@
   justify-content: center;
   align-items: center;
 }
+
 #searchStoreNumber {
   span {
     font-weight: bold;
     font-size: 18px;
   }
 }
+
 .storeInfo {
   display: flex;
   flex-direction: column;
@@ -70,28 +74,36 @@
   line-height: 1.8;
   margin-top: 25px;
 }
+
 .storeName {
   font-size: 20px;
   font-weight: bold;
 }
+
 .gradeLikeViews {
   display: flex;
   align-items: center;
+  margin-right: 10px;
+
+  .icon {
+    font-size: 10px; // Adjust the size of the icons
+    margin-right: 5px;
+  }
+
   div {
     margin-right: 10px;
     color: #a4a4a4;
   }
 }
+
 .categoryList {
   display: flex;
 }
-// .gradeLikeViews > div{
-//     margin-right: 10px;
-//     color: #A4A4A4;
-// }
+
 .hashTagList {
   display: flex;
 }
+
 .hashTag {
   border: 2px solid rgb(255, 198, 87);
   width: 60px;
@@ -103,16 +115,24 @@
   justify-content: center;
   margin-right: 10px;
 }
+
 .favorite {
   position: absolute;
   left: 90%;
   top: 20px;
   width: 30px;
   height: 30px;
-  background-image: qurl("../../../public/asset/image/bookmark.svg");
   background-repeat: no-repeat;
   background-size: cover;
+
+  .bookmark {
+    fill: #e2e2e2;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
 }
+
 .myLocation {
   position: absolute;
   width: 40px;
@@ -125,6 +145,7 @@
   background-color: #fcfcfc;
   border-radius: 5px;
 }
+
 #noDataMessage {
   background-color: #ffffff;
   display: flex;
@@ -136,8 +157,8 @@
   margin-top: 30px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-
 }
+
 #noDataImage {
   width: 160px;
   height: 160px;
@@ -146,6 +167,7 @@
   border-radius: 20px;
   margin-left: 30px;
 }
+
 #noDataInfo {
   display: flex;
   flex-direction: column;
@@ -160,9 +182,11 @@
     border-radius: 10px;
   }
 }
+
 .storeId {
   display: none;
 }
+
 a {
   display: flex;
 }
