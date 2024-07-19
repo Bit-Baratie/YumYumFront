@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import Header from "@/app/header";
 import useImage from "@/app/(hooks)/common/useImage";
-import CustomImage from "../common/customImage";
+import CustomImage from "@/app/(component)/common/customImage";
 
 const ReviewDetail = () => {
   const { fetchReviewOne, reviewOne, removeReviewHandler} = useReview();
@@ -74,14 +74,14 @@ const ReviewDetail = () => {
         </div>
         <div className={DetailStyle.reviewContent}>{reviewOne?.content}</div>
         <div className={DetailStyle.reviewImage}>
-          {reviewOne?.images?.map((imageUrl: string) => (
-            <Image
+          {reviewOne?.imageList?.map((imageUrl: string) => (
+            <CustomImage
               key={imageUrl}
               src={imageUrl}
               width={100}
               height={100}
               alt="리뷰이미지"
-              className={DetailStyle.reviewImageImg}
+              style={DetailStyle.reviewImageImg}
             />
           ))}
         </div>
