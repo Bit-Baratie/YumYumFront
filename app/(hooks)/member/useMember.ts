@@ -66,8 +66,9 @@ const useMember = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey:['profile']});
     },
-    onError: () => 
+    onError: (err) => {
       alert('잠시후 다시 시도해주세요')
+    }
   });
   const removeMember = useMutation({
     mutationFn: () => deleteMember(),
@@ -76,7 +77,7 @@ const useMember = () => {
       Swal.fire("탈퇴가 완료되었습니다", "", "success");
       router.push('/');
     },
-    onError: () => 
+    onError: (err) => 
       alert('잠시후 다시 시도해주세요')
   });
 
@@ -141,7 +142,7 @@ const useMember = () => {
     const formData = new FormData();
     formData.append('file', file);
     const data = {
-      nickname: nickName,
+      nickname: nickName===profile.nickname? null: nickName,
       password: password===''? null: password,
       phoneNumber: phone,
       checkPassword: passwordCheck

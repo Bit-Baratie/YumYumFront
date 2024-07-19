@@ -28,7 +28,7 @@ const MemberApi = () => {
   }
 
   const patchMember = async (data :FormData) => {
-    const result = await axiosWithAuth.patch(`http://192.168.0.20:3000/member`,
+    const result = await axiosWithAuth.patch(`/member`,
       data,
       {
         headers: {
