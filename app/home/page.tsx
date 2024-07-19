@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Slide from "../(component)/home/slide";
 import PageStyle from './page.module.scss';
-import bannerImg from '@/public/asset/image/banner.png'; // 정적 이미지 임포트
+import bannerImg from '@/public/asset/image/banner.png';
 
 const page = () => {
   return (
