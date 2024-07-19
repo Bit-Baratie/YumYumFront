@@ -9,9 +9,11 @@ import { useParams, useRouter } from "next/navigation";
 import Header from "@/app/header";
 import useImage from "@/app/(hooks)/common/useImage";
 import CustomImage from "@/app/(component)/common/customImage";
+import moment from "moment";
+import "moment/locale/ko";
 
 const ReviewDetail = () => {
-  const { fetchReviewOne, reviewOne, removeReviewHandler} = useReview();
+  const { fetchReviewOne, reviewOne, removeReviewHandler } = useReview();
   const params = useParams();
   const router = useRouter();
   const [view, setView] = useState<boolean | undefined>(undefined);
@@ -25,7 +27,7 @@ const ReviewDetail = () => {
       <Header />
       <div className={DetailStyle.review}>
         <div className={DetailStyle.top}>
-          <button className={DetailStyle.back} onClick={() => router.back()}/>
+          <button className={DetailStyle.back} onClick={() => router.back()} />
           <div className={DetailStyle.flqb}>리뷰</div>
           {/* 드롭다운 */}
           <div className={DetailStyle.dropdown}>
@@ -35,7 +37,13 @@ const ReviewDetail = () => {
                 setView(!view);
               }}
             />
-            {view && <Dropdown memberId={reviewOne?.memberId} reviewData={reviewOne} removeReview={removeReviewHandler}/>}
+            {view && (
+              <Dropdown
+                memberId={reviewOne?.memberId}
+                reviewData={reviewOne}
+                removeReview={removeReviewHandler}
+              />
+            )}
           </div>
         </div>
         <div className={DetailStyle.storeInfo}>
@@ -52,11 +60,11 @@ const ReviewDetail = () => {
               alt="이미지"
             />
             <div className={DetailStyle.profileInfo}>
-              <p className={DetailStyle.profileName}>
-                {reviewOne?.nickname}
-              </p>
+              <p className={DetailStyle.profileName}>{reviewOne?.nickname}</p>
               <p className={DetailStyle.profileDate}>
-                {reviewOne?.createdAt}
+                {moment(reviewOne?.createdAt).format(
+                  "YYYY년 MM월 DD일 a hh:mm "
+                )}
               </p>
               <p className={DetailStyle.profileStar}>
                 별점: {reviewOne?.grade} &nbsp; 평균 별점: {reviewOne?.avgGrade}{" "}
