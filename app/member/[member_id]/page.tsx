@@ -11,7 +11,7 @@ import UpdateModal from '@/app/(component)/member/updateModal';
 import CardSkeleton from '@/app/(component)/skeleton/card';
 import ProfileSkeleton from '@/app/(component)/skeleton/profile';
 import useImage from '@/app/(hooks)/common/useImage';
-import CostomImage from '@/app/(component)/common/costomImage';
+import CustomImage from '@/app/(component)/common/customImage';
 
 const Mypage = () => {
   const {profile, 
@@ -49,7 +49,7 @@ const Mypage = () => {
         {!profile ? <ProfileSkeleton/>:
           <>
             <div className={MemberPageStyle.profile}>
-              <CostomImage style={MemberPageStyle.profileImage} src={profile.imageUrl} width={150} height={150} alt='프로필이미지'/>
+              <CustomImage style={MemberPageStyle.profileImage} src={profile.imageUrl} width={150} height={150} alt='프로필이미지'/>
               <div className={MemberPageStyle.profileInfo}>
                 <div className={MemberPageStyle.nickname}>{profile.nickname}<Image src={'/asset/image/pencil.png'} width={15} height={15} alt='연필' onClick={() => setUpdateModal(!updateModal)}/></div>
                 <div>{profile.email}</div>
