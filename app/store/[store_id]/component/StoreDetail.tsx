@@ -22,6 +22,7 @@ import Siren from "@/public/asset/image/siren.svg";
 import GoReview from "@/public/asset/image/review.svg";
 import Mark from "@/public/asset/image/mark.svg";
 import Loading from "@/app/admin/(component)/Loading";
+import NoImage from "@/public/asset/image/NoImage.svg";
 
 const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
@@ -82,7 +83,10 @@ const StoreDetail = () => {
               </div>
             </>
           ) : (
-            <div className="noStore">매장에 등록된 사진이 없습니다.</div>
+            <div className="noStore">
+              <NoImage width={100} height={100} />
+              매장에 등록된 사진이 없습니다.
+            </div>
           )}
         </div>
         <div className="storeInfoDetail">
@@ -185,53 +189,71 @@ const StoreDetail = () => {
           </div>
           <div className="menuList">
             <ul>
-              {
-                menuStatus == true && (
-                  <>
-                    {storeDetail[0].menuList.map((menu) => (
-                      <li key={menu.id}>
-                        <div className="menuLine">
-                          <span className="menuName">{menu.name}</span>
-                          <div className="line"></div>
-                          <span className="menuPrice">{menu.price}원</span>
-                        </div>
-                      </li>
-                    ))}
-                  </>
-                )
-                || menuStatus == false &&
-                <div className="menuList">
-                  <ul>
-                    <>
-                      {storeDetail[0].menuList.length > 0 ?
-                        <li>
-                          <span className="menuName">{storeDetail[0]?.menuList[0].name}</span>
-                          <div className="line">--------------------</div>
-                          <span className="menuPrice">{storeDetail[0]?.menuList[0].price}원</span>
-                        </li>
-                        : ""}
-                      {storeDetail[0].menuList.length > 1 ?
-                        <li>
-                          <span className="menuName">{storeDetail[0]?.menuList[1].name}</span>
-                          <div className="line">--------------------</div>
-                          <span className="menuPrice">{storeDetail[0]?.menuList[1].price}원</span>
-                        </li>
-                        : ""}
-                      {storeDetail[0].menuList.length > 2 ?
-                        <li>
-                          <span className="menuName">{storeDetail[0]?.menuList[2].name}</span>
-                          <div className="line">--------------------</div>
-                          <span className="menuPrice">{storeDetail[0]?.menuList[2].price}원</span>
-                        </li>
-                        : ""}
-                    </>
-                  </ul>
-                </div>
-                || storeDetail[0]?.menuList &&
+              {(menuStatus == true && (
                 <>
-                  <div>메뉴 정보가 존재하지 않습니다</div>
+                  {storeDetail[0].menuList.map((menu) => (
+                    <li key={menu.id}>
+                      <div className="menuLine">
+                        <span className="menuName">{menu.name}</span>
+                        <div className="line"></div>
+                        <span className="menuPrice">{menu.price}원</span>
+                      </div>
+                    </li>
+                  ))}
                 </>
-              }
+              )) ||
+                (menuStatus == false && (
+                  <div className="menuList">
+                    <ul>
+                      <>
+                        {storeDetail[0].menuList.length > 0 ? (
+                          <li>
+                            <span className="menuName">
+                              {storeDetail[0]?.menuList[0].name}
+                            </span>
+                            <div className="line">--------------------</div>
+                            <span className="menuPrice">
+                              {storeDetail[0]?.menuList[0].price}원
+                            </span>
+                          </li>
+                        ) : (
+                          ""
+                        )}
+                        {storeDetail[0].menuList.length > 1 ? (
+                          <li>
+                            <span className="menuName">
+                              {storeDetail[0]?.menuList[1].name}
+                            </span>
+                            <div className="line">--------------------</div>
+                            <span className="menuPrice">
+                              {storeDetail[0]?.menuList[1].price}원
+                            </span>
+                          </li>
+                        ) : (
+                          ""
+                        )}
+                        {storeDetail[0].menuList.length > 2 ? (
+                          <li>
+                            <span className="menuName">
+                              {storeDetail[0]?.menuList[2].name}
+                            </span>
+                            <div className="line">--------------------</div>
+                            <span className="menuPrice">
+                              {storeDetail[0]?.menuList[2].price}원
+                            </span>
+                          </li>
+                        ) : (
+                          ""
+                        )}
+                      </>
+                    </ul>
+                  </div>
+                )) ||
+                (storeDetail[0]?.menuList && (
+                  <>
+                    <div>메뉴 정보가 존재하지 않습니다</div>
+                  </>
+                ))}
             </ul>
           </div>
         </div>
