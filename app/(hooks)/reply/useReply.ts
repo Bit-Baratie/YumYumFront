@@ -11,8 +11,10 @@ const useReply = () => {
   const queryClient = useQueryClient();
   const createReply = useMutation({
     mutationFn:(postReplyData: postReplyType) => postReply(postReplyData),
-    onSuccess: () => 
-      queryClient.invalidateQueries({queryKey:['replyList']}),
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey:['replyList']});
+      setContent('');
+    },
     onError: () => 
       alert('잠시후 다시 시도해주세요')
   });
