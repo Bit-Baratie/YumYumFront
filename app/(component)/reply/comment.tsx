@@ -2,6 +2,7 @@ import "./comment.scss";
 import { getReplyType } from "../../type";
 import useModal from "../../(hooks)/common/useModal";
 import ReportModal from "../reportModal";
+import CustomImage from "../common/customImage";
 
 const Comment = ({item, updateReply, removeReply}: {item: getReplyType, updateReply: Function, removeReply: Function}) => {
     const {modal, setModal, createReplyReport, contentHandler, content} = useModal();
@@ -14,7 +15,7 @@ const Comment = ({item, updateReply, removeReply}: {item: getReplyType, updateRe
         <>
             <div className="commentContainer">
             <div className="content">
-                <img src="" alt="프로필 이미지" className="comment-img" />
+                <CustomImage style={'comment-img'} src="" alt="프로필 이미지" width={30} height={30}/>
 
                 <div className="right">
                 <p className="profile-name">{item.nickName}</p>

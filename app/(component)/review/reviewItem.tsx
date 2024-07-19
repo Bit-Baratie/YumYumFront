@@ -3,10 +3,9 @@ import reviewStyle from "@/app/(component)/review/reviewItem.module.scss";
 import React from "react";
 import { getReviewType } from "../../type";
 import useImage from "@/app/(hooks)/common/useImage";
+import CustomImage from "../common/customImage";
 
 const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
-  const { errorImage } = useImage();
-
   return (
     <div className={reviewStyle.reviewItem}>
       <div className={reviewStyle.storeInfo}>
@@ -21,13 +20,12 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
       <div className={reviewStyle.bottom}>
         {/* 프로필 */}
         <div className={reviewStyle.profile}>
-          <img
+          <CustomImage
             src={reviewItem?.profileImage}
             width={100}
             height={100}
             alt="이미지"
-            className={reviewStyle.profileImg}
-            onError={errorImage}
+            style={reviewStyle.profileImg}
           />
           <div className={reviewStyle.profileInfo}>
             <p className={reviewStyle.profileName}>
@@ -49,35 +47,30 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
         {reviewItem?.content}
       </div>
       <div className={reviewStyle.reviewImg}>
-
-
-
-        {reviewItem.imageList?.length > 0 ? <Image
-          className={reviewStyle.reivewImage}
-          // src={'/./'}
-
+        {reviewItem.imageList?.length > 0 ? <CustomImage
+          style={reviewStyle.reivewImage}
           src={reviewItem.imageList[0]}
           width={350}
           height={350}
           alt="리뷰이미지"
         /> : ""}
-        {reviewItem.imageList?.length > 1 ? <Image
-          className={reviewStyle.reivewImage}
+        {reviewItem.imageList?.length > 1 ? <CustomImage
+          style={reviewStyle.reivewImage}
           src={reviewItem.imageList[1]}
           width={350}
           height={350}
           alt="리뷰이미지"
         /> : ''}
-        {reviewItem.imageList?.length > 2 ? <Image
-          className={reviewStyle.reivewImage}
+        {reviewItem.imageList?.length > 2 ? <CustomImage
+          style={reviewStyle.reivewImage}
           src={reviewItem.imageList[2]}
           width={350}
           height={350}
           alt="리뷰이미지"
         /> : ''}
         {reviewItem.imageList?.length > 3 ? <div className={reviewStyle.contL}>
-          <Image
-            className={reviewStyle.reivewImageLast}
+          <CustomImage
+            style={reviewStyle.reivewImageLast}
             src={reviewItem.imageList[3]}
             width={350}
             height={350}

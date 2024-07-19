@@ -8,12 +8,12 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import Header from "@/app/header";
 import useImage from "@/app/(hooks)/common/useImage";
+import CustomImage from "../common/customImage";
 
 const ReviewDetail = () => {
   const { fetchReviewOne, reviewOne, removeReviewHandler} = useReview();
   const params = useParams();
   const router = useRouter();
-  const {errorImage} = useImage();
   const [view, setView] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
@@ -44,13 +44,12 @@ const ReviewDetail = () => {
         </div>
         <div className={DetailStyle.ddd}>
           <div className={DetailStyle.profile}>
-            <img
+            <CustomImage
+              style={DetailStyle.profileImg}
               src={reviewOne?.imageUrl}
               width={100}
               height={100}
               alt="이미지"
-              className={DetailStyle.profileImg}
-              onError={errorImage}
             />
             <div className={DetailStyle.profileInfo}>
               <p className={DetailStyle.profileName}>

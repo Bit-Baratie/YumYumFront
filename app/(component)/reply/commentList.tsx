@@ -8,6 +8,7 @@ import { getReplyType } from "../../type";
 import useReply from "../../(hooks)/reply/useReply";
 import { useRef } from "react";
 import { useObserver } from "@/app/(hooks)/common/useObserver";
+import CustomImage from "../common/customImage";
 
 const CommentList = () => {
   const {getReplyAll} = replyApi();
@@ -40,9 +41,9 @@ const CommentList = () => {
     <>
       <div className="comment">
       <div className="comment-write">
-          <img src="../../public/asset/image/IMG_1282.jpg" alt="프로필이미지" className="profile-img"/>
-          <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
-          <button onClick={() => createReplyHandler(Number(params.review_id))}>작성</button>
+        <CustomImage style='profile-img' src="/asset/image/IMG_1282.jpg" alt="프로필이미지" width={40} height={40} />        
+        <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
+        <button onClick={() => createReplyHandler(Number(params.review_id))}>작성</button>
       </div>
       <div className="commentList">
         {isFetching && <p>Loading...</p>}

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import ModalStyle from './updateModal.module.scss';
 import { ChangeEvent, useEffect } from 'react';
 import useMember from '@/app/(hooks)/member/useMember';
+import CustomImage from '../common/customImage';
 
 interface Props {
   imageHandler: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -48,7 +49,7 @@ const UpdateModal = (
       <div className={ModalStyle.container}>
         <div className={ModalStyle.esc} onClick={() => setModal(false)}>BC</div>
         <span className={ModalStyle.title}>프로필 수정</span>
-        <img className={ModalStyle.img} src={imageUrl} width={100} height={100} alt='프로필'/>
+        <CustomImage style={ModalStyle.img} src={imageUrl} width={100} height={100} alt='프로필'/>
         <label htmlFor="input-file" >Profile Image</label>
           <input type="file" id='input-file' placeholder='Profile Image' ref={fileInput} onChange={(e) => imageHandler(e)} style={{display:'none'}} />
         {/* <div className={ModalStyle.img}></div> */}

@@ -4,12 +4,12 @@ import { getStoreListType } from "@/app/type";
 import Link from "next/link";
 import useImage from "@/app/(hooks)/common/useImage";
 import { StarFilled, HeartFilled } from "@ant-design/icons";
+import CustomImage from "../common/customImage";
 
 const Item = ({ item }: { item: getStoreListType }) => {
-  const { errorImage } = useImage();
   return (
     <Link href={`/store/${item.storeId}`} className={ItemStyle.container}>
-      <img src={item.imageUrl} width={180} height={180} alt="가게이미지" onError={errorImage}/>
+      <CustomImage style={''} src={item.imageUrl} width={180} height={180} alt="가게이미지"/>
       <div className={ItemStyle.name}>{item.name}</div>
       <div className={ItemStyle.iconWrapper}>
         <div className={ItemStyle.iconText}>

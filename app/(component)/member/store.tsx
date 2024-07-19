@@ -3,6 +3,7 @@ import StoreStyle from './store.module.scss';
 import Link from "next/link";
 import { getStoreListType } from "@/app/type";
 import useImage from "@/app/(hooks)/common/useImage";
+import CustomImage from "../common/customImage";
 
 const StoreContainer = ({likeStoreList} : {likeStoreList: getStoreListType[]}) => {
   return (
@@ -16,12 +17,11 @@ const StoreContainer = ({likeStoreList} : {likeStoreList: getStoreListType[]}) =
 }
 
 const DashboardStore = ({item}: {item:getStoreListType}) => {
-  const {errorImage} = useImage();
-  
+
   return (
     <Link href={`/store/${item.storeId}`}>
       <div className={StoreStyle.container}>
-        <img src={item.imageUrl} width={170} height={110} alt="가게이미지" onError={errorImage}/>
+        <CustomImage src={item.imageUrl} width={170} height={110} alt="가게이미지" style={''}/>
         <div className={StoreStyle.name}>{item.name}</div>
         <div><span>⭐️{item.avgGrade}</span><span>❤️{item.totalFavoriteCount}</span></div>
       </div>
