@@ -49,11 +49,11 @@ const CommentList = () => {
         {isFetching && <p>Loading...</p>}
         {error && <p>댓글을 불러올 수 없습니다</p>}
           {data?.pages.map((page) => (
-            <>
+            <div key={page.pageNumber}>
               {page.content.map((item: getReplyType) => (
-                <Comment key={item.createdAt} item={item} updateReply={updateReplyHandler} removeReply={removeReplyHandler}/> // key replyId로 바꿔야댐
+                <Comment key={item.replyId} item={item} updateReply={updateReplyHandler} removeReply={removeReplyHandler}/> // key replyId로 바꿔야댐
               ))}
-            </>
+            </div>
           ))}
       </div>
       
