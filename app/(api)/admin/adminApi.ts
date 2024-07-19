@@ -89,6 +89,19 @@ const AdminApi = () => {
     return result;
   }
 
+  const modifyStore = async (formData: FormData, storeId: number) => {
+    const result = await axiosWithAuth.patch(`/store/${storeId}`, formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).catch((err: { message: any; }) => {
+        alert(err.message);
+      });
+    return result;
+  }
+
+
 
   return {
     getReviewReport,
@@ -101,6 +114,7 @@ const AdminApi = () => {
     deleteComment,
     registerStore,
     deleteStore,
+    modifyStore
   }
 }
 

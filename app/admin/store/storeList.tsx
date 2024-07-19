@@ -7,13 +7,14 @@ import { adminStoreType } from "@/app/type";
 import Link from "next/link";
 import { cn } from "@nextui-org/react";
 import useAdmin from "@/app/(hooks)/admin/useAdmin";
+import useRegister from "@/app/admin/store/(hooks)/useRegister";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
 const StoreList = ({ store }: { store: adminStoreType }) => {
   const router = useRouter();
   const { removeStore } = useAdmin();
-
+  const { setStoreId } = useRegister();
   const removeStoreHandler = () => {
     Swal.fire({
       title: "매장을 삭제하시겠습니까?",
@@ -46,16 +47,15 @@ const StoreList = ({ store }: { store: adminStoreType }) => {
 
   return (
     <tr className={StoreStyle.trStyle}>
-      <Link href={`/store/${store.storeId}`} >
-        <td className={StoreStyle.Unikname}>
-          {/* {reportContent[0]?.nickname} */}
+      <td className={StoreStyle.Unikname}>
+        <Link href={`/store/${store.storeId}`}  >
           {store.name}
-        </td>
-      </Link>
+        </Link>
+      </td>
       <td className={StoreStyle.email}>{store.address}</td>
       <td className={StoreStyle.userNumbe}>{store.call}</td>
       <td className={StoreStyle.date}>{store.isClosed}
-        <Link href={"/admin/store/register"}><button>수정</button></Link>
+        <Link href={`/admin/store/${store.storeId}`}><button onClick={() => setStoreId(store.storeId)}>수정</button></Link>
         <button onClick={() => removeStoreHandler()}>X</button>
       </td>
     </tr>

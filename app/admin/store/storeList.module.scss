@@ -1,9 +1,14 @@
-
 .trStyle {
   background-color: rgb(255, 255, 255);
   :hover {
-      background-color: #C4E1FD;
+    background-color: #c4e1fd;
   }
+}
+.trStyle {
+  border: 1px solid rgb(147, 147, 147);
+  border-collapse: collapse;
+  padding: 8px;
+  height: 40px;
 }
 .BtnStyle {
   border: none !important;
@@ -13,19 +18,19 @@
   cursor: pointer;
   color: red;
   :hover {
-      color: red;
+    color: red;
   }
 }
 
 .reviewContent {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 500px;
-    max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 500px;
+  max-width: 500px;
 }
 
-.reportContent{
+.reportContent {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -33,14 +38,13 @@
   max-width: 245px;
 }
 
-.date{
+.date {
   // min-width: 180px;
   // max-width: 180px;
   position: relative;
-
 }
 
-.email{
+.email {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -50,7 +54,7 @@
 
 .UBtnStyle {
   cursor: pointer;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   border: 1px solid gray;
   font-size: 15px;
   border-radius: 5px;
@@ -95,8 +99,6 @@
 //   background-color: white
 // }
 
-
-
 // .nickname{
 //   display: inline-block;
 //   overflow: hidden;
@@ -108,4 +110,3 @@
 // .reviewContent{
 //   width: 700px;
 // }
-

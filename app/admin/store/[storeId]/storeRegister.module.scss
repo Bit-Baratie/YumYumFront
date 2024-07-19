@@ -1,0 +1,245 @@
+.container {
+  width: 1200px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.storeId {
+  display: none;
+}
+.storeDetail {
+  width: 500px;
+  height: 750px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-top: 50px;
+}
+.storeImageDetail {
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  .MainImage {
+    width: 250px;
+    height: 300px;
+    border-top-left-radius: 20px;
+  }
+  .fileInput {
+    position: absolute;
+    left: 10%;
+    top: 45%;
+  }
+  .subImage {
+    width: 125px;
+    height: 150px;
+  }
+}
+
+.subImageList {
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  #sub2 {
+    border-top-right-radius: 20px;
+  }
+}
+
+.storeInfoDetail {
+  line-height: 2;
+  width: 400px;
+  margin-top: 40px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  div {
+    align-items: center;
+    height: 60px;
+    justify-content: space-between;
+    display: flex;
+  }
+}
+.storeNameDetail {
+  display: flex;
+  div {
+    align-items: end;
+  }
+  span {
+    font-size: 30px;
+  }
+}
+
+.inputInfo {
+  width: 250px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  background-color: #e8e8e8;
+}
+.buttonList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+  height: 200px;
+}
+.buttonStyle {
+  cursor: pointer;
+  width: 160px;
+  height: 60px;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.register {
+  border: 3px solid white;
+  margin-right: 25px;
+  background-color: #2ca1b7;
+}
+.cancel {
+  border: 3px solid white;
+  margin-left: 25px;
+  background-color: #ff7f7f;
+}
+.hashTagBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+.storeHashTag {
+  width: 430px;
+}
+.hashTagList {
+  display: flex;
+  padding: 0px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.menuRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 400px;
+  height: auto;
+  max-height: 750px;
+  margin-top: 50px;
+  border-radius: 20px;
+  background-color: white;
+
+  .title {
+    width: 100%;
+    height: 80px;
+    min-height: 80px;
+    color: white;
+    border-radius: 20px 20px 0 0;
+    background-color: #2ca1b7;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menuList {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+  }
+}
+.menuPrice {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70px;
+}
+.menuBtn {
+  width: 30px;
+  height: 30px;
+  background-color: #ffc657;
+}
+
+.inputMenuPrice {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.inputMenu {
+  border-radius: 10px;
+  height: 20px;
+}
+.inputPrice {
+  border-radius: 10px;
+  height: 20px;
+}
+.inputStyle {
+  width: 60%;
+}
+.menuInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.registerMenu {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-right: 40px;
+  padding: 0px;
+}
+.menu {
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  div {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.price {
+  display: flex;
+  justify-content: center;
+  width: 180px;
+  flex-direction: column;
+}
+
+.menuPriceInfo {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70px;
+}
+.delBtn {
+  align-items: center;
+  display: flex;
+  justify-content: end;
+}
+.menuDelBtn {
+  width: 30px;
+  height: 30px;
+  background-color: #ffc657;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-left: 45px;
+}
