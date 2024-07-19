@@ -4,7 +4,7 @@ const useImage = () => {
   const [image, setImage] = useState<File[]>([]);
   const [preview, setPreview] = useState<any>([]);
 
-  const imageHandler = (e:ChangeEvent<HTMLInputElement>) => {
+  const imageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newImages = [...image];
       const newPreviews = [...preview];
@@ -42,7 +42,8 @@ const useImage = () => {
     preview,
     imageHandler,
     errorImage,
-    removeImg
+    removeImg,
+    setPreview
   }
 }
 

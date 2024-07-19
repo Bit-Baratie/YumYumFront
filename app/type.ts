@@ -40,6 +40,7 @@ export interface postStoreType {
   latitude: number;
   longitude: number;
   imageList: File[];
+  categoryList: string[];
   hashtagList: string[];
   menuList: menuType[];
 }

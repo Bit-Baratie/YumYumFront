@@ -20,16 +20,15 @@ const Store = () => {
     target: bottomRef,
     onIntersect,
   });
-  const { data, isFetching, fetchNextPage, isFetchingNextPage, error, status } =
-    useInfiniteQuery<any>({
-      queryKey: ["storeReviewList", params.store_id],
-      queryFn: ({ pageParam }) =>
-        getStoreReview(Number(params.store_id), { pageNumber: pageParam }),
-      initialPageParam: 0,
-      getNextPageParam: (data) => {
-        return data?.last ? undefined : data?.pageNumber + 1;
-      },
-    });
+  const { data, isFetching, fetchNextPage, isFetchingNextPage, error, status
+  } = useInfiniteQuery<any>({
+    queryKey: ["storeReviewList", params.store_id],
+    queryFn: ({ pageParam }) => getStoreReview(Number(params.store_id), { pageNumber: pageParam }),
+    initialPageParam: 0,
+    getNextPageParam: (data) => {
+      return data?.last ? undefined : data?.pageNumber + 1;
+    },
+  });
 
   console.log(data);
 
