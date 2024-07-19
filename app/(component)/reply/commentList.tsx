@@ -51,7 +51,7 @@ const CommentList = () => {
           {data?.pages.map((page) => (
             <div key={page.pageNumber}>
               {page.content.map((item: getReplyType) => (
-                <Comment key={item.replyId} item={item} updateReply={updateReplyHandler} removeReply={removeReplyHandler}/> // key replyId로 바꿔야댐
+                <Comment key={item.replyId} item={item} removeReply={removeReplyHandler}/> // key replyId로 바꿔야댐
               ))}
             </div>
           ))}

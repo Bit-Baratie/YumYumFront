@@ -5,22 +5,33 @@ import ReportModal from "../reportModal";
 import CustomImage from "../common/customImage";
 import moment from "moment";
 import "moment/locale/ko";
+import { useEffect, useState } from "react";
+import useReply from "@/app/(hooks)/reply/useReply";
+import UserStore from "@/app/(hooks)/userStore";
 
 const Comment = ({
   item,
-  updateReply,
-  removeReply,
+  removeReply
 }: {
   item: getReplyType;
-  updateReply: Function;
   removeReply: Function;
 }) => {
   const { modal, setModal, createReplyReport, contentHandler, content } =
     useModal();
+  const {contentHandler:modConent, updateReplyHandler, mod, setMod} = useReply();
+  const {userInfo} = UserStore();
 
   const onClose = () => {
     setModal(false);
   };
+
+  const modValidate = () => {
+    if (userInfo.nickName !== item.nickname) {
+      alert('댓글 수정은 작성자만 가능합니다');
+      return;
+    }
+    setMod(!mod);
+  }
 
   return (
     <>
@@ -37,6 +48,12 @@ const Comment = ({
           <div className="right">
             <p className="profile-name">{item.nickname}</p>
             <p className="ReplyCont">{item.content}</p>
+            {mod && 
+              <>
+                <input type="text" defaultValue={item.content} onChange={(e) => modConent(e)}></input>
+                <button onClick={() => updateReplyHandler(item.replyId)}>수정</button>
+              </>
+              }
             <p className="ReplyDate">
               {moment(item.createdAt).format("MM월 DD일 a hh:mm ")}
             </p>
@@ -45,7 +62,7 @@ const Comment = ({
 
         <div className="btn">
           <button className="dec" onClick={() => setModal(true)}></button>
-          <button className="mod" onClick={() => updateReply()}></button>
+          <button className="mod" onClick={() => modValidate()}></button>
           <button
             className="del"
             onClick={() => removeReply(item.replyId)}

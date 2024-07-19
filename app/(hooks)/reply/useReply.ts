@@ -8,6 +8,7 @@ const useReply = () => {
   const [content, setContent] = useState('');
   const {postReply, deleteReply, patchReply} = replyApi();
   const router = useRouter();
+  const [mod, setMod] = useState(false);
   const queryClient = useQueryClient();
   const createReply = useMutation({
     mutationFn:(postReplyData: postReplyType) => postReply(postReplyData),
@@ -19,9 +20,12 @@ const useReply = () => {
       alert('잠시후 다시 시도해주세요')
   });
   const updateReply = useMutation({
-    mutationFn:({replyId, patchReplyData}:{replyId: number, patchReplyData: string}) => patchReply(replyId, patchReplyData),
-    onSuccess: () => 
-      queryClient.invalidateQueries({queryKey:['replyList']}),
+    mutationFn:({replyId, content}:{replyId: number, content: {content: string}}) => patchReply(replyId, content),
+    onSuccess: () => {
+      queryClient.invalidateQueries({queryKey:['replyList']});
+      setContent('');
+      setMod(false);
+    },
     onError: () => 
       alert('잠시후 다시 시도해주세요')
   });
@@ -47,7 +51,10 @@ const useReply = () => {
   }
 
   const updateReplyHandler = (replyId:number) => {
-    updateReply.mutate({replyId: replyId, patchReplyData: content})
+    const patchReplyData = {
+      content: content
+    }
+    updateReply.mutate({replyId: replyId, content: patchReplyData})
   }
 
   const removeReplyHandler = async (replyId: number) => {
@@ -59,7 +66,10 @@ const useReply = () => {
     contentHandler,
     createReplyHandler,
     updateReplyHandler,
-    removeReplyHandler
+    removeReplyHandler,
+    setContent,
+    mod,
+    setMod
   }
 }
 

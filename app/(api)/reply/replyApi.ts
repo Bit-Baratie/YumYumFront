@@ -12,8 +12,8 @@ const replyApi = () => {
     return result.data;
   }
 
-  const patchReply = async (reviewId: number, patchReplyData: string) => {
-    const result = await axiosWithAuth.patch(`/reply/${reviewId}`, patchReplyData);
+  const patchReply = async (reviewId: number, content: {content: string}) => {
+    const result = await axiosWithAuth.patch(`/reply/${reviewId}`, content);
     return result;
   }
 
