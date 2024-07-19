@@ -169,9 +169,10 @@ export interface postReplyType {
 }
 
 export interface getReplyType {
+  imageUrl: string;
   replyId: number;
   reviewId: number,
-  nickName: string,
+  nickname: string,
   createdAt: string,
   content: string,
 }

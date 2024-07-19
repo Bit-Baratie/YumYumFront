@@ -15,10 +15,10 @@ const Comment = ({item, updateReply, removeReply}: {item: getReplyType, updateRe
         <>
             <div className="commentContainer">
             <div className="content">
-                <CustomImage style={'comment-img'} src="" alt="프로필 이미지" width={30} height={30}/>
+                <CustomImage style={'comment-img'} src={item.imageUrl} alt="프로필 이미지" width={30} height={30}/>
 
                 <div className="right">
-                <p className="profile-name">{item.nickName}</p>
+                <p className="profile-name">{item.nickname}</p>
                 <p>{item.content}</p>
                 <p>{item.createdAt}</p>
                 </div>

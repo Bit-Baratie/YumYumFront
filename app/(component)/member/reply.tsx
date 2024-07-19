@@ -32,7 +32,7 @@ export const Reply = ({ item }: { item: getReplyType }) => {
     <div className={replyStyle.replyContainer} key={item.replyId}>
       <CustomImage src={userInfo.profileUrl} width={100} height={100} alt='' style={''}/>
       <div className={replyStyle.replyRight}>
-        <span>{item.nickName}</span>
+        <span>{item.nickname}</span>
         <span>{item.createdAt}</span>
         <span>{item.content}</span>
       </div>
