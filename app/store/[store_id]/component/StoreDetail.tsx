@@ -70,16 +70,16 @@ const StoreDetail = () => {
           {/* <div className="MainImage">{storeList.imageList}</div> */}
           {storeDetail[0].imageList.length ? (
             <>
-              <img className="MainImage" src={storeDetail[0]?.imageList[4]} />
+              <img className="MainImage" src={storeDetail[0]?.imageList[0]} />
               <div className="subImageList">
-                <img className="subImage" src={storeDetail[0]?.imageList[0]} />
+                <img className="subImage" src={storeDetail[0]?.imageList[1]} />
                 <img
                   className="subImage"
                   id="sub2"
-                  src={storeDetail[0]?.imageList[1]}
+                  src={storeDetail[2]?.imageList[1]}
                 />
-                <img className="subImage" src={storeDetail[0]?.imageList[2]} />
                 <img className="subImage" src={storeDetail[0]?.imageList[3]} />
+                <img className="subImage" src={storeDetail[0]?.imageList[4]} />
               </div>
             </>
           ) : (
