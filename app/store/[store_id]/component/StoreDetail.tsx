@@ -199,32 +199,38 @@ const StoreDetail = () => {
                     ))}
                   </>
                 )
-                // || menuStatus == false &&
-                // <div className="menuList">
-                //   <ul>
-                //     <>
-                //       <li>
-                //         <span className="menuName">{storeList.menuList[0].name}</span>
-                //         <div className="line">--------------------</div>
-                //         <span className="menuPrice">{storeList.menuList[0].price}원</span>
-                //       </li>
-                //       <li>
-                //         <span className="menuName">{storeList.menuList[1].name}</span>
-                //         <div className="line">--------------------</div>
-                //         <span className="menuPrice">{storeList.menuList[1].price}원</span>
-                //       </li>
-                //       <li>
-                //         <span className="menuName">{storeList.menuList[2].name}</span>
-                //         <div className="line">--------------------</div>
-                //         <span className="menuPrice">{storeList.menuList[2].price}원</span>
-                //       </li>
-                //     </>
-                //   </ul>
-                // </div>
-                // || storeList.menuList &&
-                // <>
-                //   <div>메뉴 정보가 존재하지 않습니다</div>
-                // </>
+                || menuStatus == false &&
+                <div className="menuList">
+                  <ul>
+                    <>
+                      {storeDetail[0].menuList.length > 0 ?
+                        <li>
+                          <span className="menuName">{storeDetail[0]?.menuList[0].name}</span>
+                          <div className="line">--------------------</div>
+                          <span className="menuPrice">{storeDetail[0]?.menuList[0].price}원</span>
+                        </li>
+                        : ""}
+                      {storeDetail[0].menuList.length > 1 ?
+                        <li>
+                          <span className="menuName">{storeDetail[0]?.menuList[1].name}</span>
+                          <div className="line">--------------------</div>
+                          <span className="menuPrice">{storeDetail[0]?.menuList[1].price}원</span>
+                        </li>
+                        : ""}
+                      {storeDetail[0].menuList.length > 2 ?
+                        <li>
+                          <span className="menuName">{storeDetail[0]?.menuList[2].name}</span>
+                          <div className="line">--------------------</div>
+                          <span className="menuPrice">{storeDetail[0]?.menuList[2].price}원</span>
+                        </li>
+                        : ""}
+                    </>
+                  </ul>
+                </div>
+                || storeDetail[0]?.menuList &&
+                <>
+                  <div>메뉴 정보가 존재하지 않습니다</div>
+                </>
               }
             </ul>
           </div>
