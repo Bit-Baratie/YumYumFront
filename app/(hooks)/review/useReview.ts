@@ -96,7 +96,7 @@ const useReview = () => {
       imageList: []
     };
 
-    formData.append('patchReviewDto', new Blob([JSON.stringify(reviewData)], {type: 'application/json'}));
+    formData.append('updateReviewRequestDto', new Blob([JSON.stringify(reviewData)], {type: 'application/json'}));
     updateReview.mutate({reviewId: reviewId, patchReviewData: formData});
   }
 
@@ -108,7 +108,8 @@ const useReview = () => {
     reviewOne, content, rating,
     contentHandler, handleStarClick,
     fetchReviewOne, createReviewHandler, updateReviewHandler, removeReviewHandler, data,
-    fetchNextPage, isFetching, isFetchingNextPage, status
+    fetchNextPage, isFetching, isFetchingNextPage, status,
+    setContent
   }
 }
 

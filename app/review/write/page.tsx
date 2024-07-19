@@ -12,7 +12,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import useImage from "@/app/(hooks)/common/useImage";
 
 const ReviewWrite = () => {
-  const { contentHandler, createReviewHandler, handleStarClick, rating, updateReviewHandler } = useReview();
+  const { contentHandler, createReviewHandler, handleStarClick, rating, updateReviewHandler, setContent } = useReview();
   const searchParams = useSearchParams();
   let defaultData = {
     storeName: searchParams.get('storeName'),
@@ -28,8 +28,10 @@ const ReviewWrite = () => {
   useEffect(() => {
     const query = searchParams.get('data');
     if (query) {
+      // console.log(query)
       const patchData = JSON.parse(query);
       setStoreInfo(patchData);
+      setContent(patchData.content)
       handleStarClick(patchData.grade-1);
     }
   }, []);
