@@ -4,17 +4,14 @@ import React from "react";
 import { getReviewType } from "../../type";
 import useImage from "@/app/(hooks)/common/useImage";
 import CustomImage from "../common/customImage";
+import { StarFilled } from "@ant-design/icons";
 
 const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
   return (
     <div className={reviewStyle.reviewItem}>
       <div className={reviewStyle.storeInfo}>
-        <span className={reviewStyle.storeName}>
-          {reviewItem?.storeName}
-        </span>
-        <span className={reviewStyle.addr}>
-          {reviewItem?.address}
-        </span>
+        <span className={reviewStyle.storeName}>{reviewItem?.storeName}</span>
+        <span className={reviewStyle.addr}>{reviewItem?.address}</span>
       </div>
 
       <div className={reviewStyle.bottom}>
@@ -28,56 +25,73 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
             style={reviewStyle.profileImg}
           />
           <div className={reviewStyle.profileInfo}>
-            <p className={reviewStyle.profileName}>
-              {reviewItem?.nickname}
-            </p>
-            <p className={reviewStyle.profileDate}>
-              {reviewItem?.createdAt}
-            </p>
+            <p className={reviewStyle.profileName}>{reviewItem?.nickname}</p>
+            <p className={reviewStyle.profileDate}>{reviewItem?.createdAt}</p>
             <p className={reviewStyle.profileStar}>
-              별점: {reviewItem?.grade}
-              &nbsp; 평균 별점: {reviewItem?.avgGrade}(
-              {reviewItem?.totalReviewCount})
+              <div className={reviewStyle.Star}>
+                <StarFilled /> {reviewItem?.grade}
+              </div>
+              &nbsp;&nbsp;&nbsp; 리뷰 {reviewItem?.totalReviewCount}개 &nbsp;
+              평균 별점&nbsp;
+              {reviewItem?.avgGrade}
             </p>
           </div>
           {/* <LikeButton reviewId={reviewItem?.reviewId} /> */}
         </div>
       </div>
-      <div className={reviewStyle.reviewContent}>
-        {reviewItem?.content}
-      </div>
+      <div className={reviewStyle.reviewContent}>{reviewItem?.content}</div>
       <div className={reviewStyle.reviewImg}>
-        {reviewItem.imageList?.length > 0 ? <CustomImage
-          style={reviewStyle.reivewImage}
-          src={reviewItem.imageList[0]}
-          width={350}
-          height={350}
-          alt="리뷰이미지"
-        /> : ""}
-        {reviewItem.imageList?.length > 1 ? <CustomImage
-          style={reviewStyle.reivewImage}
-          src={reviewItem.imageList[1]}
-          width={350}
-          height={350}
-          alt="리뷰이미지"
-        /> : ''}
-        {reviewItem.imageList?.length > 2 ? <CustomImage
-          style={reviewStyle.reivewImage}
-          src={reviewItem.imageList[2]}
-          width={350}
-          height={350}
-          alt="리뷰이미지"
-        /> : ''}
-        {reviewItem.imageList?.length > 3 ? <div className={reviewStyle.contL}>
+        {reviewItem.imageList?.length > 0 ? (
           <CustomImage
-            style={reviewStyle.reivewImageLast}
-            src={reviewItem.imageList[3]}
+            style={reviewStyle.reivewImage}
+            src={reviewItem.imageList[0]}
             width={350}
             height={350}
             alt="리뷰이미지"
           />
-          {reviewItem.imageList?.length > 4 ? <p>+{reviewItem.imageList.length - 3}</p> : ''}
-        </div> : ''}
+        ) : (
+          ""
+        )}
+        {reviewItem.imageList?.length > 1 ? (
+          <CustomImage
+            style={reviewStyle.reivewImage}
+            src={reviewItem.imageList[1]}
+            width={350}
+            height={350}
+            alt="리뷰이미지"
+          />
+        ) : (
+          ""
+        )}
+        {reviewItem.imageList?.length > 2 ? (
+          <CustomImage
+            style={reviewStyle.reivewImage}
+            src={reviewItem.imageList[2]}
+            width={350}
+            height={350}
+            alt="리뷰이미지"
+          />
+        ) : (
+          ""
+        )}
+        {reviewItem.imageList?.length > 3 ? (
+          <div className={reviewStyle.contL}>
+            <CustomImage
+              style={reviewStyle.reivewImageLast}
+              src={reviewItem.imageList[3]}
+              width={350}
+              height={350}
+              alt="리뷰이미지"
+            />
+            {reviewItem.imageList?.length > 4 ? (
+              <p>+{reviewItem.imageList.length - 3}</p>
+            ) : (
+              ""
+            )}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
