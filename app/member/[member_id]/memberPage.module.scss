@@ -1,4 +1,11 @@
+@font-face {
+  font-family: 'appleB.ttf';
+  src: url('../../../public/asset/font/AppleSDGothicNeoB.ttf');
+}
+
+
 .container {
+  font-family: 'appleM';
   display: flex;
   width: 1280px;
   margin-top: 30px;
@@ -48,21 +55,45 @@
 }
 
 .nickname {
+  font-size: 25px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  margin-right: 20px;
 
   :hover {
     cursor: pointer;
   }
 }
 
+.email{
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.phone{
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
 .btnContainer {
+  position: relative;
+  // transform: translate();
+  // transition: background-color 0.3s, color 0.3s, transform 0.3s; 
+
   :hover {
     cursor: pointer;
+    background-color: #FFC657;
+    color: white;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; 
+    border: none;
+    transform: scale(1.1);
   }
 }
 
 .btn {
+  position: absolute;
+  right: 0;
+  top: 0;
   float: right;
   width: 70px;
   height: 30px;
