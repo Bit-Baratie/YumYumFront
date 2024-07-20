@@ -7,7 +7,6 @@ import useSearch from "@/app/(hooks)/common/useSearch";
 import { useRouter } from "next/navigation";
 
 const TestMap = ({
-
   storeInfo,
   myLatLng,
 }: {
@@ -27,7 +26,10 @@ const TestMap = ({
       console.log(storeInfo);
       if (storeInfo?.length > 1) {
         map = new naver.maps.Map("map", {
-          center: new naver.maps.LatLng(myLatLng?.latitude, myLatLng?.longitude),
+          center: new naver.maps.LatLng(
+            myLatLng?.latitude,
+            myLatLng?.longitude
+          ),
           zoomControl: true,
           zoom: 15,
           minZoom: 6,
@@ -70,9 +72,10 @@ const TestMap = ({
         const infowindow = new naver.maps.InfoWindow({
           content: contentString,
           maxWidth: 300,
+          color: "white",
           backgroundColor: "#FFFaEF",
           borderWidth: 0,
-          anchorColor: "white",
+          anchorColor: "#ffd786",
           anchorSkew: true,
         });
 
@@ -98,7 +101,7 @@ const TestMap = ({
       console.error(err);
       router.refresh();
     }
-  }
+  };
   useEffect(() => {
     initializeMap();
   }, [storeInfo]);
