@@ -41,6 +41,7 @@
 
 .profile {
     padding: 20px;
+    // padding: 20px 20px 0px 20px;
     height: 120px;
     display: flex;
     justify-content: space-between;
@@ -70,11 +71,13 @@
 }
 
 .reviewContent {
-    padding: 0px 50px 50px 50px;
+    margin: 0px 50px;
+    white-space: wrap;
+    // padding: 0px 50px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    height: 90px;
+    // height: 90px;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 22px;
@@ -89,21 +92,23 @@
 .reviewImg {
     border-radius: 0px 0px 20px 20px;
     background-color: white;
-    padding: 10px 0px 30px 50px;
+    padding: 10px 0px 30px 35px;
     display: flex;
+    // justify-content: center;
 }
 
 .reivewImage {
-    margin: 5px;
+    // margin: 5px;
     border: 1px solid rgb(157, 157, 157);
     border-radius: 5px;
     width: 160px;
     height: 160px;
     object-fit: cover;
+    margin: 10px;
 }
 
 .reivewImageLast {
-    margin: 5px;
+    // margin: 5px;
     border: 1px solid rgb(157, 157, 157);
     border-radius: 5px;
     width: 160px;
@@ -114,6 +119,8 @@
 
 .contL {
     position: relative;
+    top: 10px;
+    margin-left: 10px;
 
     img{
         position: absolute;
@@ -162,7 +169,8 @@
     width: 700p;
     height: 150px;
     display: flex;
-    padding: 20px;
+    // padding: 20px;
+    padding: 20px 20px 0px 20px;
     align-items: center;
     justify-content: flex-start;
     margin-left: 20px;
@@ -191,7 +199,15 @@
     
 }
 
-.profile-star{
-    color: gray;
+.profileStar{
+    justify-content: center;
+    color:#989898;
+    display: flex;
+    padding-top: 10px;
 
 }
+.Star{
+    font-size: 30px;
+    letter-spacing: -5px;
+}
+

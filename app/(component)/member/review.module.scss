@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'TmoneyRoundWindExtraBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'appleB.ttf';
+  src: url('../../../public/asset/font/AppleSDGothicNeoB.ttf');
+}
+
 .dashboard {
   display: flex;
   justify-content: space-between;
@@ -16,22 +28,49 @@
 }
 
 .head {
+  // font-family: 'appleB.ttf';
+  font-size: 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 20px;
   color: white;
   height: 50%;
+  line-height: 15px;
 }
 
 .content {
+  // margin-top: 20px;
   width: 100%;
   height: 50%;
   border-radius: 0 0 10px 10px;
   background-color: #fafafa;
+  // display: flex;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+
+  
 
   span {
     display: inline-block;
     margin: 10px 20px;
+    display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
   }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  color: white;
+  
 }
