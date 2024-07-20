@@ -13,9 +13,23 @@
   li {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin: 5px 0;
+    padding: 10px; /* padding을 추가하여 hover 효과를 강조 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 추가 */
+    
+    &:hover {
+      cursor: pointer; /* 마우스를 올렸을 때 커서 모양 변경 */
+      // background-color: #f0f0f0; /* 배경색 변경 */
+      color: #ffb321;
+    }
+    
     * {
       margin-right: 10px;
+    }
+
+    svg{
+      fill: currentColor;
+      transition: fill 0.3s;
     }
   }
 }
@@ -27,6 +41,8 @@
   height: 35px;
   display: inline-block;
   background-color: #ffb321;
+
+
 }
 
 .nonActive {
@@ -36,6 +52,7 @@
   height: 35px;
   display: inline-block;
   background-color: white;
+
 }
 
 .activeColor {
