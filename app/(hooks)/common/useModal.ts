@@ -20,13 +20,9 @@ const useModal = () => {
       reportType: 'REVIEW'
     };
 
-    const result = await postReport(reportData);
-    if (result.status === 201) {
-      alert('신고가 완료되었습니다');
-      setModal(false);
-    } else {
-      alert('잠시후 다시 시도해 주세요');
-    }
+    await postReport(reportData);
+    setContent('');
+    setModal(false);
   }
   const createStoreReport = async (targetId: number) => {
     const reportData = {
@@ -34,13 +30,9 @@ const useModal = () => {
       content: content,
       reportType: 'STORE'
     };
-    const result = await postReport(reportData);
-    if (result.status === 201) {
-      alert('신고가 완료되었습니다');
-      setModal(false);
-    } else {
-      alert('잠시후 다시 시도해 주세요');
-    }
+    await postReport(reportData);
+    setContent('');
+    setModal(false);
   }
 
   const createReplyReport = async (targetId: number) => {
@@ -50,13 +42,9 @@ const useModal = () => {
       reportType: 'REPLY'
     };
 
-    const result = await postReport(reportData);
-    if (result.status === 201) {
-      alert('신고가 완료되었습니다');
-      setModal(false);
-    } else {
-      alert('잠시후 다시 시도해 주세요');
-    }
+    await postReport(reportData);
+    setContent('');
+    setModal(false);
   }
 
   return {
