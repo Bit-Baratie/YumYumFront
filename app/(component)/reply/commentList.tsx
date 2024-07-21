@@ -9,9 +9,11 @@ import useReply from "../../(hooks)/reply/useReply";
 import { useRef } from "react";
 import { useObserver } from "@/app/(hooks)/common/useObserver";
 import CustomImage from "../common/customImage";
+import UserStore from "@/app/(hooks)/userStore";
 
 const CommentList = () => {
   const {getReplyAll} = replyApi();
+  const {userInfo} = UserStore();
   const params = useParams();
   const {
     data,
@@ -41,7 +43,7 @@ const CommentList = () => {
     <>
       <div className="comment">
       <div className="comment-write">
-        <CustomImage style='profile-img' src="/asset/image/IMG_1282.jpg" alt="프로필이미지" width={40} height={40} />        
+        <CustomImage style='profile-img' src={userInfo.profileUrl} alt="프로필이미지" width={40} height={40} />        
         <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
         <button onClick={() => createReplyHandler(Number(params.review_id))}>작성</button>
       </div>
