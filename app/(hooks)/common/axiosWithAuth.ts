@@ -14,7 +14,11 @@ export const axiosWithAuth: AxiosInstance = axios.create({
 });
 
 export const axiosNonAuth: AxiosInstance = axios.create({
-  baseURL: 'http://223.130.158.171:80'
+  baseURL: 'http://223.130.158.171:80',
+  headers: {
+    Authorization: `Bearer ${Store.getState().token.atk}`,
+    "Content-Type": 'application/json'
+  }
 });
 
 axiosWithAuth.interceptors.response.use(
