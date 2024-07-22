@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import "@/app/admin/comment/comment.module.scss";
 import storeRegister from "@/app/admin/store/register/storeRegister.module.scss";
 import useRegister from "../(hooks)/useRegister";
@@ -8,25 +8,48 @@ import { CameraFilled } from "@ant-design/icons";
 import { useState } from "react";
 
 const StoreRegister = () => {
-
-  const { storeName, storeHours, menuList, priceList, storeAddress, storeCalls, storeHashTag,
-    fileInput, storeCategory, inputHashTag, storeMenuList,
-    inputHashTagHandler, storeNameHandler, storeHoursHandler, storeAddressHandler,
-    storeCallsHandler, storeHashTagHandler, register, menuDelHandler,
-    storeCategoryHandler, menuListHandler, priceListHandler, storeMenuListHandler } = useRegister();
+  const {
+    storeName,
+    storeHours,
+    menuList,
+    priceList,
+    storeAddress,
+    storeCalls,
+    storeHashTag,
+    fileInput,
+    storeCategory,
+    inputHashTag,
+    storeMenuList,
+    inputHashTagHandler,
+    storeNameHandler,
+    storeHoursHandler,
+    storeAddressHandler,
+    storeCallsHandler,
+    storeHashTagHandler,
+    register,
+    menuDelHandler,
+    storeCategoryHandler,
+    menuListHandler,
+    priceListHandler,
+    storeMenuListHandler,
+  } = useRegister();
   const { imageHandler, preview, image, removeImg } = useImage();
   const [storeInfo, setStoreInfo] = useState();
-
 
   return (
     <div>
       <div className={storeRegister.container}>
         <div className={storeRegister.storeDetail}>
+          <div className={storeRegister.storeTop}>가게 정보</div>
           <div className={storeRegister.storeImageDetail}>
             <label className={storeRegister.fileInput} htmlFor="fileInput">
-              <div >
+              <div className={storeRegister.click}>
                 <CameraFilled style={{ marginRight: "10px", fontSize: 50 }} />
-                <br />최대 5장까지 가능합니다</div>
+                <br />
+                클릭하여 사진추가
+                <br />
+                (최대 5장)
+              </div>
             </label>
             <input
               type="file"
@@ -36,40 +59,102 @@ const StoreRegister = () => {
               multiple
               accept="image/*"
             />
-            <img className={storeRegister.MainImage} alt="main1" src={preview[0]} onClick={() => removeImg(0)}></img>
+            <img
+              className={storeRegister.MainImage}
+              alt="main1"
+              src={preview[0]}
+              onClick={() => removeImg(0)}
+            ></img>
             <div className={storeRegister.subImageList}>
-              <img src={preview[1]} className={storeRegister.subImage} alt="sub1" onClick={() => removeImg(1)} />
-              <img src={preview[2]} className={storeRegister.subImage} alt="sub2" onClick={() => removeImg(2)} />
-              <img src={preview[3]} className={storeRegister.subImage} alt="sub3" onClick={() => removeImg(3)} />
-              <img src={preview[4]} className={storeRegister.subImage} alt="sub4" onClick={() => removeImg(4)} />
+              <img
+                src={preview[1]}
+                className={storeRegister.subImage}
+                alt="sub1"
+                onClick={() => removeImg(1)}
+              />
+              <img
+                src={preview[2]}
+                className={storeRegister.subImage}
+                alt="sub2"
+                onClick={() => removeImg(2)}
+              />
+              <img
+                src={preview[3]}
+                className={storeRegister.subImage}
+                alt="sub3"
+                onClick={() => removeImg(3)}
+              />
+              <img
+                src={preview[4]}
+                className={storeRegister.subImage}
+                alt="sub4"
+                onClick={() => removeImg(4)}
+              />
             </div>
           </div>
           <div className={storeRegister.storeInfoDetail}>
             <div className={storeRegister.nameDetail}>
               <span>매장이름</span>
-              <input type="text" className={storeRegister.inputInfo} value={storeName} onChange={storeNameHandler} />
+              <input
+                type="text"
+                className={storeRegister.inputInfo}
+                value={storeName}
+                onChange={storeNameHandler}
+              />
             </div>
             <div className="storeHour">
               <div>영업시간</div>
-              <input type="text" className={storeRegister.inputInfo} value={storeHours} onChange={storeHoursHandler} />
+              <input
+                type="text"
+                className={storeRegister.inputInfo}
+                value={storeHours}
+                onChange={storeHoursHandler}
+              />
             </div>
             <div className="storeAddress">
               <div>주소</div>
-              <input type="text" className={storeRegister.inputInfo} value={storeAddress} onChange={storeAddressHandler} />
+              <input
+                type="text"
+                className={storeRegister.inputInfo}
+                value={storeAddress}
+                onChange={storeAddressHandler}
+              />
             </div>
             <div className="storeNumber">
               <div>전화번호</div>
-              <input type="text" className={storeRegister.inputInfo} value={storeCalls} onChange={storeCallsHandler} />
+              <input
+                type="text"
+                className={storeRegister.inputInfo}
+                value={storeCalls}
+                onChange={storeCallsHandler}
+              />
             </div>
             <div className="storeNumber">
               <div>카테고리</div>
-              <input type="text" className={storeRegister.inputInfo} value={storeCategory} onChange={storeCategoryHandler} />
+              <input
+                type="text"
+                className={storeRegister.inputInfo}
+                value={storeCategory}
+                onChange={storeCategoryHandler}
+              />
             </div>
             <div className={storeRegister.storeHashTag}>
               <div>해시태그</div>
               <div className={storeRegister.input}>
-                <input type="text" placeholder="   #을 제외한 내용만 입력해주세요(최대3개)" value={inputHashTag} className={storeRegister.inputInfo} onChange={(e) => inputHashTagHandler(e)} />
-                <button className={storeRegister.hashTagBtn} type="submit" onClick={storeHashTagHandler}>+</button>
+                <input
+                  type="text"
+                  placeholder="   #을 제외한 내용만 입력해주세요(최대3개)"
+                  value={inputHashTag}
+                  className={storeRegister.inputInfo}
+                  onChange={(e) => inputHashTagHandler(e)}
+                />
+                <button
+                  className={storeRegister.hashTagBtn}
+                  type="submit"
+                  onClick={storeHashTagHandler}
+                >
+                  +
+                </button>
               </div>
             </div>
             {/* 입력한 해시태그 목록 */}
@@ -82,15 +167,34 @@ const StoreRegister = () => {
         </div>
         {/* 메뉴등록 */}
         <div className={storeRegister.menuRegister}>
-          <div className={storeRegister.title}>메뉴<button type="submit" className={`${storeRegister.menuBtn} ${storeRegister.buttonStyle}`} onClick={storeMenuListHandler}>+</button></div>
+          <div className={storeRegister.title}>
+            메뉴
+            <button
+              type="submit"
+              className={`${storeRegister.menuBtn} ${storeRegister.buttonStyle}`}
+              onClick={storeMenuListHandler}
+            >
+              +
+            </button>
+          </div>
           <div className={storeRegister.menuList}>
             <div className={storeRegister.menuPrice}>
               <div>메뉴명</div>
-              <input type="text" value={menuList} className={storeRegister.inputMenu} onChange={(e) => menuListHandler(e)} />
+              <input
+                type="text"
+                value={menuList}
+                className={storeRegister.inputMenu}
+                onChange={(e) => menuListHandler(e)}
+              />
             </div>
             <div className={storeRegister.menuPriceInfo}>
               <div>가격</div>
-              <input type="text" value={priceList} className={`${storeRegister.inputPrice} ${storeRegister.input}`} onChange={(e) => priceListHandler(e)} />
+              <input
+                type="text"
+                value={priceList}
+                className={`${storeRegister.inputPrice} ${storeRegister.input}`}
+                onChange={(e) => priceListHandler(e)}
+              />
             </div>
           </div>
           <div className={storeRegister.menuInfo}>
@@ -103,8 +207,14 @@ const StoreRegister = () => {
               <div className={storeRegister.price}>
                 {storeMenuList.map((price, index) => (
                   <>
-                    <div className={storeRegister.delBtn} key={index}>{price.price}원
-                      <button className={`${storeRegister.menuDelBtn} ${storeRegister.buttonStyle}`} onClick={() => menuDelHandler(price.id)}>-</button>
+                    <div className={storeRegister.delBtn} key={index}>
+                      {price.price}원
+                      <button
+                        className={`${storeRegister.menuDelBtn} ${storeRegister.buttonStyle}`}
+                        onClick={() => menuDelHandler(price.id)}
+                      >
+                        -
+                      </button>
                     </div>
                   </>
                 ))}
@@ -114,8 +224,21 @@ const StoreRegister = () => {
         </div>
       </div>
       <div className={storeRegister.buttonList}>
-        <button type="button" className={`${storeRegister.register} ${storeRegister.buttonStyle}`} onClick={() => register(image)}>등록</button>
-        <Link href={"/admin/store"}><button type="button" className={`${storeRegister.cancel} ${storeRegister.buttonStyle}`}>취소</button></Link>
+        <button
+          type="button"
+          className={`${storeRegister.register} ${storeRegister.buttonStyle}`}
+          onClick={() => register(image)}
+        >
+          등록
+        </button>
+        <Link href={"/admin/store"}>
+          <button
+            type="button"
+            className={`${storeRegister.cancel} ${storeRegister.buttonStyle}`}
+          >
+            취소
+          </button>
+        </Link>
       </div>
     </div>
   );
