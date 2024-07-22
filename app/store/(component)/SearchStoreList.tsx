@@ -57,7 +57,7 @@ const SearchStoreList = () => {
         {/* 지도 Api  */}
         {storeList.length !== 0 ?
           <TestMap storeInfo={storeList} myLatLng={myLatLng} />
-          : <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "30px" }}>검색된 결과가 없습니다.</div>}
+          : <div style={{ width: "650px", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "30px" }}>검색된 결과가 없습니다.</div>}
         {/* 가게 리스트 */}
         <StoreList myLatLng={myLatLng} />
       </div>
