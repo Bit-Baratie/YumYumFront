@@ -28,9 +28,9 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
             <p className={reviewStyle.profileName}>{reviewItem?.nickname}</p>
             <p className={reviewStyle.profileDate}>{reviewItem?.createdAt}</p>
             <p className={reviewStyle.profileStar}>
-              <div className={reviewStyle.Star}>
+              <span className={reviewStyle.Star}>
                 <StarFilled /> {reviewItem?.grade}
-              </div>
+              </span>
               &nbsp;&nbsp;&nbsp; 리뷰 {reviewItem?.totalReviewCount}개 &nbsp;
               평균 별점&nbsp;
               {reviewItem?.avgGrade}
