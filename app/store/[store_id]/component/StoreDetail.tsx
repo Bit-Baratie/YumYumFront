@@ -76,7 +76,7 @@ const StoreDetail = () => {
                 <img
                   className="subImage"
                   id="sub2"
-                  src={storeDetail[2]?.imageList[1]}
+                  src={storeDetail[0]?.imageList[2]}
                 />
                 <img className="subImage" src={storeDetail[0]?.imageList[3]} />
                 <img className="subImage" src={storeDetail[0]?.imageList[4]} />
