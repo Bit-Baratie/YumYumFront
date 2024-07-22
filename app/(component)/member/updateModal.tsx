@@ -71,7 +71,7 @@ const UpdateModal = (
           <div className={ModalStyle.inputSet}>
             <span className={ModalStyle.label}>변경 비밀번호</span>
             <div className={ModalStyle.inputBox}>
-              <input type="text" className={ModalStyle.input} onChange={(e) => passwordHanler(e)}/>
+              <input type="password" className={ModalStyle.input} onChange={(e) => passwordHanler(e)}/>
               <span>연필</span>
             </div>
           </div>
@@ -79,7 +79,7 @@ const UpdateModal = (
           <div className={ModalStyle.inputSet}>
             <span className={ModalStyle.label}>변경 비밀번호 확인</span>
             <div className={ModalStyle.inputBox}>
-              <input type="text" className={ModalStyle.input} onChange={(e) => passwordCheckHanler(e)}/>
+              <input type="password" className={ModalStyle.input} onChange={(e) => passwordCheckHanler(e)}/>
               <span>연필</span>
             </div>
           </div>
