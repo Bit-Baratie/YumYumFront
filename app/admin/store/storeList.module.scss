@@ -1,5 +1,6 @@
 .trStyle {
   background-color: rgb(255, 255, 255);
+  z-index: 0;
   :hover {
     background-color: #c4e1fd;
   }
@@ -39,8 +40,6 @@
 }
 
 .date {
-  // min-width: 180px;
-  // max-width: 180px;
   position: relative;
 }
 
@@ -62,51 +61,43 @@
   right: 20px;
   padding: 0px 8px 0px 8px;
 }
-// // table {
-// //   margin: 40px;
-// // }
-
-// // table,
-// // th,
-// // td {
-// //   width: 1000px;
-// //   border: 1px solid black;
-// //   border-collapse: collapse;
-// // }
-
-// th,
-// td{
-//   padding: 10px 15px;
-//   border: none;
-//   padding: 20px;
-//   // border-bottom: 1px solid black;
-// }
-
-// th{
-//   text-align: left;
-//   background-color: #F9F9F9;
-//   border-bottom: 1px solid black;
-// }
-
-// table .list :hover{
-//   background-color: #E2EEF9;
-//     button {
-//       background-color: white;
-//     }
-// }
-
-// td{
-//   background-color: white
-// }
-
-// .nickname{
-//   display: inline-block;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
-//   white-space: nowrap;
-//   width: 200px;
-// }
-
-// .reviewContent{
-//   width: 700px;
-// }
+.modifyBtn {
+  width: 40px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #ffc657;
+  border: none;
+  color: white;
+  position: absolute;
+  left: 65%;
+  bottom: 25%;
+  cursor: pointer;
+  :hover {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    position: absolute;
+    left: 65%;
+    bottom: 25%;
+    width: 40px;
+    height: 30px;
+  }
+}
+.modifyLink :hover {
+  background-color: #ffc657;
+}
+.delBtn {
+  position: absolute;
+  left: 85%;
+  border: none;
+  bottom: 30%;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  :hover {
+    color: red;
+  }
+  cursor: pointer;
+}

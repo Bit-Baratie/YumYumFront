@@ -52,7 +52,7 @@ const Store = () => {
           {ReviewItem.length !== 0 ?
             <>
               {data?.pages.map((page) => (
-                <div key={page}>
+                <div key={page.pageNumber}>
                   {page.content.map((reviewItem: getReviewType) => (
                     <Link
                       key={reviewItem.reviewId}

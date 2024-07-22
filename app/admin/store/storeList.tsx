@@ -10,6 +10,7 @@ import useAdmin from "@/app/(hooks)/admin/useAdmin";
 import useRegister from "@/app/admin/store/(hooks)/useRegister";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { CloseCircleFilled } from "@ant-design/icons";
 
 const StoreList = ({ store }: { store: adminStoreType }) => {
   const router = useRouter();
@@ -55,8 +56,8 @@ const StoreList = ({ store }: { store: adminStoreType }) => {
       <td className={StoreStyle.email}>{store.address}</td>
       <td className={StoreStyle.userNumbe}>{store.call}</td>
       <td className={StoreStyle.date}>{store.isClosed}
-        <Link href={`/admin/store/${store.storeId}`}><button onClick={() => setStoreId(store.storeId)}>수정</button></Link>
-        <button onClick={() => removeStoreHandler()}>X</button>
+        <Link className={StoreStyle.modifyLink} href={`/admin/store/${store.storeId}`}><button className={StoreStyle.modifyBtn} onClick={() => setStoreId(store.storeId)}>수정</button></Link>
+        <button className={StoreStyle.delBtn} onClick={() => removeStoreHandler()}><CloseCircleFilled /></button>
       </td>
     </tr>
   );
