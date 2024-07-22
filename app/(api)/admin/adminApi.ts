@@ -43,13 +43,13 @@ const AdminApi = () => {
     console.log(result)
     return result.data;
   }
-  const getStoreList = async () => {
-    const result = await axiosWithAuth.get("/admin/store");
+  const getStoreList = async (page: number) => {
+    const result = await axiosWithAuth.get(`/admin/store?page=${page}`);
     console.log(result)
     return result.data;
   }
-  const getStoreReport = async () => {
-    const result = await axiosWithAuth.get("/report/store");
+  const getStoreReport = async (page: number) => {
+    const result = await axiosWithAuth.get(`/report/store?page=${page}`);
     console.log(result)
     return result.data;
   }

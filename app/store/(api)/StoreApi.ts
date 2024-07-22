@@ -23,7 +23,7 @@ const useStoreApi = () => {
   }
 
   const getStoreReview = async (storeId: number, { pageNumber }: { pageNumber: unknown }) => {
-    const result = await axiosWithAuth.get(`/review/store/${storeId}?pageNumber=${pageNumber}`)
+    const result = await axiosWithAuth.get(`/review/store/${storeId}?page=${pageNumber}`)
     return result.data
   }
 

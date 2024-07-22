@@ -2,20 +2,20 @@
 
 import { useEffect, useState } from "react";
 import adminApi from "@/app/(api)/admin/adminApi";
-import UserStyle from "@/app/admin/user/userList.module.scss";
+import StoreReport from "@/app/admin/store/report/storeReport.module.scss";
 import { adminReportStore } from "@/app/type";
 
 const ReportStore = ({ store }: { store: adminReportStore }) => {
 
   return (
-    <tr className={UserStyle.trStyle}>
-      <td className={UserStyle.Unikname}>
+    <tr className={StoreReport.trStyle}>
+      <td className={StoreReport.Unikname}>
         {/* {reportContent[0]?.nickname} */}
         {store.nickName}
       </td>
-      <td className={UserStyle.email}>{store.targetContent}</td>
-      <td className={UserStyle.date}>{store.reportReason}</td>
-      <td>{store.createdAt}<button className={UserStyle.UBtnStyle}>삭제</button></td>
+      <td className={StoreReport.email}>{store.targetContent}</td>
+      <td className={StoreReport.date}>{store.reportReason}</td>
+      <td>{store.createdAt}<button className={StoreReport.UBtnStyle}>삭제</button></td>
 
     </tr>
   );
