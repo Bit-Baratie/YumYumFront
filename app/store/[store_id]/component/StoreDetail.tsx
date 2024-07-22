@@ -127,7 +127,7 @@ const StoreDetail = () => {
           <div className="storeHashTag">
             {storeDetail[0].hashtagList?.map((tag, index) => (
               <div key={index} className="hashTag">
-                {tag}
+                #{tag}
               </div>
             ))}
           </div>
