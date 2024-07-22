@@ -1,0 +1,75 @@
+.commentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+
+.profile-img{
+  width: 30px;
+  height: 30px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.right{
+  margin-left: 15px;
+  text-align: left;
+  line-height: 26px;
+}
+
+// hr {
+//   width: 90%;
+//   margin: 0 auto; 
+// }
+
+.dec,
+.mod,
+.del {
+  // background-image: url("../../public/asset/image/siren.svg");
+
+  background-size: cover;
+
+  border: none;
+  background-color: white;
+  color: red;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.dec{
+  background-image: url("../../../public/asset/image/siren.png");
+  width: 25px;
+  height:25px;
+}
+
+.mod {
+  background-image: url("../../../public/asset/image/pencil.png");
+  width: 20px;
+  height:20px;
+}
+
+.del {
+  background-image: url("../../../public/asset/image/x-mark.png");
+  width: 20px;
+  height:20px;
+}
+// 
+// 
+.plus {
+  margin-bottom: 50px;
+  font-size: 20px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
