@@ -70,8 +70,8 @@ export interface getStoreListType {
   storeId: number;
   name: string;
   address: string;
-  totalFavoriteCount: number;
-  totalReviewCount: number;
+  favoriteCount: number;
+  reviewCount: number;
   categoryName: string;
   views: number;
   imageUrl: string;

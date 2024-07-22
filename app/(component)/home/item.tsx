@@ -19,7 +19,7 @@ const Item = ({ item }: { item: getStoreListType }) => {
 
         <div className={ItemStyle.iconText}>
           <HeartFilled className={ItemStyle.icon} />
-          <span>{item.totalFavoriteCount}</span>
+          <span>{item.favoriteCount}</span>
         </div>
       </div>
     </Link>
