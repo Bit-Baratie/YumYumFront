@@ -218,6 +218,16 @@
     width: 100%;
     height: 80px;
     align-items: center;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    
+    input{
+      // width: 250px;
+      height: 30px;
+      border-radius: 10px;
+      border: 1px solid #C8C8C8;
+      background-color: #F2F2F2;
+    }
   }
 }
 .menuPrice {
@@ -260,7 +270,7 @@
 }
 .registerMenu {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
   margin-right: 40px;
   padding: 0px;
