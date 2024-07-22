@@ -3,7 +3,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface userInfoType {
   memberId: number;
-  profileUrl: string;
+  imageUrl: string;
   nickName: string;
   phoneNumber: string;
 }
@@ -26,7 +26,7 @@ interface userActions {
 }
 
 const defaultToken: tokenType = {atk: '', rtk: ''}
-const defaultUserInfo: userInfoType = { memberId: 0, profileUrl: '', nickName: '', phoneNumber: '' }
+const defaultUserInfo: userInfoType = { memberId: 0, imageUrl: '', nickName: '', phoneNumber: '' }
 
 const UserStore = create(
   persist<userState & userActions>(

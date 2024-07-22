@@ -43,7 +43,7 @@ const CommentList = () => {
     <>
       <div className="comment">
       <div className="comment-write">
-        <CustomImage style='profile-img' src={userInfo.profileUrl} alt="프로필이미지" width={40} height={40} />        
+        <CustomImage style='profile-img' src={userInfo.imageUrl} alt="프로필이미지" width={40} height={40} />        
         <input type="text" value={content} onChange={(e) => contentHandler(e)} placeholder="댓글 달기" className="write"></input>
         <button onClick={() => createReplyHandler(Number(params.review_id))}>작성</button>
       </div>
