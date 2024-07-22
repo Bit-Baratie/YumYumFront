@@ -59,51 +59,49 @@ const TestMap = ({
     }
 
     try {
-      if (storeInfo?.length !== 0) {
-        storeInfo?.map((store: getStoreType) => {
-          const contentString = [
-            "<div class='infowindow-content'>",
-            `   <h3>${store.name}</h3>`,
-            `   <div>★${store.avgGrade}(${store.totalReviewCount})&nbsp;♥️${store.totalFavoriteCount}</div>`,
-            `   <p>${store.address}<br />`,
-            `   <div>${store.categoryList ? store.categoryList : ""}</div></p>`,
-            "</div>",
-          ].join("");
+      storeInfo?.map((store: getStoreType) => {
+        const contentString = [
+          "<div class='infowindow-content'>",
+          `   <h3>${store.name}</h3>`,
+          `   <div>★${store.avgGrade}(${store.totalReviewCount})&nbsp;♥️${store.totalFavoriteCount}</div>`,
+          `   <p>${store.address}<br />`,
+          `   <div>${store.categoryList ? store.categoryList : ""}</div></p>`,
+          "</div>",
+        ].join("");
 
-          const infowindow = new naver.maps.InfoWindow({
-            content: contentString,
-            maxWidth: 300,
-            color: "white",
-            backgroundColor: "#FFFaEF",
-            borderWidth: 0,
-            anchorColor: "#ffd786",
-            anchorSkew: true,
+        const infowindow = new naver.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 300,
+          color: "white",
+          backgroundColor: "#FFFaEF",
+          borderWidth: 0,
+          anchorColor: "#ffd786",
+          anchorSkew: true,
+        });
+
+        if (map) {
+          let marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(store.latitude, store.longitude),
+            map: map,
+            title: store.name,
+            // icon: {
+            //   url: '/asset/image/defaultImage.png',
+            //   size: new naver.maps.Size(100, 100),
+            //   origin: new naver.maps.Point(0, 0),
+            //   anchor: new naver.maps.Point(25, 26)
+            // }
+          });
+          naver.maps.Event.addListener(marker, "click", function () {
+            if (infowindow.getMap()) {
+              infowindow.close();
+            } else {
+              infowindow.open(map!, marker);
+            }
           });
 
-          if (map) {
-            let marker = new naver.maps.Marker({
-              position: new naver.maps.LatLng(store.latitude, store.longitude),
-              map: map,
-              title: store.name,
-              // icon: {
-              //   url: '/asset/image/defaultImage.png',
-              //   size: new naver.maps.Size(100, 100),
-              //   origin: new naver.maps.Point(0, 0),
-              //   anchor: new naver.maps.Point(25, 26)
-              // }
-            });
-
-            naver.maps.Event.addListener(infowindow, 'click', function () {
-              router.push(`/store/${store.storeId}`)
-            });
-
-
-            infowindow.open(map!, marker);
-          }
-        });
-      } else {
-        <div>데이터</div>
-      }
+          infowindow.open(map!, marker);
+        }
+      });
     } catch (err) {
       console.error(err);
       router.refresh();
