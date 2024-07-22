@@ -19,8 +19,6 @@ const Review = () => {
     target: bottomRef,
     onIntersect
   });
-
-  console.log(data)
   
   return (
     <>
