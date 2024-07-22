@@ -32,7 +32,7 @@ const useLogin = () => {
       setUserInfo({
         memberId: res.memberId,
         nickName: res.nickname,
-        profileUrl: res.profileUrl,
+        imageUrl: res.imageUrl,
         phoneNumber: res.phoneNumber
       });
       setToken({
