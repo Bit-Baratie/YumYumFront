@@ -6,7 +6,6 @@ import StoreReport from "@/app/admin/store/report/storeReport.module.scss";
 import { adminReportStore } from "@/app/type";
 
 const ReportStore = ({ store }: { store: adminReportStore }) => {
-
   return (
     <tr className={StoreReport.trStyle}>
       <td className={StoreReport.Unikname}>
@@ -15,8 +14,10 @@ const ReportStore = ({ store }: { store: adminReportStore }) => {
       </td>
       <td className={StoreReport.email}>{store.targetContent}</td>
       <td className={StoreReport.date}>{store.reportReason}</td>
-      <td>{store.createdAt}<button className={StoreReport.UBtnStyle}>삭제</button></td>
-
+      <td>
+        {store.createdAt}
+        {/* <button className={StoreReport.UBtnStyle}>삭제</button> */}
+      </td>
     </tr>
   );
 };
