@@ -14,7 +14,7 @@ const Item = ({ item }: { item: getStoreListType }) => {
       <div className={ItemStyle.iconWrapper}>
         <div className={ItemStyle.iconText}>
           <StarFilled className={ItemStyle.icon} />
-          <span>{item.avgGrade}</span>
+          <span>{item.avgGrade}({item.reviewCount})</span>
         </div>
 
         <div className={ItemStyle.iconText}>
