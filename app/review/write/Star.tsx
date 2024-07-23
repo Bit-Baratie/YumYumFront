@@ -1,4 +1,4 @@
-import StarStyle from "./starStyle.module.scss";
+import StarStyle from "@/app/review/write/starStyle.module.scss";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 
 const Star = ({ rating, handleStarClick }: any) => {
@@ -13,7 +13,7 @@ const Star = ({ rating, handleStarClick }: any) => {
             onClick={() => handleStarClick(index)}
           >
             {isFilled ? (
-              <StarFilled className={StarStyle.StarFilled}/>
+              <StarFilled className={StarStyle.StarFilled} />
             ) : (
               <StarOutlined className={StarStyle.StarOutlined} />
             )}
