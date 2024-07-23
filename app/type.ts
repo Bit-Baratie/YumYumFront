@@ -142,6 +142,8 @@ export interface getReviewType {
   address: string;
   content: string;
   imageList: string[];
+  likeStatus: boolean;
+  replyCount: number;
 }
 
 // 리뷰 수정 타입

@@ -32,7 +32,7 @@ const DashboardReview = ({ item }: { item: getReviewType }) => {
             &nbsp;&nbsp;
             <span>
               <Reply width="25" height="25" />
-              {item?.totalReviewCount}
+              {item?.replyCount}
             </span>
           </div>
         </div>
