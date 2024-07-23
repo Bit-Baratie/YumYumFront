@@ -72,8 +72,17 @@ const useLogin = () => {
   }
 
   const logout = () => {
+    Swal.fire({
+      title: '로그아웃 되었습니다',
+      icon: 'success',
+      timer: 1500,
+      showConfirmButton: false,
+      width: 400,
+    });
+
     deleteUserInfo();
     deleteToken();
+
     if (pathname === '/home') {
       router.refresh();
     } else {

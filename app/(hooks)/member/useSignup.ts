@@ -3,6 +3,7 @@ import { useCallback, useRef, useState } from "react";
 import { postSignupInfo } from "../../(api)/member/signupApi";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const useSignup = () => {
   const [email, setEmail] = useState<string>('');
@@ -18,6 +19,14 @@ const useSignup = () => {
   const signup = useMutation({
     mutationFn: (formData: FormData) => postSignupInfo(formData),
     onSuccess: () => {
+      Swal.fire({
+        title: '회원가입 성공',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+        width: 400,
+      });
+
       router.push('/member/login');
     },
     onError: (err) => {
