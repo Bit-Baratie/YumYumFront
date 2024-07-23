@@ -75,7 +75,6 @@ const useReview = () => {
     const formData = new FormData();
     image.forEach((img) => formData.append('files', img));
 
-    console.log(formData.getAll('files'))
     const reviewData = {
       storeId: storeId,
       content: content,
