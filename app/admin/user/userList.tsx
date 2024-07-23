@@ -1,13 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import adminApi from "@/app/(api)/admin/adminApi";
-import UserStyle from "@/app/admin/user/userList.module.scss";
-import useMember from "@/app/(hooks)/member/useMember";
+import { useState } from "react";
 import Swal from "sweetalert2";
-import router from "next/navigation";
-import useAdmin from "@/app/(hooks)/admin/useAdmin";
 import { useRouter } from "next/navigation";
+import useAdmin from "@/app/(hooks)/admin/useAdmin";
+import UserStyle from "@/app/admin/user/userList.module.scss";
 
 interface UserData {
   memberId: number;
@@ -20,41 +17,35 @@ interface UserData {
 const UserList = ({ userData }: { userData: UserData }) => {
   const [page, setPage] = useState(1);
   const { removeUser } = useAdmin();
-
   const router = useRouter();
 
   const handlePageChange = (page: number) => {
     setPage(page);
   };
 
-  const WithdrawalUSer = () => {
+  const WithdrawalUser = () => {
     Swal.fire({
       title: "회원을 삭제하시겠습니까?",
-      text: "삭제 버튼 선택 시 회원은 삭제 되며 복구되지 않습니다.",
+      text: "삭제 버튼 선택 시 회원은 삭제되며 복구되지 않습니다.",
       showCancelButton: true,
       confirmButtonText: "삭제",
       icon: "warning",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        removeUser(userData?.memberId);
-        Swal.fire("삭제가 완료되었습니다", "", "success");
-        router.push("/admin/user");
+        try {
+          const response = await removeUser(userData?.memberId);
+          if (response?.success) {
+            Swal.fire("삭제가 완료되었습니다", "", "success");
+            router.push("/admin/user");
+          } else {
+            Swal.fire("삭제에 실패했습니다", "다시 시도해 주세요", "error");
+          }
+        } catch (error) {
+          Swal.fire("삭제에 실패했습니다", "다시 시도해 주세요", "error");
+        }
       }
     });
   };
-
-  // const { removeMember } = useMember();
-  // const [reportContent, setReportContent] = useState();
-  // const { getUserReport } = adminApi();
-
-  // const fetchUserReport = async () => {
-  //   const result = await getUserReport();
-  //   setReportContent(result.content);
-  // };
-
-  // useEffect(() => {
-  //   fetchUserReport();
-  // }, []);
 
   return (
     <>
@@ -64,14 +55,13 @@ const UserList = ({ userData }: { userData: UserData }) => {
           <td className={UserStyle.email}>{userData.email}</td>
           <td className={UserStyle.userNumbe}>{userData.phoneNumber}</td>
           <td className={UserStyle.date}>
-            {userData.isDeleted}
-            상태{" "}
+            {userData.isDeleted ? "탈퇴" : "활성화"}
             <button
               className={UserStyle.UBtnStyle}
-              onClick={() => WithdrawalUSer()}
+              onClick={() => WithdrawalUser()}
             >
               회원탈퇴
-            </button>{" "}
+            </button>
           </td>
         </tr>
       )}
@@ -80,6 +70,3 @@ const UserList = ({ userData }: { userData: UserData }) => {
 };
 
 export default UserList;
-function removeUser(reviewId: number) {
-  throw new Error("Function not implemented.");
-}
