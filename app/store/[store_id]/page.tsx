@@ -3,7 +3,6 @@ import "@/app/store/[store_id]/storeDetailMap.scss";
 import StoreDetail from "@/app/store/[store_id]/component/StoreDetail";
 import ReviewItem from "@/app/(component)/review/reviewItem";
 import { getReviewType } from "@/app/type";
-import useReview from "@/app/(hooks)/review/useReview";
 import Link from "next/link";
 import StoreApi from "../(api)/StoreApi";
 import { useInfiniteQuery } from "@tanstack/react-query";
