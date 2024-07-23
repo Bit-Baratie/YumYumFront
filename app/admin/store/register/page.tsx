@@ -61,7 +61,7 @@ const StoreRegister = () => {
             />
             <img
               className={storeRegister.MainImage}
-              alt="main1"
+              // alt="main1"
               src={preview[0]}
               onClick={() => removeImg(0)}
             ></img>
@@ -69,25 +69,25 @@ const StoreRegister = () => {
               <img
                 src={preview[1]}
                 className={storeRegister.subImage}
-                alt="sub1"
+                // alt="sub1"
                 onClick={() => removeImg(1)}
               />
               <img
                 src={preview[2]}
                 className={storeRegister.subImage}
-                alt="sub2"
+                // alt="sub2"
                 onClick={() => removeImg(2)}
               />
               <img
                 src={preview[3]}
                 className={storeRegister.subImage}
-                alt="sub3"
+                // alt="sub3"
                 onClick={() => removeImg(3)}
               />
               <img
                 src={preview[4]}
                 className={storeRegister.subImage}
-                alt="sub4"
+                // alt="sub4"
                 onClick={() => removeImg(4)}
               />
             </div>
@@ -148,15 +148,15 @@ const StoreRegister = () => {
                   className={storeRegister.inputInfo}
                   onChange={(e) => inputHashTagHandler(e)}
                 />
-                <button
-                  className={storeRegister.hashTagBtn}
-                  type="submit"
-                  onClick={storeHashTagHandler}
-                >
-                  +
-                </button>
               </div>
             </div>
+            <button
+              className={storeRegister.hashTagBtn}
+              type="submit"
+              onClick={storeHashTagHandler}
+            >
+              +
+            </button>
             {/* 입력한 해시태그 목록 */}
             <div className={storeRegister.hashTagList}>
               {storeHashTag.map((hashTag, index) => (
@@ -201,7 +201,9 @@ const StoreRegister = () => {
             <div className={storeRegister.registerMenu}>
               <div className={storeRegister.menu}>
                 {storeMenuList.map((menu, index) => (
-                  <div key={index}>{menu.name}</div>
+                  <div className={storeRegister.createmenu} key={index}>
+                    {menu.name}
+                  </div>
                 ))}
               </div>
               <div className={storeRegister.price}>

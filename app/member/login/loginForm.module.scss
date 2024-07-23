@@ -31,24 +31,37 @@
   .text {
     margin-top: 20px;
     color: #808080;
+    letter-spacing: 5px;
   }
 
   .link {
     margin-bottom: 20px;
     color: white;
     -webkit-text-stroke: 2px rgba(255,255,255,0.5);
+    letter-spacing: 13px;
   }
 
-  button {
+
+button {
     width: 200px;
     height: 50px;
     margin: 10px 0;
-    background-color: rgba(255,255,255,0.2);
-    border: 3px solid rgba(255,255,255,0.8);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.8);
     border-radius: 20px;
     font-size: 25px;
     color: #ffffff;
+    letter-spacing: 10px;
+    // transition: background-color 0.3s, color 0.3s, transform 0.3s; /* 애니메이션 추가 */
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #FFC657;
+      transform: scale(1.05); 
+      transition: background-color 0.3s, color 0.3s, transform 0.3s; 
+    }
   }
+
 }
 
 .span {
