@@ -17,8 +17,10 @@ const useSearch = () => {
     setKeyword(e.target.value);
   }
 
-  const keywordSearch = () => {
-    router.push(`/store?keyword=${keyword}`);
+  const keywordSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      router.push(`/store?keyword=${keyword}`);
+    }
   }
 
   return {

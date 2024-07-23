@@ -53,7 +53,7 @@ const Header = () => {
           {token.atk !== '' && <li onClick={logout} onMouseEnter={() => enter(5)} onMouseLeave={() => out(5)}><Logout width='25' height='25' /><span>로그아웃</span></li>}
         </ul>
       </header>
-      <div className={header.input}><input type='text' placeholder='지역, 음식 또는 식당명 입력' value={keyword} onChange={(e) => inputHandler(e)} /><Search onClick={keywordSearch} /></div>
+      <div className={header.input}><input type='text' placeholder='지역, 음식 또는 식당명 입력' value={keyword} onChange={(e) => inputHandler(e)} onKeyDown={(e) => keywordSearch(e)} /><Search onClick={keywordSearch} /></div>
     </div>
   );
 }
