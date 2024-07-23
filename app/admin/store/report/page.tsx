@@ -9,6 +9,7 @@ import UserList from "@/app/admin/store/report/reportStore";
 import { adminReportStore } from "@/app/type";
 import Loading from "../../(component)/Loading";
 import Pagination from "react-js-pagination";
+import "@/app/admin/(component)/Paging.scss"
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const ReportPage = () => {
