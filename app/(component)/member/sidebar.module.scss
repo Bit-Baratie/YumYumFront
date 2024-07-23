@@ -1,3 +1,11 @@
+$mobile: 767px;
+
+@mixin respond($size) {
+    @media screen and (max-width:$size) {
+        @content;
+    }
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -8,6 +16,10 @@
   margin-top: 20px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
+
+  @include respond($mobile) {
+    display: none;
+  }
 
   li {
     display: flex;
