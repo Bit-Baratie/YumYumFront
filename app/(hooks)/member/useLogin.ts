@@ -4,6 +4,8 @@ import postLoginInfo from "../../(api)/member/loginApi";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import userStore from "@/app/(hooks)/userStore";
 import Swal from "sweetalert2";
+import { useMutation } from "@tanstack/react-query";
+import { loginType } from "@/app/type";
 
 const useLogin = () => {
   const [email, setEmail] = useState<string>('');
@@ -11,24 +13,10 @@ const useLogin = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { userInfo, setToken, setUserInfo, deleteUserInfo, deleteToken } = userStore();
-
-  const emailHanler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  }
-
-  const passwordHanler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  }
-
-  const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const info = {
-      email: email,
-      password: password,
-    }
-
-    const res: any = await postLoginInfo(info);
-    if (res?.atk) {
+  
+  const login = useMutation({
+    mutationFn: (loginInfo: loginType) => postLoginInfo(loginInfo),
+    onSuccess: (res) => {
       setUserInfo({
         memberId: res.memberId,
         nickName: res.nickname,
@@ -39,6 +27,7 @@ const useLogin = () => {
         atk: res.atk,
         rtk: res.rtk
       });
+
       Swal.fire({
         title: '로그인 성공',
         icon: 'success',
@@ -52,9 +41,34 @@ const useLogin = () => {
       }else {
         router.push('/');
       }
-    } else {
-      alert('이메일 또는 비밀번호를 확인해주세요');
+    },
+    onError: () => {
+      Swal.fire({
+        title: '로그인 실패',
+        icon: 'warning',
+        timer: 1500,
+        showConfirmButton: false,
+        width: 400,
+      });
     }
+  })
+
+  const emailHanler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  }
+
+  const passwordHanler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  }
+
+  const loginHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const info = {
+      email: email,
+      password: password,
+    }
+
+    login.mutate(info);
   }
 
   const logout = () => {
@@ -70,7 +84,7 @@ const useLogin = () => {
   return {
     email, password,
     emailHanler, passwordHanler,
-    login, logout,
+    loginHandler, logout,
     userInfo
   }
 }

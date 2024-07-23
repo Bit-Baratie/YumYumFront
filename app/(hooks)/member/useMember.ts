@@ -77,7 +77,7 @@ const useMember = () => {
       Swal.fire("탈퇴가 완료되었습니다", "", "success");
       router.push('/');
     },
-    onError: (err) => 
+    onError: () => 
       alert('잠시후 다시 시도해주세요')
   });
 

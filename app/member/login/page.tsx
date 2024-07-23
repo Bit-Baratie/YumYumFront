@@ -8,7 +8,7 @@ import Kakao from '@/public/asset/image/Kakao.svg';
 import { NaverLogin } from '@/app/(component)/auth/social';
 
 const Login = () => {
-  const {email, password, emailHanler, passwordHanler, login} = useLogin();
+  const {email, password, emailHanler, passwordHanler, loginHandler} = useLogin();
 
   return (
     <div className={loginStyle.container}>
@@ -19,7 +19,7 @@ const Login = () => {
         <input type="password" placeholder='비밀번호' value={password} onChange={(e) => passwordHanler(e)}/>
         <div className={loginStyle.text}>Don&apos;t have an account?</div>
         <Link href={'/member/signup'}><div className={loginStyle.link}>Sign up!</div></Link>
-        <button onClick={(e) => login(e)}>LOGIN</button>
+        <button onClick={(e) => loginHandler(e)}>LOGIN</button>
       </form>
 
       <span className={loginStyle.span}><hr className={loginStyle.hr}/>&nbsp; S N S &nbsp; L O G I N &nbsp;<hr className={loginStyle.hr}/></span>
