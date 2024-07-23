@@ -2,11 +2,10 @@
 import { useState, useEffect } from "react";
 import Bookmarks from "../../../public/asset/image/bookmark.svg";
 import useStore from "@/app/store/(hooks)/useStore";
-import "./storeList.scss";
+import storeScss from "./storeList.module.scss";
 import Logo from "@/public/asset/image/logo.svg";
 import Link from "next/link";
 import useStoreApi from "@/app/store/(api)/StoreApi";
-import StoreDetail from "../[store_id]/component/StoreDetail";
 import { favorite, getStoreType } from "@/app/type";
 import Image from "next/image";
 import { EyeFilled, StarFilled } from "@ant-design/icons";
@@ -24,12 +23,12 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
   }, []);
 
   return (
-    <div id="searchStoreList">
-      <div className="storeId">{store.storeId}</div>
-      <Link href={`/store/${store.storeId}`}>
+    <div id={storeScss.searchStoreList}>
+      <div className={storeScss.storeId}>{store.storeId}</div>
+      <Link href={`/store/${store.storeId}`} style={{ display: "flex" }}>
         {store.imageUrl ? (
           <>
-            <div className="storeImage">
+            <div className={storeScss.storeImage}>
               <Image
                 src={store.imageUrl}
                 width={200}
@@ -43,10 +42,10 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
             <Logo />
           </>
         )}
-        <div className="storeInfo">
-          <div className="storeName">{store.name}</div>
-          <div className="gradeLikeViews">
-            <div id="grade">
+        <div className={storeScss.storeInfo}>
+          <div className={storeScss.storeName}>{store.name}</div>
+          <div className={storeScss.gradeLikeViews}>
+            <div id={storeScss.grade}>
               <StarFilled
                 style={{
                   width: "15px",
@@ -55,7 +54,7 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
               />
               &nbsp;{store.avgGrade}&nbsp;({store.totalReviewCount})
             </div>
-            <div id="like">
+            <div id={storeScss.like}>
               <Mark
                 style={{
                   width: "15px",
@@ -64,7 +63,7 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
               />
               &nbsp;{store.totalFavoriteCount}
             </div>
-            <div id="views">
+            <div id={storeScss.views}>
               <EyeFilled
                 style={{
                   width: "15px",
@@ -74,22 +73,22 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
               &nbsp;{store.views}
             </div>
           </div>
-          <div className="categoryList">
-            <div className="category">{store.categoryList}</div>
+          <div className={storeScss.categoryList}>
+            <div className={storeScss.category}>{store.categoryList}</div>
           </div>
-          <div className="storeAddress">
+          <div className={storeScss.storeAddress}>
             <div>{store.address}</div>
           </div>
-          <div className="hashTagList">
+          <div className={storeScss.hashTagList}>
             {store.hashtagList?.map((tag, index) => (
-              <div key={index} className="hashTag">
+              <div key={index} className={storeScss.hashTag}>
                 {tag}
               </div>
             ))}
           </div>
         </div>
       </Link>
-      <div className="favorite">
+      <div className={storeScss.favorite}>
         <Bookmarks
           style={{
             fill: favorite ? "#E2E2E2" : "#FFC657",

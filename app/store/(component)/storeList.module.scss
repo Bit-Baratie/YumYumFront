@@ -22,7 +22,7 @@
   position: relative;
 }
 
-#storeList {
+.storeList {
   margin-top: 40px;
   padding-left: 30px;
   width: 600px;
@@ -78,7 +78,6 @@
 .storeName {
   font-size: 20px;
   font-weight: bold;
-  // color: red;
 }
 
 .gradeLikeViews {
@@ -186,8 +185,4 @@
 
 .storeId {
   display: none;
-}
-
-a {
-  display: flex;
 }

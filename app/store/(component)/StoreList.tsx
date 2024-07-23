@@ -4,6 +4,8 @@ import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
 import useSearch from "@/app/(hooks)/common/useSearch";
 import { getStoreType, location } from "@/app/type";
+import storeScss from "./storeList.module.scss";
+
 
 const StoreList = ({ myLatLng }: { myLatLng: location }) => {
   // const { storeId, setStoreId } = useStore();
@@ -33,16 +35,16 @@ const StoreList = ({ myLatLng }: { myLatLng: location }) => {
   }, [data, setStoreList]);
   if (storeList?.length === 0) {
     return (
-      <div id="storeList">
-        <div id="searchStoreNumber">
+      <div className={storeScss.storeList}>
+        <div id={storeScss.searchStoreNumber}>
           <div>검색된 결과가 없습니다</div>
         </div>
-        <div id="noDataMessage">
-          <div id="noDataImage" />
-          <div id="noDataInfo">
-            <div className="noDataInfo" />
-            <div className="noDataInfo" />
-            <div className="noDataInfo" />
+        <div id={storeScss.noDataMessage}>
+          <div id={storeScss.noDataImage} />
+          <div id={storeScss.noDataInfo}>
+            <div className={storeScss.noDataInfo} />
+            <div className={storeScss.noDataInfo} />
+            <div className={storeScss.noDataInfo} />
           </div>
         </div>
       </div>
@@ -50,11 +52,11 @@ const StoreList = ({ myLatLng }: { myLatLng: location }) => {
   }
 
   return (
-    <div id="storeList">
-      <div id="searchStoreNumber">
+    <div className={storeScss.storeList}>
+      <div id={storeScss.searchStoreNumber}>
         <div><span>{storeList?.length}</span>건의 검색결과가 있습니다.</div>
       </div>
-      <div className="StoreListMap">
+      <div className={storeScss.StoreListMap}>
         {storeList?.map(store => (
           <StoreInfo
             key={store.storeId}

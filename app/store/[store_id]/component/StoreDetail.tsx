@@ -3,7 +3,7 @@ import useStoreApi from "@/app/store/(api)/StoreApi";
 import { useState, useEffect } from "react";
 import TestMap from "@/app/store/(component)/NaverMap";
 import Bookmarks from "@/public/asset/image/bookmark.svg";
-import "@/app/store/[store_id]/storeDetailPage.scss";
+import detailScss from "@/app/store/[store_id]/storeDetailPage.module.scss";
 import useStore from "@/app/store/(hooks)/useStore";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
@@ -23,6 +23,7 @@ import GoReview from "@/public/asset/image/review.svg";
 import Mark from "@/public/asset/image/mark.svg";
 import Loading from "@/app/admin/(component)/Loading";
 import NoImage from "@/public/asset/image/NoImage.svg";
+import { deflateRaw } from "zlib";
 
 const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
@@ -63,94 +64,94 @@ const StoreDetail = () => {
   }
 
   return (
-    <div className="container">
-      <div className="storeDetail">
-        <div className="storeId">{storeDetail[0]?.storeId}</div>
-        <div className="storeImageDetail">
+    <div className={detailScss.container}>
+      <div className={detailScss.storeDetail}>
+        <div className={detailScss.storeId}>{storeDetail[0]?.storeId}</div>
+        <div className={detailScss.storeImageDetail}>
           {/* <div className="MainImage">{storeList.imageList}</div> */}
           {storeDetail[0].imageList.length ? (
             <>
-              <img className="MainImage" src={storeDetail[0]?.imageList[0]} />
-              <div className="subImageList">
-                <img className="subImage" src={storeDetail[0]?.imageList[1]} />
+              <img className={detailScss.MainImage} src={storeDetail[0]?.imageList[0]} />
+              <div className={detailScss.subImageList}>
+                <img className={detailScss.subImage} src={storeDetail[0]?.imageList[1]} />
                 <img
-                  className="subImage"
-                  id="sub2"
+                  className={detailScss.subImage}
+                  id={detailScss.sub2}
                   src={storeDetail[0]?.imageList[2]}
                 />
-                <img className="subImage" src={storeDetail[0]?.imageList[3]} />
-                <img className="subImage" src={storeDetail[0]?.imageList[4]} />
+                <img className={detailScss.subImage} src={storeDetail[0]?.imageList[3]} />
+                <img className={detailScss.subImage} src={storeDetail[0]?.imageList[4]} />
               </div>
             </>
           ) : (
-            <div className="noStore">
+            <div className={detailScss.noStore}>
               <NoImage width={100} height={100} />
               매장에 등록된 사진이 없습니다.
             </div>
           )}
         </div>
-        <div className="storeInfoDetail">
-          <div className="storeNameDetail">
+        <div className={detailScss.storeInfoDetail}>
+          <div className={detailScss.storeNameDetail}>
             <span>{storeDetail[0]?.name}</span>
             <div>
-              <StarFilled className="custum-icon" />
-              <div className="smallText">
+              <StarFilled className={detailScss.customIcon} />
+              <div className={detailScss.smallText}>
                 {storeDetail[0]?.avgGrade}&nbsp;(
                 {storeDetail[0]?.totalReviewCount})
               </div>
             </div>
             <div>
-              <Mark className="custum-icon" />
-              <div className="smallText">
+              <Mark className={detailScss.customIcon} />
+              <div className={detailScss.smallText}>
                 {storeDetail[0]?.totalFavoriteCount}
               </div>
             </div>
             <div>
-              <EyeFilled className="custum-icon" />
-              <div className="smallText">{storeDetail[0]?.views}</div>
+              <EyeFilled className={detailScss.customIcon} />
+              <div className={detailScss.smallText}>{storeDetail[0]?.views}</div>
             </div>
           </div>
-          <div className="storeHour">
-            <div className="fix">영업시간</div>
-            <div className="fix2">{storeDetail[0]?.hours}</div>
+          <div className={detailScss.storeHour}>
+            <div className={detailScss.fix}>영업시간</div>
+            <div className={detailScss.fix2}>{storeDetail[0]?.hours}</div>
           </div>
-          <div className="storeAddress">
-            <div className="fix">주소</div>
-            <div className="fix2">{storeDetail[0]?.address}</div>
+          <div className={detailScss.storeAddress}>
+            <div className={detailScss.fix}>주소</div>
+            <div className={detailScss.fix2}>{storeDetail[0]?.address}</div>
           </div>
-          <div className="storeNumber">
-            <div className="fix">전화번호</div>
-            <div className="fix2">{storeDetail[0]?.calls}</div>
+          <div className={detailScss.storeNumber}>
+            <div className={detailScss.fix}>전화번호</div>
+            <div className={detailScss.fix2}>{storeDetail[0]?.calls}</div>
           </div>
         </div>
         {(storeDetail[0]?.hashtagList && (
-          <div className="storeHashTag">
+          <div className={detailScss.storeHashTag}>
             {storeDetail[0].hashtagList?.map((tag, index) => (
-              <div key={index} className="hashTag">
+              <div key={index} className={detailScss.hashTag}>
                 #{tag}
               </div>
             ))}
           </div>
         )) ||
           (!storeDetail[0]?.hashtagList && <div>Loading...</div>)}
-        <div id="navBtn">
+        <div id={detailScss.navBtn}>
           <Link
             href={`/review/write?storeId=${storeDetail[0]?.storeId}&storeName=${storeDetail[0]?.name}`}
           >
-            <SignatureFilled className="review-icon" />
+            <SignatureFilled className={detailScss.revieIcon} />
           </Link>
           <a
             target="_blank"
             href={`https://map.naver.com/p/search/${storeDetail[0]?.name}`}
           >
-            <Navi className="navi-icon" />
+            <Navi className={detailScss.naviIcon} />
           </a>
           <div
             onClick={() => {
               setModal(true);
             }}
           >
-            <AlertFilled className="siren-icon" />
+            <AlertFilled className={detailScss.sirenIcon} />
           </div>
         </div>
         {modal && (
@@ -162,9 +163,9 @@ const StoreDetail = () => {
             contentHandler={contentHandler}
           />
         )}
-        <div className="favorite">
+        <div className={detailScss.favorite}>
           <Bookmarks
-            className="bookmark"
+            className={detailScss.bookmark}
             style={{
               fill: favorite ? "#FFC657" : "#E2E2E2",
               width: "55px",
@@ -178,41 +179,41 @@ const StoreDetail = () => {
           />
         </div>
       </div>
-      <div className="DetailMap">
-        <div className="map">
+      <div className={detailScss.DetailMap}>
+        <div className={detailScss.map}>
           <TestMap storeInfo={storeDetail} myLatLng={null} />
         </div>
-        <div className="menu">
-          <div className="menuInfo">
+        <div className={detailScss.menu}>
+          <div className={detailScss.menuInfo}>
             <p>메뉴정보</p>
             <span onClick={() => setMenuStatus(true)}>더보기+</span>
           </div>
-          <div className="menuList">
+          <div className={detailScss.menuList}>
             <ul>
               {(menuStatus == true && (
                 <>
                   {storeDetail[0].menuList.map((menu) => (
                     <li key={menu.id}>
-                      <div className="menuLine">
-                        <span className="menuName">{menu.name}</span>
-                        <div className="line"></div>
-                        <span className="menuPrice">{menu.price}원</span>
+                      <div className={detailScss.menuLine}>
+                        <span className={detailScss.menuName}>{menu.name}</span>
+                        <div className={detailScss.line}></div>
+                        <span className={detailScss.menuPrice}>{menu.price}원</span>
                       </div>
                     </li>
                   ))}
                 </>
               )) ||
                 (menuStatus == false && (
-                  <div className="menuList">
+                  <div className={detailScss.menuList}>
                     <ul>
                       <>
                         {storeDetail[0].menuList.length > 0 ? (
                           <li>
-                            <span className="menuName">
+                            <span className={detailScss.menuName}>
                               {storeDetail[0]?.menuList[0].name}
                             </span>
-                            <div className="line">--------------------</div>
-                            <span className="menuPrice">
+                            <div className={detailScss.line}>--------------------</div>
+                            <span className={detailScss.menuPrice}>
                               {storeDetail[0]?.menuList[0].price}원
                             </span>
                           </li>
@@ -221,11 +222,11 @@ const StoreDetail = () => {
                         )}
                         {storeDetail[0].menuList.length > 1 ? (
                           <li>
-                            <span className="menuName">
+                            <span className={detailScss.menuName}>
                               {storeDetail[0]?.menuList[1].name}
                             </span>
-                            <div className="line">--------------------</div>
-                            <span className="menuPrice">
+                            <div className={detailScss.line}>--------------------</div>
+                            <span className={detailScss.menuPrice}>
                               {storeDetail[0]?.menuList[1].price}원
                             </span>
                           </li>
@@ -234,11 +235,11 @@ const StoreDetail = () => {
                         )}
                         {storeDetail[0].menuList.length > 2 ? (
                           <li>
-                            <span className="menuName">
+                            <span className={detailScss.menuName}>
                               {storeDetail[0]?.menuList[2].name}
                             </span>
-                            <div className="line">--------------------</div>
-                            <span className="menuPrice">
+                            <div className={detailScss.line}>--------------------</div>
+                            <span className={detailScss.menuPrice}>
                               {storeDetail[0]?.menuList[2].price}원
                             </span>
                           </li>
