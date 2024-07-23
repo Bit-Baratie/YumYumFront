@@ -15,12 +15,19 @@
 .esc {
   background-color: #FF6363;
   color: white;
+  font-size: 25px;
   width: 25px;
   height: 25px;
   border-radius: 100px;
   position: absolute;
   top: 5%;
   left: 5%;
+  .X{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 }
 
 .title {
@@ -46,9 +53,11 @@
 }
 
 .inputSet{
+  align-items: center;
   display: flex;
   margin: 10px;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .label {
@@ -70,7 +79,7 @@
   width: 150px;
   border: none;
   outline: none;
-  margin-left: 5px;
+  margin-left: 20px;
 }
 
 .submit {
@@ -78,7 +87,9 @@
   height: 40px;
   background-color: #ffd179;
   color: white;
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.25);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
   border: 3px solid rgba(255,255,255,0.5);
   border-radius: 30px;
+}
+.nameMod{
 }
