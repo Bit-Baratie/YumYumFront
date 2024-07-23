@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Header from "../../header";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "YumYum 맛집 상세 페이지",
