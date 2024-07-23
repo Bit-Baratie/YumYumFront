@@ -65,3 +65,11 @@ $yumyumColor: #FFC657;
     color: white;
   }
 }
+
+$mobile: 767px;
+
+@mixin respond($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
