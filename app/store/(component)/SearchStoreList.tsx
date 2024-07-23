@@ -6,6 +6,7 @@ import { getStoreType, location } from "@/app/type";
 import { useEffect, useState } from "react";
 import useStoreApi from "@/app/store/(api)/StoreApi";
 import useSearch from "@/app/(hooks)/common/useSearch";
+import storeScss from "@/app/store/(component)/storeList.module.scss"
 
 
 const SearchStoreList = () => {
@@ -52,8 +53,8 @@ const SearchStoreList = () => {
 
 
   return (
-    <div className="container">
-      <div className="content">
+    <div className={storeScss.container}>
+      <div className={storeScss.content}>
         {/* 지도 Api  */}
         {storeList.length !== 0 ?
           <TestMap storeInfo={storeList} myLatLng={myLatLng} />
