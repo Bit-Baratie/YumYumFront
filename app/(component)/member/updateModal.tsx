@@ -50,14 +50,26 @@ const UpdateModal = ({
           <div className={ModalStyle.X}>X</div>
         </div>
         <span className={ModalStyle.title}>프로필 수정</span>
-        <CustomImage
-          style={ModalStyle.img}
-          src={imageUrl}
-          width={100}
-          height={100}
-          alt="프로필"
-        />
-        <label htmlFor="input-file">Profile Image</label>
+
+        <label htmlFor="input-file" className={ModalStyle.labelWrapper}>
+          <CustomImage
+            style={ModalStyle.img}
+            src={imageUrl}
+            width={100}
+            height={100}
+            alt="프로필"
+          />
+          <div className={ModalStyle.imgMod}>
+            <Image
+              src={"/asset/image/pencil.png"}
+              width={35}
+              height={35}
+              alt="연필"
+              style={{ fill: "white" }}
+            />
+          </div>
+        </label>
+
         <input
           type="file"
           id="input-file"
@@ -76,12 +88,12 @@ const UpdateModal = ({
             onChange={(e) => nickNameHandler(e)}
           />
           <span>
-            <Image
+            {/* <Image
               src={"/asset/image/pencil.png"}
               width={15}
               height={15}
               alt="연필"
-            />
+            /> */}
           </span>
         </div>
 
@@ -96,12 +108,12 @@ const UpdateModal = ({
                 onChange={(e) => phoneHandler(e)}
               />
               <span>
-                <Image
+                {/* <Image
                   src={"/asset/image/pencil.png"}
                   width={15}
                   height={15}
                   alt="연필"
-                />
+                /> */}
               </span>
             </div>
           </div>
@@ -115,12 +127,12 @@ const UpdateModal = ({
                 onChange={(e) => passwordHanler(e)}
               />
               <span>
-                <Image
+                {/* <Image
                   src={"/asset/image/pencil.png"}
                   width={15}
                   height={15}
                   alt="연필"
-                />
+                /> */}
               </span>
             </div>
           </div>
@@ -134,12 +146,12 @@ const UpdateModal = ({
                 onChange={(e) => passwordCheckHanler(e)}
               />
               <span>
-                <Image
+                {/* <Image
                   src={"/asset/image/pencil.png"}
                   width={15}
                   height={15}
                   alt="연필"
-                />
+                /> */}
               </span>
             </div>
           </div>
