@@ -5,6 +5,8 @@ import { getReviewType } from "../../type";
 import useImage from "@/app/(hooks)/common/useImage";
 import CustomImage from "../common/customImage";
 import { StarFilled } from "@ant-design/icons";
+import LikeButton from "./likeButton";
+import Link from "next/link";
 
 const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
   return (
@@ -14,6 +16,9 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
         <span className={reviewStyle.addr}>{reviewItem?.address}</span>
       </div>
 
+      <div className={reviewStyle.content}>
+      <LikeButton reviewId={reviewItem?.reviewId} likeStatus={reviewItem?.likeStatus} />
+      <Link href={`/review/${reviewItem.reviewId}`}>
       <div className={reviewStyle.bottom}>
         {/* 프로필 */}
         <div className={reviewStyle.profile}>
@@ -36,7 +41,6 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
               {reviewItem?.avgGrade}
             </p>
           </div>
-          {/* <LikeButton reviewId={reviewItem?.reviewId} /> */}
         </div>
       </div>
       <div className={reviewStyle.reviewContent}>{reviewItem?.content}</div>
@@ -93,7 +97,10 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
           ""
         )}
       </div>
+      </Link>
+      </div>
     </div>
+  
   );
 };
 

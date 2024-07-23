@@ -72,13 +72,10 @@ const ReviewDetail = () => {
               </p>
             </div>
           </div>
-
-          <div className={DetailStyle.HeartPosition}>
-            <LikeButton
-              reviewId={reviewOne?.reviewId}
-              likeStatus={reviewOne?.likeStatus}
-            />
-          </div>
+          <LikeButton
+            reviewId={reviewOne?.reviewId}
+            likeStatus={reviewOne?.likeStatus}
+          />
         </div>
         <div className={DetailStyle.reviewContent}>{reviewOne?.content}</div>
         <div className={DetailStyle.reviewImage}>

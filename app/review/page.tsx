@@ -29,9 +29,7 @@ const Review = () => {
         {data?.pages.map((page) => (
           <div key={page.pageNumber}>
           {page.content.map((reviewItem:getReviewType) => (
-              <Link key={reviewItem.reviewId} href={`/review/${reviewItem.reviewId}`}>
-                <ReviewItem reviewItem={reviewItem} />
-              </Link>
+            <ReviewItem reviewItem={reviewItem} key={reviewItem.reviewId}/>
           ))}
           </div>
         ))}
