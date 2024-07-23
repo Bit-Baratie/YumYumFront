@@ -1,5 +1,4 @@
 "use client";
-import "@/app/store/[store_id]/storeDetailMap.scss";
 import StoreDetail from "@/app/store/[store_id]/component/StoreDetail";
 import ReviewItem from "@/app/(component)/review/reviewItem";
 import { getReviewType } from "@/app/type";
