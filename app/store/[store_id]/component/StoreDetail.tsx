@@ -5,12 +5,12 @@ import TestMap from "@/app/store/(component)/NaverMap";
 import Bookmarks from "@/public/asset/image/bookmark.svg";
 import detailScss from "@/app/store/[store_id]/storeDetailPage.module.scss";
 import useStore from "@/app/store/(hooks)/useStore";
-import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
 import ReportModal from "@/app/(component)/reportModal";
 import Link from "next/link";
 import { getStoreType, favorite } from "@/app/type";
 import useModal from "@/app/(hooks)/common/useModal";
+import detailMap from "@/app/store\/[store_id]/storeDetailMap.module.scss";
 import {
   EyeFilled,
   StarFilled,
@@ -179,41 +179,41 @@ const StoreDetail = () => {
           />
         </div>
       </div>
-      <div className={detailScss.DetailMap}>
-        <div className={detailScss.map}>
+      <div className={detailMap.DetailMap}>
+        <div className={detailMap.map}>
           <TestMap storeInfo={storeDetail} myLatLng={null} />
         </div>
-        <div className={detailScss.menu}>
-          <div className={detailScss.menuInfo}>
+        <div className={detailMap.menu}>
+          <div className={detailMap.menuInfo}>
             <p>메뉴정보</p>
             <span onClick={() => setMenuStatus(true)}>더보기+</span>
           </div>
-          <div className={detailScss.menuList}>
+          <div className={detailMap.menuList}>
             <ul>
               {(menuStatus == true && (
                 <>
                   {storeDetail[0].menuList.map((menu) => (
                     <li key={menu.id}>
-                      <div className={detailScss.menuLine}>
-                        <span className={detailScss.menuName}>{menu.name}</span>
-                        <div className={detailScss.line}></div>
-                        <span className={detailScss.menuPrice}>{menu.price}원</span>
+                      <div className={detailMap.menuLine}>
+                        <span className={detailMap.menuName}>{menu.name}</span>
+                        <div className={detailMap.line}></div>
+                        <span className={detailMap.menuPrice}>{menu.price}원</span>
                       </div>
                     </li>
                   ))}
                 </>
               )) ||
                 (menuStatus == false && (
-                  <div className={detailScss.menuList}>
+                  <div className={detailMap.menuList}>
                     <ul>
                       <>
                         {storeDetail[0].menuList.length > 0 ? (
                           <li>
-                            <span className={detailScss.menuName}>
+                            <span className={detailMap.menuName}>
                               {storeDetail[0]?.menuList[0].name}
                             </span>
-                            <div className={detailScss.line}>--------------------</div>
-                            <span className={detailScss.menuPrice}>
+                            <div className={detailMap.line}>--------------------</div>
+                            <span className={detailMap.menuPrice}>
                               {storeDetail[0]?.menuList[0].price}원
                             </span>
                           </li>
@@ -222,11 +222,11 @@ const StoreDetail = () => {
                         )}
                         {storeDetail[0].menuList.length > 1 ? (
                           <li>
-                            <span className={detailScss.menuName}>
+                            <span className={detailMap.menuName}>
                               {storeDetail[0]?.menuList[1].name}
                             </span>
-                            <div className={detailScss.line}>--------------------</div>
-                            <span className={detailScss.menuPrice}>
+                            <div className={detailMap.line}>--------------------</div>
+                            <span className={detailMap.menuPrice}>
                               {storeDetail[0]?.menuList[1].price}원
                             </span>
                           </li>
@@ -235,11 +235,11 @@ const StoreDetail = () => {
                         )}
                         {storeDetail[0].menuList.length > 2 ? (
                           <li>
-                            <span className={detailScss.menuName}>
+                            <span className={detailMap.menuName}>
                               {storeDetail[0]?.menuList[2].name}
                             </span>
-                            <div className={detailScss.line}>--------------------</div>
-                            <span className={detailScss.menuPrice}>
+                            <div className={detailMap.line}>--------------------</div>
+                            <span className={detailMap.menuPrice}>
                               {storeDetail[0]?.menuList[2].price}원
                             </span>
                           </li>

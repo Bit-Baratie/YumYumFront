@@ -84,7 +84,6 @@
   span {
     font-size: 40px;
     padding-right: 20px;
-    // margin-right: 20px;
   }
 }
 .storeHashTag {
@@ -117,10 +116,12 @@
   justify-content: space-evenly;
   position: absolute;
   bottom: 0;
-  // border: 1px solid black;
   box-shadow: 0 0 0 1px #d0d0d0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  a {
+    cursor: pointer;
+  }
 }
 .favorite {
   position: absolute;
@@ -128,8 +129,8 @@
   top: 47%;
   width: 55px;
   height: 55px;
+  cursor: pointer;
 }
-
 .customIcon {
   width: 30px;
   height: 30px;
@@ -160,6 +161,7 @@
 .revieIcon,
 .naviIcon,
 .sirenIcon {
+  cursor: pointer;
   width: 40px;
   height: 40px;
   font-size: 40px;
