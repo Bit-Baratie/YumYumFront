@@ -59,7 +59,7 @@ $yumyumColor: #FFC657;
 }
 
 @mixin hover {
-  :hover{
+  &:hover{
     cursor: pointer;
     background-color: $yumyumColor;
     color: white;
