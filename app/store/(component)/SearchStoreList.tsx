@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 import useStoreApi from "@/app/store/(api)/StoreApi";
 import useSearch from "@/app/(hooks)/common/useSearch";
 import storeScss from "@/app/store/(component)/storeList.module.scss"
+import Search from "@/public/asset/image/search.svg";
 
 
 const SearchStoreList = () => {
+  const { keyword, inputHandler, keywordSearch } = useSearch();
   const { getStoreInfo } = useStoreApi();
   const { data } = useSearch();
   const [storeList, setStoreList] = useState<Array<getStoreType>>([]);
@@ -55,11 +57,15 @@ const SearchStoreList = () => {
   return (
     <div className={storeScss.container}>
       <div className={storeScss.content}>
+
         {/* 지도 Api  */}
         {storeList.length !== 0 ?
-          <TestMap storeInfo={storeList} myLatLng={myLatLng} />
-          : <div style={{ width: "650px", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "30px" }}>지도를 불러오는 중입니다...</div>}
+          <div className={storeScss.mapScss}>
+            <TestMap storeInfo={storeList} myLatLng={myLatLng} />
+          </div>
+          : <div className={storeScss.mapLoadMsg}>지도를 불러오는 중입니다...</div>}
         {/* 가게 리스트 */}
+        <div className={storeScss.input}><input type='text' placeholder='지역, 음식 또는 식당명 입력' value={keyword} onChange={(e) => inputHandler(e)} onKeyDown={(e) => keywordSearch(e)} /><Search onClick={keywordSearch} /></div>
         <StoreList myLatLng={myLatLng} />
       </div>
     </div>

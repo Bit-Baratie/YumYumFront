@@ -1,13 +1,68 @@
+@import "@/app/common.scss";
+
 .container {
   width: 100%;
   height: 150vh;
-  display: flex;
+  // display: flex;
   justify-content: center;
+  font-family: "appleB";
+  @include respond($mobile) {
+    height: auto;
+  }
+}
+.mapScss {
+  @include respond($mobile) {
+    width: 375px;
+    height: 375px;
+    @include rowCenter();
+  }
+}
+.mapLoadMsg {
+  width: 650px;
+  height: 650px;
+  @include rowCenter();
+  font-size: 30px;
+  @include respond($mobile) {
+    font-size: 15px;
+    width: 375px;
+    height: 375px;
+    @include rowCenter();
+  }
+}
+.input {
+  display: none;
+  @include respond($mobile) {
+    @include rowCenter();
+    background-color: #d9d9d9;
+    width: 310px;
+    height: 40px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 30px;
+    input {
+      background-color: #d9d9d9;
+      border: none;
+      width: 310px;
+      height: 40px;
+      border-radius: 30px;
+      font-size: 15px;
+      margin-left: 20px;
+    }
+  }
 }
 
 .StoreListMap {
   overflow-y: scroll;
   height: 700px;
+  @include respond($mobile) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 375px;
+    height: 350px;
+    justify-content: space-evenly;
+  }
 }
 
 .content {
@@ -20,6 +75,16 @@
   border-radius: 30px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
   position: relative;
+  @include respond($mobile) {
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    background-color: #f8f8f8;
+    height: 100vh;
+    margin: 0px;
+    margin-top: 100px;
+  }
 }
 
 .storeList {
@@ -29,6 +94,14 @@
   height: 760px;
   background-color: #f8f8f8;
   border-bottom-right-radius: 30px;
+  @include respond($mobile) {
+    font-size: 10px;
+    width: 375px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: none;
+  }
 }
 
 #searchStoreList {
@@ -41,6 +114,19 @@
   margin-top: 30px;
   border-radius: 10px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  @include respond($mobile) {
+    width: 150px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+      width: 150px;
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
 .storeImage {
@@ -51,15 +137,26 @@
   background-position: center;
   border-radius: 10px;
   margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include rowCenter();
+  @include respond($mobile) {
+    width: 130px;
+    height: 90px;
+    margin: 10px;
+  }
+}
+.storeAddress {
+  @include respond($mobile) {
+    display: none;
+  }
 }
 
 #searchStoreNumber {
   span {
     font-weight: bold;
     font-size: 18px;
+    @include respond($mobile) {
+      font-size: 12px;
+    }
   }
 }
 
@@ -72,11 +169,24 @@
   height: 150px;
   line-height: 1.8;
   margin-top: 25px;
+  @include respond($mobile) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30px;
+    line-height: 1.6;
+    margin: 5px 0 0 10px;
+    padding: 0px;
+    width: auto;
+  }
 }
 
 .storeName {
   font-size: 20px;
   font-weight: bold;
+  @include respond($mobile) {
+    font-size: 14px;
+  }
 }
 
 .gradeLikeViews {
@@ -93,8 +203,23 @@
     margin-right: 10px;
     color: #a4a4a4;
   }
+  @include respond($mobile) {
+    margin: 0px;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    div {
+      margin: 0px;
+    }
+  }
 }
-
+@include respond($mobile) {
+  .logo {
+    width: 130px;
+    height: 100px;
+  }
+}
 .categoryList {
   display: flex;
 }
@@ -109,26 +234,33 @@
   height: 20px;
   border-radius: 30px;
   font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include rowCenter();
   margin-right: 10px;
+  @include respond($mobile) {
+    font-size: 7px;
+    border: none;
+    @include rowCenter();
+    width: 30px;
+  }
 }
 
 .favorite {
   position: absolute;
   left: 90%;
   top: 40px;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   background-repeat: no-repeat;
   background-size: cover;
+  @include respond($mobile) {
+    display: none;
+  }
 
   .bookmark {
     fill: #e2e2e2;
     width: 25px;
     height: 25px;
-    cursor: pointer;
+    @include cursor();
   }
 }
 
@@ -139,7 +271,7 @@
   left: 45%;
   top: 90%;
   z-index: 999;
-  cursor: pointer;
+  @include cursor();
   border: 1px solid black;
   background-color: #fcfcfc;
   border-radius: 5px;
@@ -156,6 +288,9 @@
   margin-top: 30px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+  @include respond($mobile) {
+    display: none;
+  }
 }
 
 #noDataImage {

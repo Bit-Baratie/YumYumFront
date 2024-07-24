@@ -31,15 +31,15 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
             <div className={storeScss.storeImage}>
               <Image
                 src={store.imageUrl}
-                width={200}
-                height={155}
+                width={130}
+                height={90}
                 alt="가게이미지"
               />
             </div>
           </>
         ) : (
           <>
-            <Logo />
+            <Logo class={storeScss.logo} />
           </>
         )}
         <div className={storeScss.storeInfo}>
@@ -82,7 +82,7 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
           <div className={storeScss.hashTagList}>
             {store.hashtagList?.map((tag, index) => (
               <div key={index} className={storeScss.hashTag}>
-                {tag}
+                #{tag}
               </div>
             ))}
           </div>

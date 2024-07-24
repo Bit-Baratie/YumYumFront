@@ -18,12 +18,9 @@ import {
   AlertFilled,
 } from "@ant-design/icons";
 import Navi from "@/public/asset/image/navigation.svg";
-import Siren from "@/public/asset/image/siren.svg";
-import GoReview from "@/public/asset/image/review.svg";
 import Mark from "@/public/asset/image/mark.svg";
 import Loading from "@/app/admin/(component)/Loading";
 import NoImage from "@/public/asset/image/NoImage.svg";
-import { deflateRaw } from "zlib";
 
 const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();

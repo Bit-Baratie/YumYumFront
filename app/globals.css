@@ -7,14 +7,18 @@
 html,
 body {
   width: 100%;
-  min-width: 1280px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #fffef8;
   /* overflow-x: hidden; */
+  @media screen and (max-width: 767px) {
+    width: 375px;
+  }
 }
+
+
 
 ul {
   list-style: none;

@@ -1,18 +1,31 @@
-@font-face {
-  font-family: "appleM";
-  src: url("../../../public/asset/font/AppleSDGothicNeoM.ttf");
+@import "../../common.scss";
+
+$yellow: #ffc657;
+
+$mobile: 360px;
+
+@mixin mobile {
+  @media (min-width: $mobile) and (max-width: 767px) {
+    @content;
+  }
 }
-@font-face {
-  font-family: "appleB";
-  src: url("../../../public/asset/font/AppleSDGothicNeoB.ttf");
-}
-.container {
-  font-family: "appleM";
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@include mobile {
+  .mobileHeader {
+    display: none;
+  }
+
+  .container {
+    font-family: "appleM";
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include mobile {
+      background-color: pink;
+      width: 100vw;
+    }
+  }
 }
 .storeId {
   display: none;
@@ -30,23 +43,39 @@
   font-size: 20px;
   margin-top: 50px;
   white-space: nowrap;
+  @include mobile {
+    background-color: pink;
+    width: 375px;
+    height: 500px;
+  }
 }
 .storeImageDetail {
   padding: 0px;
   margin: 0px;
   width: 800px;
   height: 430px;
-  display: flex;
-  justify-content: center;
+  @include rowCenter();
   .MainImage {
     width: 400px;
     height: 430px;
     border-top-left-radius: 20px;
+    @include mobile {
+      width: 187px;
+      height: 187px;
+    }
   }
 
   .subImage {
     width: 200px;
     height: 215px;
+    @include mobile {
+      width: 93px;
+      height: 93px;
+    }
+  }
+  @include mobile {
+    width: 375px;
+    height: 187px;
   }
 }
 
@@ -55,6 +84,10 @@
   height: 430px;
   display: flex;
   flex-wrap: wrap;
+  @include mobile {
+    width: 187px;
+    height: 187px;
+  }
   #sub2 {
     border-top-right-radius: 20px;
   }
@@ -68,10 +101,10 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   div {
     align-items: center;
     height: 70px;
-    // justify-content: space-between;
     display: flex;
   }
 }
@@ -84,13 +117,14 @@
   span {
     font-size: 40px;
     padding-right: 20px;
+    @include mobile {
+      font-size: 30px;
+    }
   }
 }
 .storeHashTag {
-  // background-color: chartreuse;
   display: flex;
   width: 800px;
-  // justify-content: space-evenly;
   justify-content: center;
   margin-top: 40px;
 
@@ -101,11 +135,14 @@
     padding: 0px 14px;
     height: 50px;
     font-size: 25px;
-    border: 3px solid #ffc657;
+    border: 3px solid $yellow;
     border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include rowCenter();
+    @include mobile {
+      width: 70px;
+      height: 30px;
+      font-size: 10px;
+    }
   }
 }
 #navBtn {
@@ -135,10 +172,6 @@
   width: 30px;
   height: 30px;
   font-size: 25px;
-  align-items: center;
-  justify-content: center;
-  // padding: 10px 5px 7px 10px;
-  // padding: 10px;
   padding-bottom: 10px;
   color: rgb(149, 149, 149);
 }
