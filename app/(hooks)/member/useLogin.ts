@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import postLoginInfo from "../../(api)/member/loginApi";
+import {postLoginInfo, postLogout} from "../../(api)/member/loginApi";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import userStore from "@/app/(hooks)/userStore";
 import Swal from "sweetalert2";
@@ -17,15 +17,15 @@ const useLogin = () => {
   const login = useMutation({
     mutationFn: (loginInfo: loginType) => postLoginInfo(loginInfo),
     onSuccess: (res) => {
+      console.log(res);
       setUserInfo({
-        memberId: res.memberId,
-        nickName: res.nickname,
-        imageUrl: res.imageUrl,
-        phoneNumber: res.phoneNumber
+        memberId: res.data.memberId,
+        nickName: res.data.nickname,
+        imageUrl: res.data.imageUrl,
+        phoneNumber: res.data.phoneNumber
       });
       setToken({
-        atk: res.atk,
-        rtk: res.rtk
+        atk: res.headers['authorization']
       });
 
       Swal.fire({
@@ -36,7 +36,7 @@ const useLogin = () => {
         width: 400,
       });
 
-      if (res.role === 'ADMIN') {
+      if (res.data.role === 'ADMIN') {
         router.push('/admin');
       }else {
         router.push('/');
@@ -72,6 +72,10 @@ const useLogin = () => {
   }
 
   const logout = () => {
+    postLogout();
+    deleteUserInfo();
+    deleteToken();
+    
     Swal.fire({
       title: '로그아웃 되었습니다',
       icon: 'success',
@@ -79,9 +83,6 @@ const useLogin = () => {
       showConfirmButton: false,
       width: 400,
     });
-
-    deleteUserInfo();
-    deleteToken();
 
     if (pathname === '/home') {
       router.refresh();

@@ -9,8 +9,7 @@ interface userInfoType {
 }
 
 interface tokenType{
-  atk: string;
-  rtk: string;
+  atk: any;
 }
 
 interface userState {
@@ -25,7 +24,7 @@ interface userActions {
   deleteUserInfo: () => void;
 }
 
-const defaultToken: tokenType = {atk: '', rtk: ''}
+const defaultToken: tokenType = {atk: ''}
 const defaultUserInfo: userInfoType = { memberId: 0, imageUrl: '', nickName: '', phoneNumber: '' }
 
 const UserStore = create(
