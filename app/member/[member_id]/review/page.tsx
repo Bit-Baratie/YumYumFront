@@ -23,9 +23,7 @@ const ReviewPage = () => {
         {myReviewList?.pages.map((page) => (
           <div key={page}>
             {page.content.map((item: getReviewType) => (
-              <Link href={`/review/${item.reviewId}`} key={item.reviewId}>
-                <ReviewItem reviewItem={item}/>
-              </Link>
+              <ReviewItem reviewItem={item} key={item.reviewId}/>
             ))}
           </div>
         ))}
