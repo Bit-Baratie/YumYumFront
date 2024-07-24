@@ -7,11 +7,18 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { patchMemberType } from "@/app/type";
 import useLogin from "./useLogin";
+import UserStore from "../userStore";
 
 const useMember = () => {
   const { getLikeReview, getLikeStore, getMyReply, getMyReview, getProfile, patchMember, deleteMember } = MemberApi();
   const {logout} = useLogin();
-  const {data: profile} = useQuery({queryKey: ['profile'], queryFn:() => getProfile()});
+  const pathname = usePathname();
+  const {userInfo} = UserStore();
+  const {data: profile} = useQuery({
+    queryKey: ['profile'],
+    queryFn:() => getProfile(),
+    enabled: pathname === `/member/${userInfo.memberId}`
+  });
   const {
     data: myReviewList,
     fetchNextPage: nextMyReviewList,
@@ -20,6 +27,7 @@ const useMember = () => {
     queryKey: ['myReview'],
     queryFn: ({pageParam}) => getMyReview({pageNumber:pageParam}),
     initialPageParam: 0,
+    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/review`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
@@ -32,6 +40,7 @@ const useMember = () => {
     queryKey: ['myReply'],
     queryFn: ({pageParam}) => getMyReply({pageNumber:pageParam}),
     initialPageParam: 0,
+    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/reply`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
@@ -44,6 +53,7 @@ const useMember = () => {
     queryKey: ['likeReview'],
     queryFn: ({pageParam}) => getLikeReview({pageNumber:pageParam}),
     initialPageParam: 0,
+    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/like`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
@@ -56,6 +66,7 @@ const useMember = () => {
     queryKey: ['likeStore'],
     queryFn: ({pageParam}) => getLikeStore({pageNumber:pageParam}),
     initialPageParam: 0,
+    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/star`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
@@ -66,7 +77,7 @@ const useMember = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey:['profile']});
     },
-    onError: (err) => {
+    onError: () => {
       alert('잠시후 다시 시도해주세요')
     }
   });
