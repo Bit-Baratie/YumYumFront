@@ -1,7 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
 import Store from '../userStore';
-import { redirect } from 'next/navigation';
-
 
 export const axiosWithAuth: AxiosInstance = axios.create({
   baseURL: 'http://223.130.158.171:80',
@@ -23,15 +21,17 @@ export const axiosNonAuth: AxiosInstance = axios.create({
 
 axiosWithAuth.interceptors.response.use(
   (response) => {
-    if (response.status === 401) {
-      console.log('a')
-      redirect('/member/login');
-    } else {
-      return response;
-    }
+    return response;
   },
   (error) => {
-    console.error(error.message);
+    if (error.response.status === 401) {
+      alert('로그인이 필요합니다')
+      window.location.href = '/member/login';
+    } else if (error.response.status === 403) {
+      alert('권한이 없습니다');
+      window.location.href = '/';
+    }
+    return Promise.reject(error);
   }
 );
 
@@ -41,7 +41,12 @@ axiosNonAuth.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      redirect('/member/login');
+      alert('로그인이 필요합니다')
+      window.location.href = '/member/login';
+    } else if (error.response.status === 403) {
+      alert('권한이 없습니다');
+      window.location.href = '/';
     }
+    return Promise.reject(error);
   }
 );
