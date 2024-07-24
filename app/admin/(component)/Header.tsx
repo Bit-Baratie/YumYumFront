@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <>
       <div className={HeaderStyle.container}>
-        <Link href={"/home"}>
+        <Link href={"/home"} target="_blank">
           <button>
             <Home /> HOME
           </button>
