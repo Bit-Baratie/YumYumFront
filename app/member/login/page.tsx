@@ -5,7 +5,7 @@ import Link from 'next/link';
 import useLogin from '@/app/(hooks)/member/useLogin';
 import Google from '@/public/asset/image/Google.svg';
 import Kakao from '@/public/asset/image/Kakao.svg';
-import { NaverLogin } from '@/app/(component)/auth/social';
+import { KakaoLogin, NaverLogin } from '@/app/(component)/auth/social';
 
 const Login = () => {
   const {email, password, emailHanler, passwordHanler, loginHandler} = useLogin();
@@ -24,7 +24,7 @@ const Login = () => {
 
       <span className={loginStyle.span}><hr className={loginStyle.hr}/>&nbsp; S N S &nbsp; L O G I N &nbsp;<hr className={loginStyle.hr}/></span>
       <span className={loginStyle.social}>
-        <Kakao/>
+        <KakaoLogin/>
         <NaverLogin/>
         <Google/>
       </span>
