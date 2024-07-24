@@ -5,9 +5,10 @@ import TestMap from "@/app/store/(component)/NaverMap";
 import Bookmarks from "@/public/asset/image/bookmark.svg";
 import detailScss from "@/app/store/[store_id]/storeDetailPage.module.scss";
 import useStore from "@/app/store/(hooks)/useStore";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import ReportModal from "@/app/(component)/reportModal";
 import Link from "next/link";
+import Back from "@/public/asset/image/back.svg";
 import { getStoreType, favorite } from "@/app/type";
 import useModal from "@/app/(hooks)/common/useModal";
 import detailMap from "@/app/store\/[store_id]/storeDetailMap.module.scss";
@@ -29,6 +30,7 @@ const StoreDetail = () => {
   const [menuStatus, setMenuStatus] = useState(false);
   const { modal, setModal, createStoreReport, content, contentHandler } =
     useModal();
+  const router = useRouter();
 
   const closeModal = () => {
     setModal(false);
@@ -90,20 +92,20 @@ const StoreDetail = () => {
         <div className={detailScss.storeInfoDetail}>
           <div className={detailScss.storeNameDetail}>
             <span>{storeDetail[0]?.name}</span>
-            <div>
+            <div className={detailScss.StarFilled}>
               <StarFilled className={detailScss.customIcon} />
               <div className={detailScss.smallText}>
                 {storeDetail[0]?.avgGrade}&nbsp;(
                 {storeDetail[0]?.totalReviewCount})
               </div>
             </div>
-            <div>
+            <div className={detailScss.Mark}>
               <Mark className={detailScss.customIcon} />
               <div className={detailScss.smallText}>
                 {storeDetail[0]?.totalFavoriteCount}
               </div>
             </div>
-            <div>
+            <div className={detailScss.EyeFilled}>
               <EyeFilled className={detailScss.customIcon} />
               <div className={detailScss.smallText}>{storeDetail[0]?.views}</div>
             </div>
@@ -165,9 +167,6 @@ const StoreDetail = () => {
             className={detailScss.bookmark}
             style={{
               fill: favorite ? "#FFC657" : "#E2E2E2",
-              width: "55px",
-              height: "65px",
-              // stroke: "white",
             }}
             onClick={() => {
               postStar(data);
@@ -175,6 +174,7 @@ const StoreDetail = () => {
             }}
           />
         </div>
+        <Back className={detailScss.back} onClick={() => router.back()} />
       </div>
       <div className={detailMap.DetailMap}>
         <div className={detailMap.map}>
