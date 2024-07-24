@@ -13,6 +13,7 @@
     display: flex;
     
     li {
+      @include rowCenter();
       border-radius: 30px;
       width: 200px;
       height: 60px;
@@ -22,7 +23,17 @@
       }
 
       @include hover();
+      &:hover {
+        svg {
+          fill: white;
+        }
+      }
     }
+  }
+
+  // 모바일 반응형 헤더
+  @include respond($mobile) {
+    display: none;
   }
 }
 
@@ -43,4 +54,87 @@
       outline: none;
     }
   }
+
+  @include respond($mobile) {
+    display: none;
+  }
 }
+
+
+.hamburger {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  @include cursor();
+  z-index: 999;
+
+  @include respond($mobile) {
+    display: block;
+  }
+}
+
+.xButton {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  @include cursor();
+  z-index: 999;
+
+  @include respond($mobile) {
+    display: block;
+  }
+}
+
+.mobileHeader {
+  display: none;
+  position: absolute;
+  height: 100vh;
+  width: 250px;
+  background-color: wheat;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  ul {
+    list-style: none;
+    margin-top: 20px;
+    @include columnStart();
+    
+    li {
+      @include rowStart();
+      
+      @include cursor();
+      margin: 10px 20px;
+      span {
+        margin-left: 10px;
+      }
+      a {
+        @include rowCenter
+      }
+    }
+  }
+
+  @include respond($mobile) {
+    @include columnStart();
+  }
+}
+
+.profile {
+  span {
+    margin-left: 5px;
+  }
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+  @include rowCenter();
+  margin: 50px 10px 0 10px;
+}
+
+.moblieMypage {
+  font-size: 1.5rem;
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+}
+  // 모바일 반응형 헤더
+  
