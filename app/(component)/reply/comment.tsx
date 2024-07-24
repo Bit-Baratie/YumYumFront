@@ -1,4 +1,6 @@
-import "./comment.scss";
+// import "./comment.scss";
+// import ReplyList from "@/app/(component)/reply/comment.module.scss";
+import Reply from "@/app/(component)/reply/commentList.module.scss";
 import { getReplyType } from "../../type";
 import useModal from "../../(hooks)/common/useModal";
 import ReportModal from "../reportModal";
@@ -11,15 +13,20 @@ import UserStore from "@/app/(hooks)/userStore";
 
 const Comment = ({
   item,
-  removeReply
+  removeReply,
 }: {
   item: getReplyType;
   removeReply: Function;
 }) => {
   const { modal, setModal, createReplyReport, contentHandler, content } =
     useModal();
-  const {contentHandler:modConent, updateReplyHandler, mod, setMod} = useReply();
-  const {userInfo} = UserStore();
+  const {
+    contentHandler: modConent,
+    updateReplyHandler,
+    mod,
+    setMod,
+  } = useReply();
+  const { userInfo } = UserStore();
 
   const onClose = () => {
     setModal(false);
@@ -27,16 +34,16 @@ const Comment = ({
 
   const modValidate = () => {
     if (userInfo.nickName !== item.nickname) {
-      alert('댓글 수정은 작성자만 가능합니다');
+      alert("댓글 수정은 작성자만 가능합니다");
       return;
     }
     setMod(!mod);
-  }
+  };
 
   return (
     <>
-      <div className="commentContainer">
-        <div className="content">
+      <div className={Reply.commentContainer}>
+        <div className={Reply.content}>
           <CustomImage
             style={"comment-img"}
             src={item.imageUrl}
@@ -45,32 +52,38 @@ const Comment = ({
             height={30}
           />
 
-          <div className="right">
-            <p className="profile-name">{item.nickname}</p>
-            <p className="ReplyCont">{item.content}</p>
-            {mod && 
+          <div className={Reply.right}>
+            <p className={Reply.profileName}>{item.nickname}</p>
+            <p className={Reply.ReplyCont}>{item.content}</p>
+            {mod && (
               <>
-                <input type="text" defaultValue={item.content} onChange={(e) => modConent(e)}></input>
-                <button onClick={() => updateReplyHandler(item.replyId)}>수정</button>
+                <input
+                  type="text"
+                  defaultValue={item.content}
+                  onChange={(e) => modConent(e)}
+                ></input>
+                <button onClick={() => updateReplyHandler(item.replyId)}>
+                  수정
+                </button>
               </>
-              }
-            <p className="ReplyDate">
+            )}
+            <p className={Reply.ReplyDate}>
               {moment(item.createdAt).format("MM월 DD일 a hh:mm ")}
             </p>
           </div>
         </div>
 
-        <div className="btn">
-          <button className="dec" onClick={() => setModal(true)}></button>
-          <button className="mod" onClick={() => modValidate()}></button>
+        <div className={Reply.btn}>
+          <button className={Reply.dec} onClick={() => setModal(true)}></button>
+          <button className={Reply.mod} onClick={() => modValidate()}></button>
           <button
-            className="del"
+            className={Reply.del}
             onClick={() => removeReply(item.replyId)}
           ></button>
         </div>
       </div>
 
-      <hr />
+      <hr className={Reply.customHr} />
 
       {modal && (
         <ReportModal

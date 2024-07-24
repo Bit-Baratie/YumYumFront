@@ -1,3 +1,5 @@
+@import "../../common.scss";
+
 .ddd {
     display: flex;
     flex-direction: row;
@@ -57,6 +59,10 @@
     box-shadow:  0px 0px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     text-align: center;
+
+    @include respond($mobile) {
+        width: 375px;
+    }
 }
 
 .reviewContent {
@@ -64,6 +70,11 @@
     line-height: 30px;
     text-align: start;
     font-size: 23px;
+
+    @include respond($mobile) {
+        font-size: 18px;
+        padding: 0px 30px;
+    }
 }
 
 // .review-image {
@@ -74,6 +85,18 @@
 //     // display: flex;
 //     // justify-content: center;
 // }
+.reviewImage{
+
+    @include respond($mobile){
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+}
+
 .reviewImageImg {
     // display: flex; 
     float: left;
@@ -82,7 +105,15 @@
     border: 1px solid gray;
     border-radius: 10px;
     margin: 35px;
+
+    @include respond($mobile){
+        width: 90px;
+        height: 90px;
+        margin: 6px;
+        justify-content: start;
+    }
 }
+
 
 .profile {
     width: 700p;
@@ -90,10 +121,20 @@
     display: flex;
     padding: 20px;
     align-items: center;
+
+    @include respond($mobile){
+        height: 65px;
+        padding: 10px 0px;
+    }
 }
 .profileImg {
     border: 2px solid rgb(228, 228, 228);
     border-radius: 50%;
+
+    @include respond($mobile) {
+        width: 60px;
+        height: 60px;
+    }
 }
 .profileInfo {
     font-size: 20px;
@@ -104,11 +145,19 @@
     /* margin: 20px; */
     padding: 10px 20px;
     line-height: 37px;
+    @include respond($mobile){
+        height: 60px;
+        font-size: 14px;
+        line-height: 20px;
+    }
 }
 
 .profileName {
     font-size: 28px;
     font-weight: 600;
+    @include respond($mobile){
+        font-size: 20px;
+    }
 }
 
 .profileDate {
@@ -116,7 +165,6 @@
 
 .profileStar {
     color: gray;
-
 }
 
 .storeInfo {
@@ -131,12 +179,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    @include respond($mobile){
+        padding: 10px 30px;
+        line-height: 30px;
+    }
 }
 
-.sn {
+.storeName {
     font-size: 35px;
+    @include respond($mobile){
+        font-size: 20px;
+    }
+    
 }
 
 .add {
     font-size: 20px;
+    @include respond($mobile){
+        font-size: 15px;
+    }
 }
+
+// @media (max-width: 768px) {
+//     .review{
+//         width: 375px;
+//     }
+// }
+

@@ -1,6 +1,7 @@
 "use client";
+
+import ReplyList from "./comment.module.scss";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import "./commentList.scss";
 import Comment from "@/app/(component)/reply/comment";
 import replyApi from "@/app/(api)/reply/replyApi";
 import { useParams } from "next/navigation";
@@ -43,10 +44,10 @@ const CommentList = () => {
 
   return (
     <>
-      <div className="comment">
-        <div className="comment-write">
+      <div className={ReplyList.comment}>
+        <div className={ReplyList.commentWrite}>
           <CustomImage
-            style="profile-img"
+            style="profileImg"
             src={userInfo.imageUrl}
             alt="프로필이미지"
             width={40}
@@ -57,13 +58,13 @@ const CommentList = () => {
             value={content}
             onChange={(e) => contentHandler(e)}
             placeholder="댓글 달기"
-            className="write"
+            className={ReplyList.write}
           ></input>
           <button onClick={() => createReplyHandler(Number(params.review_id))}>
             작성
           </button>
         </div>
-        <div className="commentList">
+        <div className={ReplyList.commentList}>
           {isFetching && <p>Loading...</p>}
           {error && <p>댓글을 불러올 수 없습니다</p>}
           {data?.pages.map((page) => (

@@ -47,7 +47,7 @@ const ReviewDetail = () => {
           </div>
         </div>
         <div className={DetailStyle.storeInfo}>
-          <div className={DetailStyle.sn}>{reviewOne?.storeName}</div>
+          <div className={DetailStyle.storeName}>{reviewOne?.storeName}</div>
           <div className={DetailStyle.add}>{reviewOne?.address}</div>
         </div>
         <div className={DetailStyle.ddd}>

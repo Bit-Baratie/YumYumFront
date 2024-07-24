@@ -1,12 +1,22 @@
+@import "../../common.scss";
+
 .commentContainer {
   display: flex;
   flex-direction: row;
   align-items: left;
   justify-content: space-between;
   margin: 20px 40px;
+  max-width: 660px;
+  // overflow: ;
+  word-break: break-all; 
+
+  @include respond($mobile) {
+    margin: 20px;
+    position: relative;
+  }
 }
 
-.profile-img{
+.profileImg{
   width: 30px;
   height: 30px;
   border: 1px solid lightgray;
@@ -14,11 +24,35 @@
   padding: 20px;
 }
 
+.profileName{
+  font-family: "appleB";
+}
+
+.ReplyCont{
+  @include respond($mobile){
+    width: 260px;
+  }
+}
+
+.ReplyDate{
+  font-size: 13px;
+  color: #898989;
+}
+
 .content {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  
+
+  @include respond($mobile){
+    img{
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+}
 }
 
 .right{
@@ -27,23 +61,30 @@
   line-height: 26px;
 }
 
-// hr {
-//   width: 90%;
-//   margin: 0 auto; 
-// }
+.customHr {
+  width: 90%;
+  margin: 0 auto; 
+  border: 0;
+  margin-top: 10px;
+  border-top: 1px solid rgb(227, 227, 227); 
+}
+
+
 
 .dec,
 .mod,
 .del {
   // background-image: url("../../public/asset/image/siren.svg");
-
   background-size: cover;
-
   border: none;
   background-color: white;
   color: red;
   margin-left: 10px;
   cursor: pointer;
+
+  @include respond($mobile){
+
+  }
 }
 
 .dec{
@@ -73,3 +114,9 @@
   }
 }
 
+.btn{
+  display: flex;
+  position: relative;
+  top: 0;
+  right: 90px;
+}

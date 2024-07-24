@@ -1,3 +1,5 @@
+@import "../../common.scss";
+
 .commentContainer {
   display: flex;
   flex-direction: row;
@@ -6,12 +8,13 @@
   margin: 20px 40px;
 }
 
-.profile-img{
+.profileImg{
   width: 30px;
   height: 30px;
   border: 1px solid lightgray;
   border-radius: 50%;
-  padding: 20px;
+  // padding: 20px;
+
 }
 
 .content {

@@ -1,3 +1,5 @@
+@import "../../common.scss";
+
 .write {
   position: relative;
   border: none;
@@ -8,6 +10,11 @@
   margin-top: 30px;
   width: 800px;
   text-align: center;
+
+  @include respond($mobile) {
+    width: 375px;
+    margin-top: 10px;
+  }
 }
 
 .textform {
@@ -22,9 +29,14 @@
   line-height: 1.5;
   resize: none;
   vertical-align: top;
+
+  @include respond($mobile){
+    width: 360px;
+  }
 }
 
 .storeName {
+  font-family: 'TmoneyRoundWindExtraBold';
   margin-top: 20px;
   font-size: 30px;
   color: rgb(0, 0, 0);
@@ -32,6 +44,9 @@
 
 .star {
   margin: 10px 0px 25px 0px;
+
+  @include respond($mobile){
+  }
 }
 
 .imgList {
@@ -88,6 +103,10 @@
   border-radius: 10px;
   margin: auto;
   margin-top: 30px;
+
+  @include respond($mobile){
+    width: 360px;
+  }
 }
 
 .btnUpload:hover {
@@ -129,6 +148,10 @@
   height: 80px;
   font-size: 40px;
   border-radius: 10px;
+
+  @include respond($mobile){
+    width: 360px;
+  }
 }
 
 .submit:hover {
