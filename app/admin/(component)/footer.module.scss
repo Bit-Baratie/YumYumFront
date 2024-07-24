@@ -1,0 +1,27 @@
+@import "../../common.scss";
+
+.container {
+  font-family: "appleM";
+  background-color: rgb(230, 230, 230);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: #515151;
+  justify-content: space-between;
+}
+
+.text{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+}
+.icon{
+  display: flex;
+  font-size: 50px;
+  align-items: center;
+  justify-content: end;
+}
+
+.bottom{
+  margin: 20px;
+}

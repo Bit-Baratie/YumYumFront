@@ -1,10 +1,7 @@
-import Footer from "./(component)/Footer";
 import Header from "./(component)/Header";
-import SideBar from "./(component)/page";
-// import AdminHeader from "./(component)/adminHeader";
-import Style from "@/app/admin/layout.module.scss";
 import NavBar from "./(component)/NavBar";
-import Link from "next/link";
+import Footer from "@/app/admin/(component)/footer";
+import Style from "@/app/admin/layout.module.scss";
 
 export default function RootLayout({
   children,
@@ -21,8 +18,10 @@ export default function RootLayout({
           <Header />
         </div>
         <div className={Style.Main}>{children}</div>
+        <div className={Style.footer}>
+          <Footer />
+        </div>
       </div>
-      {/* <div className={Grid.footer}><Footer /></div> */}
     </div>
   );
 }
