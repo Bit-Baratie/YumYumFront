@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react"
 import {postLoginInfo, postLogout} from "../../(api)/member/loginApi";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import userStore from "@/app/(hooks)/userStore";
 import Swal from "sweetalert2";
 import { useMutation } from "@tanstack/react-query";
@@ -12,17 +12,17 @@ const useLogin = () => {
   const [password, setPassword] = useState<string>('');
   const router = useRouter();
   const pathname = usePathname();
-  const { userInfo, setToken, setUserInfo, deleteUserInfo, deleteToken } = userStore();
-  
+  const { userInfo, token, setToken, setUserInfo, deleteUserInfo, deleteToken } = userStore();
+  const [success, setSuccess] = useState(false);
   const login = useMutation({
     mutationFn: (loginInfo: loginType) => postLoginInfo(loginInfo),
     onSuccess: (res) => {
-      console.log(res);
       setUserInfo({
         memberId: res.data.memberId,
         nickName: res.data.nickname,
         imageUrl: res.data.imageUrl,
-        phoneNumber: res.data.phoneNumber
+        phoneNumber: res.data.phoneNumber,
+        role: res.data.role
       });
       setToken({
         atk: res.headers['authorization']
@@ -35,12 +35,7 @@ const useLogin = () => {
         showConfirmButton: false,
         width: 400,
       });
-
-      if (res.data.role === 'ADMIN') {
-        router.push('/admin');
-      }else {
-        router.push('/');
-      }
+      setSuccess(true);
     },
     onError: () => {
       Swal.fire({
@@ -95,7 +90,8 @@ const useLogin = () => {
     email, password,
     emailHanler, passwordHanler,
     loginHandler, logout,
-    userInfo
+    userInfo,
+    success
   }
 }
 

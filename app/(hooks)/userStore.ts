@@ -6,6 +6,7 @@ interface userInfoType {
   imageUrl: string;
   nickName: string;
   phoneNumber: string;
+  role: string;
 }
 
 interface tokenType{
@@ -25,7 +26,7 @@ interface userActions {
 }
 
 const defaultToken: tokenType = {atk: ''}
-const defaultUserInfo: userInfoType = { memberId: 0, imageUrl: '', nickName: '', phoneNumber: '' }
+const defaultUserInfo: userInfoType = { memberId: 0, imageUrl: '', nickName: '', phoneNumber: '', role: '' }
 
 const UserStore = create(
   persist<userState & userActions>(

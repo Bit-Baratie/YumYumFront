@@ -6,9 +6,25 @@ import useLogin from '@/app/(hooks)/member/useLogin';
 import Google from '@/public/asset/image/Google.svg';
 import Kakao from '@/public/asset/image/Kakao.svg';
 import { KakaoLogin, NaverLogin } from '@/app/(component)/auth/social';
+import { useEffect } from 'react';
+import UserStore from '@/app/(hooks)/userStore';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
-  const {email, password, emailHanler, passwordHanler, loginHandler} = useLogin();
+  const {email, password, emailHanler, passwordHanler, loginHandler, success} = useLogin();
+  const {userInfo} = UserStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (success) {
+      if (userInfo.role==='ADMIN') {
+        router.push('/admin');
+      }
+      if (userInfo.role==='USER') {
+        router.push('/')
+      }
+    }
+  }, [success])
 
   return (
     <div className={loginStyle.container}>
