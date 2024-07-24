@@ -41,9 +41,7 @@ const Mypage = () => {
     setNickName,
     setPhone,
   } = useMember();
-  const { errorImage } = useImage();
   const pathname = usePathname();
-
   return (
     <>
       <div className={MemberPageStyle.dashboardWrapper}>
@@ -163,7 +161,7 @@ const Mypage = () => {
           )}
         </Wrapper>
 
-        {updateModal ? (
+        {updateModal && (
           <UpdateModal
             imageHandler={imageHandler}
             nickNameHandler={nickNameHandler}
@@ -180,8 +178,6 @@ const Mypage = () => {
             setPhone={setPhone}
             setNickName={setNickName}
           />
-        ) : (
-          ""
         )}
       </div>
     </>
