@@ -13,8 +13,7 @@ const Callback = () => {
 
     useEffect(() => {
       setToken({
-        atk: atk,
-        rtk: rtk
+        atk: atk
       });
       router.push('/');
   }, [])
