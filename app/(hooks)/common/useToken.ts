@@ -9,7 +9,7 @@ const useToken = () => {
   const router = useRouter();
 
   const authCheckStore = () => {
-    if (token.atk && token.rtk) {
+    if (token.atk) {
       router.push('/store')
     } else {
       Swal.fire({
@@ -29,7 +29,7 @@ const useToken = () => {
   }
 
   const authCheckFavorite = () => {
-    if (token.atk && token.rtk) {
+    if (token.atk) {
       router.push(`/member/${userInfo.memberId}/star`)
     } else {
       Swal.fire({
@@ -48,7 +48,7 @@ const useToken = () => {
     }
   }
   const authCheckReview = () => {
-    if (token.atk && token.rtk) {
+    if (token.atk) {
       router.push("/review")
     } else {
       Swal.fire({
