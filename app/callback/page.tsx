@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import userStore from "../(hooks)/userStore";
 import { useRouter } from "next/navigation";
-import { setCookie } from "cookies-next";
+import { cookies } from "next/headers";
 
 const Callback = () => {
   const searchParams = useSearchParams();
@@ -16,7 +16,7 @@ const Callback = () => {
       setToken({
         atk: atk
       });
-      setCookie('rtk', rtk);
+      cookies().set('rtk', rtk, {secure: true, httpOnly: true});
       router.push('/');
   }, [])
 
