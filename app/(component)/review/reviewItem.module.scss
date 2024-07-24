@@ -1,20 +1,14 @@
-// @font-face {
-//     font-family: 'apple';
-//     // src: url('../srcs/fonts/NeonPlanetDisplay.ttf') format('truetype');
-//     src: url('../../public/asset/font/AppleSDGothicNeoM.ttf');
-// }
-
-// body{
-//     font-family: 'apple';
-// }
+@import "../../common.scss";
 
 .reviewItem {
     width: 800px;
     margin: 30px;
     border-radius: 20px;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-    div {
-        // padding: 20px;
+
+    @include respond($mobile) {
+        width: 375px;
+        margin: 30px 10px;
     }
 
 }
@@ -27,14 +21,26 @@
     border-radius: 20px 20px 0 0;
     color: white;
 
+    @include respond($mobile){
+        padding: 10px;
+    }
+
     .storeName {
         font-size: 30px;
         padding: 10px 0 8px 20px;
+
+        @include respond($mobile){
+            font-size: 20px;
+        }
     }
 
     .addr {
         font-size: 20px;
         padding-left: 20px;
+        
+        @include respond($mobile){
+            font-size: 18px;
+        }
     }
 }
 
@@ -45,6 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .meta {
@@ -82,6 +89,12 @@
     font-size: 22px;
     line-height: 210%;
     background-color: white;
+
+    @include respond($mobile){
+        font-size: 17px;
+        // margin: 20px;
+        margin: 0px 20px;
+    }
 }
 
 .bottom {
@@ -95,6 +108,10 @@
     padding: 10px 0px 30px 35px;
     display: flex;
     // justify-content: center;
+
+    @include respond($mobile){
+        padding: 10px;
+    }
 }
 
 .reivewImage {
@@ -105,6 +122,11 @@
     height: 160px;
     object-fit: cover;
     margin: 10px;
+
+    @include respond($mobile){
+        width: 70px;
+        height: 70px;
+    }
 }
 
 .reivewImageLast {
@@ -115,6 +137,11 @@
     height: 160px;
     object-fit: cover;
     filter: brightness(40%);
+
+    @include respond($mobile){
+        width: 70px;
+        height: 70px;
+    }
 }
 
 .contL {
@@ -143,7 +170,12 @@
     cursor: pointer;
     transition: transform 300ms ease;
     font-size: 63px;
-    
+        @include respond($mobile){
+        width: 40px;
+        height: 40px;
+        top: 3px;
+        right: 0;
+    }
 }
 
 .redBtn {
@@ -152,6 +184,15 @@
     right: inherit;
     color: red;
     font-size: 63px;
+
+    @include respond($mobile){
+        width: 40px;
+        height: 40px;
+        top: 3px;
+        right: 0;
+    }
+
+
 }
 
 
@@ -177,10 +218,20 @@
     align-items: center;
     justify-content: flex-start;
     margin-left: 20px;
+    
+    @include respond($mobile){
+        padding: 0;
+        height: 100px;
+    }
 }
+
 .profileImg {
     border: 1px solid rgb(193, 193, 193);
     border-radius: 50%;
+    @include respond($mobile){
+        width: 60px;
+        height: 60px;
+    }
 }
 .profileInfo {
     font-size: 20px;
@@ -191,15 +242,19 @@
     /* margin: 20px; */
     padding: 10px 20px;
     line-height: 34px;
+
+    @include respond($mobile){
+        line-height: 20px;
+    }
 }
 
 .profileName{
     font-size: 28px;
     font-weight: 600;
-}
 
-.profileDate{
-    
+    @include respond($mobile){
+        font-size: 20px;
+    }
 }
 
 .profileStar{
@@ -208,10 +263,18 @@
     display: flex;
     padding-top: 10px;
 
+    @include respond($mobile){
+        font-size: 15px;
+    }
+
 }
 .Star{
     font-size: 30px;
     letter-spacing: -5px;
+    
+    @include respond($mobile){
+        font-size: 20px;
+    }
 }
 
 .content {
