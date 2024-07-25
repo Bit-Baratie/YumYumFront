@@ -8,6 +8,7 @@ const Footer = () => {
     <>
       <div className={FooterStyle.container}>
         <Logo />
+
         <div className={FooterStyle.text}>
           상호명 | 얌얌
           <br />
