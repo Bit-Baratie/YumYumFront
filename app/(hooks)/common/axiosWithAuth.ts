@@ -25,10 +25,12 @@ axiosWithAuth.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      window.location.href = '/member/login';
+      console.log(error);
+      // window.location.href = '/member/login';
     } else if (error.response.status === 403) {
       alert('권한이 없습니다');
-      window.location.href = '/';
+      console.log(error);
+      // window.location.href = '/';
     }
   }
 );
