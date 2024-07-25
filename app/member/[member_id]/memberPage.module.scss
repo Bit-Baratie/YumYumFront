@@ -1,12 +1,25 @@
+@import "../../common.scss";
+
 .container {
   display: flex;
   width: 1280px;
   margin-top: 30px;
+
+  @include respond($mobile){
+    width: 375px;
+  }
 }
 
 .dashboardWrapper {
   display: flex;
   flex-direction: column;
+
+  @include respond($mobile) {
+    flex-direction: column;
+    width: 375px;
+    margin-top: 0px;
+    display: none;
+  }
 }
 
 .dashboard {
@@ -20,6 +33,15 @@
   margin: 20px;
   padding: 0 50px;
   background-color: white;
+
+  @include respond($mobile) {
+    width: 375px;
+    margin: 20px 10px;
+    padding: 10px;
+    background-color: #F6F6F6;
+    font-family: "appleM";
+  }
+
 }
 
 .title {
@@ -30,6 +52,11 @@
 .profileImage {
   border: 1px solid black;
   border-radius: 100px;
+
+  @include respond($mobile) {
+    border: 4px solid white;
+    box-shadow: 0px 4px 4px rgb(195, 195, 195);
+  }
 }
 
 .profileInfo {
@@ -45,6 +72,10 @@
 .profile {
   display: flex;
   align-items: center;
+
+  @include respond($mobile) {
+    flex-direction: column;
+  }
 }
 
 .nickname {
@@ -53,6 +84,12 @@
 
   :hover {
     cursor: pointer;
+  }
+
+  @include respond($mobile){
+    font-family: 'TmoneyRoundWindExtraBold';
+    font-size: 20px;
+
   }
 }
 
