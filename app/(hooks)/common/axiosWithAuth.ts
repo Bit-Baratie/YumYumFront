@@ -31,8 +31,6 @@ axiosNonAuth.interceptors.request.use((config) => {
   const token = Store.getState().token.atk;
   if (token) {
     config.headers.Authorization = `${token}`;
-  } else {
-    return Promise.reject(new Error('토큰이 없습니다.'));
   }
   return config;
 });
