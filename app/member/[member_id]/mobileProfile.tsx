@@ -69,10 +69,6 @@ const MobileProfile = ({
                 className={ModalStyle.pen}
               />
             </div>
-            {/* <imgf
-                src="@/public/asset/image/pencil.png"
-                className={ModalStyle.pen}
-              /> */}
           </label>
           <input
             type="file"
@@ -82,14 +78,17 @@ const MobileProfile = ({
             onChange={(e) => imageHandler(e)}
             style={{ display: "none" }}
           />
-          <div className={ModalStyle.nameMod}>
-            {profile?.nickname}
-            <input
-              type="text"
-              defaultValue={profile?.nickname}
-              className={ModalStyle.nickname}
-              onChange={(e) => nickNameHandler(e)}
-            />
+          <div className={ModalStyle.inputSet}>
+            <span className={ModalStyle.label}>닉네임</span>
+            <div className={ModalStyle.nameMod}>
+              <input
+                type="text"
+                defaultValue={profile?.nickname}
+                className={ModalStyle.nickname}
+                onChange={(e) => nickNameHandler(e)}
+              />
+            </div>
+            <div className={ModalStyle.line}></div>
           </div>
           <div>
             <div className={ModalStyle.inputSet}>
@@ -102,6 +101,7 @@ const MobileProfile = ({
                   onChange={(e) => phoneHandler(e)}
                 />
               </div>
+              <div className={ModalStyle.line}></div>
             </div>
             <div className={ModalStyle.inputSet}>
               <span className={ModalStyle.label}>변경 비밀번호</span>
@@ -113,6 +113,7 @@ const MobileProfile = ({
                 />
               </div>
             </div>
+            <div className={ModalStyle.line}></div>
             <div className={ModalStyle.inputSet}>
               <span className={ModalStyle.label}>변경 비밀번호 확인</span>
               <div className={ModalStyle.inputBox}>
