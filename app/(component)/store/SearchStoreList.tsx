@@ -6,7 +6,7 @@ import { getStoreType, location } from "@/app/type";
 import { useEffect, useState } from "react";
 import useStoreApi from "@/app/(api)/store/StoreApi";
 import useSearch from "@/app/(hooks)/common/useSearch";
-import storeScss from "@/app/store/(component)/storeList.module.scss"
+import storeScss from "@/app/store/storeList.module.scss"
 import Search from "@/public/asset/image/search.svg";
 import { useQuery } from "@tanstack/react-query";
 
