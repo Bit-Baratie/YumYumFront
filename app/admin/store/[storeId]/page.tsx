@@ -6,7 +6,7 @@ import Link from "next/link";
 import useImage from "@/app/(hooks)/common/useImage";
 import { CameraFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import useStoreApi from "@/app/store/(api)/StoreApi";
+import useStoreApi from "@/app/(api)/store/StoreApi";
 import { useParams } from "next/navigation";
 import { getStoreType } from "@/app/type";
 
