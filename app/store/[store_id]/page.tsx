@@ -1,9 +1,9 @@
 "use client";
-import StoreDetail from "@/app/store/[store_id]/component/StoreDetail";
+import StoreDetail from "@/app/(component)/store/[store_id]/StoreDetail";
 import ReviewItem from "@/app/(component)/review/reviewItem";
 import { getReviewType } from "@/app/type";
 import Link from "next/link";
-import StoreApi from "../(api)/StoreApi";
+import StoreApi from "@/app/(api)/store/StoreApi";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useRef } from "react";
