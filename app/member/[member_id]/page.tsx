@@ -46,23 +46,25 @@ const Mypage = () => {
   const pathname = usePathname();
   return (
     <>
-      <MobileProfile
-        style={MobileStyle}
-        imageHandler={imageHandler}
-        nickNameHandler={nickNameHandler}
-        passwordHanler={passwordHanler}
-        passwordCheckHanler={passwordCheckHanler}
-        phoneHandler={phoneHandler}
-        updateMember={updateHandler}
-        profile={profile}
-        imageUrl={imageUrl}
-        fileInput={fileInput}
-        modal={updateModal}
-        setModal={setUpdateModal}
-        setImageUrl={setImageUrl}
-        setPhone={setPhone}
-        setNickName={setNickName}
-      />
+      <div className={MemberPageStyle.dddd}>
+        <MobileProfile
+          style={MobileStyle.dddd}
+          imageHandler={imageHandler}
+          nickNameHandler={nickNameHandler}
+          passwordHanler={passwordHanler}
+          passwordCheckHanler={passwordCheckHanler}
+          phoneHandler={phoneHandler}
+          updateMember={updateHandler}
+          profile={profile}
+          imageUrl={imageUrl}
+          fileInput={fileInput}
+          modal={updateModal}
+          setModal={setUpdateModal}
+          setImageUrl={setImageUrl}
+          setPhone={setPhone}
+          setNickName={setNickName}
+        />
+      </div>
       <div className={MemberPageStyle.dashboardWrapper}>
         <div className={MemberPageStyle.dashboard}>
           {!profile ? (

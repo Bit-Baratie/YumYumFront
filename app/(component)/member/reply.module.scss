@@ -1,40 +1,89 @@
+@import "../../common.scss";
+
 .dashboardItem {
-  display: flex;
+  // display: flex;
   justify-content: center;
   align-items: center;
   background-color: #F5F5F5;
-  width: 190px;
-  height: 140px;
+  width: 150px;
+  height: 50px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  display: inline-block;
+  display: -webkit-box;
+  padding: 40px 20px;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .replyWrapper {
   display: flex;
+
+
 }
 
 .replyContainer {
   display: flex;
   align-items: center;
   width: 800px;
-  height: 150px;
+  // height: 150px;
   background-color: white;
   margin: 20px;
   border: 3px solid #E0E0E0;
   border-radius: 20px;
+
+  @include respond($mobile){
+    width: 375px;
+    // background-color: orange;
+  }
   
   img {
-    margin: 0 20px;
+    margin: 0 10px 0 20px;
     border: 1px solid #E0E0E0;
     border-radius: 100px;
+
+    @include respond($mobile){
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 .replyRight {
   display: flex;
   flex-direction: column;
+  margin: 10px;
 
+  
   span {
     margin: 5px 0;
+
+    @include respond($mobile){
+      // margin: 10px 0;
+    }
   }
+}
+@include respond($mobile){
+
+.name{
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: "appleB";
+}
+.date{
+  font-size: 15px;
+  color: gray;
+}
+
+.content{
+  max-width: 260px;
+  word-break: break-all;
+  margin-bottom: 10px;
+}
+
+// body{
+//   background-color: red;
+// }
 }

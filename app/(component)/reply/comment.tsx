@@ -56,7 +56,7 @@ const Comment = ({
             <p className={Reply.profileName}>{item.nickname}</p>
             <p className={Reply.ReplyCont}>{item.content}</p>
             {mod && (
-              <>
+              <div className={Reply.Modify}>
                 <input
                   type="text"
                   defaultValue={item.content}
@@ -65,7 +65,7 @@ const Comment = ({
                 <button onClick={() => updateReplyHandler(item.replyId)}>
                   수정
                 </button>
-              </>
+              </div>
             )}
             <p className={Reply.ReplyDate}>
               {moment(item.createdAt).format("MM월 DD일 a hh:mm ")}
