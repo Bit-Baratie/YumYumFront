@@ -11,7 +11,6 @@ import Image from "next/image";
 import { EyeFilled, StarFilled } from "@ant-design/icons";
 import Mark from "@/public/asset/image/mark.svg";
 
-
 const StoreInfo = ({ store }: { store: getStoreType }) => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
   const { postStar } = useStoreApi();

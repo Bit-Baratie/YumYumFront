@@ -11,7 +11,6 @@ import Search from "@/public/asset/image/search.svg";
 import { useQuery } from "@tanstack/react-query";
 
 
-
 const SearchStoreList = () => {
   const { keyword, inputHandler, keywordSearch } = useSearch();
   const { getStoreInfo } = useStoreApi();
