@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import Bookmarks from "../../../public/asset/image/bookmark.svg";
-import useStore from "@/app/store/(hooks)/useStore";
+import useStore from "@/app/(hooks)/store/useStore";
 import storeScss from "./storeList.module.scss";
 import Logo from "@/public/asset/image/logo.svg";
 import Link from "next/link";
-import useStoreApi from "@/app/store/(api)/StoreApi";
+import useStoreApi from "@/app/(api)/store/StoreApi";
 import { favorite, getStoreType } from "@/app/type";
 import Image from "next/image";
 import { EyeFilled, StarFilled } from "@ant-design/icons";

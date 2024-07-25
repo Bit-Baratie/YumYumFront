@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Store from "@/app/(hooks)/userStore";
 import { useQuery } from "@tanstack/react-query";
-import StoreApi from "@/app/store/(api)/StoreApi";
+import useStoreApi from "@/app/(api)/store/StoreApi";
 
 
 const useStore = () => {

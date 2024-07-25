@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import SearchStoreList from "./(component)/SearchStoreList";
+import SearchStoreList from "../(component)/store/SearchStoreList";
 const Store = () => {
   return (
     <>

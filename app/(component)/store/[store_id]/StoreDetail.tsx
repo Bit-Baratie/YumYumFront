@@ -1,10 +1,10 @@
 "use client";
-import useStoreApi from "@/app/store/(api)/StoreApi";
+import useStoreApi from "@/app/(api)/store/StoreApi";
 import { useState, useEffect } from "react";
-import TestMap from "@/app/store/(component)/NaverMap";
+import TestMap from "@/app/(component)/store/NaverMap";
 import Bookmarks from "@/public/asset/image/bookmark.svg";
 import detailScss from "@/app/store/[store_id]/storeDetailPage.module.scss";
-import useStore from "@/app/store/(hooks)/useStore";
+import useStore from "@/app/(hooks)/store/useStore";
 import { useParams, useRouter } from "next/navigation";
 import ReportModal from "@/app/(component)/reportModal";
 import Link from "next/link";
