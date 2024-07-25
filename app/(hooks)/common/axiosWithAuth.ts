@@ -21,6 +21,7 @@ export const axiosNonAuth: AxiosInstance = axios.create({
 
 axiosWithAuth.interceptors.response.use(
   (response) => {
+    console.log(Store.getState().token.atk)
     return response;
   },
   (error) => {
