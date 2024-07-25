@@ -23,7 +23,7 @@ const ReviewItem = ({ reviewItem }: { reviewItem: getReviewType }) => {
         {/* 프로필 */}
         <div className={reviewStyle.profile}>
           <CustomImage
-            src={reviewItem?.profileImage}
+            src={reviewItem?.imageUrl}
             width={100}
             height={100}
             alt="이미지"
