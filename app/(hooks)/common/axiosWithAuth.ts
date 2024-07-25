@@ -4,7 +4,6 @@ import Store from '../userStore';
 export const axiosWithAuth: AxiosInstance = axios.create({
   baseURL: 'https://api.baratie.site',
   headers: {
-    Authorization: `${Store.getState().token.atk}`,
     "Content-Type": 'application/json'
   },
   withCredentials: true
@@ -13,13 +12,22 @@ export const axiosWithAuth: AxiosInstance = axios.create({
 export const axiosNonAuth: AxiosInstance = axios.create({
   baseURL: 'https://api.baratie.site',
   headers: {
-    Authorization: `${Store.getState().token.atk}`,
     "Content-Type": 'application/json'
   },
   withCredentials: true
 });
 
 axiosWithAuth.interceptors.request.use((config) => {
+  const token = Store.getState().token.atk;
+  if (token) {
+    config.headers.Authorization = `${token}`;
+  } else {
+    return Promise.reject(new Error('토큰이 없습니다.'));
+  }
+  return config;
+});
+
+axiosNonAuth.interceptors.request.use((config) => {
   const token = Store.getState().token.atk;
   if (token) {
     config.headers.Authorization = `${token}`;
@@ -36,12 +44,10 @@ axiosWithAuth.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      console.log(error);
-      // window.location.href = '/member/login';
+      window.location.href = '/member/login';
     } else if (error.response.status === 403) {
       alert('권한이 없습니다');
-      console.log(error);
-      // window.location.href = '/';
+      window.location.href = '/';
     }
   }
 );
@@ -52,12 +58,10 @@ axiosNonAuth.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      console.log(error);
-      // window.location.href = '/member/login';
+      window.location.href = '/member/login';
     } else if (error.response.status === 403) {
       alert('권한이 없습니다');
-      console.log(error);
-      // window.location.href = '/';
+      window.location.href = '/';
     }
   }
 );
