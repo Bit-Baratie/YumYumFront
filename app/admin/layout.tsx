@@ -1,6 +1,5 @@
 import Header from "./(component)/Header";
 import NavBar from "./(component)/NavBar";
-import Footer from "@/app/admin/(component)/footer";
 import Style from "@/app/admin/layout.module.scss";
 
 export default function RootLayout({
@@ -19,7 +18,6 @@ export default function RootLayout({
         </div>
         <div className={Style.Main}>{children}</div>
         <div className={Style.footer}>
-          <Footer />
         </div>
       </div>
     </div>
