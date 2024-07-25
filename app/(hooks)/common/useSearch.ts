@@ -3,7 +3,7 @@ import { search } from "@/app/(api)/common/searchApi";
 import { useQuery } from "@tanstack/react-query";
 import { ChangeEvent, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import useStoreApi from "@/app/store/(api)/StoreApi";
+import useStoreApi from "@/app/(api)/store/StoreApi";
 import { location } from "@/app/type";
 
 const useSearch = () => {
