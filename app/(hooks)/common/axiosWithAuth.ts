@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import Store from '../userStore';
 
 export const axiosWithAuth: AxiosInstance = axios.create({
-  baseURL: 'http://223.130.158.171:8080',
+  baseURL: 'https://api.baratie.site',
   headers: {
     Authorization: `${Store.getState().token.atk}`,
     "Content-Type": 'application/json'
@@ -11,7 +11,7 @@ export const axiosWithAuth: AxiosInstance = axios.create({
 });
 
 export const axiosNonAuth: AxiosInstance = axios.create({
-  baseURL: 'http://223.130.158.171:8080',
+  baseURL: 'https://api.baratie.site',
   headers: {
     Authorization: `${Store.getState().token.atk}`,
     "Content-Type": 'application/json'
