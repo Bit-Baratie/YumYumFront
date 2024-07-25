@@ -23,6 +23,7 @@ import Mark from "@/public/asset/image/mark.svg";
 import Loading from "@/app/admin/(component)/Loading";
 import NoImage from "@/public/asset/image/NoImage.svg";
 
+
 const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
   const { StoreDetailInfo, postStar } = useStoreApi();

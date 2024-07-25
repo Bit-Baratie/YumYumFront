@@ -7,6 +7,7 @@ import { getStoreType, location } from "@/app/type";
 import storeScss from "@/app/store/storeList.module.scss";
 
 
+
 const StoreList = ({ storeList }: { storeList: getStoreType[] }) => {
   // const { storeId, setStoreId } = useStore();
   // const { getStoreInfo } = useStoreApi();
