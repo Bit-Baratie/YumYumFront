@@ -37,7 +37,6 @@ axiosNonAuth.interceptors.request.use((config) => {
 
 axiosWithAuth.interceptors.response.use(
   (response) => {
-    console.log(Store.getState().token.atk)
     return response;
   },
   (error) => {
