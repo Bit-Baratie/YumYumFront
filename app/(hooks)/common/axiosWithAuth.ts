@@ -26,7 +26,7 @@ axiosWithAuth.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       console.log(error);
-      window.location.href = '/member/login';
+      // window.location.href = '/member/login';
     } else if (error.response.status === 403) {
       alert('권한이 없습니다');
       console.log(error);
@@ -42,7 +42,7 @@ axiosNonAuth.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       console.log(error);
-      window.location.href = '/member/login';
+      // window.location.href = '/member/login';
     } else if (error.response.status === 403) {
       alert('권한이 없습니다');
       console.log(error);
