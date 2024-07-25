@@ -88,7 +88,7 @@ const Mypage = () => {
         <Wrapper
           title={"내가 쓴 리뷰"}
           link={`${pathname}/review`}
-          totalCnt={myReviewList?.pages[0].content[0].totalReviewCount}
+          totalCnt={myReviewList?.pages[0].content[0]?.totalReviewCount}
         >
           {myReviewState ? (
             <CardSkeleton />
@@ -106,7 +106,7 @@ const Mypage = () => {
         <Wrapper
           title={"좋아요 한 리뷰"}
           link={`${pathname}/like`}
-          totalCnt={likeReviewList?.pages[0].content[0].likeReviewCount}
+          totalCnt={likeReviewList?.pages[0].content[0]?.likeReviewCount}
         >
           {likeReviewState ? (
             <CardSkeleton />
