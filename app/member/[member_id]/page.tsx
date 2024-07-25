@@ -12,6 +12,8 @@ import CardSkeleton from "@/app/(component)/skeleton/card";
 import ProfileSkeleton from "@/app/(component)/skeleton/profile";
 import useImage from "@/app/(hooks)/common/useImage";
 import CustomImage from "@/app/(component)/common/customImage";
+import MobileProfile from "@/app/member/[member_id]/mobileProfile";
+import MobileStyle from "@/app/member/[member_id]/mobileProfile.module.scss";
 
 const Mypage = () => {
   const {
@@ -44,6 +46,23 @@ const Mypage = () => {
   const pathname = usePathname();
   return (
     <>
+      <MobileProfile
+        style={MobileStyle}
+        imageHandler={imageHandler}
+        nickNameHandler={nickNameHandler}
+        passwordHanler={passwordHanler}
+        passwordCheckHanler={passwordCheckHanler}
+        phoneHandler={phoneHandler}
+        updateMember={updateHandler}
+        profile={profile}
+        imageUrl={imageUrl}
+        fileInput={fileInput}
+        modal={updateModal}
+        setModal={setUpdateModal}
+        setImageUrl={setImageUrl}
+        setPhone={setPhone}
+        setNickName={setNickName}
+      />
       <div className={MemberPageStyle.dashboardWrapper}>
         <div className={MemberPageStyle.dashboard}>
           {!profile ? (
@@ -89,6 +108,7 @@ const Mypage = () => {
           title={"내가 쓴 리뷰"}
           link={`${pathname}/review`}
           totalCnt={myReviewList?.pages[0].content[0]?.totalReviewCount}
+          className={MemberPageStyle.myReveiw}
         >
           {myReviewState ? (
             <CardSkeleton />
