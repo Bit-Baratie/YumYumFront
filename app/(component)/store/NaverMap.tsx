@@ -1,5 +1,5 @@
 "use client";
-import "@/app/store/(component)/map.scss";
+import "@/app/store/map.scss";
 import { useEffect, useRef } from "react";
 import { getStoreType, location } from "@/app/type";
 import Script from "next/script";

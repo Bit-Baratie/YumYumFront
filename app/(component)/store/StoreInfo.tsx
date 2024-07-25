@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Bookmarks from "../../../public/asset/image/bookmark.svg";
 import useStore from "@/app/(hooks)/store/useStore";
-import storeScss from "./storeList.module.scss";
+import storeScss from "@/app/store/storeList.module.scss";
 import Logo from "@/public/asset/image/logo.svg";
 import Link from "next/link";
 import useStoreApi from "@/app/(api)/store/StoreApi";

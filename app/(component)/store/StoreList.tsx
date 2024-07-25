@@ -4,7 +4,7 @@ import StoreInfo from "./StoreInfo";
 import { useEffect, useState } from "react";
 import useSearch from "@/app/(hooks)/common/useSearch";
 import { getStoreType, location } from "@/app/type";
-import storeScss from "./storeList.module.scss";
+import storeScss from "@/app/store/storeList.module.scss";
 
 
 const StoreList = ({ storeList }: { storeList: getStoreType[] }) => {
