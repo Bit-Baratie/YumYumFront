@@ -6,7 +6,6 @@ import Script from "next/script";
 import useSearch from "@/app/(hooks)/common/useSearch";
 import { useRouter } from "next/navigation";
 
-
 const TestMap = ({
   storeInfo,
   myLatLng,
