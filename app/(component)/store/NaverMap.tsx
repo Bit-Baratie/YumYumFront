@@ -24,6 +24,7 @@ const TestMap = ({
 
     try {
       console.log(storeInfo);
+      //맛집 리스트 지도 설정
       if (storeInfo?.length > 1) {
         map = new naver.maps.Map("map", {
           center: new naver.maps.LatLng(
@@ -38,20 +39,21 @@ const TestMap = ({
             position: naver.maps.Position.TOP_RIGHT,
           },
         });
-        // } else if (storeInfo?.length == 1) {
-        //   map = new naver.maps.Map("map", {
-        //     center: new naver.maps.LatLng(
-        //       storeInfo[0]?.latitude,
-        //       storeInfo[0]?.longitude
-        //     ),
-        //     zoomontrol: true,
-        //     zoom: 15,
-        //     minZoom: 6,
-        //     zoomControlOptions: {
-        //       style: naver.maps.ZoomControlStyle.LARGE,
-        //       position: naver.maps.Position.TOP_RIGHT,
-        //     },
-        //   });
+        //맛집 상세 지도 설정
+      } else if (storeInfo?.length == 1) {
+        map = new naver.maps.Map("map", {
+          center: new naver.maps.LatLng(
+            storeInfo[0]?.latitude,
+            storeInfo[0]?.longitude
+          ),
+          zoomontrol: true,
+          zoom: 15,
+          minZoom: 6,
+          zoomControlOptions: {
+            style: naver.maps.ZoomControlStyle.LARGE,
+            position: naver.maps.Position.TOP_RIGHT,
+          },
+        });
       }
     } catch (err) {
       console.error(err);
