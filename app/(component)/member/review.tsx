@@ -31,7 +31,7 @@ const DashboardReview = ({ item }: { item: getReviewType }) => {
             </span>
             &nbsp;&nbsp;
             <span>
-              <Reply width="25" height="25" />
+              <Reply width="25" height="25" fill={'white'}/>
               {item?.replyCount}
             </span>
           </div>
