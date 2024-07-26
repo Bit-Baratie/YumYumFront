@@ -80,6 +80,8 @@ export interface getStoreListType {
   avgGrade: number;
   latitude: number;
   longitude: number;
+  totalReviewCount: number;
+  totalFavoriteCount: number;
 }
 
 //즐겨찾기 데이터 타입
