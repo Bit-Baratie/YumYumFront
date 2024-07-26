@@ -6,6 +6,8 @@ import Script from "next/script";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ReactQueryProviders from "./(hooks)/common/useReactQuery";
 import { Suspense } from "react";
+import MobileNav from "./(component)/common/moblieNav";
+import Footer from "./Footer";
 
 export const metadata: Metadata = {
   title: "YUMYUM!",
@@ -34,6 +36,8 @@ export default function RootLayout({
         <ReactQueryProviders>
           <Suspense>{children}</Suspense>
         </ReactQueryProviders>
+        {/* <MobileNav/> */}
+        <Footer />
       </body>
     </html>
   );
