@@ -40,7 +40,7 @@ const UserStore = create(
     }),
     {
       name: 'user-info-storage',
-      storage: createJSONStorage(() => sessionStorage),
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
