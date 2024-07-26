@@ -27,31 +27,31 @@ const TestMap = ({
       if (storeInfo?.length > 1) {
         map = new naver.maps.Map("map", {
           center: new naver.maps.LatLng(
-            myLatLng?.latitude,
-            myLatLng?.longitude
-          ),
-          zoomControl: true,
-          zoom: 15,
-          minZoom: 6,
-          zoomControlOptions: {
-            style: naver.maps.ZoomControlStyle.LARGE,
-            position: naver.maps.Position.TOP_RIGHT,
-          },
-        });
-      } else if (storeInfo?.length == 1) {
-        map = new naver.maps.Map("map", {
-          center: new naver.maps.LatLng(
             storeInfo[0]?.latitude,
             storeInfo[0]?.longitude
           ),
           zoomControl: true,
-          zoom: 15,
+          zoom: 14,
           minZoom: 6,
           zoomControlOptions: {
-            style: naver.maps.ZoomControlStyle.LARGE,
+            style: naver.maps.ZoomControlStyle.medium,
             position: naver.maps.Position.TOP_RIGHT,
           },
         });
+        // } else if (storeInfo?.length == 1) {
+        //   map = new naver.maps.Map("map", {
+        //     center: new naver.maps.LatLng(
+        //       storeInfo[0]?.latitude,
+        //       storeInfo[0]?.longitude
+        //     ),
+        //     zoomontrol: true,
+        //     zoom: 15,
+        //     minZoom: 6,
+        //     zoomControlOptions: {
+        //       style: naver.maps.ZoomControlStyle.LARGE,
+        //       position: naver.maps.Position.TOP_RIGHT,
+        //     },
+        //   });
       }
     } catch (err) {
       console.error(err);
