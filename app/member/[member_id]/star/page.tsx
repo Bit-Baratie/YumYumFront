@@ -20,15 +20,15 @@ const StarPage = () => {
     <>
       <div className={PageStyle.container}>
         {likeStoreList?.pages.map((page) => (
-          <div key={page}>
+          <div key={page.pageNumber}>
             {page.content.map((item: getStoreType) => (
               <StoreInfo store={item} key={item.storeId} />
             ))}
           </div>
         ))}
-      </div>
 
       <div ref={bottomRef}></div>
+      </div>
     </>
   );
 }

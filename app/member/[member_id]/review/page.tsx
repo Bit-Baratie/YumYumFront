@@ -21,15 +21,14 @@ const ReviewPage = () => {
     <>
       <div className={PageStyle.container}>
         {myReviewList?.pages.map((page) => (
-          <div key={page}>
+          <div key={page.pageNumber}>
             {page.content.map((item: getReviewType) => (
               <ReviewItem reviewItem={item} key={item.reviewId}/>
             ))}
           </div>
         ))}
+        <div ref={bottomRef}></div>
       </div>
-
-      <div ref={bottomRef}></div>
     </>
   );
 }

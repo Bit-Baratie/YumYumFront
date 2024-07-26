@@ -28,9 +28,8 @@ const ReplyPage = () => {
             ))}
           </div>
         ))}
+        <div ref={bottomRef}></div>
       </div>
-      
-      <div ref={bottomRef}></div>
     </>
   );
 }

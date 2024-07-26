@@ -27,7 +27,7 @@ const useMember = () => {
     queryKey: ['myReview'],
     queryFn: ({pageParam}) => getMyReview({pageNumber:pageParam}),
     initialPageParam: 0,
-    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/review`,
+    // enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/review`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
@@ -40,7 +40,7 @@ const useMember = () => {
     queryKey: ['myReply'],
     queryFn: ({pageParam}) => getMyReply({pageNumber:pageParam}),
     initialPageParam: 0,
-    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/reply`,
+    // enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/reply`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
@@ -53,7 +53,7 @@ const useMember = () => {
     queryKey: ['likeReview'],
     queryFn: ({pageParam}) => getLikeReview({pageNumber:pageParam}),
     initialPageParam: 0,
-    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/like`,
+    // enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/like`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
@@ -66,7 +66,7 @@ const useMember = () => {
     queryKey: ['likeStore'],
     queryFn: ({pageParam}) => getLikeStore({pageNumber:pageParam}),
     initialPageParam: 0,
-    enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/star`,
+    // enabled: pathname === `/member/${userInfo.memberId}`||pathname === `/member/${userInfo.memberId}/star`,
     getNextPageParam: (data) => {
         return data.last? undefined: data.pageNumber+1;
     }
