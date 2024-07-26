@@ -15,9 +15,9 @@ const SearchStoreList = () => {
   const { keyword, inputHandler, keywordSearch } = useSearch();
   const { getStoreInfo } = useStoreApi();
   const { data: myLatLng } = useQuery({ queryKey: ["myLatLng"], queryFn: () => myLocation() })
-  const { data: storeList } = useQuery({ queryKey: ["storeList", myLatLng], queryFn: async () => await getStoreInfo(myLatLng!) })
+  const { data: storeInfo } = useQuery({ queryKey: ["storeList", myLatLng], queryFn: async () => await getStoreInfo(myLatLng!) })
   const { data: search } = useSearch();
-  // const [storeList, setStoreList] = useState<Array<getStoreType>>([]);
+  const [storeList, setStoreList] = useState<Array<getStoreType>>([]);
   // const [myLatLng, setMyLatLng] = useState<location>({ latitude: 37.49959, longitude: 127.0291 })
 
 
@@ -38,26 +38,26 @@ const SearchStoreList = () => {
   console.log(myLatLng)
   useEffect(() => {
 
-    // const fetchStore = async () => {
-    //   try {
-    //     const LatLng = await myLocation()
-    //     const result = await getStoreInfo(LatLng);
-    //     if (data) {
-    //       setStoreList(data)
-    //     } else {
-    //       console.log(data);
-    //       setStoreList(result);
-    //       setMyLatLng(LatLng)
-    //     }
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
+    const fetchStore = async () => {
+      try {
+        const LatLng = await myLocation()
+        const result = await getStoreInfo(LatLng);
+        if (search) {
+          setStoreList(search)
+        } else {
+          console.log(search);
+          setStoreList(storeInfo);
+          // setMyLatLng(LatLng)
+        }
+      } catch (err) {
+        console.error(err);
+      }
 
-    // }
+    }
 
 
-    // fetchStore();
-  }, [search, storeList])
+    fetchStore();
+  }, [search, storeInfo])
 
 
   return (
