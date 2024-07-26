@@ -166,7 +166,7 @@ const Mypage = () => {
         <Wrapper
           title={"즐겨찾기한 맛집"}
           link={`${pathname}/star`}
-          totalCnt={likeStoreList?.pages[0].content[0]?.totalFavoriteCount}
+          totalCnt={likeStoreList?.pages[0].content[0]?.myFavoriteCount}
         >
           {likeStoreState ? (
             <CardSkeleton />

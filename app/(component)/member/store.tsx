@@ -23,7 +23,7 @@ const DashboardStore = ({item}: {item:getStoreListType}) => {
       <div className={StoreStyle.container}>
         <CustomImage src={item.imageUrl} width={170} height={110} alt="가게이미지" style={''}/>
         <div className={StoreStyle.name}>{item.name}</div>
-        <div><span>⭐️{item.avgGrade}({item.totalReviewCount})</span><span>❤️{item.totalFavoriteCount}</span></div>
+        <div><span>⭐️{item.avgGrade}({item.totalReviewCount})</span><span>❤️{item.storeFavoriteCount}</span></div>
       </div>
     </Link>
   );

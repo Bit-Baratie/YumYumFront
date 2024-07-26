@@ -81,7 +81,7 @@ export interface getStoreListType {
   latitude: number;
   longitude: number;
   totalReviewCount: number;
-  totalFavoriteCount: number;
+  storeFavoriteCount:number;
 }
 
 //즐겨찾기 데이터 타입
