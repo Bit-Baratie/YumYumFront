@@ -1,8 +1,9 @@
 import replyApi from "@/app/(api)/reply/replyApi";
-import { postReplyType } from "@/app/type";
+import { getReplyType, postReplyType } from "@/app/type";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+import UserStore from "../userStore";
 
 const useReply = () => {
   const [content, setContent] = useState('');
@@ -10,6 +11,7 @@ const useReply = () => {
   const router = useRouter();
   const [mod, setMod] = useState(false);
   const queryClient = useQueryClient();
+  const {userInfo} = UserStore();
   const createReply = useMutation({
     mutationFn:(postReplyData: postReplyType) => postReply(postReplyData),
     onSuccess: () => {
@@ -57,8 +59,12 @@ const useReply = () => {
     updateReply.mutate({replyId: replyId, content: patchReplyData})
   }
 
-  const removeReplyHandler = async (replyId: number) => {
-    removeReply.mutate(replyId);
+  const removeReplyHandler = async (reply: getReplyType) => {
+    if (userInfo.nickName !== reply.nickname) {
+      alert("댓글 삭제는 작성자만 가능합니다");
+      return;
+    }
+    removeReply.mutate(reply.replyId);
   }
 
   return {
