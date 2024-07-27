@@ -8,6 +8,7 @@ import ReactQueryProviders from "./(hooks)/common/useReactQuery";
 import { Suspense } from "react";
 // import MobileNav from "./(component)/common/moblieNav";
 import Footer from "./Footer";
+import FooterStyle from "@/app/footer.module.scss";
 
 export const metadata: Metadata = {
   title: "YUMYUM!",
@@ -37,7 +38,7 @@ export default function RootLayout({
           <Suspense>{children}</Suspense>
         </ReactQueryProviders>
         {/* <MobileNav/> */}
-        <Footer />
+        <div className={FooterStyle.container}><Footer /></div>
       </body>
     </html>
   );
