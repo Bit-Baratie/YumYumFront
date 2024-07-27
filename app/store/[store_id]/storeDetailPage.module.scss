@@ -118,7 +118,7 @@
     }
     span {
       font-size: 40px;
-      padding-right: 20px;
+      padding-right: 5px;
     }
 
     @include respond($mobile) {
@@ -209,8 +209,9 @@
 .customIcon {
   width: 30px;
   height: 30px;
-  font-size: 25px;
-  padding-bottom: 10px;
+  font-size: 30px;
+  // padding-bottom: 10px;
+  padding: 0 5px 10px 0;
   color: rgb(149, 149, 149);
   @include respond($mobile) {
     width: 15px;
