@@ -1,8 +1,10 @@
 import axios, { AxiosInstance } from 'axios';
 import Store from '../userStore';
+// import { refreshToken } from '@/app/(api)/member/loginApi';
 
 export const axiosWithAuth: AxiosInstance = axios.create({
   baseURL: 'https://api.baratie.site',
+  // baseURL: 'http://192.168.0.20:3000',
   headers: {
     "Content-Type": 'application/json'
   },
@@ -11,6 +13,7 @@ export const axiosWithAuth: AxiosInstance = axios.create({
 
 export const axiosNonAuth: AxiosInstance = axios.create({
   baseURL: 'https://api.baratie.site',
+  // baseURL: 'http://192.168.0.20:3000',
   headers: {
     "Content-Type": 'application/json'
   },
@@ -41,10 +44,13 @@ axiosWithAuth.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      window.location.href = '/member/login';
+      // window.location.href = '/member/login';
+      console.log(error);
     } else if (error.response.status === 403) {
       alert('권한이 없습니다');
       window.location.href = '/';
+    } else if (error.response.status === 419) {
+      // refreshToken();
     }
   }
 );
@@ -55,10 +61,13 @@ axiosNonAuth.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      window.location.href = '/member/login';
+      // window.location.href = '/member/login';
+      console.log(error);
     } else if (error.response.status === 403) {
       alert('권한이 없습니다');
       window.location.href = '/';
+    } else if (error.response.status === 419) {
+      // refreshToken();
     }
   }
 );
