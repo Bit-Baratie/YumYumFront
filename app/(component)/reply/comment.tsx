@@ -78,7 +78,7 @@ const Comment = ({
           <button className={Reply.mod} onClick={() => modValidate()}></button>
           <button
             className={Reply.del}
-            onClick={() => removeReply(item.replyId)}
+            onClick={() => removeReply(item)}
           ></button>
         </div>
       </div>
