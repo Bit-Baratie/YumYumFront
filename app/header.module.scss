@@ -3,7 +3,7 @@
 .container {
   font-family: 'TmoneyRoundWindExtraBold';
   @include columnCenter();
-  width: 1280px;
+  width: 100%;
 }
 
 .header {
