@@ -35,7 +35,7 @@ const Header = () => {
         <Link href={'/'}><Logo /></Link>
         <ul>
         <Link href={`/store`}><li><Store width='25' height='25' fill={'black'} /><span>맛집리스트</span></li></Link>
-          <Link href={`/member/${userInfo.memberId}/like`}><li><Bookmark width='25' height='25' fill={'black'} /><span>즐겨찾기</span></li></Link>
+          <Link href={`/member/${userInfo.memberId}/star`}><li><Bookmark width='25' height='25' fill={'black'} /><span>즐겨찾기</span></li></Link>
           <Link href={`/review`}><li><Review width='25' height='25' fill={'black'} /><span>리뷰</span></li></Link>
           {token.atk === '' && <Link href={'/member/login'}><li><Login width='25' height='25' fill={'black'} /><span>로그인</span></li></Link>}
           {token.atk !== '' && <Link href={{ pathname: `/member/${userInfo.memberId}` }}><li><Mypage width='25' height='25' fill={'black'} /><span>마이페이지</span></li></Link>}
