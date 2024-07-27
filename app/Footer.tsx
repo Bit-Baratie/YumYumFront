@@ -1,4 +1,4 @@
-import FooterStyle from "@/app/admin/(component)/footer.module.scss";
+import FooterStyle from "@/app/footer.module.scss";
 import Logo from "@/public/asset/image/logoBlack.svg";
 import { GithubFilled } from "@ant-design/icons";
 import Link from "next/link";
