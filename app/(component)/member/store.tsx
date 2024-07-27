@@ -6,6 +6,7 @@ import useImage from "@/app/(hooks)/common/useImage";
 import CustomImage from "../common/customImage";
 import { StarFilled, HeartFilled } from "@ant-design/icons";
 import Bookmark from "@/public/asset/image/mark.svg";
+import Review from '@/public/asset/image/review.svg'
 
 const StoreContainer = ({
   likeStoreList,
@@ -37,11 +38,11 @@ const DashboardStore = ({ item }: { item: getStoreListType }) => {
         <div>
           <span>
             <StarFilled className={StoreStyle.mark} width={16} height={16} />
-            {item.avgGrade}({item.totalReviewCount})&ensp;
+            {item.avgGrade}&ensp;
           </span>
           <span>
-            <Bookmark className={StoreStyle.mark} width={16} height={16} />
-            {item.storeFavoriteCount}
+            <Review className={StoreStyle.mark} width={16} height={16} />
+            {item.totalReviewCount}
           </span>
         </div>
       </div>
