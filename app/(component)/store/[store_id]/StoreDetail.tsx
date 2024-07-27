@@ -22,6 +22,8 @@ import Navi from "@/public/asset/image/navigation.svg";
 import Mark from "@/public/asset/image/mark.svg";
 import Loading from "@/app/admin/(component)/Loading";
 import NoImage from "@/public/asset/image/NoImage.svg";
+import CustomImage from "../../common/customImage";
+import Image from "next/image";
 
 const StoreDetail = () => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
@@ -70,16 +72,17 @@ const StoreDetail = () => {
           {/* <div className="MainImage">{storeList.imageList}</div> */}
           {storeDetail[0].imageList.length ? (
             <>
-              <img className={detailScss.MainImage} src={storeDetail[0]?.imageList[0]} />
+              <CustomImage style={detailScss.MainImage} src={storeDetail[0]?.imageList[0]} width={400} height={430} alt="메인이미지1" />
               <div className={detailScss.subImageList}>
-                <img className={detailScss.subImage} src={storeDetail[0]?.imageList[1]} />
-                <img
-                  className={detailScss.subImage}
-                  id={detailScss.sub2}
+                <CustomImage style={detailScss.subImage} src={storeDetail[0]?.imageList[1]} width={200} height={215} alt="서브이미지1" />
+                <CustomImage
+                  style={detailScss.subImage}
+                  // id={detailScss.sub2}
                   src={storeDetail[0]?.imageList[2]}
+                  width={200} height={215} alt="서브이미지2"
                 />
-                <img className={detailScss.subImage} src={storeDetail[0]?.imageList[3]} />
-                <img className={detailScss.subImage} src={storeDetail[0]?.imageList[4]} />
+                <CustomImage style={detailScss.subImage} src={storeDetail[0]?.imageList[3]} width={200} height={215} alt="서브이미지3" />
+                <CustomImage style={detailScss.subImage} src={storeDetail[0]?.imageList[4]} width={200} height={215} alt="서브이미지4" />
               </div>
             </>
           ) : (

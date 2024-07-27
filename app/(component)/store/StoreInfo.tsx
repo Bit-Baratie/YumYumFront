@@ -10,6 +10,7 @@ import { favorite, getStoreType } from "@/app/type";
 import Image from "next/image";
 import { EyeFilled, StarFilled } from "@ant-design/icons";
 import Mark from "@/public/asset/image/mark.svg";
+import CustomImage from "../common/customImage";
 
 const StoreInfo = ({ store }: { store: getStoreType }) => {
   const { favoriteHandler, favorite, setFavorite } = useStore();
@@ -29,7 +30,8 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
         {store.imageUrl ? (
           <>
             <div className={storeScss.storeImage}>
-              <Image
+              <CustomImage
+                style={""}
                 src={store.imageUrl}
                 width={130}
                 height={90}
