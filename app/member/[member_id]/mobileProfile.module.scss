@@ -1,5 +1,10 @@
 @import "../../common.scss";
 
+.background{
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgb(215, 215, 215);
+}
+
 .title{
   display: flex;
   font-family: 'TmoneyRoundWindExtraBold';
@@ -15,7 +20,7 @@
 }
 
 .containerWrapper {
-  display: none;
+  // display: none;
 }
 
 .container{
@@ -27,7 +32,6 @@
   font-family: 'TmoneyRoundWindExtraBold';
   flex-direction: column;
   font-family: "appleM";
-  box-shadow: 0px 4px 4px rgb(215, 215, 215);
   // margin-top: 50px;
   @include columnCenter();
   position: relative;
@@ -50,14 +54,14 @@
   width: 35px;
   height: 35px;
   // border: 1px solid red;
-  box-shadow: 0px 2px 2px gray;
+  box-shadow: 0px 4px 4px rgb(201, 201, 201);
   border-radius: 50% 50% 50% 0;
   align-items: center;
   background-color: white;
   position: relative;
   position: absolute;
   top: 16%;
-  right: 35%;
+  right: 36%;
 }
 .pen{
   font-size: 30px;

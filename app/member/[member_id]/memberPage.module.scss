@@ -5,6 +5,7 @@
   width: 1280px;
   margin-top: 30px;
   min-height: 70vh;
+  
   @include respond($mobile){
     width: 375px;
   }
