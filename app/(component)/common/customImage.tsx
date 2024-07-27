@@ -8,10 +8,10 @@ interface ImageProps {
   style: any
 }
 
-const CustomImage = ({ alt, src, height, width, style}: ImageProps) => {
+const CustomImage = ({ alt, src, height, width, style }: ImageProps) => {
   return (
     <>
-    {src ? (
+      {src ? (
         <Image
           className={style}
           alt={alt}
@@ -20,7 +20,7 @@ const CustomImage = ({ alt, src, height, width, style}: ImageProps) => {
           height={height}
         />
       ) : (
-        <img
+        <Image
           className={style}
           alt={alt}
           src='/asset/image/defaultImage.png'
