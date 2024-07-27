@@ -109,7 +109,7 @@ const Mypage = () => {
         <Wrapper
           title={"내가 쓴 리뷰"}
           link={`${pathname}/review`}
-          totalCnt={myReviewList?.pages[0].content[0]?.totalReviewCount}
+          totalCnt={myReviewList?.pages[0].content[0]?.totalReviewCount || 0}
           className={MemberPageStyle.myReveiw}
         >
           {myReviewState ? (
@@ -128,7 +128,7 @@ const Mypage = () => {
         <Wrapper
           title={"좋아요 한 리뷰"}
           link={`${pathname}/like`}
-          totalCnt={likeReviewList?.pages[0].content[0]?.likeReviewCount}
+          totalCnt={likeReviewList?.pages[0].content[0]?.likeReviewCount || 0}
         >
           {likeReviewState ? (
             <CardSkeleton />
@@ -148,7 +148,7 @@ const Mypage = () => {
         <Wrapper
           title={"내가 쓴 댓글"}
           link={`${pathname}/reply`}
-          totalCnt={myReplyList?.pages[0].content[0]?.totalReplyCount}
+          totalCnt={myReplyList?.pages[0].content[0]?.totalReplyCount || 0}
         >
           {myReplyState ? (
             <CardSkeleton />
@@ -166,7 +166,7 @@ const Mypage = () => {
         <Wrapper
           title={"즐겨찾기한 맛집"}
           link={`${pathname}/star`}
-          totalCnt={likeStoreList?.pages[0].content[0]?.myFavoriteCount}
+          totalCnt={likeStoreList?.pages[0].content[0]?.myFavoriteCount || 0}
         >
           {likeStoreState ? (
             <CardSkeleton />
