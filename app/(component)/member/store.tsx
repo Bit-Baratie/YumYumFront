@@ -41,7 +41,7 @@ const DashboardStore = ({ item }: { item: getStoreListType }) => {
             {item.avgGrade}&ensp;
           </span>
           <span>
-            <Review className={StoreStyle.mark} width={16} height={16} />
+            <Review className={StoreStyle.mark} width={16} height={16} fill={'black'}/>
             {item.totalReviewCount}
           </span>
         </div>
