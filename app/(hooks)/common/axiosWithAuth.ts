@@ -43,13 +43,13 @@ axiosWithAuth.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.status === 401) {
-      // window.location.href = '/member/login';
+    if (error.response?.status === 401) {
+      window.location.href = '/member/login';
       console.log(error);
-    } else if (error.response.status === 403) {
+    } else if (error.response?.status === 403) {
       alert('권한이 없습니다');
       window.location.href = '/';
-    } else if (error.response.status === 419) {
+    } else if (error.response?.status === 419) {
       // refreshToken();
     }
   }
@@ -60,13 +60,13 @@ axiosNonAuth.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.status === 401) {
-      // window.location.href = '/member/login';
+    if (error.response?.status === 401) {
+      window.location.href = '/member/login';
       console.log(error);
-    } else if (error.response.status === 403) {
+    } else if (error.response?.status === 403) {
       alert('권한이 없습니다');
       window.location.href = '/';
-    } else if (error.response.status === 419) {
+    } else if (error.response?.status === 419) {
       // refreshToken();
     }
   }
