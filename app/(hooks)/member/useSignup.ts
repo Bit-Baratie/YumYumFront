@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { postSignupInfo } from "../../(api)/member/signupApi";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
@@ -15,6 +15,23 @@ const useSignup = () => {
   const [file, setFile] = useState<any>();
   const fileInput = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    // 이미지 URL
+    const imageUrl = '/asset/image/defaultImage.png';
+
+    // 이미지 URL을 fetch하여 Blob으로 변환
+    const fetchImage = async () => {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      
+      // Blob을 File 객체로 변환
+      const file = new File([blob], 'example.jpg', { type: blob.type });
+      setFile(file);
+    };
+
+    fetchImage();
+  }, []);
 
   const signup = useMutation({
     mutationFn: (formData: FormData) => postSignupInfo(formData),
