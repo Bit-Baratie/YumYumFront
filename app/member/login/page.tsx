@@ -42,7 +42,6 @@ const Login = () => {
       <span className={loginStyle.social}>
         <KakaoLogin/>
         <NaverLogin/>
-        <Google/>
       </span>
     </div>
   );
