@@ -41,7 +41,7 @@ const CommentList = ({ reportData }: { reportData: CReportData }) => {
       if (result.isConfirmed) {
         removeReply(reportData?.reportId);
         Swal.fire("삭제가 완료되었습니다", "", "success");
-        router.push("/admin/review");
+        router.push("/admin/comment");
       }
     });
   };
@@ -62,7 +62,7 @@ const CommentList = ({ reportData }: { reportData: CReportData }) => {
       {reportData && (
         <tr className={CommentStyle.trStyle}>
           <td className="nikname">
-            {reportData?.reportId}
+            {/* {reportData?.reportId} */}
             {reportData?.nickName}
           </td>
           <td className={CommentStyle.commentContent}>

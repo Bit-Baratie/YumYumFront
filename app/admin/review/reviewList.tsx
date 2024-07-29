@@ -66,7 +66,7 @@ const ReviewList = ({ reportData }: { reportData: ReportData }) => {
       {reportData && (
         <tr className={ReviewStyle.trStyle}>
           <td className={ReviewStyle.nickname}>
-            {reportData?.reportId}
+            {/* {reportData?.reportId} */}
             {reportData?.nickName}
           </td>
           <td className={ReviewStyle.reviewContent}>
