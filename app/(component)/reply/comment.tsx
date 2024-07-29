@@ -45,11 +45,11 @@ const Comment = ({
       <div className={Reply.commentContainer}>
         <div className={Reply.content}>
           <CustomImage
-            style={"comment-img"}
+            style={"commentImg"}
             src={item.imageUrl}
             alt="프로필 이미지"
-            width={30}
-            height={30}
+            width={40}
+            height={40}
           />
 
           <div className={Reply.right}>
@@ -58,6 +58,7 @@ const Comment = ({
             {mod && (
               <div className={Reply.Modify}>
                 <input
+                  className={Reply.cont}
                   type="text"
                   defaultValue={item.content}
                   onChange={(e) => modConent(e)}
