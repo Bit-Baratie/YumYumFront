@@ -61,13 +61,13 @@ const AdminApi = () => {
   }
 
   const deleteReview = async (reviewId: number) => {
-    const result = await axiosWithAuth.delete(`admin/review/${reviewId}`);
+    const result = await axiosWithAuth.delete(`/admin/review/${reviewId}`);
     console.log(result)
     return result;
   }
 
   const deleteComment = async (replyId: number) => {
-    const result = await axiosWithAuth.delete(`admin//reply/${replyId}`);
+    const result = await axiosWithAuth.delete(`/admin/reply/${replyId}`);
     console.log(result)
     return result;
   }
