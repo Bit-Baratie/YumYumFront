@@ -29,9 +29,10 @@ const StoreInfo = ({ store }: { store: getStoreType }) => {
       <Link href={`/store/${store.storeId}`} style={{ display: "flex" }}>
         {store.imageUrl ? (
           <>
-            <div className={storeScss.storeImage}>
-              <CustomImage
-                style={""}
+            <div>
+              <img
+                className={storeScss.storeImage}
+                // style={storeScss.storeImage}
                 src={store.imageUrl}
                 width={130}
                 height={90}
