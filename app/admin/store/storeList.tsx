@@ -55,7 +55,7 @@ const StoreList = ({ store }: { store: adminStoreType }) => {
       </td>
       <td className={StoreStyle.email}>{store.address}</td>
       <td className={StoreStyle.userNumbe}>{store.call}</td>
-      <td className={StoreStyle.date}>{store.isClosed}
+      <td className={StoreStyle.date}>{store.isClosed == false ? "영업중" : "폐업"}
         <Link className={StoreStyle.modifyLink} href={`/admin/store/${store.storeId}`}><button className={StoreStyle.modifyBtn} onClick={() => setStoreId(store.storeId)}>수정</button></Link>
         <button className={StoreStyle.delBtn} onClick={() => removeStoreHandler()}><CloseCircleFilled /></button>
       </td>
